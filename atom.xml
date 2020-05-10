@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jpzxjt.coding-pages.com/</id>
     <title>Gridea</title>
-    <updated>2020-05-10T17:58:11.506Z</updated>
+    <updated>2020-05-10T18:12:47.837Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jpzxjt.coding-pages.com/"/>
     <link rel="self" href="https://jpzxjt.coding-pages.com/atom.xml"/>
@@ -10,6 +10,270 @@
     <logo>https://jpzxjt.coding-pages.com/images/avatar.png</logo>
     <icon>https://jpzxjt.coding-pages.com/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[Valine评论系统]]></title>
+        <id>https://jpzxjt.coding-pages.com/valine-ping-lun-xi-tong/</id>
+        <link href="https://jpzxjt.coding-pages.com/valine-ping-lun-xi-tong/">
+        </link>
+        <updated>2020-05-10T18:03:08.000Z</updated>
+        <summary type="html"><![CDATA[<p>Gridea提供了两个评论系统，<a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md">Gitalk</a>和<a href="https://github.com/SukkaW/DisqusJS">disqus</a>。Gitalk需要使用Github账号登录，对于没有github账号的人来说不太方便，disqus目前在国内不可用。找了好久，发现了<a href="https://valine.js.org//">valine</a>这个评论系统。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Gridea提供了两个评论系统，<a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md">Gitalk</a>和<a href="https://github.com/SukkaW/DisqusJS">disqus</a>。Gitalk需要使用Github账号登录，对于没有github账号的人来说不太方便，disqus目前在国内不可用。找了好久，发现了<a href="https://valine.js.org//">valine</a>这个评论系统。</p>
+<!-- more -->
+<h1 id="在gridea中加入valine">在Gridea中加入Valine</h1>
+<h2 id="valine介绍">Valine介绍</h2>
+<p>Valine - 一款快速、简洁且高效的无后端评论系统。</p>
+<p>官网地址：https://valine.js.org/</p>
+<h2 id="leancloud注册及配置">leancloud注册及配置</h2>
+<p>leancloud注册及配置见<a href="https://valine.js.org/quickstart.html">快速开始文档</a></p>
+<h2 id="修改主题模板">修改主题模板</h2>
+<p>在Gridea theme模板的<strong>head.ejs</strong>中引入</p>
+<pre><code class="language-html">    &lt;script src='//unpkg.com/valine/dist/Valine.min.js'&gt;&lt;/script&gt;
+</code></pre>
+<p>在<strong>post.ejs</strong>文章详情页模板中文章末尾的位置添加下面的代码</p>
+<pre><code class="language-html">&lt;div id=&quot;vcomments&quot;&gt;&lt;/div&gt;
+    &lt;script&gt;
+        new Valine({
+            el: '#vcomments',
+            appId: '&lt;API_ID&gt;',
+            appKey: '&lt;API_Key&gt;'
+        })
+    &lt;/script&gt;
+</code></pre>
+<p>appid和和appkey替换成leancloud中的应用key即可。修改完成后点击保存，然后同步，就可以了。记得在Gridea客户端中把配置中的评论关掉。</p>
+<p>打开文章详情页，显示评论框就成功了。</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.nlark.com/yuque/0/2019/png/302953/1563170592469-assets/web-upload/9209fe50-a1b7-47e2-bc51-5cbb67b0931d.png" alt="img" loading="lazy"></figure>
+<h1 id="valine的配置">Valine的配置</h1>
+<h2 id="el">el</h2>
+<ul>
+<li>类型:<code>String</code></li>
+<li>默认值:<code>null</code></li>
+<li>必要性:<code>true</code></li>
+</ul>
+<p>Valine 的初始化挂载器。可以是一个<code>CSS 选择器</code>，也可以是一个实际的<code>HTML元素</code>。</p>
+<h2 id="appid">appId</h2>
+<ul>
+<li>类型:<code>String</code></li>
+<li>默认值:<code>null</code></li>
+<li>必要性:<code>true</code></li>
+</ul>
+<p>从<code>LeanCloud</code>的应用中得到的<code>appId</code>.</p>
+<blockquote>
+<p><a href="https://valine.js.org/quickstart.html">获取appId 和 appKey</a>。</p>
+</blockquote>
+<h2 id="appkey">appKey</h2>
+<ul>
+<li>类型:<code>String</code></li>
+<li>默认值:<code>null</code></li>
+<li>必要性:<code>true</code></li>
+</ul>
+<p>从<code>LeanCloud</code>的应用中得到的<code>appKey</code>.</p>
+<blockquote>
+<p><a href="https://valine.js.org/quickstart.html">获取appId 和 appKey</a>。</p>
+</blockquote>
+<h2 id="region"><s>region</s></h2>
+<ul>
+<li>类型:<code>String</code></li>
+<li>默认值:<code>cn</code></li>
+<li>必要性:<code>false</code></li>
+</ul>
+<p>存储节点：在<code>Valine</code>中初始化时默认遵循<code>Leancloud SDK</code>的节点规则(<code>默认中国大陆节点</code>)。</p>
+<blockquote>
+<p>Leancloud js-sdk 从 <code>v3.8.0</code>版本开始删除了<code>region</code>选项:<br>
+<a href="https://github.com/leancloud/javascript-sdk/releases/tag/v3.8.0">leancloud/javascript-sdk/releases/tag/v3.8.0</a></p>
+</blockquote>
+<p>可选值:</p>
+<ul>
+<li><code>cn</code> - 中国大陆节点</li>
+<li><code>us</code> - 海外节点</li>
+</ul>
+<h2 id="placeholder">placeholder</h2>
+<ul>
+<li>类型:<code>String</code></li>
+<li>默认值:<code>Just go go</code></li>
+<li>必要性:<code>false</code></li>
+</ul>
+<p>评论框<code>占位提示符</code>。</p>
+<h2 id="notify"><s>notify</s></h2>
+<ul>
+<li>类型:<code>Boolean</code></li>
+<li>默认值:<code>false</code></li>
+<li>必要性:<code>false</code></li>
+</ul>
+<blockquote>
+<p><code>v1.4.0+</code> 已废弃</p>
+</blockquote>
+<h2 id="verify"><s>verify</s></h2>
+<ul>
+<li>类型:<code>Boolean</code></li>
+<li>默认值:<code>false</code></li>
+<li>必要性:<code>false</code></li>
+</ul>
+<p>验证码服务。</p>
+<blockquote>
+<p><code>v1.4.0+</code> 已废弃</p>
+</blockquote>
+<h2 id="path">path</h2>
+<ul>
+<li>类型:<code>String</code></li>
+<li>默认值:<code>window.location.pathname</code></li>
+<li>必要性:<code>false</code></li>
+</ul>
+<p>当前<code>文章页</code>路径，用于区分不同的<code>文章页</code>，以保证正确读取该<code>文章页</code>下的评论列表。<br>
+可选值：</p>
+<ul>
+<li><code>window.location.pathname</code> (默认值，推荐)</li>
+<li><code>window.location.href</code></li>
+<li><code>自定义</code></li>
+</ul>
+<blockquote>
+<ul>
+<li>I. 请保证每个<code>文章页</code>路径的唯一性，否则可能会出现不同<code>文章页</code>下加载相同评论列表的情况。</li>
+<li>II. 如果值为<code>window.location.href</code>，可能会出现随便加<code>不同参数</code>进入该页面，而被判断成新页面的情况。</li>
+</ul>
+</blockquote>
+<h2 id="avatar">avatar</h2>
+<ul>
+<li>类型:<code>String</code></li>
+<li>默认值:<code>mm</code></li>
+<li>必要性:<code>false</code></li>
+</ul>
+<p><code>Gravatar</code> 头像展示方式。</p>
+<p>可选值：</p>
+<ul>
+<li><code>''</code>(空字符串)</li>
+<li><code>mp</code></li>
+<li><code>identicon</code></li>
+<li><code>monsterid</code></li>
+<li><code>wavatar</code></li>
+<li><code>retro</code></li>
+<li><code>robohash</code></li>
+<li><code>hide</code></li>
+</ul>
+<p>更多信息，请查看<a href="https://valine.js.org/avatar.html">头像配置</a>。</p>
+<h2 id="meta">meta</h2>
+<ul>
+<li>类型:<code>Array</code></li>
+<li>默认值:<code>['nick','mail','link']</code></li>
+<li>必要性:<code>false</code></li>
+</ul>
+<p>评论者相关属性。</p>
+<h2 id="pagesize">pageSize</h2>
+<ul>
+<li>类型:<code>Number</code></li>
+<li>默认值:<code>10</code></li>
+<li>必要性:<code>false</code></li>
+</ul>
+<p>评论列表分页，每页条数。</p>
+<h2 id="lang">lang</h2>
+<ul>
+<li>类型:<code>String</code></li>
+<li>默认值:<code>zh-CN</code></li>
+<li>必要性:<code>false</code></li>
+</ul>
+<p>多语言支持。</p>
+<p>可选值：</p>
+<ul>
+<li><code>zh-CN</code></li>
+<li><code>zh-TW</code></li>
+<li><code>en</code></li>
+<li><code>ja</code></li>
+</ul>
+<p>如需<code>自定义语言</code>，请参考<a href="https://valine.js.org/i18n.html">i18n</a>。</p>
+<h2 id="visitor">visitor</h2>
+<ul>
+<li>类型:<code>Boolean</code></li>
+<li>默认值:<code>false</code></li>
+<li>必要性:<code>false</code></li>
+</ul>
+<p><a href="https://valine.js.org/visitor.html">文章访问量统计</a>。</p>
+<h2 id="highlight">highlight</h2>
+<ul>
+<li>类型：<code>Boolean</code></li>
+<li>默认值: <code>true</code></li>
+<li>必要性: <code>false</code></li>
+</ul>
+<p><code>代码高亮</code>，默认开启，若不需要，请手动关闭</p>
+<h2 id="avatarforce">avatarForce</h2>
+<ul>
+<li>类型: <code>Boolean</code></li>
+<li>默认值: <code>false</code></li>
+<li>必要性: <code>false</code></li>
+</ul>
+<p>每次访问<code>强制</code>拉取最新的<code>评论列表头像</code></p>
+<blockquote>
+<p>不推荐设置为<code>true</code>，目前的<code>评论列表头像</code>会自动带上<code>Valine</code>的版本号</p>
+</blockquote>
+<h2 id="recordip">recordIP</h2>
+<ul>
+<li>类型: <code>Boolean</code></li>
+<li>默认值: <code>false</code></li>
+<li>必要性: <code>false</code></li>
+</ul>
+<p>是否记录评论者IP</p>
+<blockquote>
+<pre><code>v1.3.5+
+</code></pre>
+</blockquote>
+<h2 id="serverurls">serverURLs</h2>
+<ul>
+<li>类型: <code>String</code></li>
+<li>默认值: <code>http[s]://[tab/us].avoscloud.com</code></li>
+<li>必要性: <code>false</code></li>
+</ul>
+<blockquote>
+<p>⚠️ 该配置适用于国内<code>自定义域名</code>用户, <code>海外版本</code>会自动检测(无需手动填写) <code>v1.3.10+</code></p>
+</blockquote>
+<h2 id="emojicdn">emojiCDN</h2>
+<ul>
+<li>类型: <code>String</code></li>
+<li>默认值: ``</li>
+<li>必要性: <code>false</code></li>
+</ul>
+<p>设置<code>表情包CDN</code>，参考<a href="https://valine.js.org/emoji.html">自定义表情</a></p>
+<blockquote>
+<pre><code>v1.4.5+
+</code></pre>
+</blockquote>
+<h2 id="emojimaps">emojiMaps</h2>
+<ul>
+<li>类型: <code>Object</code></li>
+<li>默认值: <code>null</code></li>
+<li>必要性: <code>false</code></li>
+</ul>
+<p>设置<code>表情包映射</code>，参考<a href="https://valine.js.org/emoji.html">自定义表情</a></p>
+<blockquote>
+<pre><code>v1.4.5+
+</code></pre>
+</blockquote>
+<h2 id="enableqq">enableQQ</h2>
+<ul>
+<li>类型: <code>Boolean</code></li>
+<li>默认值: <code>false</code></li>
+<li>必要性: <code>false</code></li>
+</ul>
+<p>是否启用<code>昵称框</code>自动获取<code>QQ昵称</code>和<code>QQ头像</code>, 默认关闭，需<code>博/网站主</code>主动启用</p>
+<blockquote>
+<pre><code>v1.4.6+
+</code></pre>
+</blockquote>
+<h2 id="requiredfields">requiredFields</h2>
+<ul>
+<li>类型: <code>Array</code></li>
+<li>默认值: <code>[]</code></li>
+<li>必要性: <code>false</code></li>
+</ul>
+<p>设置<code>必填项</code>，默认<code>匿名</code>，可选值：</p>
+<ul>
+<li><code>['nick']</code></li>
+<li><code>['nick','mail']</code></li>
+</ul>
+<blockquote>
+<pre><code>v1.4.6+
+</code></pre>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Markdown 测试文章]]></title>
         <id>https://jpzxjt.coding-pages.com/markdown-ce-shi-wen-zhang/</id>
@@ -151,19 +415,19 @@ GFM a-tail link @pandao<br>
 </ol>
 <h4 id="gfm-task-list">GFM task list</h4>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9450165"><label class="task-list-item-label" for="task-item-9450165"> GFM task list 1</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3404332"><label class="task-list-item-label" for="task-item-3404332"> GFM task list 2</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6565928"><label class="task-list-item-label" for="task-item-6565928"> GFM task list 3</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-817629"><label class="task-list-item-label" for="task-item-817629"> GFM task list 1</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4780803"><label class="task-list-item-label" for="task-item-4780803"> GFM task list 2</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4250357"><label class="task-list-item-label" for="task-item-4250357"> GFM task list 3</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6289204"><label class="task-list-item-label" for="task-item-6289204"> GFM task list 3-1</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6891570"><label class="task-list-item-label" for="task-item-6891570"> GFM task list 3-2</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6195607"><label class="task-list-item-label" for="task-item-6195607"> GFM task list 3-3</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-217433"><label class="task-list-item-label" for="task-item-217433"> GFM task list 3-1</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4665995"><label class="task-list-item-label" for="task-item-4665995"> GFM task list 3-2</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1514871"><label class="task-list-item-label" for="task-item-1514871"> GFM task list 3-3</label></li>
 </ul>
 </li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2425215"><label class="task-list-item-label" for="task-item-2425215"> GFM task list 4</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5247123"><label class="task-list-item-label" for="task-item-5247123"> GFM task list 4</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3865915"><label class="task-list-item-label" for="task-item-3865915"> GFM task list 4-1</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5155333"><label class="task-list-item-label" for="task-item-5155333"> GFM task list 4-2</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9674020"><label class="task-list-item-label" for="task-item-9674020"> GFM task list 4-1</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-189697"><label class="task-list-item-label" for="task-item-189697"> GFM task list 4-2</label></li>
 </ul>
 </li>
 </ul>
@@ -310,14 +574,14 @@ GFM a-tail link @pandao<br>
 </blockquote>
 <h4 id="gfm-task-lists-emoji-fontawesome-icon-emoji-editormd-logo-emoji-editormd-logo-5x">GFM task lists &amp; Emoji &amp; fontAwesome icon emoji &amp; editormd logo emoji :editormd-logo-5x:</h4>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9042984"> 😃 @mentions, 😃 #refs, <a href="">links</a>, <strong>formatting</strong>, and <del>tags</del><label class="task-list-item-label" for="task-item-9042984"> :smiley: @mentions, :smiley: #refs, [links](), **formatting**, and <del>tags</del> supported :editormd-logo:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5876126"><label class="task-list-item-label" for="task-item-5876126"> list syntax required (any unordered or ordered list supported) :editormd-logo-3x:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8015788"><label class="task-list-item-label" for="task-item-8015788"> [ ] :smiley: this is a complete item :smiley:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8023525"> []this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-8023525"> []this is an incomplete item [test link](#) :fa-star: @pandao;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2056523"><label class="task-list-item-label" for="task-item-2056523"> [ ]this is an incomplete item :fa-star: :fa-gear:;</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7829813"> 😃 @mentions, 😃 #refs, <a href="">links</a>, <strong>formatting</strong>, and <del>tags</del><label class="task-list-item-label" for="task-item-7829813"> :smiley: @mentions, :smiley: #refs, [links](), **formatting**, and <del>tags</del> supported :editormd-logo:;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5627390"><label class="task-list-item-label" for="task-item-5627390"> list syntax required (any unordered or ordered list supported) :editormd-logo-3x:;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2082238"><label class="task-list-item-label" for="task-item-2082238"> [ ] :smiley: this is a complete item :smiley:;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2944170"> []this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-2944170"> []this is an incomplete item [test link](#) :fa-star: @pandao;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1755608"><label class="task-list-item-label" for="task-item-1755608"> [ ]this is an incomplete item :fa-star: :fa-gear:;</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8294643"> 😃 this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-8294643"> :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5639168"> 😃 this is  :fa-star: :fa-gear: an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-5639168"> :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7780211"> 😃 this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-7780211"> :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2667461"> 😃 this is  :fa-star: :fa-gear: an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-2667461"> :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);</label></li>
 </ul>
 </li>
 </ul>
