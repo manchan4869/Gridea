@@ -1,96 +1,99 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>遥感实验（一） | manchan&#39;s blog</title>
-<meta name="description" content="まん酱の记事与随笔">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="http://jpzxjt.coding-pages.com//favicon.ico?v=1589187452916">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://jpzxjt.coding-pages.com//favicon.ico?v=1589187720704">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="http://jpzxjt.coding-pages.com//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="遥感实验（一） | manchan&#39;s blog - Atom Feed" href="http://jpzxjt.coding-pages.com//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-
+    <meta name="description" content="实验一 几何校正
+一、实验背景
+引起图像几何变形一般分为两大类:系统性和非系统性。系统性一般由传感器本身引起，有规律可循和可预测性，可以用传感器模型来校正，卫星地面接收站已经完成这项工作;非系统性几何变形是不规律的，它可以是传感器平台本身的..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-  
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="http://jpzxjt.coding-pages.com/">manchan&#39;s blog</a></h3>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="http://jpzxjt.coding-pages.com/">
+  <img class="avatar" src="http://jpzxjt.coding-pages.com//images/avatar.png?v=1589187720704" alt="">
+  </a>
+  <h1 class="site-title">
+    manchan&#39;s blog
+  </h1>
+  <p class="site-description">
+    まん酱の记事与随笔
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
   </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="/" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-      </ul>
-    </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   </div>
-</nav>
+</div>
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <article class="article">
-            <h1>遥感实验（一）</h1>
-            <p class="article-meta">
-              2020-05-11
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              遥感实验（一）
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-05-11
+              </span>
+              <span>
+                4 min read
+              </span>
               
-            </p>
+            </div>
             
-              <img src="https://i.loli.net/2020/05/11/kWgcbjH1fO2KaCE.png" alt="遥感实验（一）">
+              <img class="post-feature-image" src="https://i.loli.net/2020/05/11/kWgcbjH1fO2KaCE.png" alt="">
             
-            <div class="post-content">
-              <h1 id="实验一-几何校正"><strong>实验一 几何校正</strong></h1>
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="实验一-几何校正"><strong>实验一 几何校正</strong></h1>
 <h2 id="一-实验背景"><strong>一、实验背景</strong></h2>
 <p>引起图像几何变形一般分为两大类:系统性和非系统性。系统性一般由传感器本身引起，有规律可循和可预测性，可以用传感器模型来校正，卫星地面接收站已经完成这项工作;非系统性几何变形是不规律的，它可以是传感器平台本身的高度、姿态等不稳定，也可以是地球曲率及空气折射的变化以及地形的变化等。我们常说的几何校正就是消除这些非系统性几何变形。</p>
 <h2 id="二-实验目的"><strong>二、实验目的</strong></h2>
@@ -129,120 +132,103 @@
 <h2 id="五-实验总结"><strong>五、实验总结</strong></h2>
 <p>通过这次实验我学会了使用ENVI软件进行对遥感图像的几何校正。实验中最麻烦的地方就是打地面控制点，为了精确需要打9个以上的地面控制点，而实验数据本身比较模糊，在打控制点的时候比较麻烦，很容易造成较大的误差。实验过程不复杂但是很需要耐心，相信通过这次实验已经大概了解了ENVI Classic的简单操作。</p>
 
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%AE%9E%E9%AA%8C%E4%B8%80-%E5%87%A0%E4%BD%95%E6%A0%A1%E6%AD%A3"><strong>实验一 几何校正</strong></a>
+<ul>
+<li><a href="#%E4%B8%80-%E5%AE%9E%E9%AA%8C%E8%83%8C%E6%99%AF"><strong>一、实验背景</strong></a></li>
+<li><a href="#%E4%BA%8C-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><strong>二、实验目的</strong></a></li>
+<li><a href="#%E4%B8%89-%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE"><strong>三、实验数据</strong></a></li>
+<li><a href="#%E5%9B%9B-%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4"><strong>四、实验步骤</strong></a></li>
+<li><a href="#%E4%BA%94-%E5%AE%9E%E9%AA%8C%E6%80%BB%E7%BB%93"><strong>五、实验总结</strong></a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
             </div>
           </article>
         </div>
-        <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="http://jpzxjt.coding-pages.com/post/valine-ping-lun-xi-tong/">
-                <h3 class="post-title">
-                  Valine评论系统
-                </h3>
-              </a>
-            </div>
-          
-        </div>
-        
-      </div>
 
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="http://jpzxjt.coding-pages.com//images/avatar.png?v=1589187452916" class="no-responsive avatar">
-    <div class="text-muted">まん酱の记事与随笔</div>
-    <div class="social-container">
-      
         
-      
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="http://jpzxjt.coding-pages.com/post/valine-ping-lun-xi-tong/">
+              <h3 class="post-title">
+                Valine评论系统
+              </h3>
+            </a>
+          </div>
         
-      
+
+<div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'wJNv5zNoDe6V3ceQkkcuRxjs-gzGzoHsz',
+            appKey: 'CfqUnwWClfR3kNmxOIIGD4jY',
+			visitor:true, // 阅读量统计
+			avatar:'mp',   // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
+			recordIP:true, // 记录IP
+			enableQQ:true, // 获取QQ昵称头像
+			requiredFields: ['nick'], //必需项
+			placeholder:'快来评论吧~' // 屏幕占位符
+        })
+    </script>
+
+	
         
-      
-        
-      
-        
-      
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="http://jpzxjt.coding-pages.com/post/yao-gan-shi-yan-yi/">遥感实验（一）</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="http://jpzxjt.coding-pages.com/post/valine-ping-lun-xi-tong/">Valine评论系统</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="http://jpzxjt.coding-pages.com/post/markdown-ce-shi-wen-zhang/">Markdown 测试文章</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="http://jpzxjt.coding-pages.com/post/about/">关于</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="http://jpzxjt.coding-pages.com/post/hello-gridea/">Hello Gridea</a>
-            </li>
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="http://jpzxjt.coding-pages.com/tag/ASYA-Tmiw/" class="badge warning">
-          Gridea
-        </a>
-      
-        <a href="http://jpzxjt.coding-pages.com/tag/8RZBTSq3_/" class="badge warning">
-          markdown
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="http://jpzxjt.coding-pages.com//atom.xml" target="_blank">RSS</a>
-  </div>
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="http://jpzxjt.coding-pages.com//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
 </div>
 
-
+      </div>
     </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad()
 
-<script type="application/javascript">
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-AOS.init();
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
 
-hljs.initHighlightingOnLoad()
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
 
-</script>
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
 
-
-
-
+    </script>
   </body>
 </html>
