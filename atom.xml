@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jpzxjt.coding-pages.com/</id>
     <title>manchan&apos;s blog</title>
-    <updated>2020-05-11T09:38:00.785Z</updated>
+    <updated>2020-05-11T10:54:37.470Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jpzxjt.coding-pages.com/"/>
     <link rel="self" href="https://jpzxjt.coding-pages.com/atom.xml"/>
@@ -10,6 +10,73 @@
     <logo>https://jpzxjt.coding-pages.com/images/avatar.png</logo>
     <icon>https://jpzxjt.coding-pages.com/favicon.ico</icon>
     <rights>All rights reserved 2020, manchan&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[遥感实验（一）]]></title>
+        <id>https://jpzxjt.coding-pages.com/post/yao-gan-shi-yan-yi/</id>
+        <link href="https://jpzxjt.coding-pages.com/post/yao-gan-shi-yan-yi/">
+        </link>
+        <updated>2020-05-11T10:39:22.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="实验一-几何校正"><strong>实验一 几何校正</strong></h1>
+<h2 id="一-实验背景"><strong>一、实验背景</strong></h2>
+<p>引起图像几何变形一般分为两大类:系统性和非系统性。系统性一般由传感器本身引起，有规律可循和可预测性，可以用传感器模型来校正，卫星地面接收站已经完成这项工作;非系统性几何变形是不规律的，它可以是传感器平台本身的高度、姿态等不稳定，也可以是地球曲率及空气折射的变化以及地形的变化等。我们常说的几何校正就是消除这些非系统性几何变形。</p>
+<h2 id="二-实验目的"><strong>二、实验目的</strong></h2>
+<p>1.利用地面控制点和几何校正数学模型来矫正非系统因素产生的误差，同时也是将图像投影到平面上，使其符合地图投影系统的过程;校正过程中会将坐标系统赋予图像数据，此过程包括了地理编码(geo-coding)。</p>
+<p>2.学习使用ENVI Classic软件对遥感数据进行几何校正。</p>
+<h2 id="三-实验数据"><strong>三、实验数据</strong></h2>
+<p>bldr_sp.img spot4 数据文件、bldr_tm.img TM 数据文件、ENVI Classic软件。</p>
+<h2 id="四-实验步骤"><strong>四、实验步骤</strong></h2>
+<p>1.打开ENVI Classic软件。</p>
+<figure data-type="image" tabindex="1"><img src="media/80650a48739ac0a0e76646aafa04436a.png" alt="" loading="lazy"></figure>
+<p>2.选择File-Open Image File,将bldr_sp.img spot4 数据文件和bldr_tm.img TM<br>
+数据文件打开。</p>
+<figure data-type="image" tabindex="2"><img src="media/9c6ea2d8b483872c184bf2b9d025d860.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="media/825d4a7dde77945973df084ef82ea683.png" alt="" loading="lazy"></figure>
+<p>3.启动几何校正模块。依次点击Map-Registration-Select GCPs:Image to Image。</p>
+<figure data-type="image" tabindex="4"><img src="media/08f6b3012ff5fc3dab597bb55eb52ef0.png" alt="" loading="lazy"></figure>
+<ol start="4">
+<li>选择显示SPOT文件的Display为基准图像（Base<br>
+Image），显示TM文件的Display为待校正图像（Warp<br>
+Image），点击OK按钮，进入采集地面控制点。</li>
+</ol>
+<figure data-type="image" tabindex="5"><img src="media/79996ea3c40c3c72de3ef57beee6f236.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="media/090c21ed31a3852b60fa50f3aca7246e.png" alt="" loading="lazy"></figure>
+<p>5.采集地面控制点，在两个图像中选取相同位置的点，在Ground Control Points<br>
+Selection上，单击Add Point按钮，将当前找到的点收集。</p>
+<figure data-type="image" tabindex="7"><img src="media/2ffab0c7fff2ddfa43ce557a487c64f3.png" alt="" loading="lazy"></figure>
+<p>6.用同样的方法继续寻找其余的点，当选择控制点的数量达到3时，RMS被自动计算。Ground<br>
+Control Points<br>
+Selection上的Predict按钮可用，这时在基准图像显示窗口上面定位一个特征点，单击Predict<br>
+按钮，校正图像显示窗口上会自动预测区域，适当调整-一下位置，单击AddPoint按钮，将当前找到的点收集。随着控制点数量的增多，预测点的精度越来越精确。</p>
+<figure data-type="image" tabindex="8"><img src="media/f502cdc67ba0ef19f0b8224658c5e4aa.png" alt="" loading="lazy"></figure>
+<p>7.选择Image to Image GCP List上的Options-Order Points by<br>
+Error,按照RMS值由高到低排序。对于RMS过高，可以是直接删除，选择此行，按Delete按钮;也可以在两个图像的窗口上，将十字光标重新定位到正确的位置，点击ImagetoImageGCP<br>
+List上的Update按钮进行微调。</p>
+<figure data-type="image" tabindex="9"><img src="media/dee0d2915d50fbc8afdd9b96bc25bc79.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="media/112bf651607cdfb6018167b206e10799.png" alt="" loading="lazy"></figure>
+<p>8.在Ground Control Points<br>
+Selection上，RMS值小于1个像素时，则表示点的数量足够且分布均匀，完成控制点的选择。</p>
+<figure data-type="image" tabindex="11"><img src="media/9c4ae69357efba1161305403989dfe56.png" alt="" loading="lazy"></figure>
+<p>9.在Ground Control Points Selection上，选择File-Save GCPs to<br>
+ASCII,将控制点保存。</p>
+<figure data-type="image" tabindex="12"><img src="media/02af01dff17197abf5a1667c89de97b7.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="13"><img src="media/71fa8bf9d63c7533b6bcf09738e2b709.png" alt="" loading="lazy"></figure>
+<p>10.在Ground Control Points Selection上，依次点击Options-Warp File(as Image to<br>
+Map)，选择校正文件(TM文件)。</p>
+<figure data-type="image" tabindex="14"><img src="media/b131c4a0907eee856916ae32813820e1.png" alt="" loading="lazy"></figure>
+<p>11.投影参数不变，在X和Y的像元大小输人30m,<br>
+按回车，图像输出大小自动更改。校正方法选择多项式(2次)。重采样选择Bilinear,设置背景值(Background)<br>
+为0。选择输出路径和文件名，单击OK按钮。得到校正后的图像。</p>
+<figure data-type="image" tabindex="15"><img src="media/5a7c9e49e37dd88d785115ccb037ed22.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="16"><img src="media/15ce2b558928cd3c619e3aba1dedbeb1.png" alt="" loading="lazy"></figure>
+<p>12.检验校正结果。在校正后的图像中依次点击Tools-Link-Geographic<br>
+Link，将所有的“off”改称“on”。就可以使用十字标进行对比查看。</p>
+<figure data-type="image" tabindex="17"><img src="media/2d9e92136746df8ea67f4858b5db0ba9.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="18"><img src="media/be2b0777bfc932b6a6f228373d51e8d6.png" alt="" loading="lazy"></figure>
+<h2 id="五-实验总结"><strong>五、实验总结</strong></h2>
+<p>通过这次实验我学会了使用ENVI软件进行对遥感图像的几何校正。实验中最麻烦的地方就是打地面控制点，为了精确需要打9个以上的地面控制点，而实验数据本身比较模糊，在打控制点的时候比较麻烦，很容易造成较大的误差。实验过程不复杂但是很需要耐心，相信通过这次实验已经大概了解了ENVI<br>
+Classic的简单操作。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Valine评论系统]]></title>
         <id>https://jpzxjt.coding-pages.com/post/valine-ping-lun-xi-tong/</id>
@@ -418,19 +485,19 @@ GFM a-tail link @pandao<br>
 </ol>
 <h4 id="gfm-task-list">GFM task list</h4>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1014003"><label class="task-list-item-label" for="task-item-1014003"> GFM task list 1</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4084652"><label class="task-list-item-label" for="task-item-4084652"> GFM task list 2</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9477323"><label class="task-list-item-label" for="task-item-9477323"> GFM task list 3</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5888200"><label class="task-list-item-label" for="task-item-5888200"> GFM task list 1</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9631703"><label class="task-list-item-label" for="task-item-9631703"> GFM task list 2</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7885449"><label class="task-list-item-label" for="task-item-7885449"> GFM task list 3</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6902638"><label class="task-list-item-label" for="task-item-6902638"> GFM task list 3-1</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3339103"><label class="task-list-item-label" for="task-item-3339103"> GFM task list 3-2</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1722902"><label class="task-list-item-label" for="task-item-1722902"> GFM task list 3-3</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3268182"><label class="task-list-item-label" for="task-item-3268182"> GFM task list 3-1</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5465923"><label class="task-list-item-label" for="task-item-5465923"> GFM task list 3-2</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7179372"><label class="task-list-item-label" for="task-item-7179372"> GFM task list 3-3</label></li>
 </ul>
 </li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6566593"><label class="task-list-item-label" for="task-item-6566593"> GFM task list 4</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9363549"><label class="task-list-item-label" for="task-item-9363549"> GFM task list 4</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7944832"><label class="task-list-item-label" for="task-item-7944832"> GFM task list 4-1</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7039741"><label class="task-list-item-label" for="task-item-7039741"> GFM task list 4-2</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5338940"><label class="task-list-item-label" for="task-item-5338940"> GFM task list 4-1</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2762494"><label class="task-list-item-label" for="task-item-2762494"> GFM task list 4-2</label></li>
 </ul>
 </li>
 </ul>
@@ -577,14 +644,14 @@ GFM a-tail link @pandao<br>
 </blockquote>
 <h4 id="gfm-task-lists-emoji-fontawesome-icon-emoji-editormd-logo-emoji-editormd-logo-5x">GFM task lists &amp; Emoji &amp; fontAwesome icon emoji &amp; editormd logo emoji :editormd-logo-5x:</h4>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1441934"> 😃 @mentions, 😃 #refs, <a href="">links</a>, <strong>formatting</strong>, and <del>tags</del><label class="task-list-item-label" for="task-item-1441934"> :smiley: @mentions, :smiley: #refs, [links](), **formatting**, and <del>tags</del> supported :editormd-logo:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8153255"><label class="task-list-item-label" for="task-item-8153255"> list syntax required (any unordered or ordered list supported) :editormd-logo-3x:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1239249"><label class="task-list-item-label" for="task-item-1239249"> [ ] :smiley: this is a complete item :smiley:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6110920"> []this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-6110920"> []this is an incomplete item [test link](#) :fa-star: @pandao;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6956586"><label class="task-list-item-label" for="task-item-6956586"> [ ]this is an incomplete item :fa-star: :fa-gear:;</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8226771"> 😃 @mentions, 😃 #refs, <a href="">links</a>, <strong>formatting</strong>, and <del>tags</del><label class="task-list-item-label" for="task-item-8226771"> :smiley: @mentions, :smiley: #refs, [links](), **formatting**, and <del>tags</del> supported :editormd-logo:;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2598781"><label class="task-list-item-label" for="task-item-2598781"> list syntax required (any unordered or ordered list supported) :editormd-logo-3x:;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1653918"><label class="task-list-item-label" for="task-item-1653918"> [ ] :smiley: this is a complete item :smiley:;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4154247"> []this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-4154247"> []this is an incomplete item [test link](#) :fa-star: @pandao;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6942219"><label class="task-list-item-label" for="task-item-6942219"> [ ]this is an incomplete item :fa-star: :fa-gear:;</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7381922"> 😃 this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-7381922"> :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3961072"> 😃 this is  :fa-star: :fa-gear: an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-3961072"> :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6595325"> 😃 this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-6595325"> :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9978542"> 😃 this is  :fa-star: :fa-gear: an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-9978542"> :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);</label></li>
 </ul>
 </li>
 </ul>
