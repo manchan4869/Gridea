@@ -1,80 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jpzxjt.coding-pages.com/</id>
-    <title>manchan&apos;s blog</title>
-    <updated>2020-05-11T11:00:05.780Z</updated>
+    <title>Manchan&apos;s Blog</title>
+    <updated>2020-05-11T18:47:12.565Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jpzxjt.coding-pages.com/"/>
     <link rel="self" href="https://jpzxjt.coding-pages.com/atom.xml"/>
-    <subtitle>まん酱の记事与随笔</subtitle>
+    <subtitle>&lt;b&gt;まん酱の记事与随笔&lt;/b&gt;</subtitle>
     <logo>https://jpzxjt.coding-pages.com/images/avatar.png</logo>
     <icon>https://jpzxjt.coding-pages.com/favicon.ico</icon>
-    <rights>All rights reserved 2020, manchan&apos;s blog</rights>
+    <rights>All rights reserved 2020, Manchan&apos;s Blog</rights>
     <entry>
-        <title type="html"><![CDATA[遥感实验（一） 几何校正]]></title>
-        <id>https://jpzxjt.coding-pages.com/post/yao-gan-shi-yan-yi/</id>
-        <link href="https://jpzxjt.coding-pages.com/post/yao-gan-shi-yan-yi/">
+        <title type="html"><![CDATA[如何复制他人csdn博客文章到自己博客下]]></title>
+        <id>https://jpzxjt.coding-pages.com/post/ru-he-fu-zhi-ta-ren-csdn-bo-ke-wen-zhang-dao-zi-ji-bo-ke-xia/</id>
+        <link href="https://jpzxjt.coding-pages.com/post/ru-he-fu-zhi-ta-ren-csdn-bo-ke-wen-zhang-dao-zi-ji-bo-ke-xia/">
+        </link>
+        <updated>2020-05-11T18:44:34.000Z</updated>
+        <summary type="html"><![CDATA[<p>CSDN是中文第一大互联网技术网站,上面有很多好的文章,有时候需要复制别人的文章到自己的文章下进行修改重新发布,这要怎样做呢?</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>CSDN是中文第一大互联网技术网站,上面有很多好的文章,有时候需要复制别人的文章到自己的文章下进行修改重新发布,这要怎样做呢?</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Markdown语法|LaTex数学公式]]></title>
+        <id>https://jpzxjt.coding-pages.com/post/markdown-yu-fa-orlatex-shu-xue-gong-shi/</id>
+        <link href="https://jpzxjt.coding-pages.com/post/markdown-yu-fa-orlatex-shu-xue-gong-shi/">
+        </link>
+        <updated>2020-05-11T18:37:44.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[如何用在Typora中添加数学公式?]]></title>
+        <id>https://jpzxjt.coding-pages.com/post/ru-he-yong-zai-typora-zhong-tian-jia-shu-xue-gong-shi/</id>
+        <link href="https://jpzxjt.coding-pages.com/post/ru-he-yong-zai-typora-zhong-tian-jia-shu-xue-gong-shi/">
+        </link>
+        <updated>2020-05-11T17:52:49.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Markdown: 基础]]></title>
+        <id>https://jpzxjt.coding-pages.com/post/markdown-ji-chu/</id>
+        <link href="https://jpzxjt.coding-pages.com/post/markdown-ji-chu/">
+        </link>
+        <updated>2020-05-11T17:32:07.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Markdown: 语法]]></title>
+        <id>https://jpzxjt.coding-pages.com/post/markdown-yu-fa/</id>
+        <link href="https://jpzxjt.coding-pages.com/post/markdown-yu-fa/">
+        </link>
+        <updated>2020-05-11T16:45:00.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[数据的处理方法：标准化]]></title>
+        <id>https://jpzxjt.coding-pages.com/post/shu-ju-de-chu-li-fang-fa-biao-zhun-hua/</id>
+        <link href="https://jpzxjt.coding-pages.com/post/shu-ju-de-chu-li-fang-fa-biao-zhun-hua/">
+        </link>
+        <updated>2020-05-11T15:10:58.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ENVI实验：图像的融合与镶嵌]]></title>
+        <id>https://jpzxjt.coding-pages.com/post/envi-shi-yan-tu-xiang-de-rong-he-yu-xiang-qian/</id>
+        <link href="https://jpzxjt.coding-pages.com/post/envi-shi-yan-tu-xiang-de-rong-he-yu-xiang-qian/">
+        </link>
+        <updated>2020-05-11T11:06:19.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ENVI实验：几何校正]]></title>
+        <id>https://jpzxjt.coding-pages.com/post/envi-shi-yan-ji-he-xiao-zheng/</id>
+        <link href="https://jpzxjt.coding-pages.com/post/envi-shi-yan-ji-he-xiao-zheng/">
         </link>
         <updated>2020-05-11T10:39:22.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="一-实验背景"><strong>一、实验背景</strong></h2>
-<p>引起图像几何变形一般分为两大类:系统性和非系统性。系统性一般由传感器本身引起，有规律可循和可预测性，可以用传感器模型来校正，卫星地面接收站已经完成这项工作;非系统性几何变形是不规律的，它可以是传感器平台本身的高度、姿态等不稳定，也可以是地球曲率及空气折射的变化以及地形的变化等。我们常说的几何校正就是消除这些非系统性几何变形。</p>
-<h2 id="二-实验目的"><strong>二、实验目的</strong></h2>
-<p>1.利用地面控制点和几何校正数学模型来矫正非系统因素产生的误差，同时也是将图像投影到平面上，使其符合地图投影系统的过程;校正过程中会将坐标系统赋予图像数据，此过程包括了地理编码(geo-coding)。</p>
-<p>2.学习使用ENVI Classic软件对遥感数据进行几何校正。</p>
-<h2 id="三-实验数据"><strong>三、实验数据</strong></h2>
-<p>bldr_sp.img spot4 数据文件、bldr_tm.img TM 数据文件、ENVI Classic软件。</p>
-<h2 id="四-实验步骤"><strong>四、实验步骤</strong></h2>
-<p>1.打开ENVI Classic软件。</p>
-<figure data-type="image" tabindex="1"><img src="https://jpzxjt.coding-pages.com//post-images/80650a48739ac0a0e76646aafa04436a.png" alt="" loading="lazy"></figure>
-<p>2.选择File-Open Image File,将bldr_sp.img spot4 数据文件和bldr_tm.img TM<br>
-数据文件打开。</p>
-<figure data-type="image" tabindex="2"><img src="https://jpzxjt.coding-pages.com//post-images/9c6ea2d8b483872c184bf2b9d025d860.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="3"><img src="https://jpzxjt.coding-pages.com//post-images/825d4a7dde77945973df084ef82ea683.png" alt="" loading="lazy"></figure>
-<p>3.启动几何校正模块。依次点击Map-Registration-Select GCPs:Image to Image。</p>
-<figure data-type="image" tabindex="4"><img src="https://jpzxjt.coding-pages.com//post-images/08f6b3012ff5fc3dab597bb55eb52ef0.png" alt="" loading="lazy"></figure>
-<ol>
-<li>选择显示SPOT文件的Display为基准图像（Base<br>
-Image），显示TM文件的Display为待校正图像（Warp<br>
-Image），点击OK按钮，进入采集地面控制点。</li>
-</ol>
-<figure data-type="image" tabindex="5"><img src="https://jpzxjt.coding-pages.com//post-images/79996ea3c40c3c72de3ef57beee6f236.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="6"><img src="https://jpzxjt.coding-pages.com//post-images/090c21ed31a3852b60fa50f3aca7246e.png" alt="" loading="lazy"></figure>
-<p>5.采集地面控制点，在两个图像中选取相同位置的点，在Ground Control Points<br>
-Selection上，单击Add Point按钮，将当前找到的点收集。</p>
-<figure data-type="image" tabindex="7"><img src="https://jpzxjt.coding-pages.com//post-images/2ffab0c7fff2ddfa43ce557a487c64f3.png" alt="" loading="lazy"></figure>
-<p>6.用同样的方法继续寻找其余的点，当选择控制点的数量达到3时，RMS被自动计算。Ground<br>
-Control Points<br>
-Selection上的Predict按钮可用，这时在基准图像显示窗口上面定位一个特征点，单击Predict<br>
-按钮，校正图像显示窗口上会自动预测区域，适当调整-一下位置，单击AddPoint按钮，将当前找到的点收集。随着控制点数量的增多，预测点的精度越来越精确。</p>
-<figure data-type="image" tabindex="8"><img src="https://jpzxjt.coding-pages.com//post-images/f502cdc67ba0ef19f0b8224658c5e4aa.png" alt="" loading="lazy"></figure>
-<p>7.选择Image to Image GCP List上的Options-Order Points by<br>
-Error,按照RMS值由高到低排序。对于RMS过高，可以是直接删除，选择此行，按Delete按钮;也可以在两个图像的窗口上，将十字光标重新定位到正确的位置，点击ImagetoImageGCP<br>
-List上的Update按钮进行微调。</p>
-<figure data-type="image" tabindex="9"><img src="https://jpzxjt.coding-pages.com//post-images/dee0d2915d50fbc8afdd9b96bc25bc79.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="10"><img src="https://jpzxjt.coding-pages.com//post-images/112bf651607cdfb6018167b206e10799.png" alt="" loading="lazy"></figure>
-<p>8.在Ground Control Points<br>
-Selection上，RMS值小于1个像素时，则表示点的数量足够且分布均匀，完成控制点的选择。</p>
-<figure data-type="image" tabindex="11"><img src="https://jpzxjt.coding-pages.com//post-images/9c4ae69357efba1161305403989dfe56.png" alt="" loading="lazy"></figure>
-<p>9.在Ground Control Points Selection上，选择File-Save GCPs to<br>
-ASCII,将控制点保存。</p>
-<figure data-type="image" tabindex="12"><img src="https://jpzxjt.coding-pages.com//post-images/02af01dff17197abf5a1667c89de97b7.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="13"><img src="https://jpzxjt.coding-pages.com//post-images/71fa8bf9d63c7533b6bcf09738e2b709.png" alt="" loading="lazy"></figure>
-<p>10.在Ground Control Points Selection上，依次点击Options-Warp File(as Image to<br>
-Map)，选择校正文件(TM文件)。</p>
-<figure data-type="image" tabindex="14"><img src="https://jpzxjt.coding-pages.com//post-images/b131c4a0907eee856916ae32813820e1.png" alt="" loading="lazy"></figure>
-<p>11.投影参数不变，在X和Y的像元大小输人30m,<br>
-按回车，图像输出大小自动更改。校正方法选择多项式(2次)。重采样选择Bilinear,设置背景值(Background)<br>
-为0。选择输出路径和文件名，单击OK按钮。得到校正后的图像。</p>
-<figure data-type="image" tabindex="15"><img src="https://jpzxjt.coding-pages.com//post-images/5a7c9e49e37dd88d785115ccb037ed22.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="16"><img src="https://jpzxjt.coding-pages.com//post-images/15ce2b558928cd3c619e3aba1dedbeb1.png" alt="" loading="lazy"></figure>
-<p>12.检验校正结果。在校正后的图像中依次点击Tools-Link-Geographic<br>
-Link，将所有的“off”改称“on”。就可以使用十字标进行对比查看。</p>
-<figure data-type="image" tabindex="17"><img src="https://jpzxjt.coding-pages.com//post-images/2d9e92136746df8ea67f4858b5db0ba9.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="18"><img src="https://jpzxjt.coding-pages.com//post-images/be2b0777bfc932b6a6f228373d51e8d6.png" alt="" loading="lazy"></figure>
-<h2 id="五-实验总结"><strong>五、实验总结</strong></h2>
-<p>通过这次实验我学会了使用ENVI软件进行对遥感图像的几何校正。实验中最麻烦的地方就是打地面控制点，为了精确需要打9个以上的地面控制点，而实验数据本身比较模糊，在打控制点的时候比较麻烦，很容易造成较大的误差。实验过程不复杂但是很需要耐心，相信通过这次实验已经大概了解了ENVI<br>
-Classic的简单操作。</p>
-]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Valine评论系统]]></title>
@@ -85,259 +79,6 @@ Classic的简单操作。</p>
         <summary type="html"><![CDATA[<p>Gridea提供了两个评论系统，<a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md">Gitalk</a>和<a href="https://github.com/SukkaW/DisqusJS">disqus</a>。Gitalk需要使用Github账号登录，对于没有github账号的人来说不太方便，disqus目前在国内不可用。找了好久，发现了<a href="https://valine.js.org//">valine</a>这个评论系统。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>Gridea提供了两个评论系统，<a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md">Gitalk</a>和<a href="https://github.com/SukkaW/DisqusJS">disqus</a>。Gitalk需要使用Github账号登录，对于没有github账号的人来说不太方便，disqus目前在国内不可用。找了好久，发现了<a href="https://valine.js.org//">valine</a>这个评论系统。</p>
-<!-- more -->
-<h1 id="在gridea中加入valine">在Gridea中加入Valine</h1>
-<h2 id="valine介绍">Valine介绍</h2>
-<p>Valine - 一款快速、简洁且高效的无后端评论系统。</p>
-<p>官网地址：https://valine.js.org/</p>
-<h2 id="leancloud注册及配置">leancloud注册及配置</h2>
-<p>leancloud注册及配置见<a href="https://valine.js.org/quickstart.html">快速开始文档</a></p>
-<h2 id="修改主题模板">修改主题模板</h2>
-<p>在Gridea theme模板的<strong>head.ejs</strong>中引入</p>
-<pre><code class="language-html">    &lt;script src='//unpkg.com/valine/dist/Valine.min.js'&gt;&lt;/script&gt;
-</code></pre>
-<p>在<strong>post.ejs</strong>文章详情页模板中文章末尾的位置添加下面的代码</p>
-<pre><code class="language-html">&lt;div id=&quot;vcomments&quot;&gt;&lt;/div&gt;
-    &lt;script&gt;
-        new Valine({
-            el: '#vcomments',
-            appId: '&lt;API_ID&gt;',
-            appKey: '&lt;API_Key&gt;'
-        })
-    &lt;/script&gt;
-</code></pre>
-<p>appid和和appkey替换成leancloud中的应用key即可。修改完成后点击保存，然后同步，就可以了。记得在Gridea客户端中把配置中的评论关掉。</p>
-<p>打开文章详情页，显示评论框就成功了。</p>
-<figure data-type="image" tabindex="1"><img src="https://cdn.nlark.com/yuque/0/2019/png/302953/1563170592469-assets/web-upload/9209fe50-a1b7-47e2-bc51-5cbb67b0931d.png" alt="img" loading="lazy"></figure>
-<h1 id="valine的配置">Valine的配置</h1>
-<h2 id="el">el</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>null</code></li>
-<li>必要性:<code>true</code></li>
-</ul>
-<p>Valine 的初始化挂载器。可以是一个<code>CSS 选择器</code>，也可以是一个实际的<code>HTML元素</code>。</p>
-<h2 id="appid">appId</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>null</code></li>
-<li>必要性:<code>true</code></li>
-</ul>
-<p>从<code>LeanCloud</code>的应用中得到的<code>appId</code>.</p>
-<blockquote>
-<p><a href="https://valine.js.org/quickstart.html">获取appId 和 appKey</a>。</p>
-</blockquote>
-<h2 id="appkey">appKey</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>null</code></li>
-<li>必要性:<code>true</code></li>
-</ul>
-<p>从<code>LeanCloud</code>的应用中得到的<code>appKey</code>.</p>
-<blockquote>
-<p><a href="https://valine.js.org/quickstart.html">获取appId 和 appKey</a>。</p>
-</blockquote>
-<h2 id="region"><s>region</s></h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>cn</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>存储节点：在<code>Valine</code>中初始化时默认遵循<code>Leancloud SDK</code>的节点规则(<code>默认中国大陆节点</code>)。</p>
-<blockquote>
-<p>Leancloud js-sdk 从 <code>v3.8.0</code>版本开始删除了<code>region</code>选项:<br>
-<a href="https://github.com/leancloud/javascript-sdk/releases/tag/v3.8.0">leancloud/javascript-sdk/releases/tag/v3.8.0</a></p>
-</blockquote>
-<p>可选值:</p>
-<ul>
-<li><code>cn</code> - 中国大陆节点</li>
-<li><code>us</code> - 海外节点</li>
-</ul>
-<h2 id="placeholder">placeholder</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>Just go go</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>评论框<code>占位提示符</code>。</p>
-<h2 id="notify"><s>notify</s></h2>
-<ul>
-<li>类型:<code>Boolean</code></li>
-<li>默认值:<code>false</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<blockquote>
-<p><code>v1.4.0+</code> 已废弃</p>
-</blockquote>
-<h2 id="verify"><s>verify</s></h2>
-<ul>
-<li>类型:<code>Boolean</code></li>
-<li>默认值:<code>false</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>验证码服务。</p>
-<blockquote>
-<p><code>v1.4.0+</code> 已废弃</p>
-</blockquote>
-<h2 id="path">path</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>window.location.pathname</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>当前<code>文章页</code>路径，用于区分不同的<code>文章页</code>，以保证正确读取该<code>文章页</code>下的评论列表。<br>
-可选值：</p>
-<ul>
-<li><code>window.location.pathname</code> (默认值，推荐)</li>
-<li><code>window.location.href</code></li>
-<li><code>自定义</code></li>
-</ul>
-<blockquote>
-<ul>
-<li>I. 请保证每个<code>文章页</code>路径的唯一性，否则可能会出现不同<code>文章页</code>下加载相同评论列表的情况。</li>
-<li>II. 如果值为<code>window.location.href</code>，可能会出现随便加<code>不同参数</code>进入该页面，而被判断成新页面的情况。</li>
-</ul>
-</blockquote>
-<h2 id="avatar">avatar</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>mm</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p><code>Gravatar</code> 头像展示方式。</p>
-<p>可选值：</p>
-<ul>
-<li><code>''</code>(空字符串)</li>
-<li><code>mp</code></li>
-<li><code>identicon</code></li>
-<li><code>monsterid</code></li>
-<li><code>wavatar</code></li>
-<li><code>retro</code></li>
-<li><code>robohash</code></li>
-<li><code>hide</code></li>
-</ul>
-<p>更多信息，请查看<a href="https://valine.js.org/avatar.html">头像配置</a>。</p>
-<h2 id="meta">meta</h2>
-<ul>
-<li>类型:<code>Array</code></li>
-<li>默认值:<code>['nick','mail','link']</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>评论者相关属性。</p>
-<h2 id="pagesize">pageSize</h2>
-<ul>
-<li>类型:<code>Number</code></li>
-<li>默认值:<code>10</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>评论列表分页，每页条数。</p>
-<h2 id="lang">lang</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>zh-CN</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>多语言支持。</p>
-<p>可选值：</p>
-<ul>
-<li><code>zh-CN</code></li>
-<li><code>zh-TW</code></li>
-<li><code>en</code></li>
-<li><code>ja</code></li>
-</ul>
-<p>如需<code>自定义语言</code>，请参考<a href="https://valine.js.org/i18n.html">i18n</a>。</p>
-<h2 id="visitor">visitor</h2>
-<ul>
-<li>类型:<code>Boolean</code></li>
-<li>默认值:<code>false</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p><a href="https://valine.js.org/visitor.html">文章访问量统计</a>。</p>
-<h2 id="highlight">highlight</h2>
-<ul>
-<li>类型：<code>Boolean</code></li>
-<li>默认值: <code>true</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p><code>代码高亮</code>，默认开启，若不需要，请手动关闭</p>
-<h2 id="avatarforce">avatarForce</h2>
-<ul>
-<li>类型: <code>Boolean</code></li>
-<li>默认值: <code>false</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p>每次访问<code>强制</code>拉取最新的<code>评论列表头像</code></p>
-<blockquote>
-<p>不推荐设置为<code>true</code>，目前的<code>评论列表头像</code>会自动带上<code>Valine</code>的版本号</p>
-</blockquote>
-<h2 id="recordip">recordIP</h2>
-<ul>
-<li>类型: <code>Boolean</code></li>
-<li>默认值: <code>false</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p>是否记录评论者IP</p>
-<blockquote>
-<pre><code>v1.3.5+
-</code></pre>
-</blockquote>
-<h2 id="serverurls">serverURLs</h2>
-<ul>
-<li>类型: <code>String</code></li>
-<li>默认值: <code>http[s]://[tab/us].avoscloud.com</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<blockquote>
-<p>⚠️ 该配置适用于国内<code>自定义域名</code>用户, <code>海外版本</code>会自动检测(无需手动填写) <code>v1.3.10+</code></p>
-</blockquote>
-<h2 id="emojicdn">emojiCDN</h2>
-<ul>
-<li>类型: <code>String</code></li>
-<li>默认值: ``</li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p>设置<code>表情包CDN</code>，参考<a href="https://valine.js.org/emoji.html">自定义表情</a></p>
-<blockquote>
-<pre><code>v1.4.5+
-</code></pre>
-</blockquote>
-<h2 id="emojimaps">emojiMaps</h2>
-<ul>
-<li>类型: <code>Object</code></li>
-<li>默认值: <code>null</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p>设置<code>表情包映射</code>，参考<a href="https://valine.js.org/emoji.html">自定义表情</a></p>
-<blockquote>
-<pre><code>v1.4.5+
-</code></pre>
-</blockquote>
-<h2 id="enableqq">enableQQ</h2>
-<ul>
-<li>类型: <code>Boolean</code></li>
-<li>默认值: <code>false</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p>是否启用<code>昵称框</code>自动获取<code>QQ昵称</code>和<code>QQ头像</code>, 默认关闭，需<code>博/网站主</code>主动启用</p>
-<blockquote>
-<pre><code>v1.4.6+
-</code></pre>
-</blockquote>
-<h2 id="requiredfields">requiredFields</h2>
-<ul>
-<li>类型: <code>Array</code></li>
-<li>默认值: <code>[]</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p>设置<code>必填项</code>，默认<code>匿名</code>，可选值：</p>
-<ul>
-<li><code>['nick']</code></li>
-<li><code>['nick','mail']</code></li>
-</ul>
-<blockquote>
-<pre><code>v1.4.6+
-</code></pre>
-</blockquote>
 ]]></content>
     </entry>
     <entry>
@@ -349,400 +90,6 @@ Classic的简单操作。</p>
         <summary type="html"><![CDATA[<p>欢迎使用 Markdown在线编辑器 MdEditor</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>欢迎使用 Markdown在线编辑器 MdEditor</p>
-<!-- more -->
-<p><strong>Markdown是一种轻量级的「标记语言」</strong></p>
-<figure data-type="image" tabindex="1"><img src="https://www.mdeditor.com/images/logos/markdown.png" alt="markdown" title="markdown" loading="lazy"></figure>
-<p>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面，Markdown文件的后缀名便是“.md”</p>
-<h2 id="mdeditor是一个在线编辑markdown文档的编辑器">MdEditor是一个在线编辑Markdown文档的编辑器</h2>
-<p><em>MdEditor扩展了Markdown的功能（如表格、脚注、内嵌HTML等等），以使让Markdown转换成更多的格式，和更丰富的展示效果，这些功能原初的Markdown尚不具备。</em></p>
-<blockquote>
-<p>Markdown增强版中比较有名的有Markdown Extra、MultiMarkdown、 Maruku等。这些衍生版本要么基于工具，如<s>Pandoc</s>，Pandao；要么基于网站，如GitHub和Wikipedia，在语法上基本兼容，但在一些语法和渲染效果上有改动。</p>
-</blockquote>
-<p>MdEditor源于Pandao的JavaScript开源项目，开源地址<a href="https://github.com/pandao/editor.md" title="Editor.md">Editor.md</a>，并在MIT开源协议的许可范围内进行了优化，以适应广大用户群体的需求。向优秀的markdown开源编辑器原作者Pandao致敬。</p>
-<figure data-type="image" tabindex="2"><img src="https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png" alt="Pandao editor.md" title="Pandao editor.md" loading="lazy"></figure>
-<h2 id="mdeditor的功能列表演示">MdEditor的功能列表演示</h2>
-<h1 id="标题h1">标题H1</h1>
-<h2 id="标题h2">标题H2</h2>
-<h3 id="标题h3">标题H3</h3>
-<h4 id="标题h4">标题H4</h4>
-<h5 id="标题h5">标题H5</h5>
-<h6 id="标题h5-2">标题H5</h6>
-<h3 id="字符效果和横线等">字符效果和横线等</h3>
-<hr>
-<p><s>删除线</s> <s>删除线（开启识别HTML标签时）</s></p>
-<p><em>斜体字</em>      <em>斜体字</em></p>
-<p><strong>粗体</strong>  <strong>粗体</strong></p>
-<p><em><strong>粗斜体</strong></em> <em><strong>粗斜体</strong></em></p>
-<p>上标：X<sub>2</sub>，下标：O<sup>2</sup></p>
-<p><strong>缩写(同HTML的abbr标签)</strong></p>
-<blockquote>
-<p>即更长的单词或短语的缩写形式，前提是开启识别HTML标签时，已默认开启</p>
-</blockquote>
-<p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
-<h3 id="引用-blockquotes">引用 Blockquotes</h3>
-<blockquote>
-<p>引用文本 Blockquotes</p>
-</blockquote>
-<p>引用的行内混合 Blockquotes</p>
-<blockquote>
-<p>引用：如果想要插入空白换行<code>即&lt;br /&gt;标签</code>，在插入处先键入两个以上的空格然后回车即可，<a href="https://www.mdeditor.com/">普通链接</a>。</p>
-</blockquote>
-<h3 id="锚点与链接-links">锚点与链接 Links</h3>
-<p><a href="https://www.mdeditor.com/">普通链接</a><br>
-<a href="https://www.mdeditor.com/" title="普通链接带标题">普通链接带标题</a><br>
-直接链接：<a href="https://www.mdeditor.com">https://www.mdeditor.com</a><br>
-[锚点链接][anchor-id]<br>
-[anchor-id]: https://www.mdeditor.com/<br>
-<a href="mailto:test.test@gmail.com">mailto:test.test@gmail.com</a><br>
-GFM a-tail link @pandao<br>
-邮箱地址自动链接 test.test@gmail.com  www@vip.qq.com</p>
-<blockquote>
-<p>@pandao</p>
-</blockquote>
-<h3 id="多语言代码高亮-codes">多语言代码高亮 Codes</h3>
-<h4 id="行内代码-inline-code">行内代码 Inline code</h4>
-<p>执行命令：<code>npm install marked</code></p>
-<h4 id="缩进风格">缩进风格</h4>
-<p>即缩进四个空格，也做为实现类似 <code>&lt;pre&gt;</code> 预格式化文本 ( Preformatted Text ) 的功能。</p>
-<pre><code>&lt;?php
-    echo &quot;Hello world!&quot;;
-?&gt;
-</code></pre>
-<p>预格式化文本：</p>
-<pre><code>| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-</code></pre>
-<h4 id="js代码">JS代码</h4>
-<pre><code class="language-javascript">function test() {
-	console.log(&quot;Hello world!&quot;);
-}
-</code></pre>
-<h4 id="html-代码-html-codes">HTML 代码 HTML codes</h4>
-<pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;mate charest=&quot;utf-8&quot; /&gt;
-        &lt;meta name=&quot;keywords&quot; content=&quot;Editor.md, Markdown, Editor&quot; /&gt;
-        &lt;title&gt;Hello world!&lt;/title&gt;
-        &lt;style type=&quot;text/css&quot;&gt;
-            body{font-size:14px;color:#444;font-family: &quot;Microsoft Yahei&quot;, Tahoma, &quot;Hiragino Sans GB&quot;, Arial;background:#fff;}
-            ul{list-style: none;}
-            img{border:none;vertical-align: middle;}
-        &lt;/style&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;h1 class=&quot;text-xxl&quot;&gt;Hello world!&lt;/h1&gt;
-        &lt;p class=&quot;text-green&quot;&gt;Plain text&lt;/p&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h3 id="图片-images">图片 Images</h3>
-<p>图片加链接 (Image + Link)：</p>
-<figure data-type="image" tabindex="3"><a href="https://www.mdeditor.com/images/logos/markdown.png" title="markdown"><img src="https://www.mdeditor.com/images/logos/markdown.png" alt="" loading="lazy"></a></figure>
-<blockquote>
-<p>Follow your heart.</p>
-</blockquote>
-<hr>
-<h3 id="列表-lists">列表 Lists</h3>
-<h4 id="无序列表减号unordered-lists-">无序列表（减号）Unordered Lists (-)</h4>
-<ul>
-<li>列表一</li>
-<li>列表二</li>
-<li>列表三</li>
-</ul>
-<h4 id="无序列表星号unordered-lists">无序列表（星号）Unordered Lists (*)</h4>
-<ul>
-<li>列表一</li>
-<li>列表二</li>
-<li>列表三</li>
-</ul>
-<h4 id="无序列表加号和嵌套unordered-lists">无序列表（加号和嵌套）Unordered Lists (+)</h4>
-<ul>
-<li>列表一</li>
-<li>列表二
-<ul>
-<li>列表二-1</li>
-<li>列表二-2</li>
-<li>列表二-3</li>
-</ul>
-</li>
-<li>列表三
-<ul>
-<li>列表一</li>
-<li>列表二</li>
-<li>列表三</li>
-</ul>
-</li>
-</ul>
-<h4 id="有序列表-ordered-lists-">有序列表 Ordered Lists (-)</h4>
-<ol>
-<li>第一行</li>
-<li>第二行</li>
-<li>第三行</li>
-</ol>
-<h4 id="gfm-task-list">GFM task list</h4>
-<ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4934116"><label class="task-list-item-label" for="task-item-4934116"> GFM task list 1</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-206734"><label class="task-list-item-label" for="task-item-206734"> GFM task list 2</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-305136"><label class="task-list-item-label" for="task-item-305136"> GFM task list 3</label>
-<ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2907710"><label class="task-list-item-label" for="task-item-2907710"> GFM task list 3-1</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-60940"><label class="task-list-item-label" for="task-item-60940"> GFM task list 3-2</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7702803"><label class="task-list-item-label" for="task-item-7702803"> GFM task list 3-3</label></li>
-</ul>
-</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8719252"><label class="task-list-item-label" for="task-item-8719252"> GFM task list 4</label>
-<ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1855277"><label class="task-list-item-label" for="task-item-1855277"> GFM task list 4-1</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9711960"><label class="task-list-item-label" for="task-item-9711960"> GFM task list 4-2</label></li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="绘制表格-tables">绘制表格 Tables</h3>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th style="text-align:right">价格</th>
-<th style="text-align:center">数量</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>计算机</td>
-<td style="text-align:right">$1600</td>
-<td style="text-align:center">5</td>
-</tr>
-<tr>
-<td>手机</td>
-<td style="text-align:right">$12</td>
-<td style="text-align:center">12</td>
-</tr>
-<tr>
-<td>管线</td>
-<td style="text-align:right">$1</td>
-<td style="text-align:center">234</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>First Header</th>
-<th>Second Header</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>First Header</th>
-<th>Second Header</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Function name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>help()</code></td>
-<td>Display the help window.</td>
-</tr>
-<tr>
-<td><code>destroy()</code></td>
-<td><strong>Destroy your computer!</strong></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Left-Aligned</th>
-<th style="text-align:center">Center Aligned</th>
-<th style="text-align:right">Right Aligned</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">col 3 is</td>
-<td style="text-align:center">some wordy text</td>
-<td style="text-align:right">$1600</td>
-</tr>
-<tr>
-<td style="text-align:left">col 2 is</td>
-<td style="text-align:center">centered</td>
-<td style="text-align:right">$12</td>
-</tr>
-<tr>
-<td style="text-align:left">zebra stripes</td>
-<td style="text-align:center">are neat</td>
-<td style="text-align:right">$1</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th style="text-align:right">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Computer</td>
-<td style="text-align:right">$1600</td>
-</tr>
-<tr>
-<td>Phone</td>
-<td style="text-align:right">$12</td>
-</tr>
-<tr>
-<td>Pipe</td>
-<td style="text-align:right">$1</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h4 id="特殊符号-html-entities-codes">特殊符号 HTML Entities Codes</h4>
-<p>© &amp;  ¨ ™ ¡ £<br>
-&amp; &lt; &gt; ¥ € ® ± ¶ § ¦ ¯ « ·</p>
-<p>X² Y³ ¾ ¼  ×  ÷   »</p>
-<p>18ºC  &quot;  '</p>
-<p>[========]</p>
-<h3 id="emoji表情-smiley">Emoji表情 😃</h3>
-<blockquote>
-<p>Blockquotes ⭐️</p>
-</blockquote>
-<h4 id="gfm-task-lists-emoji-fontawesome-icon-emoji-editormd-logo-emoji-editormd-logo-5x">GFM task lists &amp; Emoji &amp; fontAwesome icon emoji &amp; editormd logo emoji :editormd-logo-5x:</h4>
-<ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2144020"> 😃 @mentions, 😃 #refs, <a href="">links</a>, <strong>formatting</strong>, and <del>tags</del><label class="task-list-item-label" for="task-item-2144020"> :smiley: @mentions, :smiley: #refs, [links](), **formatting**, and <del>tags</del> supported :editormd-logo:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-968912"><label class="task-list-item-label" for="task-item-968912"> list syntax required (any unordered or ordered list supported) :editormd-logo-3x:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5675310"><label class="task-list-item-label" for="task-item-5675310"> [ ] :smiley: this is a complete item :smiley:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7995913"> []this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-7995913"> []this is an incomplete item [test link](#) :fa-star: @pandao;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7232224"><label class="task-list-item-label" for="task-item-7232224"> [ ]this is an incomplete item :fa-star: :fa-gear:;</label>
-<ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4594160"> 😃 this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-4594160"> :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4183710"> 😃 this is  :fa-star: :fa-gear: an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-4183710"> :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);</label></li>
-</ul>
-</li>
-</ul>
-<h4 id="反斜杠-escape">反斜杠 Escape</h4>
-<p>*literal asterisks*</p>
-<p>[========]</p>
-<h3 id="科学公式-texkatex">科学公式 TeX(KaTeX)</h3>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">E=mc^2
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8641079999999999em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
-<p>行内的公式$$E=mc<sup>2$$行内的公式，行内的$$E=mc</sup>2$$公式。</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x &gt; y
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span></span></p>
-<p class='katex-block katex-error' title='ParseError: KaTeX parse error: Can&#039;t use function &#039;\(&#039; in math mode at position 1: \̲(̲\sqrt{3x-1}+(1+…'>\(\sqrt{3x-1}+(1+x)^2\)
-</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>sin</mi><mo>⁡</mo><mo>(</mo><mi>α</mi><msup><mo>)</mo><mi>θ</mi></msup><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mi>n</mi></munderover><mo>(</mo><msup><mi>x</mi><mi>i</mi></msup><mo>+</mo><mi>cos</mi><mo>⁡</mo><mo>(</mo><mi>f</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">\sin(\alpha)^{\theta}=\sum_{i=0}^{n}(x^i + \cos(f))
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.149108em;vertical-align:-0.25em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8746639999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">cos</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span></p>
-<p>多行公式：</p>
-<pre><code class="language-math">\displaystyle
-\left( \sum\_{k=1}^n a\_k b\_k \right)^2
-\leq
-\left( \sum\_{k=1}^n a\_k^2 \right)
-\left( \sum\_{k=1}^n b\_k^2 \right)
-</code></pre>
-<pre><code class="language-katex">\displaystyle
-    \frac{1}{
-        \Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{
-        \frac25 \pi}} = 1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {
-        1+\frac{e^{-6\pi}}
-        {1+\frac{e^{-8\pi}}
-         {1+\cdots} }
-        }
-    }
-</code></pre>
-<pre><code class="language-latex">f(x) = \int_{-\infty}^\infty
-    \hat f(\xi)\,e^{2 \pi i \xi x}
-    \,d\xi
-</code></pre>
-<h3 id="分页符-page-break">分页符 Page break</h3>
-<blockquote>
-<p>Print Test: Ctrl + P</p>
-</blockquote>
-<p>[========]</p>
-<h3 id="绘制流程图-flowchart">绘制流程图 Flowchart</h3>
-<pre><code class="language-flow">st=&gt;start: 用户登陆
-op=&gt;operation: 登陆操作
-cond=&gt;condition: 登陆成功 Yes or No?
-e=&gt;end: 进入后台
-
-st-&gt;op-&gt;cond
-cond(yes)-&gt;e
-cond(no)-&gt;op
-</code></pre>
-<p>[========]</p>
-<h3 id="绘制序列图-sequence-diagram">绘制序列图 Sequence Diagram</h3>
-<pre><code class="language-seq">Andrew-&gt;China: Says Hello
-Note right of China: China thinks\nabout it
-China--&gt;Andrew: How are you?
-Andrew-&gt;&gt;China: I am good thanks!
-</code></pre>
-<h3 id="end">End</h3>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://jpzxjt.coding-pages.com/post/hello-gridea/</id>
-        <link href="https://jpzxjt.coding-pages.com/post/hello-gridea/">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
 ]]></content>
     </entry>
 </feed>
