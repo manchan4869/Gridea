@@ -1,154 +1,100 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
+  <head>
+    <meta charset="utf-8" >
 
-<head>
-  <meta charset="UTF-8" />
-<title>Markdown 测试文章 - manchan&#39;s blog</title>
+<title>Markdown 测试文章 | manchan&#39;s blog</title>
 <meta name="description" content="まん酱の记事与随笔">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="http://jpzxjt.coding-pages.com//favicon.ico?v=1589187452916">
 
-<link type='text/css' rel='stylesheet' href='http://jpzxjt.coding-pages.com//styles/main.css' media='screen' />
-<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css">
-<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<script type="text/javascript" src='http://jpzxjt.coding-pages.com//media/scripts/jquery.js'></script>
-<script type="text/javascript" src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
-
-<script>
-    hljs.initHighlightingOnLoad();
-</script>
-</head>
-
-<body>
-  <div class="layout theme-dark">
-    <div class="layout-header">
-
-	<div class="layout-header-main">
-		<div class="container">
-			<div class="row justify-content-lg-center">
-				<div class="col-12 col-lg-9">
-
-					<div class="navbar">
-
-						<div class="logo">
-							<a href="http://jpzxjt.coding-pages.com/">
-								<img class="logo"
-									src="http://jpzxjt.coding-pages.com//media/images/site_avatar.png?v=1589187354134"
-									alt="">
-							</a>
-						</div>
-
-						<div class="menu d-md-inline-block d-none">
-							<ul class="layout-navigation-list">
-								
-								<li class="layout-navigation-item"><a title="首页"
-										href="/">首页</a>
-								</li>
-								
-								<li class="layout-navigation-item"><a title="归档"
-										href="/archives">归档</a>
-								</li>
-								
-								<li class="layout-navigation-item"><a title="标签"
-										href="/tags">标签</a>
-								</li>
-								
-								<li class="layout-navigation-item"><a title="关于"
-										href="/post/about">关于</a>
-								</li>
-								
-							</ul>
-						</div>
-
-						<div class="item d-md-inline-block d-none">
-							<div class="search-icon">
-								<i class="fa fa-search" aria-hidden="true"></i>
-							</div>
-						</div>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://jpzxjt.coding-pages.com//styles/main.css">
 
 
-
-						<div class="d-md-inline-block d-none">
-							<div class="search-lightbox">
-								<div class="search-body">
-
-									<form id="gridea-search-form" data-update="1589187354134" action="/search/" class="search-form">
-										<input type="text" name="q" id="s" value="" class="search-field" placeholder="请输入搜索关键词" aria-label="请输入搜索关键词" required="">
-										<button type="submit" class="submit" aria-label="Submit">
-											<i class="fa fa-search" aria-hidden="true"></i>
-										</button>
-									</form>
-
-								</div>
-							</div>
-						</div>
-
-						<div class="nav d-md-none d-inline-block">
-							<div class="trigger">
-								<i class="fa fa-bars layout-btn-toggle" aria-hidden="true"></i>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
-		</div>
-	</div>
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="http://jpzxjt.coding-pages.com/">manchan&#39;s blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-</div>
-    <div class="layout-collapse d-md-none">
-	<div class="layout-collapse-main">
-		<ul class="layout-collapse-list">
-			
-			<li class="layout-collapse-item"><a title="首页" href="/">首页</a></li>
-			
-			<li class="layout-collapse-item"><a title="归档" href="/archives">归档</a></li>
-			
-			<li class="layout-collapse-item"><a title="标签" href="/tags">标签</a></li>
-			
-			<li class="layout-collapse-item"><a title="关于" href="/post/about">关于</a></li>
-			
-
-		</ul>
-	</div>
-</div>
-
-    <div class="layout-content">
-      <div class="layout-content-main">
-        <div class="container">
-          <div class="row justify-content-lg-center">
-            <div class="col-12 col-lg-9">
-              <div class="layout-post">
-                <div class="layout-post-body">
-                  <div class="row">
-
-                    <div class="col-12 col-lg-10">
-                      <div class="layout-post-main m-right m-md-right">
-                        <div class="layout-post-header">
-                          <h1 class="layout-post-title">Markdown 测试文章</h1>
-                          <div class="layout-post-meta">
-                            <div class="item">
-                               <a href="http://jpzxjt.coding-pages.com/tag/8RZBTSq3_/" class="post--keyword"
-                                data-title="markdown" data-type="post_tag" data-term-id="39">markdown</a>
-                              
-                            </div>
-                            <div class="item">
-                              <span>2020-05-10</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="layout-post-content">
-                          <div class="layout-post-item">
-                            
-                            <p class="with-img"><img src="https://pic4.zhimg.com/v2-2a56e92cf72cd1268d299f47b8d2cf14_r.jpg"
-                                class="attachment-full size-full wp-post-image" alt="Markdown 测试文章" /></p>
-                            
-                            <p>欢迎使用 Markdown在线编辑器 MdEditor</p>
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Markdown 测试文章</h1>
+            <p class="article-meta">
+              2020-05-10
+              
+                <a href="http://jpzxjt.coding-pages.com/tag/8RZBTSq3_/" class="badge warning">
+                  markdown
+                </a>
+              
+            </p>
+            
+              <img src="https://pic4.zhimg.com/v2-2a56e92cf72cd1268d299f47b8d2cf14_r.jpg" alt="Markdown 测试文章">
+            
+            <div class="post-content">
+              <p>欢迎使用 Markdown在线编辑器 MdEditor</p>
 <!-- more -->
 <p><strong>Markdown是一种轻量级的「标记语言」</strong></p>
 <figure data-type="image" tabindex="1"><img src="https://www.mdeditor.com/images/logos/markdown.png" alt="markdown" title="markdown" loading="lazy"></figure>
@@ -284,19 +230,19 @@ GFM a-tail link @pandao<br>
 </ol>
 <h4 id="gfm-task-list">GFM task list</h4>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1290493"><label class="task-list-item-label" for="task-item-1290493"> GFM task list 1</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8162483"><label class="task-list-item-label" for="task-item-8162483"> GFM task list 2</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-423247"><label class="task-list-item-label" for="task-item-423247"> GFM task list 3</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7979871"><label class="task-list-item-label" for="task-item-7979871"> GFM task list 1</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4621440"><label class="task-list-item-label" for="task-item-4621440"> GFM task list 2</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9519490"><label class="task-list-item-label" for="task-item-9519490"> GFM task list 3</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-971065"><label class="task-list-item-label" for="task-item-971065"> GFM task list 3-1</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9105740"><label class="task-list-item-label" for="task-item-9105740"> GFM task list 3-2</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8082533"><label class="task-list-item-label" for="task-item-8082533"> GFM task list 3-3</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8381938"><label class="task-list-item-label" for="task-item-8381938"> GFM task list 3-1</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4952567"><label class="task-list-item-label" for="task-item-4952567"> GFM task list 3-2</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8207437"><label class="task-list-item-label" for="task-item-8207437"> GFM task list 3-3</label></li>
 </ul>
 </li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5477675"><label class="task-list-item-label" for="task-item-5477675"> GFM task list 4</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1136927"><label class="task-list-item-label" for="task-item-1136927"> GFM task list 4</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4223476"><label class="task-list-item-label" for="task-item-4223476"> GFM task list 4-1</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9922266"><label class="task-list-item-label" for="task-item-9922266"> GFM task list 4-2</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1159654"><label class="task-list-item-label" for="task-item-1159654"> GFM task list 4-1</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2203122"><label class="task-list-item-label" for="task-item-2203122"> GFM task list 4-2</label></li>
 </ul>
 </li>
 </ul>
@@ -443,14 +389,14 @@ GFM a-tail link @pandao<br>
 </blockquote>
 <h4 id="gfm-task-lists-emoji-fontawesome-icon-emoji-editormd-logo-emoji-editormd-logo-5x">GFM task lists &amp; Emoji &amp; fontAwesome icon emoji &amp; editormd logo emoji :editormd-logo-5x:</h4>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4955868"> 😃 @mentions, 😃 #refs, <a href="">links</a>, <strong>formatting</strong>, and <del>tags</del><label class="task-list-item-label" for="task-item-4955868"> :smiley: @mentions, :smiley: #refs, [links](), **formatting**, and <del>tags</del> supported :editormd-logo:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1359383"><label class="task-list-item-label" for="task-item-1359383"> list syntax required (any unordered or ordered list supported) :editormd-logo-3x:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5363303"><label class="task-list-item-label" for="task-item-5363303"> [ ] :smiley: this is a complete item :smiley:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6001911"> []this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-6001911"> []this is an incomplete item [test link](#) :fa-star: @pandao;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8501988"><label class="task-list-item-label" for="task-item-8501988"> [ ]this is an incomplete item :fa-star: :fa-gear:;</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-268794"> 😃 @mentions, 😃 #refs, <a href="">links</a>, <strong>formatting</strong>, and <del>tags</del><label class="task-list-item-label" for="task-item-268794"> :smiley: @mentions, :smiley: #refs, [links](), **formatting**, and <del>tags</del> supported :editormd-logo:;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1796370"><label class="task-list-item-label" for="task-item-1796370"> list syntax required (any unordered or ordered list supported) :editormd-logo-3x:;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9772190"><label class="task-list-item-label" for="task-item-9772190"> [ ] :smiley: this is a complete item :smiley:;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1312808"> []this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-1312808"> []this is an incomplete item [test link](#) :fa-star: @pandao;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7270915"><label class="task-list-item-label" for="task-item-7270915"> [ ]this is an incomplete item :fa-star: :fa-gear:;</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7789434"> 😃 this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-7789434"> :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2404077"> 😃 this is  :fa-star: :fa-gear: an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-2404077"> :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6021153"> 😃 this is an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-6021153"> :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9852475"> 😃 this is  :fa-star: :fa-gear: an incomplete item <a href="#">test link</a><label class="task-list-item-label" for="task-item-9852475"> :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);</label></li>
 </ul>
 </li>
 </ul>
@@ -512,243 +458,120 @@ Andrew-&gt;&gt;China: I am good thanks!
 </code></pre>
 <h3 id="end">End</h3>
 
-                          </div>
-                        </div>
-                        <div class="layout-post-social">
-                          <div class="item reader">
-                            <div id="/post/markdown-ce-shi-wen-zhang/" class="leancloud-visitors view"
-                              data-flag-title="Markdown 测试文章">
-                              <span class="post-meta-item-text">阅读 </span>
-                              <span class="leancloud-visitors-count"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="layout-post-navigation">
-                          <div class="navigation-list">
-                            
-                            <div class="post-card row">
-                              
-                              <div class="card-content col-8 col-md-9">
-                                <div class="card-body">
-                                  <div class="header">
-                                    <a href="http://jpzxjt.coding-pages.com/post/valine-ping-lun-xi-tong/" class="title">
-                                      <h4>Valine评论系统</h4>
-                                    </a>
-                                  </div>
-                                  <div class="inner d-none d-sm-block">
-                                    <div class="abstract">
-                                      <p>Gridea提供了两个评论系统，<a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md">Gitalk</a>和<a href="https://github.com/SukkaW/DisqusJS">disqus</a>。Gitalk需要使用Github账号登录，对于没有github账号的人来说不太方便，disqus目前在国内不可用。找了好久，发现了<a href="https://valine.js.org//">valine</a>这个评论系统。</p>
-
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="card-footer">
-                                  <div class="item"><span>上一篇</span></div>
-                                  <div class="item">2020-05-11</div>
-                                </div>
-                              </div>
-                              <div class="card-thumb col-4 col-md-3">
-                                <div class="thumb">
-                                  <a href="http://jpzxjt.coding-pages.com/post/valine-ping-lun-xi-tong/"
-                                    style="background-image: url('https://valine.js.org/images/valine.png');"></a>
-                                </div>
-                              </div>
-                              
-                            </div>
-
-                            <div class="post-card row">
-                              
-                              <div class="card-content col-8 col-md-9">
-                                <div class="card-body">
-                                  <div class="header">
-                                    <a href="http://jpzxjt.coding-pages.com/post/hello-gridea/" class="title">
-                                      <h4>Hello Gridea</h4>
-                                    </a>
-                                  </div>
-                                  <div class="inner d-none d-sm-block">
-                                    <div class="abstract">
-                                      <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="card-footer">
-                                  <div class="item"><span>下一篇</span></div>
-                                  <div class="item">2018-12-12</div>
-                                </div>
-                              </div>
-                              <div class="card-thumb col-4 col-md-3">
-                                <div class="thumb">
-                                  <a href="http://jpzxjt.coding-pages.com/post/hello-gridea/"
-                                    style="background-image: url('http://jpzxjt.coding-pages.com//post-images/hello-gridea.png');"></a>
-                                </div>
-                              </div>
-                              
-                            </div>
-
-                            
-                          </div>
-                        </div>
-
-                        <div class="layout-comments"></div>
-                        
-                        <script type="text/javascript" src='http://jpzxjt.coding-pages.com//media/scripts/zan.js'></script>
-<script type="text/javascript" src='http://jpzxjt.coding-pages.com//media/scripts/av-min.js'></script>
-<script type="text/javascript" src='http://jpzxjt.coding-pages.com//media/scripts/Valine.min.js'></script>
-
-<script>
-  var valine = new Valine();
-  valine.init({
-    el: '.layout-comments',
-    appId: 'wJNv5zNoDe6V3ceQkkcuRxjs-gzGzoHsz',
-    appKey: 'CfqUnwWClfR3kNmxOIIGD4jY',
-    notify: false,
-    verify: false,
-    visitor: true,
-    avatar: 'mp',
-    placeholder: '加入讨论...'
-  })
-</script>
-                        
-                      </div>
-                    </div>
-
-                    <div class="col-12 col-lg-2 d-none d-lg-block">
-                      <div class="layout-post-sidebar">
-                        <div class="layout-sidebar-item">
-                          <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#mdeditor%E6%98%AF%E4%B8%80%E4%B8%AA%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%BE%91markdown%E6%96%87%E6%A1%A3%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8">MdEditor是一个在线编辑Markdown文档的编辑器</a></li>
-<li><a href="#mdeditor%E7%9A%84%E5%8A%9F%E8%83%BD%E5%88%97%E8%A1%A8%E6%BC%94%E7%A4%BA">MdEditor的功能列表演示</a></li>
-</ul>
-</li>
-<li><a href="#%E6%A0%87%E9%A2%98h1">标题H1</a>
-<ul>
-<li><a href="#%E6%A0%87%E9%A2%98h2">标题H2</a>
-<ul>
-<li><a href="#%E6%A0%87%E9%A2%98h3">标题H3</a>
-<ul>
-<li><a href="#%E6%A0%87%E9%A2%98h4">标题H4</a>
-<ul>
-<li><a href="#%E6%A0%87%E9%A2%98h5">标题H5</a>
-<ul>
-<li><a href="#%E6%A0%87%E9%A2%98h5-2">标题H5</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#%E5%AD%97%E7%AC%A6%E6%95%88%E6%9E%9C%E5%92%8C%E6%A8%AA%E7%BA%BF%E7%AD%89">字符效果和横线等</a></li>
-<li><a href="#%E5%BC%95%E7%94%A8-blockquotes">引用 Blockquotes</a></li>
-<li><a href="#%E9%94%9A%E7%82%B9%E4%B8%8E%E9%93%BE%E6%8E%A5-links">锚点与链接 Links</a></li>
-<li><a href="#%E5%A4%9A%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE-codes">多语言代码高亮 Codes</a>
-<ul>
-<li><a href="#%E8%A1%8C%E5%86%85%E4%BB%A3%E7%A0%81-inline-code">行内代码 Inline code</a></li>
-<li><a href="#%E7%BC%A9%E8%BF%9B%E9%A3%8E%E6%A0%BC">缩进风格</a></li>
-<li><a href="#js%E4%BB%A3%E7%A0%81">JS代码</a></li>
-<li><a href="#html-%E4%BB%A3%E7%A0%81-html-codes">HTML 代码 HTML codes</a></li>
-</ul>
-</li>
-<li><a href="#%E5%9B%BE%E7%89%87-images">图片 Images</a></li>
-<li><a href="#%E5%88%97%E8%A1%A8-lists">列表 Lists</a>
-<ul>
-<li><a href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8%E5%87%8F%E5%8F%B7unordered-lists-">无序列表（减号）Unordered Lists (-)</a></li>
-<li><a href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8%E6%98%9F%E5%8F%B7unordered-lists">无序列表（星号）Unordered Lists (*)</a></li>
-<li><a href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8%E5%8A%A0%E5%8F%B7%E5%92%8C%E5%B5%8C%E5%A5%97unordered-lists">无序列表（加号和嵌套）Unordered Lists (+)</a></li>
-<li><a href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8-ordered-lists-">有序列表 Ordered Lists (-)</a></li>
-<li><a href="#gfm-task-list">GFM task list</a></li>
-</ul>
-</li>
-<li><a href="#%E7%BB%98%E5%88%B6%E8%A1%A8%E6%A0%BC-tables">绘制表格 Tables</a>
-<ul>
-<li><a href="#%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7-html-entities-codes">特殊符号 HTML Entities Codes</a></li>
-</ul>
-</li>
-<li><a href="#emoji%E8%A1%A8%E6%83%85-smiley">Emoji表情 :smiley:</a>
-<ul>
-<li><a href="#gfm-task-lists-emoji-fontawesome-icon-emoji-editormd-logo-emoji-editormd-logo-5x">GFM task lists &amp; Emoji &amp; fontAwesome icon emoji &amp; editormd logo emoji :editormd-logo-5x:</a></li>
-<li><a href="#%E5%8F%8D%E6%96%9C%E6%9D%A0-escape">反斜杠 Escape</a></li>
-</ul>
-</li>
-<li><a href="#%E7%A7%91%E5%AD%A6%E5%85%AC%E5%BC%8F-texkatex">科学公式 TeX(KaTeX)</a></li>
-<li><a href="#%E5%88%86%E9%A1%B5%E7%AC%A6-page-break">分页符 Page break</a></li>
-<li><a href="#%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E5%9B%BE-flowchart">绘制流程图 Flowchart</a></li>
-<li><a href="#%E7%BB%98%E5%88%B6%E5%BA%8F%E5%88%97%E5%9B%BE-sequence-diagram">绘制序列图 Sequence Diagram</a></li>
-<li><a href="#end">End</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
+          </article>
         </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="http://jpzxjt.coding-pages.com/post/hello-gridea/">
+                <h3 class="post-title">
+                  Hello Gridea
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="http://jpzxjt.coding-pages.com//images/avatar.png?v=1589187452916" class="no-responsive avatar">
+    <div class="text-muted">まん酱の记事与随笔</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="http://jpzxjt.coding-pages.com/post/yao-gan-shi-yan-yi/">遥感实验（一）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="http://jpzxjt.coding-pages.com/post/valine-ping-lun-xi-tong/">Valine评论系统</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="http://jpzxjt.coding-pages.com/post/markdown-ce-shi-wen-zhang/">Markdown 测试文章</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="http://jpzxjt.coding-pages.com/post/about/">关于</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="http://jpzxjt.coding-pages.com/post/hello-gridea/">Hello Gridea</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="http://jpzxjt.coding-pages.com/tag/ASYA-Tmiw/" class="badge secondary">
+          Gridea
+        </a>
+      
+        <a href="http://jpzxjt.coding-pages.com/tag/8RZBTSq3_/" class="badge secondary">
+          markdown
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="http://jpzxjt.coding-pages.com//atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
     </div>
 
-    <div class="layout-totop d-none"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-    	<div class="layout-footer">
+<script type="application/javascript">
 
-		<div class="container">
-			<div class="row justify-content-lg-center">
-				<div class="col-12 col-lg-9">
-					<div class="footer">
-						<div class="row">
-							<div class="col-12 col-md-9">
-								<div class="footer-copy">
-									
-									Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-									<div class="footer-icp d-none d-sm-inline-block">
-										<span class="px-2">⋅</span>
-										
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3 d-none d-md-block">
-								<div class="footer-links">
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+AOS.init();
 
-	</div>
+hljs.initHighlightingOnLoad()
 
-	<script type="text/javascript" src='http://jpzxjt.coding-pages.com//media/scripts/main.js'></script>
-	
+</script>
 
-  </div>
-</body>
 
+
+
+  </body>
 </html>
