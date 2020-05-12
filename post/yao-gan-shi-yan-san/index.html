@@ -1,0 +1,283 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>遥感实验：基于主成分分析的遥感图像模拟真彩色融合 | Manchan&#39;s Blog</title>
+<link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1589285007500">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.manchan.ml/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="遥感实验：基于主成分分析的遥感图像模拟真彩色融合 | Manchan&#39;s Blog - Atom Feed" href="https://blog.manchan.ml/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+    <meta name="description" content="实验三 基于主成分分析的遥感图像模拟真彩色融合
+一、实验背景
+遥感图像的关键在于选择合适的融合方法，恰当的融合方法可以提高图像空间信息的同时，很好的保持多光谱影像的光谱特征，基于主成分变换法的模拟真彩色融合法不仅具有主成分分析融合法的光谱选..." />
+    <meta name="keywords" content="ERDAS,遥感" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://blog.manchan.ml">
+  <img class="avatar" src="https://blog.manchan.ml/images/avatar.png?v=1589285007500" alt="">
+  </a>
+  <h1 class="site-title">
+    Manchan&#39;s Blog
+  </h1>
+  <p class="site-description">
+    <b>まん酱の记事与随笔</b>
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              遥感实验：基于主成分分析的遥感图像模拟真彩色融合
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-05-12
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://blog.manchan.ml/tag/erdas/" class="post-tag">
+                  # ERDAS
+                </a>
+              
+                <a href="https://blog.manchan.ml/tag/yao-gan/" class="post-tag">
+                  # 遥感
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://i.loli.net/2020/05/12/zRO9svPkQwbjHca.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p><strong>实验三 基于主成分分析的遥感图像模拟真彩色融合</strong></p>
+<h2 id="一-实验背景"><strong>一、实验背景</strong></h2>
+<p>遥感图像的关键在于选择合适的融合方法，恰当的融合方法可以提高图像空间信息的同时，很好的保持多光谱影像的光谱特征，基于主成分变换法的模拟真彩色融合法不仅具有主成分分析融合法的光谱选择灵活和光谱信息损失小等优点，同时还可以获得逼真的自然色彩融合图像，提高图像的融合效果。</p>
+<h2 id="二-实验目的"><strong>二、实验目的</strong></h2>
+<p>主成分分析首先将具有多波段的多光谱图像经过PCA变换为多个独立的主成分，通常第一主成分包含有多个波段共同和唯一的光谱信息；其次将具有高分辨率的全色影响经过灰度拉伸，使其灰度的均值与方差和PCA变换的第一主成分图像一致；最后以拉伸过的高分辨图像代替第一分量图像，经过主成分逆变换完成图像融合。</p>
+<h2 id="三-实验数据"><strong>三、实验数据</strong></h2>
+<p>多光谱影像（多光谱.img）、全色影像（全色.img）</p>
+<h2 id="四-实验要求"><strong>四、实验要求</strong></h2>
+<p>①主成分变换</p>
+<p>②用全色影像代替第一主成分（首先进行直方图均衡化灰度值拉伸），实现数据融合</p>
+<p>③主成分逆变换</p>
+<p>④自然色彩变换</p>
+<h2 id="五-实验步骤"><strong>五、实验步骤</strong></h2>
+<h3 id="一主成分变换"><strong>（一）主成分变换</strong></h3>
+<p>1.选择Interpreter-Spectral Enhancement-Principal-Components命令，打开Principal<br>
+Components对话框。</p>
+<figure data-type="image" tabindex="1"><img src="https://blog.manchan.ml/post-images/68788931183f51e82236e1e5488cab53.png" alt="" loading="lazy"></figure>
+<p>2.在Principal Components对话框进行进行如图所示设置。</p>
+<figure data-type="image" tabindex="2"><img src="https://blog.manchan.ml/post-images/cbf28beb387946a4316a9a9c61fcbc69.png" alt="" loading="lazy"></figure>
+<p>3.单击OK按钮执行主成分变换。</p>
+<figure data-type="image" tabindex="3"><img src="https://blog.manchan.ml/post-images/4c1dc4f7d481e0c5c9dca56478717c74.png" alt="" loading="lazy"></figure>
+<p>4.结果如下图</p>
+<figure data-type="image" tabindex="4"><img src="https://blog.manchan.ml/post-images/032f73b04587ad57e2a9cc35b4133866.png" alt="" loading="lazy"></figure>
+<h3 id="二用全色影像代替第一主成分实现数据融合"><strong>（二）用全色影像代替第一主成分，实现数据融合</strong></h3>
+<p>在执行代替之前，首先对全色影像进行拉伸处理，选择Main-Image<br>
+Interpreter-Radiometric Enhancement-Histogram Equalization命令，打开Histogram<br>
+Equalization对话框，在Histogram Equalization对话框中进行如下设置。</p>
+<figure data-type="image" tabindex="5"><img src="https://blog.manchan.ml/post-images/414358888dcfb12ac21d42e60d661a03.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://blog.manchan.ml/post-images/b187f72ca24567e3db6a189770f37d72.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://blog.manchan.ml/post-images/ccfa1778f5025b44f85ec212d73d4652.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://blog.manchan.ml/post-images/610cd5da30066888216945285576ee25.png" alt="" loading="lazy"></figure>
+<p>将执行过主成分变换的数据的第一主成分用经拉伸处理后的全色影像代替，其他主成分顺序不变；即通过Layer<br>
+Selection and<br>
+Stacking对话框，依次添加全色影像、第二成分、第三主成分、第四主成分，具体操作如下：</p>
+<p>1.选择Interpreter-Utilities-Layer Stack命令，打开Layer Selection and<br>
+Stacking对话框。</p>
+<figure data-type="image" tabindex="9"><img src="https://blog.manchan.ml/post-images/62add25a9c70826a31b55521d203516e.png" alt="" loading="lazy"></figure>
+<p>2.在Layer Selection and Stacking对话框进行如下设置。</p>
+<figure data-type="image" tabindex="10"><img src="https://blog.manchan.ml/post-images/d9fa0a5d3ff420c0484f5dc38c0afed2.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="11"><img src="https://blog.manchan.ml/post-images/feb9e785ad21aa147ce906eec62e3db3.png" alt="" loading="lazy"></figure>
+<p>3.结果如下图</p>
+<figure data-type="image" tabindex="12"><img src="https://blog.manchan.ml/post-images/0fa6be254d9855bee94e1e09647d3572.png" alt="" loading="lazy"></figure>
+<h3 id="三主成分逆变换"><strong>（三）主成分逆变换</strong></h3>
+<p>通过执行主成分逆变换，完成全色影像与多光谱影像的融合，具体操作步骤如下：</p>
+<p>1.选择Interpreter-Spectral Enhancement-Inverse<br>
+Principal-Components命令，打开Inverse Principal Components对话框。</p>
+<figure data-type="image" tabindex="13"><img src="https://blog.manchan.ml/post-images/2ea8d96185247df2a0bbc20990b5a4ef.png" alt="" loading="lazy"></figure>
+<ol>
+<li>在Inverse Principal Components对话框中进行如下设置。</li>
+</ol>
+<figure data-type="image" tabindex="14"><img src="https://blog.manchan.ml/post-images/01fe85730949887b706248d20a4a6f12.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="15"><img src="https://blog.manchan.ml/post-images/392868f4297109c6877a575b28e577df.png" alt="" loading="lazy"></figure>
+<p>3.单击OK按钮，执行主成分逆变换。变换后的结果如下所示：</p>
+<figure data-type="image" tabindex="16"><img src="https://blog.manchan.ml/post-images/5ed5eaa63275bcb30bcabcd41b77578e.png" alt="" loading="lazy"></figure>
+<h3 id="四自然色彩变换"><strong>（四）自然色彩变换</strong></h3>
+<p>通过以上几步，得到了模拟真彩色的影像，通过自然彩色变换，对多波段数据进行交换运算，就能得到自然色彩图像，具体操作如下：</p>
+<p>1.选择Interpreter-Spectral Enhancement-Natural Color命令，打开Natural<br>
+Color对话框。</p>
+<figure data-type="image" tabindex="17"><img src="https://blog.manchan.ml/post-images/b6391176cdc0fba731ce269176fd0a0c.png" alt="" loading="lazy"></figure>
+<ol start="2">
+<li>在Natural Color对话框中进行如下设置。</li>
+</ol>
+<figure data-type="image" tabindex="18"><img src="https://blog.manchan.ml/post-images/bc8aab94cc505d42c42eec383692b4d3.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="19"><img src="https://blog.manchan.ml/post-images/177b782c8585e2358578bdaa8b382a10.png" alt="" loading="lazy"></figure>
+<p>3.单击OK按钮完成自然色彩变换。变换后的图像如下图所示：</p>
+<figure data-type="image" tabindex="20"><img src="https://blog.manchan.ml/post-images/86d38cb7fa7554bf540a6f163a68837d.png" alt="" loading="lazy"></figure>
+<p>4.对比图：</p>
+<figure data-type="image" tabindex="21"><img src="https://blog.manchan.ml/post-images/be7ac4bdcc2b5c0e77f4100ba78690ad.png" alt="" loading="lazy"></figure>
+<h2 id="六-实验总结"><strong>六、实验总结</strong></h2>
+<p>本实验学会了运用主成分变换方法，实现对不同空间分辨率、时间分辨率和波谱分辨率的遥感图像进行综合、高效利用，以提高图像的解译效果。练习了ERDAS的使用方法。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E5%AE%9E%E9%AA%8C%E8%83%8C%E6%99%AF"><strong>一、实验背景</strong></a></li>
+<li><a href="#%E4%BA%8C-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><strong>二、实验目的</strong></a></li>
+<li><a href="#%E4%B8%89-%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE"><strong>三、实验数据</strong></a></li>
+<li><a href="#%E5%9B%9B-%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><strong>四、实验要求</strong></a></li>
+<li><a href="#%E4%BA%94-%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4"><strong>五、实验步骤</strong></a>
+<ul>
+<li><a href="#%E4%B8%80%E4%B8%BB%E6%88%90%E5%88%86%E5%8F%98%E6%8D%A2"><strong>（一）主成分变换</strong></a></li>
+<li><a href="#%E4%BA%8C%E7%94%A8%E5%85%A8%E8%89%B2%E5%BD%B1%E5%83%8F%E4%BB%A3%E6%9B%BF%E7%AC%AC%E4%B8%80%E4%B8%BB%E6%88%90%E5%88%86%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88"><strong>（二）用全色影像代替第一主成分，实现数据融合</strong></a></li>
+<li><a href="#%E4%B8%89%E4%B8%BB%E6%88%90%E5%88%86%E9%80%86%E5%8F%98%E6%8D%A2"><strong>（三）主成分逆变换</strong></a></li>
+<li><a href="#%E5%9B%9B%E8%87%AA%E7%84%B6%E8%89%B2%E5%BD%A9%E5%8F%98%E6%8D%A2"><strong>（四）自然色彩变换</strong></a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%AD-%E5%AE%9E%E9%AA%8C%E6%80%BB%E7%BB%93"><strong>六、实验总结</strong></a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://blog.manchan.ml/post/erdas-92-an-zhuang-jiao-cheng/">
+              <h3 class="post-title">
+                ERDAS 9.2安装教程
+              </h3>
+            </a>
+          </div>
+        
+
+<div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'wJNv5zNoDe6V3ceQkkcuRxjs-gzGzoHsz',
+            appKey: 'CfqUnwWClfR3kNmxOIIGD4jY',
+			visitor: true, // 阅读量统计
+			avatar:'mp',   // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
+			recordIP: true, // 记录IP
+			requiredFields: ['nick','mail'], //必需项
+			placeholder:'快来评论吧~' // 屏幕占位符
+        })
+    </script>
+
+
+
+        
+
+        <div class="site-footer">
+  <p>Copyright &copy; 2020.Manchan All rights reserved.
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>.</p>
+  <a class="rss" href="https://blog.manchan.ml/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

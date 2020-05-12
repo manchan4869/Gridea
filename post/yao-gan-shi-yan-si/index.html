@@ -1,0 +1,274 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>遥感实验：DEM数据与遥感影像复合 | Manchan&#39;s Blog</title>
+<link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1589285007500">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.manchan.ml/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="遥感实验：DEM数据与遥感影像复合 | Manchan&#39;s Blog - Atom Feed" href="https://blog.manchan.ml/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+    <meta name="description" content="实验四 DEM数据与遥感影像复合
+一、实验背景
+非遥感数据与遥感数据复合是提高遥感影像解译精度的重要方法之一。彩色空间变换利用HIS（明度、色度和饱和度）色空间的特点，在信息融合方面取得了较好的效果。在遥感影像的处理中，它多用于多源影像的复..." />
+    <meta name="keywords" content="ERDAS,遥感" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://blog.manchan.ml">
+  <img class="avatar" src="https://blog.manchan.ml/images/avatar.png?v=1589285007500" alt="">
+  </a>
+  <h1 class="site-title">
+    Manchan&#39;s Blog
+  </h1>
+  <p class="site-description">
+    <b>まん酱の记事与随笔</b>
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              遥感实验：DEM数据与遥感影像复合
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-05-12
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://blog.manchan.ml/tag/erdas/" class="post-tag">
+                  # ERDAS
+                </a>
+              
+                <a href="https://blog.manchan.ml/tag/yao-gan/" class="post-tag">
+                  # 遥感
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://i.loli.net/2020/05/12/zRO9svPkQwbjHca.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p><strong>实验四 DEM数据与遥感影像复合</strong></p>
+<h2 id="一-实验背景"><strong>一、实验背景</strong></h2>
+<p>非遥感数据与遥感数据复合是提高遥感影像解译精度的重要方法之一。彩色空间变换利用HIS（明度、色度和饱和度）色空间的特点，在信息融合方面取得了较好的效果。在遥感影像的处理中，它多用于多源影像的复合，将不同传感器获得的同一景物的影像或者是同一传感器获得的不同分辨率的影像经过色彩变换处理后，获得一幅合成影像，提高图像的解译能力。</p>
+<h2 id="二-实验目的"><strong>二、实验目的</strong></h2>
+<p>熟练掌握ERDAS<br>
+IMAGINE彩色变换和信息融合技术，利用该方法实现非遥感数据与遥感数据复合，从而达到图像增强的目的。</p>
+<h2 id="三-实验数据"><strong>三、实验数据</strong></h2>
+<p>TM影像（eldoatm.img）、DEM影像（eldodem.img）</p>
+<h2 id="四-实验要求"><strong>四、实验要求</strong></h2>
+<p>（1）色彩变换</p>
+<p>（2）用DEM数据替换IHS图像中的H分量。</p>
+<p>（3）色彩逆变换，实现DEM数据与TM数据的融合。</p>
+<h2 id="五-实验步骤"><strong>五、实验步骤</strong></h2>
+<h3 id="一色彩变换"><strong>（一）色彩变换</strong></h3>
+<p>1.选择Interpreter-Spectral Enhancement-RGB to IHS…命令，打开RGB to IHS对话框。</p>
+<figure data-type="image" tabindex="1"><img src="https://blog.manchan.ml/post-images/c8a913abfd9eda928ad31292330226ec.png" alt="" loading="lazy"></figure>
+<p>2.选择处理图像文件（Input File）为eldoatm.img</p>
+<p>3.在Output File选择输出文件保存的路径和文件名（ihs.img）</p>
+<p>4.Coordinate Type：坐标系统类型，选择Map</p>
+<p>5.Subset Definition：定义变换区域整幅图像</p>
+<p>6.确定参与色彩变换的3个波段</p>
+<p>7.选中Ignore Zero in Stats复选框</p>
+<figure data-type="image" tabindex="2"><img src="https://blog.manchan.ml/post-images/479ab80dd7edc8cf1b7d8cb3cc6b8610.png" alt="" loading="lazy"></figure>
+<ol>
+<li>单击OK按钮，执行色彩变换。变换后的结果如下所示：</li>
+</ol>
+<figure data-type="image" tabindex="3"><img src="https://blog.manchan.ml/post-images/4431fbab61ed3c5599b2392bda440c49.png" alt="" loading="lazy"></figure>
+<h3 id="二用dem数据替换ihs图像中的h分量"><strong>（二）用DEM数据替换IHS图像中的H分量</strong></h3>
+<p>由于明度I分量决定图像的空间分辨率，经常用在不同传感器影像的复合中，在变换中用高分辨率影像代替该分量，使得到的影像既具有较高的分辨率又具有丰富的光谱信息；S、H分量包含图像的光谱信息，本实验用DEM代替其色调H，以提高变换后的视觉效果。</p>
+<p>由于H分量属于IHS图像的第二层，因此在利用Layer<br>
+Stack命令重新生成图层时，保持IHS图像的第1、3层不变，在两者中间插入DEM数据，即可实现DEM数据对IHS图像中H分量的替换。在替换之前，首先对DEM数据进行拉伸处理，操作步骤如下：</p>
+<p>选择Main-Image Interpreter-Radiometric Enhancement-Histogram<br>
+Equalization命令，打开Histogram Equalization对话框，在Histogram<br>
+Equalization对话框中进行如下设置。点击OK按钮执行，结果如下：</p>
+<figure data-type="image" tabindex="4"><img src="https://blog.manchan.ml/post-images/142c7eb0e9bb5b7c41473753c6c34afd.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://blog.manchan.ml/post-images/7f493047fca49a729fed0c7cb36d7929.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://blog.manchan.ml/post-images/381f584fe8c21c7bcc84a5947b65daeb.png" alt="" loading="lazy"></figure>
+<p>对原始DEM数据进行拉伸处理后，利用Layer<br>
+Stack命令，用拉伸后的DEM数据代替原始图像中的H分量，具体操作如下：</p>
+<p>1.选择Interpreter-Utilities-Layer Stack命令，打开Layer Selection and<br>
+Stacking对话框。</p>
+<figure data-type="image" tabindex="7"><img src="https://blog.manchan.ml/post-images/c46fc6a68bfbfcd5149313193580b5b5.png" alt="" loading="lazy"></figure>
+<p>2.选择要加载的文件。操作如下：首先打开IHS图像，在Layer中选择要加载的图层1，单击Add命令加载，作为I＇。然后打开equalizatiom.img文件，在Layer中选择图层1，单击Add命令加载，作为H＇。最后重新打开IHS图像，在Layer中选择要加载的图层3，单击Add命令加载，作为S＇。</p>
+<p>3.在Output File中选择输出文件的路径和文件名（newihs.img）</p>
+<p>4.选中Ignore Zero in Stats复选框</p>
+<figure data-type="image" tabindex="8"><img src="https://blog.manchan.ml/post-images/a8791a54f4689f96c951b49a45f3ce78.png" alt="" loading="lazy"></figure>
+<p>5.单击OK按钮，执行Layer Stack命令。执行后结果如下所示：</p>
+<figure data-type="image" tabindex="9"><img src="https://blog.manchan.ml/post-images/1e10e48c6ca23c99edb1cbb6a95a074d.png" alt="" loading="lazy"></figure>
+<h3 id="三色彩逆变换"><strong>（三）色彩逆变换</strong></h3>
+<p>1.打开IHS to RGB对话框；选择Interpreter-Spectral Enhancement-IHS to RGB命令。</p>
+<figure data-type="image" tabindex="10"><img src="https://blog.manchan.ml/post-images/4f52b0cc1e834ac020cd35d6b05e3b98.png" alt="" loading="lazy"></figure>
+<p>2.选择处理图像文件（Input File）中选择在第二步中新生成的IHS图像。</p>
+<p>3.在Output File选择输出文件保存的路径和文件名（newrgb.img）</p>
+<p>4.选择Stretch I&amp;S命令，对I、S两分量进行拉伸。</p>
+<p>5.选中Ignore Zero in Stats复选框。</p>
+<figure data-type="image" tabindex="11"><img src="https://blog.manchan.ml/post-images/e0f6c793d215b31ee1aa3cd556fa7c99.png" alt="" loading="lazy"></figure>
+<p>6.单击OK按钮，执行色彩逆变换，变换后的效果如下所示：</p>
+<figure data-type="image" tabindex="12"><img src="https://blog.manchan.ml/post-images/061d363fdb0500ad5b314a14fca08003.png" alt="" loading="lazy"></figure>
+<p>7.对比图：</p>
+<figure data-type="image" tabindex="13"><img src="https://blog.manchan.ml/post-images/e5bae7d6daf32cf15e22c2c764d6e470.png" alt="" loading="lazy"></figure>
+<h2 id="六-实验总结"><strong>六、实验总结</strong></h2>
+<p>通过该实验掌握了ERDAS的彩色变换和信息融合技术，利用该方法实现了非遥感数据与遥感数据复合，从而达到图像增强的目的。也更加熟练了ERDAS的用法。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E5%AE%9E%E9%AA%8C%E8%83%8C%E6%99%AF"><strong>一、实验背景</strong></a></li>
+<li><a href="#%E4%BA%8C-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><strong>二、实验目的</strong></a></li>
+<li><a href="#%E4%B8%89-%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE"><strong>三、实验数据</strong></a></li>
+<li><a href="#%E5%9B%9B-%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><strong>四、实验要求</strong></a></li>
+<li><a href="#%E4%BA%94-%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4"><strong>五、实验步骤</strong></a>
+<ul>
+<li><a href="#%E4%B8%80%E8%89%B2%E5%BD%A9%E5%8F%98%E6%8D%A2"><strong>（一）色彩变换</strong></a></li>
+<li><a href="#%E4%BA%8C%E7%94%A8dem%E6%95%B0%E6%8D%AE%E6%9B%BF%E6%8D%A2ihs%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%9A%84h%E5%88%86%E9%87%8F"><strong>（二）用DEM数据替换IHS图像中的H分量</strong></a></li>
+<li><a href="#%E4%B8%89%E8%89%B2%E5%BD%A9%E9%80%86%E5%8F%98%E6%8D%A2"><strong>（三）色彩逆变换</strong></a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%AD-%E5%AE%9E%E9%AA%8C%E6%80%BB%E7%BB%93"><strong>六、实验总结</strong></a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://blog.manchan.ml/post/yao-gan-shi-yan-san/">
+              <h3 class="post-title">
+                遥感实验：基于主成分分析的遥感图像模拟真彩色融合
+              </h3>
+            </a>
+          </div>
+        
+
+<div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'wJNv5zNoDe6V3ceQkkcuRxjs-gzGzoHsz',
+            appKey: 'CfqUnwWClfR3kNmxOIIGD4jY',
+			visitor: true, // 阅读量统计
+			avatar:'mp',   // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
+			recordIP: true, // 记录IP
+			requiredFields: ['nick','mail'], //必需项
+			placeholder:'快来评论吧~' // 屏幕占位符
+        })
+    </script>
+
+
+
+        
+
+        <div class="site-footer">
+  <p>Copyright &copy; 2020.Manchan All rights reserved.
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>.</p>
+  <a class="rss" href="https://blog.manchan.ml/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

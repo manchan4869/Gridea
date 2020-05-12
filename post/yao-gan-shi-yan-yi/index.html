@@ -2,11 +2,11 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>遥感实验（一） 几何校正 | manchan&#39;s blog</title>
-<link rel="shortcut icon" href="https://jpzxjt.coding-pages.com//favicon.ico?v=1589194715971">
+<title>遥感实验：几何校正 | Manchan&#39;s Blog</title>
+<link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1589285007500">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-<link rel="stylesheet" href="https://jpzxjt.coding-pages.com//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="遥感实验（一） 几何校正 | manchan&#39;s blog - Atom Feed" href="https://jpzxjt.coding-pages.com//atom.xml">
+<link rel="stylesheet" href="https://blog.manchan.ml/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="遥感实验：几何校正 | Manchan&#39;s Blog - Atom Feed" href="https://blog.manchan.ml/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
@@ -14,7 +14,7 @@
 
     <meta name="description" content="一、实验背景
 引起图像几何变形一般分为两大类:系统性和非系统性。系统性一般由传感器本身引起，有规律可循和可预测性，可以用传感器模型来校正，卫星地面接收站已经完成这项工作;非系统性几何变形是不规律的，它可以是传感器平台本身的高度、姿态等不稳定..." />
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="遥感,ENVI" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -22,14 +22,14 @@
     <div class="main">
       <div class="main-content">
         <div class="site-header">
-  <a href="https://jpzxjt.coding-pages.com/">
-  <img class="avatar" src="https://jpzxjt.coding-pages.com//images/avatar.png?v=1589194715971" alt="">
+  <a href="https://blog.manchan.ml">
+  <img class="avatar" src="https://blog.manchan.ml/images/avatar.png?v=1589285007500" alt="">
   </a>
   <h1 class="site-title">
-    manchan&#39;s blog
+    Manchan&#39;s Blog
   </h1>
   <p class="site-description">
-    まん酱の记事与随笔
+    <b>まん酱の记事与随笔</b>
   </p>
   <div class="menu-container">
     
@@ -76,7 +76,7 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              遥感实验（一） 几何校正
+              遥感实验：几何校正
             </h2>
             <div class="post-info">
               <span>
@@ -86,7 +86,17 @@
                 4 min read
               </span>
               
+                <a href="https://blog.manchan.ml/tag/yao-gan/" class="post-tag">
+                  # 遥感
+                </a>
+              
+                <a href="https://blog.manchan.ml/tag/envi/" class="post-tag">
+                  # ENVI
+                </a>
+              
             </div>
+            
+              <img class="post-feature-image" src="https://i.loli.net/2020/05/11/WaqELB92d3GnO1H.png" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
@@ -99,52 +109,52 @@
 <p>bldr_sp.img spot4 数据文件、bldr_tm.img TM 数据文件、ENVI Classic软件。</p>
 <h2 id="四-实验步骤"><strong>四、实验步骤</strong></h2>
 <p>1.打开ENVI Classic软件。</p>
-<figure data-type="image" tabindex="1"><img src="https://jpzxjt.coding-pages.com//post-images/80650a48739ac0a0e76646aafa04436a.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://blog.manchan.ml/post-images/80650a48739ac0a0e76646aafa04436a.png" alt="" loading="lazy"></figure>
 <p>2.选择File-Open Image File,将bldr_sp.img spot4 数据文件和bldr_tm.img TM<br>
 数据文件打开。</p>
-<figure data-type="image" tabindex="2"><img src="https://jpzxjt.coding-pages.com//post-images/9c6ea2d8b483872c184bf2b9d025d860.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="3"><img src="https://jpzxjt.coding-pages.com//post-images/825d4a7dde77945973df084ef82ea683.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://blog.manchan.ml/post-images/9c6ea2d8b483872c184bf2b9d025d860.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://blog.manchan.ml/post-images/825d4a7dde77945973df084ef82ea683.png" alt="" loading="lazy"></figure>
 <p>3.启动几何校正模块。依次点击Map-Registration-Select GCPs:Image to Image。</p>
-<figure data-type="image" tabindex="4"><img src="https://jpzxjt.coding-pages.com//post-images/08f6b3012ff5fc3dab597bb55eb52ef0.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://blog.manchan.ml/post-images/08f6b3012ff5fc3dab597bb55eb52ef0.png" alt="" loading="lazy"></figure>
 <ol>
 <li>选择显示SPOT文件的Display为基准图像（Base<br>
 Image），显示TM文件的Display为待校正图像（Warp<br>
 Image），点击OK按钮，进入采集地面控制点。</li>
 </ol>
-<figure data-type="image" tabindex="5"><img src="https://jpzxjt.coding-pages.com//post-images/79996ea3c40c3c72de3ef57beee6f236.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="6"><img src="https://jpzxjt.coding-pages.com//post-images/090c21ed31a3852b60fa50f3aca7246e.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://blog.manchan.ml/post-images/79996ea3c40c3c72de3ef57beee6f236.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://blog.manchan.ml/post-images/090c21ed31a3852b60fa50f3aca7246e.png" alt="" loading="lazy"></figure>
 <p>5.采集地面控制点，在两个图像中选取相同位置的点，在Ground Control Points<br>
 Selection上，单击Add Point按钮，将当前找到的点收集。</p>
-<figure data-type="image" tabindex="7"><img src="https://jpzxjt.coding-pages.com//post-images/2ffab0c7fff2ddfa43ce557a487c64f3.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://blog.manchan.ml/post-images/2ffab0c7fff2ddfa43ce557a487c64f3.png" alt="" loading="lazy"></figure>
 <p>6.用同样的方法继续寻找其余的点，当选择控制点的数量达到3时，RMS被自动计算。Ground<br>
 Control Points<br>
 Selection上的Predict按钮可用，这时在基准图像显示窗口上面定位一个特征点，单击Predict<br>
 按钮，校正图像显示窗口上会自动预测区域，适当调整-一下位置，单击AddPoint按钮，将当前找到的点收集。随着控制点数量的增多，预测点的精度越来越精确。</p>
-<figure data-type="image" tabindex="8"><img src="https://jpzxjt.coding-pages.com//post-images/f502cdc67ba0ef19f0b8224658c5e4aa.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://blog.manchan.ml/post-images/f502cdc67ba0ef19f0b8224658c5e4aa.png" alt="" loading="lazy"></figure>
 <p>7.选择Image to Image GCP List上的Options-Order Points by<br>
 Error,按照RMS值由高到低排序。对于RMS过高，可以是直接删除，选择此行，按Delete按钮;也可以在两个图像的窗口上，将十字光标重新定位到正确的位置，点击ImagetoImageGCP<br>
 List上的Update按钮进行微调。</p>
-<figure data-type="image" tabindex="9"><img src="https://jpzxjt.coding-pages.com//post-images/dee0d2915d50fbc8afdd9b96bc25bc79.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="10"><img src="https://jpzxjt.coding-pages.com//post-images/112bf651607cdfb6018167b206e10799.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://blog.manchan.ml/post-images/dee0d2915d50fbc8afdd9b96bc25bc79.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://blog.manchan.ml/post-images/112bf651607cdfb6018167b206e10799.png" alt="" loading="lazy"></figure>
 <p>8.在Ground Control Points<br>
 Selection上，RMS值小于1个像素时，则表示点的数量足够且分布均匀，完成控制点的选择。</p>
-<figure data-type="image" tabindex="11"><img src="https://jpzxjt.coding-pages.com//post-images/9c4ae69357efba1161305403989dfe56.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="11"><img src="https://blog.manchan.ml/post-images/9c4ae69357efba1161305403989dfe56.png" alt="" loading="lazy"></figure>
 <p>9.在Ground Control Points Selection上，选择File-Save GCPs to<br>
 ASCII,将控制点保存。</p>
-<figure data-type="image" tabindex="12"><img src="https://jpzxjt.coding-pages.com//post-images/02af01dff17197abf5a1667c89de97b7.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="13"><img src="https://jpzxjt.coding-pages.com//post-images/71fa8bf9d63c7533b6bcf09738e2b709.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://blog.manchan.ml/post-images/02af01dff17197abf5a1667c89de97b7.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="13"><img src="https://blog.manchan.ml/post-images/71fa8bf9d63c7533b6bcf09738e2b709.png" alt="" loading="lazy"></figure>
 <p>10.在Ground Control Points Selection上，依次点击Options-Warp File(as Image to<br>
 Map)，选择校正文件(TM文件)。</p>
-<figure data-type="image" tabindex="14"><img src="https://jpzxjt.coding-pages.com//post-images/b131c4a0907eee856916ae32813820e1.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="14"><img src="https://blog.manchan.ml/post-images/b131c4a0907eee856916ae32813820e1.png" alt="" loading="lazy"></figure>
 <p>11.投影参数不变，在X和Y的像元大小输人30m,<br>
 按回车，图像输出大小自动更改。校正方法选择多项式(2次)。重采样选择Bilinear,设置背景值(Background)<br>
 为0。选择输出路径和文件名，单击OK按钮。得到校正后的图像。</p>
-<figure data-type="image" tabindex="15"><img src="https://jpzxjt.coding-pages.com//post-images/5a7c9e49e37dd88d785115ccb037ed22.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="16"><img src="https://jpzxjt.coding-pages.com//post-images/15ce2b558928cd3c619e3aba1dedbeb1.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="15"><img src="https://blog.manchan.ml/post-images/5a7c9e49e37dd88d785115ccb037ed22.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="16"><img src="https://blog.manchan.ml/post-images/15ce2b558928cd3c619e3aba1dedbeb1.png" alt="" loading="lazy"></figure>
 <p>12.检验校正结果。在校正后的图像中依次点击Tools-Link-Geographic<br>
 Link，将所有的“off”改称“on”。就可以使用十字标进行对比查看。</p>
-<figure data-type="image" tabindex="17"><img src="https://jpzxjt.coding-pages.com//post-images/2d9e92136746df8ea67f4858b5db0ba9.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="18"><img src="https://jpzxjt.coding-pages.com//post-images/be2b0777bfc932b6a6f228373d51e8d6.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="17"><img src="https://blog.manchan.ml/post-images/2d9e92136746df8ea67f4858b5db0ba9.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="18"><img src="https://blog.manchan.ml/post-images/be2b0777bfc932b6a6f228373d51e8d6.png" alt="" loading="lazy"></figure>
 <h2 id="五-实验总结"><strong>五、实验总结</strong></h2>
 <p>通过这次实验我学会了使用ENVI软件进行对遥感图像的几何校正。实验中最麻烦的地方就是打地面控制点，为了精确需要打9个以上的地面控制点，而实验数据本身比较模糊，在打控制点的时候比较麻烦，很容易造成较大的误差。实验过程不复杂但是很需要耐心，相信通过这次实验已经大概了解了ENVI<br>
 Classic的简单操作。</p>
@@ -171,7 +181,7 @@ Classic的简单操作。</p>
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://jpzxjt.coding-pages.com/post/valine-ping-lun-xi-tong/">
+            <a href="https://blog.manchan.ml/post/valine-ping-lun-xi-tong/">
               <h3 class="post-title">
                 Valine评论系统
               </h3>
@@ -185,20 +195,22 @@ Classic的简单操作。</p>
             el: '#vcomments',
             appId: 'wJNv5zNoDe6V3ceQkkcuRxjs-gzGzoHsz',
             appKey: 'CfqUnwWClfR3kNmxOIIGD4jY',
-			visitor:true, // 阅读量统计
+			visitor: true, // 阅读量统计
 			avatar:'mp',   // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
-			recordIP:true, // 记录IP
-			requiredFields: ['nick'], //必需项
+			recordIP: true, // 记录IP
+			requiredFields: ['nick','mail'], //必需项
 			placeholder:'快来评论吧~' // 屏幕占位符
         })
     </script>
 
-	
+
+
         
 
         <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://jpzxjt.coding-pages.com//atom.xml" target="_blank">
+  <p>Copyright &copy; 2020.Manchan All rights reserved.
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>.</p>
+  <a class="rss" href="https://blog.manchan.ml/atom.xml" target="_blank">
     <i class="ri-rss-line"></i> RSS
   </a>
 </div>
