@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://jpzxjt.coding-pages.com/</id>
+    <id>https://blog.manchan.ml</id>
     <title>Manchan&apos;s Blog</title>
-    <updated>2020-05-12T07:54:41.055Z</updated>
+    <updated>2020-05-12T08:48:40.890Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://jpzxjt.coding-pages.com/"/>
-    <link rel="self" href="https://jpzxjt.coding-pages.com/atom.xml"/>
+    <link rel="alternate" href="https://blog.manchan.ml"/>
+    <link rel="self" href="https://blog.manchan.ml/atom.xml"/>
     <subtitle>&lt;b&gt;まん酱の记事与随笔&lt;/b&gt;</subtitle>
-    <logo>https://jpzxjt.coding-pages.com/images/avatar.png</logo>
-    <icon>https://jpzxjt.coding-pages.com/favicon.ico</icon>
+    <logo>https://blog.manchan.ml/images/avatar.png</logo>
+    <icon>https://blog.manchan.ml/favicon.ico</icon>
     <rights>All rights reserved 2020, Manchan&apos;s Blog</rights>
     <entry>
         <title type="html"><![CDATA[ERDAS 9.2安装教程]]></title>
-        <id>https://jpzxjt.coding-pages.com/post/erdas-92-an-zhuang-jiao-cheng/</id>
-        <link href="https://jpzxjt.coding-pages.com/post/erdas-92-an-zhuang-jiao-cheng/">
+        <id>https://blog.manchan.ml/post/erdas-92-an-zhuang-jiao-cheng/</id>
+        <link href="https://blog.manchan.ml/post/erdas-92-an-zhuang-jiao-cheng/">
         </link>
         <updated>2020-05-12T04:38:02.000Z</updated>
         <summary type="html"><![CDATA[<p>以下内容针对64位系统下ERDAS 9.2的安装</p>
@@ -23,8 +23,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[如何复制他人csdn博客文章到自己博客下]]></title>
-        <id>https://jpzxjt.coding-pages.com/post/ru-he-fu-zhi-ta-ren-csdn-bo-ke-wen-zhang-dao-zi-ji-bo-ke-xia/</id>
-        <link href="https://jpzxjt.coding-pages.com/post/ru-he-fu-zhi-ta-ren-csdn-bo-ke-wen-zhang-dao-zi-ji-bo-ke-xia/">
+        <id>https://blog.manchan.ml/post/ru-he-fu-zhi-ta-ren-csdn-bo-ke-wen-zhang-dao-zi-ji-bo-ke-xia/</id>
+        <link href="https://blog.manchan.ml/post/ru-he-fu-zhi-ta-ren-csdn-bo-ke-wen-zhang-dao-zi-ji-bo-ke-xia/">
         </link>
         <updated>2020-05-11T18:44:34.000Z</updated>
         <summary type="html"><![CDATA[<p>CSDN是中文第一大互联网技术网站,上面有很多好的文章,有时候需要复制别人的文章到自己的文章下进行修改重新发布,这要怎样做呢?</p>
@@ -34,57 +34,57 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Markdown语法|LaTex数学公式]]></title>
-        <id>https://jpzxjt.coding-pages.com/post/markdown-yu-fa-orlatex-shu-xue-gong-shi/</id>
-        <link href="https://jpzxjt.coding-pages.com/post/markdown-yu-fa-orlatex-shu-xue-gong-shi/">
+        <id>https://blog.manchan.ml/post/markdown-yu-fa-orlatex-shu-xue-gong-shi/</id>
+        <link href="https://blog.manchan.ml/post/markdown-yu-fa-orlatex-shu-xue-gong-shi/">
         </link>
         <updated>2020-05-11T18:37:44.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[如何用在Typora中添加数学公式?]]></title>
-        <id>https://jpzxjt.coding-pages.com/post/ru-he-yong-zai-typora-zhong-tian-jia-shu-xue-gong-shi/</id>
-        <link href="https://jpzxjt.coding-pages.com/post/ru-he-yong-zai-typora-zhong-tian-jia-shu-xue-gong-shi/">
+        <id>https://blog.manchan.ml/post/ru-he-yong-zai-typora-zhong-tian-jia-shu-xue-gong-shi/</id>
+        <link href="https://blog.manchan.ml/post/ru-he-yong-zai-typora-zhong-tian-jia-shu-xue-gong-shi/">
         </link>
         <updated>2020-05-11T17:52:49.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Markdown: 基础]]></title>
-        <id>https://jpzxjt.coding-pages.com/post/markdown-ji-chu/</id>
-        <link href="https://jpzxjt.coding-pages.com/post/markdown-ji-chu/">
+        <id>https://blog.manchan.ml/post/markdown-ji-chu/</id>
+        <link href="https://blog.manchan.ml/post/markdown-ji-chu/">
         </link>
         <updated>2020-05-11T17:32:07.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Markdown: 语法]]></title>
-        <id>https://jpzxjt.coding-pages.com/post/markdown-yu-fa/</id>
-        <link href="https://jpzxjt.coding-pages.com/post/markdown-yu-fa/">
+        <id>https://blog.manchan.ml/post/markdown-yu-fa/</id>
+        <link href="https://blog.manchan.ml/post/markdown-yu-fa/">
         </link>
         <updated>2020-05-11T16:45:00.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[数据的处理方法：标准化]]></title>
-        <id>https://jpzxjt.coding-pages.com/post/shu-ju-de-chu-li-fang-fa-biao-zhun-hua/</id>
-        <link href="https://jpzxjt.coding-pages.com/post/shu-ju-de-chu-li-fang-fa-biao-zhun-hua/">
+        <id>https://blog.manchan.ml/post/shu-ju-de-chu-li-fang-fa-biao-zhun-hua/</id>
+        <link href="https://blog.manchan.ml/post/shu-ju-de-chu-li-fang-fa-biao-zhun-hua/">
         </link>
         <updated>2020-05-11T15:10:58.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[ENVI实验：图像的融合与镶嵌]]></title>
-        <id>https://jpzxjt.coding-pages.com/post/envi-shi-yan-tu-xiang-de-rong-he-yu-xiang-qian/</id>
-        <link href="https://jpzxjt.coding-pages.com/post/envi-shi-yan-tu-xiang-de-rong-he-yu-xiang-qian/">
+        <id>https://blog.manchan.ml/post/envi-shi-yan-tu-xiang-de-rong-he-yu-xiang-qian/</id>
+        <link href="https://blog.manchan.ml/post/envi-shi-yan-tu-xiang-de-rong-he-yu-xiang-qian/">
         </link>
         <updated>2020-05-11T11:06:19.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[ENVI实验：几何校正]]></title>
-        <id>https://jpzxjt.coding-pages.com/post/envi-shi-yan-ji-he-xiao-zheng/</id>
-        <link href="https://jpzxjt.coding-pages.com/post/envi-shi-yan-ji-he-xiao-zheng/">
+        <id>https://blog.manchan.ml/post/envi-shi-yan-ji-he-xiao-zheng/</id>
+        <link href="https://blog.manchan.ml/post/envi-shi-yan-ji-he-xiao-zheng/">
         </link>
         <updated>2020-05-11T10:39:22.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Valine评论系统]]></title>
-        <id>https://jpzxjt.coding-pages.com/post/valine-ping-lun-xi-tong/</id>
-        <link href="https://jpzxjt.coding-pages.com/post/valine-ping-lun-xi-tong/">
+        <id>https://blog.manchan.ml/post/valine-ping-lun-xi-tong/</id>
+        <link href="https://blog.manchan.ml/post/valine-ping-lun-xi-tong/">
         </link>
         <updated>2020-05-10T18:03:08.000Z</updated>
         <summary type="html"><![CDATA[<p>Gridea提供了两个评论系统，<a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md">Gitalk</a>和<a href="https://github.com/SukkaW/DisqusJS">disqus</a>。Gitalk需要使用Github账号登录，对于没有github账号的人来说不太方便，disqus目前在国内不可用。找了好久，发现了<a href="https://valine.js.org//">valine</a>这个评论系统。</p>
