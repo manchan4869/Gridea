@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>在 Gridea 发布的网站中使用 Jsdelivr | Manchan&#39;s Blog</title>
-<link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1589699189756">
+<link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1589699751425">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://blog.manchan.ml/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="在 Gridea 发布的网站中使用 Jsdelivr | Manchan&#39;s Blog - Atom Feed" href="https://blog.manchan.ml/atom.xml">
@@ -37,7 +37,7 @@ function refineContent(str){
       <div class="main-content">
         <div class="site-header">
   <a href="https://blog.manchan.ml">
-  <img class="avatar" src="https://blog.manchan.ml/images/avatar.png?v=1589699189756" alt="">
+  <img class="avatar" src="https://blog.manchan.ml/images/avatar.png?v=1589699751425" alt="">
   </a>
   <h1 class="site-title">
     Manchan&#39;s Blog
@@ -111,7 +111,7 @@ function refineContent(str){
 
 			   <h2 id="替换文章图片">替换文章图片</h2>
 <p>代码如下：</p>
-<pre><code class="language-ejs">&lt;%- Content();%&gt;&lt;%  -%&gt;
+<pre><code>&lt;%- Content();%&gt;&lt;%  -%&gt;
 &lt;%
 function refineContent(str){
    indexC = str.indexOf('&lt;img');
@@ -133,6 +133,7 @@ function Content(){
     return con;
 }
 %&gt;
+
 </code></pre>
 <p>使用以上代码的时候只需要把 <code>post.ejs</code> 中的 <code>&lt;%- post.content %&gt;</code> 替换成如上代码即可。</p>
 <h2 id="替换-post-feature-头图">替换 post-feature 头图</h2>
