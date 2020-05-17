@@ -1,0 +1,680 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SQL例子 | Manchan&#39;s Blog</title>
+<link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1589699189756">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.manchan.ml/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="SQL例子 | Manchan&#39;s Blog - Atom Feed" href="https://blog.manchan.ml/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8f120d9fed3fd2ee8687f27f6e7ae7f6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <meta name="description" content="CREATE DATABASE [S-T];
+
+CREATE TABLE Student
+	(Sno CHAR(9) PRIMARY KEY,
+	Sname CHAR(20) UNIQUE,
+	Ssex CHAR(2)default '男'..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://blog.manchan.ml">
+  <img class="avatar" src="https://blog.manchan.ml/images/avatar.png?v=1589699189756" alt="">
+  </a>
+  <h1 class="site-title">
+    Manchan&#39;s Blog
+  </h1>
+  <p class="site-description">
+    <b>まん酱の记事与随笔</b>
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              SQL例子
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-05-15
+              </span>
+              <span>
+                13 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+
+
+
+
+
+			   <pre><code class="language-SQL">CREATE DATABASE [S-T];
+
+CREATE TABLE Student
+	(Sno CHAR(9) PRIMARY KEY,
+	Sname CHAR(20) UNIQUE,
+	Ssex CHAR(2)default '男',
+	Sage SMALLINT,
+	Sdept CHAR(20)
+	)
+CREATE TABLE Course
+	(Cno CHAR(4) PRIMARY KEY,
+	Cname CHAR(40)NOT NULL,
+	Cpno CHAR(4),
+	Ccredit SMALLINT,
+	FOREIGN KEY(Cpno) REFERENCES Course(Cno)
+	)
+CREATE TABLE SC
+	(Sno CHAR(9),
+	Cno CHAR(4),
+	Grade SMALLINT,
+	PRIMARY KEY(Sno,Cno),
+	FOREIGN KEY(Sno) REFERENCES Student(Sno),
+	FOREIGN KEY(Cno) REFERENCES Course(Cno)
+	) 
+ALTER TABLE Student 
+ADD S_entrance DATE;
+ALTER TABLE Student 
+DROP COLUMN Scome;
+ALTER TABLE Course
+ALTER COLUMN Ccredit INT;
+CREATE UNIQUE INDEX IndexSno ON Student(Sno DESC);
+CREATE UNIQUE INDEX Coucno ON Course(Cno);
+DROP INDEX IndexSno ON Student;
+DROP INDEX Coucno ON Course;
+
+SELECT Sno,Sname
+FROM Student;
+SELECT *
+FROM Student;
+SELECT *
+FROM Student
+WHERE Sdept IN('MA');
+SELECT Sname,2019-Sage,Sdept,LOWER(Sdept)
+FROM Student;
+SELECT Sname 姓名,2019-Sage 出生年份,LOWER(Sdept) 所属系
+FROM Student;
+SELECT Sno,Grade
+FROM SC
+WHERE Cno='3'
+ORDER BY Grade DESC;
+SELECT MAX(Grade),AVG(Grade)
+FROM SC
+WHERE Cno='1';
+SELECT Sno
+FROM SC;
+SELECT S1.Sno
+FROM Student S1,Student S2
+WHERE S1.Sdept=S2.Sdept AND S2.Sname='李洋'
+SELECT Sname,Sage
+FROM Student
+WHERE Sage&lt;20;
+SELECT DISTINCT Sno
+FROM SC
+WHERE Grade&lt;60;
+SELECT Sname
+FROM Student
+WHERE Sname NOT LIKE '刘%'
+SELECT Cno,Ccredit
+FROM Course
+WHERE Cname='DB_Design'
+SELECT Sname,Ssex,Sdept
+FROM Student
+WHERE Sage BETWEEN 20 AND 30;
+SELECT Sname,Ssex
+FROM Student
+WHERE Sdept IN('IS','CS','MA');
+SELECT Cno,Cname
+FROM Course
+WHERE Cpno=''
+SELECT *
+FROM Student
+ORDER BY Sdept,Sage DESC;
+SELECT Student.Sno,Sname,Ssex,Sage,Sdept,Cno,Grade
+FROM Student LEFT OUTER JOIN SC ON(Student.Sno=SC.Sno);
+SELECT COUNT(*)
+FROM Student
+SELECT SUM(Ccredit),AVG(Ccredit),MAX(Ccredit),MIN(Ccredit)
+FROM Course;
+SELECT AVG(Grade)
+FROM Student,Course,SC
+WHERE Student.Sno=SC.Sno AND Course.Cno=SC.Cno AND Sdept='IS' AND Cname='数据结构';
+SELECT *
+FROM SC A 
+WHERE Grade=
+	 (SELECT MAX(Grade)
+	  FROM SC
+	  WHERE Sno=A.Sno
+	  );
+SELECT Sdept,COUNT(*)
+FROM Student
+GROUP BY Sdept
+ORDER BY COUNT(*) DESC;
+SELECT Sdept,Ssex,COUNT(*)
+FROM Student
+GROUP BY Sdept,Ssex
+ORDER BY Sdept,Ssex DESC;
+SELECT Sno,Sname
+FROM Student
+WHERE Sno IN
+			(SELECT SC.Sno
+			 FROM SC
+			 GROUP BY SC.Sno
+			 HAVING COUNT(*)&gt;3);
+SELECT Sno,AVG(Grade),MAX(Grade),MIN(Grade),COUNT(*)
+FROM SC
+GROUP BY Sno
+SELECT Sno,AVG(Grade)
+FROM SC
+GROUP BY Sno
+HAVING COUNT(*)&gt;=2
+SELECT Sno,AVG(Grade)
+FROM SC
+GROUP BY Sno
+HAVING AVG(Grade)&gt;=80
+SELECT Sname FROM Student
+WHERE Sno IN
+			(SELECT Sno
+			 FROM SC
+			 WHERE Cno='1')
+SELECT *
+FROM Grade A
+WHERE Grade&lt;
+			(SELECT AVG(Grade)
+			 FROM SC
+			 WHERE Cno=A.Cno)
+SELECT Sname FROM Student
+WHERE Sno NOT IN
+			(SELECT Sno
+			 FROM SC
+			 WHERE Cno='1')
+SELECT Sno,Sname,Sage
+FROM Student A
+WHERE NOT EXISTS
+				(SELECT *
+				 FROM 
+				 STUDENT B
+				 WHERE A.Sage=B.Sage AND A.sno&lt;&gt;B.sno)
+SELECT Cno,Cname
+FROM Course C
+WHERE NOT EXISTS
+				(SELECT *
+				 FROM SC
+				 WHERE SC.Cno=C.Cno)
+
+
+SELECT MAX(Grade),AVG(Grade)
+From SC
+Where EXISTS
+       (SELECT*
+        From SC
+        Where Cno='1')
+
+
+SELECT Sname
+FROM Student
+WHERE NOT EXISTS
+				(SELECT *
+				 FROM SC
+				 WHERE Sno=Student.Sno AND Cno='1');
+SELECT Sname
+FROM Student
+WHERE NOT EXISTS
+				(SELECT *
+				 FROM Course
+				 WHERE NOT EXISTS
+								 (SELECT *
+								  FROM SC
+								  WHERE Sno=Student.Sno
+									AND Cno=Course.Cno));
+SELECT DISTINCT Sno
+FROM SC SCX
+WHERE NOT EXISTS
+				(SELECT *
+				 FROM SC SCY
+				 WHERE SCY.Sno='95002'and
+						NOT EXISTS
+						(SELECT *
+						 FROM SC SCZ
+						 WHERE SCZ.Sno=SCX.Sno AND
+							   SCZ.Cno=SCY.Cno));
+			 
+</code></pre>
+<pre><code class="language-SQL">ALTER TABLE Student
+DROP CONSTRAINT C1;
+ALTER TABLE Student
+DROP CONSTRAINT C3;
+ALTER TABLE Student
+DROP CONSTRAINT C4;
+ALTER TABLE Student
+DROP CONSTRAINT StudentKey;
+ALTER TABLE Course
+DROP CONSTRAINT CourseKey;
+ALTER TABLE SC
+DROP CONSTRAINT PK__SC__E6000253412EB0B6;
+ALTER TABLE SC
+DROP CONSTRAINT FK__SC__Cno__440B1D61;
+ALTER TABLE SC
+DROP CONSTRAINT FK__SC__Sno__4316F928;
+ALTER TABLE Student
+ADD CONSTRAINT P1 PRIMARY KEY(Sno);
+ALTER TABLE Student
+ADD CONSTRAINT C2 UNIQUE(Sno);
+ALTER TABLE Student
+DROP CONSTRAINT C1;
+ALTER TABLE Student
+ADD CONSTRAINT C1 CHECK(Sno BETWEEN 10000 AND 999999);
+ALTER TABLE Student
+DROP CONSTRAINT C4;
+ALTER TABLE Student
+ADD CONSTRAINT C4 CHECK(Sage&lt;40);
+ALTER TABLE Course
+ADD CONSTRAINT P2 PRIMARY KEY(Cno);
+ALTER TABLE Course
+ADD CONSTRAINT C5 UNIQUE(Cname);
+ALTER TABLE SC 
+Add CONSTRAINT P3 FOREIGN KEY(Sno)REFERENCES STUDENT(SNO); 
+ALTER TABLE SC
+Add CONSTRAINT P4 FOREIGN KEY(Cno)REFERENCES COURSE(CNO);
+
+</code></pre>
+<pre><code class="language-SQL">--创建关系表
+CREATE TABLE lakes(
+fid integer PRIMARY KEY,
+name character(64),
+shore geometry(MultiPolygon,32214)
+);
+
+CREATE TABLE road_segments(
+fid integer PRIMARY KEY,
+name character(64),
+alases character(64),
+wide double precision,
+num_lanes integer,
+centerline geometry(LineString,32214)
+);
+
+CREATE TABLE divided_routes(
+fid integer PRIMARY KEY,
+name character(64),
+num_lanes integer,
+centerline geometry(MultiLineString,32214)
+);
+
+CREATE TABLE buildings(
+fid integer PRIMARY KEY,
+name character(64),
+position geometry(point,32214),
+footpront geometry(polygon,32214)
+);
+
+CREATE TABLE ponds(
+fid integer PRIMARY KEY,
+name character(64),
+type character(64),
+shores geometry(Multi Polygon,32214)
+);
+
+CREATE TABLE name_places(
+fid integer PRIMARY KEY,
+name character(64),
+boundary geometry(MultiPolygon,32214)
+);
+
+CREATE TABLE forests(
+fid integer PRIMARY KEY,
+name character(64),
+boundary_grid geometry(MultiPolygon,32214)
+);
+
+
+CREATE TABLE streams(
+fid integer,
+name character(64),
+fromlakeid integer,
+tolakeid integer,
+centerline geometry(LineString ,32214),
+PRIMARY KEY(fid),
+FOREIGN KEY(fromlakeid) REFERENCES lakes(fid),
+FOREIGN KEY(tolakeid) REFERENCES lakes(fid)
+);
+
+CREATE TABLE bridges(
+fid integer PRIMARY KEY,
+name character(64),
+streamid integer,
+roadseg1id integer,
+roadseg2id integer,
+position geometry(Point ,32214),
+FOREIGN KEY(streamid) REFERENCES streams(fid),
+FOREIGN KEY(roadseg1id)REFERENCES road_segments(fid),
+FOREIGN KEY(roadseg2id)REFERENCES road_segments(fid)
+);
+
+CREATE TABLE islands(
+fid integer,
+name character(64),
+lakeID integer,
+footpront geometry(MultiPolygon,32214),
+PRIMARY KEY(fid),
+FOREIGN KEY(lakeID) REFERENCES lakes(fid)
+);
+
+
+--插入数据
+INSERT INTO lakes(fid,name,shore) 
+VALUES(101,'{BLUE LAKE}',ST_GeomFromText('MultiPolygon(((52 18,66 23,73 9,48 6,52 18),(59 18,67 18,67 13,59 19,59 18)))',32214));
+--
+INSERT INTO road_segments
+VALUES(102,'{Route 5}',NULL,10,2,ST_GeomFromText('LineString(0 18,10 21,16 23,28 26,44 31)',32214));
+
+INSERT INTO road_segments
+VALUES(103,'{Route 5}','{Main Street}',20,4,ST_GeomFromText('LineString(44 31,56 34,70 38)',32214));
+
+INSERT INTO road_segments
+VALUES(104,'{Route 5}',NULL,10,2,ST_GeomFromText('LineString(70 38,72 48)',32214));
+
+INSERT INTO road_segments
+VALUES(105,'{Main Street}',NULL,20,4,ST_GeomFromText('LineString(70 38,84 42)',32214));
+
+INSERT INTO road_segments
+VALUES(106,'{Dirt Road by Green Forest}',NULL,5,1,ST_GeomFromText('LineString(28 26, 28 0)',32214));
+--
+INSERT INTO divided_routes
+VALUES(119,'{Route 75}',4,ST_GeomFromText('MultiLineString((10 48,10 21,10 0),(16 0,16 23,16 48))',32214));
+
+INSERT INTO forests
+VALUES(109,'{Green Forest}',ST_GeomFromText('MultiPolygon(((28 26,28 0,84 0,84 50,62 50,56 34,44 31,28 26),(52 18,66 23,73 9,48 6,52 18)))',32214));
+--
+INSERT INTO buildings
+VALUES(113,'{123 Main Street}',ST_GeomFromText('Point(52 30)',32214),ST_GeomFromText('Polygon((50 31,54 31,54 29,50 29,50 31))',32214));
+
+INSERT INTO buildings
+VALUES(114,'{215 Main Street}',ST_GeomFromText('Point(64 33)',32214),ST_GeomFromText('Polygon((66 34,62 34,62 32,66 32,66 34))',32214));
+--
+INSERT INTO ponds
+VALUES(120,'{Stock Pond}',NULL,ST_GeomFromText('MultiPolygon(((24 44,22 42,24 40,24 44)),((26 44,28 42,26 40,26 44)))',32214));
+--
+INSERT INTO name_places
+VALUES (117,'{Ashton}',ST_GeomFromText('MultiPolygon(((62 48,84 48,84 30,56 30,56 34,62 48)))',32214));
+
+INSERT INTO name_places
+VALUES (115,'{Map Neatlines}',ST_GeomFromText('MultiPolygon(((0 0,0 48,84 48,84 0,0 0)))',32214));
+--
+INSERT INTO streams
+VALUES(111,'{Cam Stream}',101,NULL,ST_GeomFromText('LineString(38 48,44 41,41 36,44 31,52 18)',32214));
+
+INSERT INTO streams
+VALUES(112,'{Cam Stream}',101,NULL,ST_GeomFromText('LineString(76 0,78 4,73 9)',32214));
+--
+INSERT INTO bridges
+VALUES(110,'{Cam Bridges}',111,102,103,ST_GeomFromText('Point(44 31)',32214));
+--
+INSERT INTO islands
+VALUES(116,'{Goose island}',NULL,ST_GeomFromText('MultiPolygon(((59 13,59 18,67 18,67 13,59 13)))',32214));
+
+--（1）查看鹅岛的 WKT；
+SELECT ST_astext(footpront)
+FROM islands
+WHERE name='{Goose island}';
+--（2）列出你安装的 POSTGIS 自带空间数据参考名称；
+SELECT Srtext
+FROM spatial_ref_sys;
+--（3）判断蓝湖的结构是否是简单的； 
+SELECT ST_ISSIMPLE(Shore)
+FROM Lakes
+WHERE name='{BLUE LAKE}';
+--（4）获取鹅岛的边界和 MBR，并展示（用 QGIS）； 
+SELECT ST_boundary(footpront)
+FROM islands
+WHERE name='{Goose island}';
+
+SELECT ST_OrientedEnvelope(footpront)
+FROM islands
+WHERE name='{Goose island}';
+--（5）如果卡姆河发洪水会淹没周边 1km 范围区域，判断上图两个建筑物是否会被淹； 
+SELECT ST_Overlaps(buildings.footpront,ST_Buffer(Streams.centerline,1000)))
+FROM streams,buildings
+WHERE Streams.name='{Cam Stream}';
+
+
+--找出美国（USA）的邻国，给出邻国名称；
+SELECT C1.cntry_name AS &quot;Neighbors of USA&quot;
+FROM northamerica C1,northamerica C2
+WHERE ST_Touches(C1.geom,C2.geom)= true AND C2.cntry_name='United States';
+
+--给出River表中存储的所有河流流经的国家名称。
+SELECT R.name,C.cntry_name
+FROM northamerica_rivers R,northamerica C
+WHERE ST_Crosses(R.geom,C.geom);
+
+--查收距离河流最近的城市。
+SELECT C1.city_name,R1.name
+FROM northamerica_cities C1,northamerica_rivers R1
+WHERE ST_distance(C1.geom,R1.geom) &lt;
+ALL(SELECT ST_distance(C2.geom,R1.geom)
+FROM northamerica_cities C2
+WHERE C1.city_name&lt;&gt;C2.city_name);
+
+--找出圣劳伦斯河能够在300km范围内可以为哪些城市供水。
+SELECT Ci.city_name
+FROM northamerica_cities Ci,northamerica_rivers R
+WHERE ST_Overlaps(Ci.geom,ST_Buffer(R.geom,300000/(6371004*PI()/180)))=true AND R.name='St. Lawrence'; 
+
+SELECT Ci.city_name
+FROM northamerica_cities Ci,northamerica_rivers R
+WHERE ST_Contains(ST_Buffer(R.geom,300000/(6371004*PI()/180)),Ci.geom)
+AND R.name='St. Lawrence';
+
+--计算Country表中国家的人口和国土面积。
+SELECT C.cntry_name,C.Pop_cntry,C.SQKM AS &quot;Area&quot;
+FROM northamerica C;
+
+--列出各国家邻国数量；
+SELECT Co.cntry_name,COUNT (Co1.cntry_name)
+FROM northamerica Co,northamerica Co1
+WHERE ST_touches (Co.geom,Co1.geom)
+GROUP BY Co.cntry_name;
+
+--列出只有一个邻国的国家。
+SELECT Co.cntry_name
+FROM northamerica CO
+WHERE Co.cntry_name in
+(SELECT Co.cntry_name
+FROM northamerica CO,northamerica Co1
+WHERE ST_touches (Co.geom,Co1.geom)
+group by Co.cntry_name
+HAVING Count(*)=1);
+
+--哪一个国家邻国最多。
+CREATE VIEW neighbor AS
+SELECT C1.cntry_ name, COUNT(C2.cntry_ name) AS num_ nei ghbor
+FROM northamerica C1，northamerica C2
+where ST_touches(C1.geom,C2.geom)
+GROUP BY C1.cntry_ name;
+SELECT cntry_name,num_neighbor
+FROM neighbor
+WHERE num_neighbor = (
+		SELECT MAX(num_neighbor)
+		FROM neighbor
+		);
+
+--列出距离华盛顿特区5000km以内的城市；
+SELECT C2.city_name
+FROM northamerica_cities C1,northamerica_cities C2
+WHERE ST_Distance (C2.geom,C1.geom) &lt;(5000/(6371004*PI()/180))
+AND C1.city_name='Washington D.C.';
+
+--位于阿根廷和巴西的Rio Paranas河的长度是多少？
+CREATE VIEW rivercountrylength AS
+SELECT C1.cntry_name,ST_Length(ST_intersection (C1.geom,C2.geom)) AS length
+FROM northamerica C1, northamerica_rivers C2
+WHERE C2.Name='Rio Paronas';
+SELECT C1.length + C2.length
+FROM rivercountrylength C1,rivercountrylength C2
+WHERE C1.cntry_name='Argentina'AND C2.cntry_name='Brazil';
+
+--求出河流所流经的各国境内的长度。
+SELECT R.name,C.cntry_name,ST_Length(ST_Intersection(R.geom,C.geom))
+AS&quot;Length&quot;
+FROM northamerica_rivers R,northamerica C
+WHERE ST_Crosses(R.geom,C.geom)=true;
+
+--列出完全在赤道以南的国家
+SELECT C.cntry_name
+FROM northamerica C
+WHERE ST_Within(C.geom,ST_GeomFromText('POLYGON((00 00,-360 00,-360 -90,00 -90,00 00))',4326))=true;
+
+--阿根廷和巴西接壤吗？
+SELECT ST_Touches(C1.geom,C2.geom)
+FROM northamerica C1,northamerica C2
+WHERE C1.cntry_name='Argentina' AND C2.cntry_name='Brazil';
+
+
+
+
+</code></pre>
+
+			
+				
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+<div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'wJNv5zNoDe6V3ceQkkcuRxjs-gzGzoHsz',
+            appKey: 'CfqUnwWClfR3kNmxOIIGD4jY',
+			visitor: true, // 阅读量统计
+			avatar:'mp',   // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
+			recordIP: true, // 记录IP
+			requiredFields: ['nick','mail'], //必需项
+			placeholder:'快来评论吧~' // 屏幕占位符
+        })
+    </script>
+
+
+
+        
+
+        <div class="site-footer">
+  <p>Copyright &copy; 2020.Manchan All rights reserved.
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>.</p>
+  <a class="rss" href="https://blog.manchan.ml/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

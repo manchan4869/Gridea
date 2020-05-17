@@ -2,11 +2,11 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>如何复制他人csdn博客文章到自己博客下 | Manchan&#39;s Blog</title>
+<title>Git 指定不上传的文件夹 | Manchan&#39;s Blog</title>
 <link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1589699189756">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://blog.manchan.ml/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="如何复制他人csdn博客文章到自己博客下 | Manchan&#39;s Blog - Atom Feed" href="https://blog.manchan.ml/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Git 指定不上传的文件夹 | Manchan&#39;s Blog - Atom Feed" href="https://blog.manchan.ml/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
@@ -21,19 +21,15 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-    <meta name="description" content="CSDN是中文第一大互联网技术网站,上面有很多好的文章,有时候需要复制别人的文章到自己的文章下进行修改重新发布,这要怎样做呢?
+    <meta name="description" content="1.文件夹内右键git bash，输 touch .gitignore，注意中间有空格。
+2.编辑器打开生成的 .gitignore 文件，加入:
+node_modules
 
-工具/原料
+/*以及其他你想要忽略的文件或文件夹*/
 
-一篇喜欢的博客
-属于自己的csdn账号
-chrome浏览器
-
-方法/步骤
-
-
-首先,在自己喜欢的..." />
-    <meta name="keywords" content="" />
+3.保存。
+4.以后..." />
+    <meta name="keywords" content="Git" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -95,15 +91,19 @@ chrome浏览器
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              如何复制他人csdn博客文章到自己博客下
+              Git 指定不上传的文件夹
             </h2>
             <div class="post-info">
               <span>
-                2020-05-12
+                2020-05-14
               </span>
               <span>
                 1 min read
               </span>
+              
+                <a href="https://blog.manchan.ml/tag/git/" class="post-tag">
+                  # Git
+                </a>
               
             </div>
             
@@ -114,57 +114,27 @@ chrome浏览器
 
 
 
-			   <p>CSDN是中文第一大互联网技术网站,上面有很多好的文章,有时候需要复制别人的文章到自己的文章下进行修改重新发布,这要怎样做呢?</p>
-<!-- more -->
-<h2 id="工具原料">工具/原料</h2>
-<ul>
-<li>一篇喜欢的博客</li>
-<li>属于自己的csdn账号</li>
-<li>chrome浏览器</li>
-</ul>
-<h2 id="方法步骤">方法/步骤</h2>
-<ol>
-<li>
-<p>首先,在自己喜欢的博客页面,点击鼠标右键,看到如下图片,点击检查.</p>
-<figure data-type="image" tabindex="1"><img src="https://img-blog.csdnimg.cn/20181110233104307.png" alt="img" loading="lazy"></figure>
-</li>
-<li>
-<p>然后,在右边的源码里边,找到&quot;article_content&quot;标签头,可以看到左侧部分的预览界面被选中的部分就是要复制粘贴文章(包括html部分),检查左侧被选中的部分是否是自己想要的部分.</p>
-<figure data-type="image" tabindex="2"><img src="https://img-blog.csdnimg.cn/20181110233051239.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rqcm0xMQ==,size_16,color_FFFFFF,t_70" alt="img" loading="lazy"></figure>
-</li>
-<li>
-<p>之后,再右键选择该标签(&quot;article_content&quot;),如下图,选择Copy element复制(或者Cut element 剪切)该标签下的所有元素</p>
-<figure data-type="image" tabindex="3"><img src="https://img-blog.csdnimg.cn/20181110233113981.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rqcm0xMQ==,size_16,color_FFFFFF,t_70" alt="img" loading="lazy"></figure>
-</li>
-<li>
-<p>最后,在自己博客的下&quot;MarkDown编辑器&quot;粘贴即可完全复制别人的博客</p>
-<figure data-type="image" tabindex="4"><img src="https://img-blog.csdnimg.cn/20181110233130928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rqcm0xMQ==,size_16,color_FFFFFF,t_70" alt="img" loading="lazy"></figure>
-</li>
-<li>
-<p>最后结果显示</p>
-<figure data-type="image" tabindex="5"><img src="https://img-blog.csdnimg.cn/20181110233141617.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rqcm0xMQ==,size_16,color_FFFFFF,t_70" alt="img" loading="lazy"></figure>
-<p>END</p>
-</li>
-</ol>
-<h2 id="注意事项">注意事项</h2>
-<ul>
-<li>尊重版权,请标注原文作者及出处</li>
-</ul>
+			   <p>1.文件夹内右键git bash，输 touch .gitignore，注意中间有空格。</p>
+<p>2.编辑器打开生成的 .gitignore 文件，加入:</p>
+<pre><code>node_modules
+
+/*以及其他你想要忽略的文件或文件夹*/
+</code></pre>
+<p>3.保存。</p>
+<p>4.以后再add到暂存区的时候就会忽略你配置的文件或文件夹了。</p>
+<p>一般来说：git是的默认项目里也是有配置的：</p>
+<figure data-type="image" tabindex="1"><img src="https://img2018.cnblogs.com/blog/1119605/201810/1119605-20181025095256186-164574285.png" alt="img" loading="lazy"></figure>
+<p>忽略具体的文件或文件夹：</p>
+<pre><code>/target/  // 忽略这个target 目录
+log/*     // 忽略log下的所有文件
+css/*.css // 忽略css目录下的.css文件
+</code></pre>
 
 			
 				
               </div>
               <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E5%B7%A5%E5%85%B7%E5%8E%9F%E6%96%99">工具/原料</a></li>
-<li><a href="#%E6%96%B9%E6%B3%95%E6%AD%A5%E9%AA%A4">方法/步骤</a></li>
-<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
-</ul>
-</li>
-</ul>
-
+                
               </div>
             </div>
           </article>
@@ -173,9 +143,9 @@ chrome浏览器
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://blog.manchan.ml/post/markdown-yu-fa-orlatex-shu-xue-gong-shi/">
+            <a href="https://blog.manchan.ml/post/yao-gan-shi-yan-si/">
               <h3 class="post-title">
-                Markdown语法|LaTex数学公式
+                遥感实验：DEM数据与遥感影像复合
               </h3>
             </a>
           </div>
