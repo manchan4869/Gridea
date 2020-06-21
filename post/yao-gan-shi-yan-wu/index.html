@@ -1,0 +1,343 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>遥感实验：监督分类 | Manchan&#39;s Blog</title>
+<link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1592743067252">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.manchan.ml/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="遥感实验：监督分类 | Manchan&#39;s Blog - Atom Feed" href="https://blog.manchan.ml/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8f120d9fed3fd2ee8687f27f6e7ae7f6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <meta name="description" content="一、实验背景
+监督分类，又称“训练分类法”，用被确认类别的样本像元去识别其他未知类别像元的过程。它就是在分类之前通过目视判读和野外调查，对遥感图像上某些样区中图像地物的类别属性有了先验知识，对每一种类别选取一定数撒的训练样本，计算机计算每种..." />
+    <meta name="keywords" content="遥感,ENVI" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://blog.manchan.ml">
+  <img class="avatar" src="https://blog.manchan.ml/images/avatar.png?v=1592743067252" alt="">
+  </a>
+  <h1 class="site-title">
+    Manchan&#39;s Blog
+  </h1>
+  <p class="site-description">
+    <b>まん酱の记事与随笔</b>
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              遥感实验：监督分类
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-06-21
+              </span>
+              <span>
+                9 min read
+              </span>
+              
+                <a href="https://blog.manchan.ml/tag/yao-gan/" class="post-tag">
+                  # 遥感
+                </a>
+              
+                <a href="https://blog.manchan.ml/tag/envi/" class="post-tag">
+                  # ENVI
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://i.loli.net/2020/05/11/WaqELB92d3GnO1H.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+
+
+
+
+
+			   <h2 id="一-实验背景"><strong>一、实验背景</strong></h2>
+<p>监督分类，又称“训练分类法”，用被确认类别的样本像元去识别其他未知类别像元的过程。它就是在分类之前通过目视判读和野外调查，对遥感图像上某些样区中图像地物的类别属性有了先验知识，对每一种类别选取一定数撒的训练样本，计算机计算每种训练样区的统计或其他信息，同时用这些种子类别对判决函数进行训练，使其符合千对各种子类别分类的要求；随后用训练好的判决函数去对其他待分数据进行分类，使每个像元和训练样本作比较，按不同的规则将其划分到与其最相似的样本类，以此完成对整个图像的分类。</p>
+<h2 id="二-实验目的"><strong>二、实验目的</strong></h2>
+<p>熟练掌握ENVI监督分类技术，利用该方法实现遥感图像的分类。</p>
+<h2 id="三-实验数据"><strong>三、实验数据</strong></h2>
+<p>Landsat 5 TM数据(can_tmr.img)</p>
+<h2 id="四-实验步骤"><strong>四、实验步骤</strong></h2>
+<h3 id="一定义训练样本"><strong>（一）定义训练样本</strong></h3>
+<p>ENVI中是利用ROITool来定义训练样本的， 也就是把感兴趣区当做训练样本。因此，<br>
+定义训练样本的过程就是创建感兴趣区的过程。</p>
+<p><strong>第一步打开分类图像并分析图像</strong></p>
+<p>（1）打开TM图像，Band 5、4、3合成RGB显示在Display中。</p>
+<p>（2）显示的RGB图像中是模拟真彩色图像，色彩饱和，目视可解译出6类地物。</p>
+<p>（3）通过分析图像，定义6类地物样本为林地、草地、耕地、裸地、沙地和水体。</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/ec7a78d6dce3a0542b0ee6e131ea428f.png" alt="" loading="lazy"></figure>
+<p><strong>第二步 应用ROI Tools创建感兴趣区</strong></p>
+<p>（1）在主图像窗口中，选择Overlay→Region of Interest，打开ROI Tool对话框。</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/5acdf5027cf415089d8906221523bbad.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/3a92de1e23d8261806671e8eeee07ec8.png" alt="" loading="lazy"></figure>
+<p>（2）在ROI Tool对话框中，在ROI<br>
+Name字段输入样本的名称(支持中文字符)，回车确认样本名称；在Color字段中，单击右键选择一种颜色。</p>
+<p>（3）选择ROI_Type→Polygon，在Window中选择Image，在主图像窗口中绘制多边形感兴趣区。在图上分别绘制几个感兴趣区，数量根据图像大小来确定。</p>
+<p>（4）在ROI Tool对话框中,单击New<br>
+Region按钮,新建一个训练样本种类。重复(2)、(3)步骤，最终得到如下图所示的结果。</p>
+<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/aa0bd421e4282603896320b4f06afb08.png" alt="" loading="lazy"></figure>
+<p><strong>第三步 评价训练样本</strong></p>
+<p>（1）在ROI Tools对话框中，选择Options→Compute ROI Separablity.</p>
+<p>（2）在文件选择对话框时，选择输入TM图像文件，单击OK按钮。</p>
+<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/dd3ff73ffab258cfdf8394b77e85c2b0.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/55cba538426ab7926258242caff9501e.png" alt="" loading="lazy"></figure>
+<p>（3）在ROI Separability Calculation对话框中。单击Select All<br>
+Items按钮，选择所有ROI用于可分离性计算，单击OK按钮,可分离性将被计算并显示在窗口中。</p>
+<figure data-type="image" tabindex="7"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/1ecc9a474e0252476287e94c24d4368d.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/6db74523bb44f56979682c406890de2d.png" alt="" loading="lazy"></figure>
+<p>说明：ENVI为每一个感兴趣区组合计算Jeffries-Matusita距离和Transformed<br>
+Divergence。在对话框底部，根据可分离性值的大小，从小到大列出感兴趣区组合。这两个参数的值为0-2.0，大于1.9说明样本之间可分离性好，属于合格样本；小于1.8，需要重新选择样本；小于1，考虑将两类样本合成一类样本。</p>
+<p>（4）在ROI Tools对话框中，选择File→Save ROIs，将所有训练样本保存为外部文件（.<br>
+roi)</p>
+<figure data-type="image" tabindex="9"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/9a31c900f0348463b4e38c7c30c1d183.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/cb234b3c7fb1fc92deb456af93f580aa.png" alt="" loading="lazy"></figure>
+<h3 id="二执行监督分类"><strong>（二）执行监督分类</strong></h3>
+<p>根据分类的复杂度、精度需求等选择一种分类器。主菜单→Classification→Supervised→分类器类型。还包括应用于高光谱数据的波谱角(<br>
+Spectral Angle Classilication)、光谱信息散度( Spectral Information Divergence<br>
+Classifieation)和二进制编码( Binary Encoding Classification)分类方法。</p>
+<p><strong>1.最小距离</strong></p>
+<p>（1）在主菜单中，选择Classification→Supervised→Minimum<br>
+Distance，在文件输人对话框中选择TM分类图像，单击OK按钮打开Minimum<br>
+Distance参数设置对话框。</p>
+<figure data-type="image" tabindex="11"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/d1f8c6df9faacaa3c90ca83976089148.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/30dbdf31292c58e5e6bf924c97f945ad.png" alt="" loading="lazy"></figure>
+<p>（2）Select Classes from Regions：单击Select All Items按钮，选择全部的训练。</p>
+<figure data-type="image" tabindex="13"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/e912f1955d2b48a59776d31947007601.png" alt="" loading="lazy"></figure>
+<p>（3）Set Max stdev from Mean：设置标准差阈值。有三种类型：①<br>
+None：不设置标准差阈值：② Single Value：为所有类别设置一个标准差阈值；③ Multple<br>
+Values：分别为每一个类别设置一个标准差阈值。选择Single Value，值为4样本。</p>
+<p>（4）Set Max Distance<br>
+Eror:设置最大距离误差。以DN值方式输入一个值,距离大于该值的像元不被分入该类(如果不满足所有类别的最大距离误差,它们就被归为未分类类)。有三种类型,这里选择“None”。</p>
+<p>（5）单击Preview，可以在右边窗口中预览分类结果，单击Change<br>
+View可以改变预览区域。</p>
+<p>（6）选择分类结果的输出路径及文件名。</p>
+<p>（7）设置Out Rule Images为“Yes”，选择规则图像输出路径及文件名。</p>
+<p>（8）单击OK按钮执行分类。</p>
+<figure data-type="image" tabindex="14"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/022d98ed8fe26393714fb50c0662067d.png" alt="" loading="lazy"></figure>
+<p><strong>2.最大似然</strong></p>
+<p>（1）在主菜单中，选择Classification→Supervised→Likelihood<br>
+Classificatio，在文件输入对话框中选择TM分类图像。单击OK按钮打开Likelihood<br>
+Classificatio参数设置对话框。</p>
+<figure data-type="image" tabindex="15"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/db1c5c9ef8f3b44083ceabcc7d290960.png" alt="" loading="lazy"></figure>
+<p>（2）Select Classes from Regions：单击Select All Items按钮，选择全部的训练样本。</p>
+<p>（3）Set Probability Threshold：设置似然度的阈值。如果选择Single<br>
+Value，则在“Probability Threshold”文本框中<br>
+输入一个0-1的值，似然度小于该阈值不被分入该类。这里选择“None”。</p>
+<p>（4）Data Scale<br>
+Factor：输入一个数据比例系数。这个比例系数是一个比值系数，用于将整型反射率或辐射率数据转化为浮点型数据。例如，如果反射率数据为0-10000，则设定的比例系数就为10000对于没有定标的整型数据，也就是原始DN值，将比例系数设为2n-1，<br>
+n为数据的比特数。例如，对于8-bit数据，设定的比例系数为255；对于10-bit数据，设定的比例系数为1023；对于11-bit数据，设定的比例系数为2047。</p>
+<p>（5）单击Preview，可以在右边窗口中预览分类结果，单击Change，View可以改变预览区域。</p>
+<p>（6）选择分类结果的输出路径及文件名。</p>
+<p>（7）设置Out Rule Images为“Yes”，选择规则图像输出路径及文件名。</p>
+<p>（8）单击OK按钮执行分类。</p>
+<figure data-type="image" tabindex="16"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/005f66d05d3f6cf0b536d594009b0e6a.png" alt="" loading="lazy"></figure>
+<h3 id="三评价分类结果"><strong>（三）评价分类结果</strong></h3>
+<p><strong>混淆矩阵</strong></p>
+<p>使用Confusion<br>
+Matrix工具可以把分类结果的精度显示在一个混淆矩阵里(用于比较分类结果和地表真实信息),<br>
+ENVI可以使用一幅地表真实图像或地表真实感兴趣区来计算混淆矩阵。这里也运用最小距离分类的结果。</p>
+<p><strong>地表真实感兴趣区</strong></p>
+<p>使用地表真实感兴趣区之前,需要准备反映地表真实地物信息的ROI文件。可以在高分辨率图像上,通过目视解译获取各个分类的地表真实感兴趣区;也可以通过野外实地调查,根据调查数据生成地表真实感兴趣区。</p>
+<p>（1）在主菜单中，选择Basic→Region of Interest→Restore Saved ROI<br>
+File，打开验证感兴趣区文件。</p>
+<figure data-type="image" tabindex="17"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/1db526ca69cf941a4ec5f7ff9ff2ee2d.png" alt="" loading="lazy"></figure>
+<p>（2）地表真实感兴趣区文件是在不同大小的图像上定义的，需要将地表真实感兴趣区文件与分类结果文件相匹配，有两种情况：无地理参考和有地理参考。这里为无地理参考</p>
+<p>·无地理参考</p>
+<p>①在主菜单中，选择Basic→Region of Interest→Reconcile ROIs，弹出Recon cile<br>
+ROIs参数对话框。</p>
+<figure data-type="image" tabindex="18"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/6010f1d0c1ea7e7e71edaef9558925b5.png" alt="" loading="lazy"></figure>
+<p>②在Reconcile ROTs参数对话框中，选择相应的地表真实感兴趣区。</p>
+<p>③在Reconile ROIs参数对话框中，输入行和列，与分类图像一致，或者单击Set Values<br>
+from Source/Destination Files按钮，匹配分类图像的大小。</p>
+<figure data-type="image" tabindex="19"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/c29e565820f85ece407117d8e6437dfa.png" alt="" loading="lazy"></figure>
+<p>（3）在主菜单中，选择Classification→Post Classification→Confusion Matrix→Using<br>
+Ground Truth ROIs。</p>
+<figure data-type="image" tabindex="20"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/c4f101811b1c959dd64d3100a803c399.png" alt="" loading="lazy"></figure>
+<p>（4）在Classification Inpt<br>
+File对话框中，选择分类结果图像。地表真实感兴趣区将被自动加载到Match Classes<br>
+Parameters对话框中。</p>
+<p>（5）在Match Classes Parameters对话框中，选择所要匹配的名称，再单击Add<br>
+Combination按钮，将地表真实感兴趣区与最终分类结果相匹配。类别之间的匹配将显示在对话框底部的列表中。如果地表真实感兴趣区的类别与分类图像中的类别名称相同，它们将自动匹配、单击OK按钮输出混淆矩阵。</p>
+<figure data-type="image" tabindex="21"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/e6709ac95ee640e4377b1eff6f193d9b.png" alt="" loading="lazy"></figure>
+<p>（6）在混淆矩阵输出窗口的Output Confusion Matrix中，选择像素和百分比。</p>
+<figure data-type="image" tabindex="22"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/ad0d31a45566d7377a2064b2bb05042a.png" alt="" loading="lazy"></figure>
+<p>（7）单击OK按钮，输出混淆矩阵。</p>
+<figure data-type="image" tabindex="23"><img src="https://cdn.jsdelivr.net/gh/manchan4869/cdnforblog@master/post-images/1256cda44fa22d21b867d7dadbf4436d.png" alt="" loading="lazy"></figure>
+<h2 id="五-实验总结"><strong>五、实验总结</strong></h2>
+<p>1.通过这次实验我学会了监督分类的几种方法，也了解了如何评价分类结果；</p>
+<p>2.更加熟练了ENVI的使用方法；</p>
+<p>3.实验步骤比较复杂，需要更加耐心地完成。</p>
+
+			
+				
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E5%AE%9E%E9%AA%8C%E8%83%8C%E6%99%AF"><strong>一、实验背景</strong></a></li>
+<li><a href="#%E4%BA%8C-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><strong>二、实验目的</strong></a></li>
+<li><a href="#%E4%B8%89-%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE"><strong>三、实验数据</strong></a></li>
+<li><a href="#%E5%9B%9B-%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4"><strong>四、实验步骤</strong></a>
+<ul>
+<li><a href="#%E4%B8%80%E5%AE%9A%E4%B9%89%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC"><strong>（一）定义训练样本</strong></a></li>
+<li><a href="#%E4%BA%8C%E6%89%A7%E8%A1%8C%E7%9B%91%E7%9D%A3%E5%88%86%E7%B1%BB"><strong>（二）执行监督分类</strong></a></li>
+<li><a href="#%E4%B8%89%E8%AF%84%E4%BB%B7%E5%88%86%E7%B1%BB%E7%BB%93%E6%9E%9C"><strong>（三）评价分类结果</strong></a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94-%E5%AE%9E%E9%AA%8C%E6%80%BB%E7%BB%93"><strong>五、实验总结</strong></a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://blog.manchan.ml/post/gis-shu-ju-xia-zai-zi-yuan-da-quan/">
+              <h3 class="post-title">
+                GIS数据下载资源大全
+              </h3>
+            </a>
+          </div>
+        
+
+<div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'wJNv5zNoDe6V3ceQkkcuRxjs-gzGzoHsz',
+            appKey: 'CfqUnwWClfR3kNmxOIIGD4jY',
+			visitor: true, // 阅读量统计
+			avatar:'mp',   // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
+			recordIP: true, // 记录IP
+			requiredFields: ['nick','mail'], //必需项
+			placeholder:'快来评论吧~' // 屏幕占位符
+        })
+    </script>
+
+
+
+        
+
+        <div class="site-footer">
+  <p>Copyright &copy; 2020.Manchan All rights reserved.
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>.</p>
+  <a class="rss" href="https://blog.manchan.ml/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

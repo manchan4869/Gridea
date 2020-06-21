@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.manchan.ml</id>
     <title>Manchan&apos;s Blog</title>
-    <updated>2020-05-23T06:34:23.606Z</updated>
+    <updated>2020-06-21T12:39:01.271Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.manchan.ml"/>
     <link rel="self" href="https://blog.manchan.ml/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://blog.manchan.ml/images/avatar.png</logo>
     <icon>https://blog.manchan.ml/favicon.ico</icon>
     <rights>All rights reserved 2020, Manchan&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[遥感实验：监督分类]]></title>
+        <id>https://blog.manchan.ml/post/yao-gan-shi-yan-wu/</id>
+        <link href="https://blog.manchan.ml/post/yao-gan-shi-yan-wu/">
+        </link>
+        <updated>2020-06-21T12:34:07.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[GIS数据下载资源大全]]></title>
         <id>https://blog.manchan.ml/post/gis-shu-ju-xia-zai-zi-yuan-da-quan/</id>
@@ -80,12 +87,5 @@
         <link href="https://blog.manchan.ml/post/ru-he-yong-zai-typora-zhong-tian-jia-shu-xue-gong-shi/">
         </link>
         <updated>2020-05-11T17:52:49.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Markdown: 基础]]></title>
-        <id>https://blog.manchan.ml/post/markdown-ji-chu/</id>
-        <link href="https://blog.manchan.ml/post/markdown-ji-chu/">
-        </link>
-        <updated>2020-05-11T17:32:07.000Z</updated>
     </entry>
 </feed>
