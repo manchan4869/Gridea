@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.manchan.ml</id>
     <title>Manchan&apos;s Blog</title>
-    <updated>2020-07-05T15:26:15.109Z</updated>
+    <updated>2020-07-05T18:17:17.500Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.manchan.ml"/>
     <link rel="self" href="https://blog.manchan.ml/atom.xml"/>
@@ -10,6 +10,35 @@
     <logo>https://blog.manchan.ml/images/avatar.png</logo>
     <icon>https://blog.manchan.ml/favicon.ico</icon>
     <rights>All rights reserved 2020, Manchan&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[地理空间数据库：空间索引的创建与查询]]></title>
+        <id>https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-san/</id>
+        <link href="https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-san/">
+        </link>
+        <updated>2020-07-05T18:06:25.000Z</updated>
+        <summary type="html"><![CDATA[<p>利用PostgreSQL/PostGIS扩展模块对空间数据索引管理，提升空间查询效率。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>利用PostgreSQL/PostGIS扩展模块对空间数据索引管理，提升空间查询效率。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[地理空间数据库：空间数据库的创建、查询及其相关基本操作]]></title>
+        <id>https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-er/</id>
+        <link href="https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-er/">
+        </link>
+        <updated>2020-07-05T17:57:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>利用 PostgreSQL数据库实现对空间数据库的相关操作，包括数据库创建、关系表创建和查询等基本操作。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>利用 PostgreSQL数据库实现对空间数据库的相关操作，包括数据库创建、关系表创建和查询等基本操作。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[地理空间数据库：关系数据库的创建、查询及其相关基本操作]]></title>
+        <id>https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-yi/</id>
+        <link href="https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-yi/">
+        </link>
+        <updated>2020-07-05T17:44:53.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[遥感实验：监督分类]]></title>
         <id>https://blog.manchan.ml/post/yao-gan-shi-yan-wu/</id>
@@ -62,30 +91,5 @@
 ]]></summary>
         <content type="html"><![CDATA[<p>以下内容针对64位系统下ERDAS 9.2的安装</p>
 ]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[如何复制他人csdn博客文章到自己博客下]]></title>
-        <id>https://blog.manchan.ml/post/ru-he-fu-zhi-ta-ren-csdn-bo-ke-wen-zhang-dao-zi-ji-bo-ke-xia/</id>
-        <link href="https://blog.manchan.ml/post/ru-he-fu-zhi-ta-ren-csdn-bo-ke-wen-zhang-dao-zi-ji-bo-ke-xia/">
-        </link>
-        <updated>2020-05-11T18:44:34.000Z</updated>
-        <summary type="html"><![CDATA[<p>CSDN是中文第一大互联网技术网站,上面有很多好的文章,有时候需要复制别人的文章到自己的文章下进行修改重新发布,这要怎样做呢?</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>CSDN是中文第一大互联网技术网站,上面有很多好的文章,有时候需要复制别人的文章到自己的文章下进行修改重新发布,这要怎样做呢?</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Markdown语法|LaTex数学公式]]></title>
-        <id>https://blog.manchan.ml/post/markdown-yu-fa-orlatex-shu-xue-gong-shi/</id>
-        <link href="https://blog.manchan.ml/post/markdown-yu-fa-orlatex-shu-xue-gong-shi/">
-        </link>
-        <updated>2020-05-11T18:37:44.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[如何用在Typora中添加数学公式?]]></title>
-        <id>https://blog.manchan.ml/post/ru-he-yong-zai-typora-zhong-tian-jia-shu-xue-gong-shi/</id>
-        <link href="https://blog.manchan.ml/post/ru-he-yong-zai-typora-zhong-tian-jia-shu-xue-gong-shi/">
-        </link>
-        <updated>2020-05-11T17:52:49.000Z</updated>
     </entry>
 </feed>
