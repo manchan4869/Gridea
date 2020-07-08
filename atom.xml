@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.manchan.ml</id>
     <title>Manchan&apos;s Blog</title>
-    <updated>2020-07-08T16:37:42.023Z</updated>
+    <updated>2020-07-08T16:50:22.188Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.manchan.ml"/>
     <link rel="self" href="https://blog.manchan.ml/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://blog.manchan.ml/images/avatar.png</logo>
     <icon>https://blog.manchan.ml/favicon.ico</icon>
     <rights>All rights reserved 2020, Manchan&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[123]]></title>
+        <id>https://blog.manchan.ml/post/123/</id>
+        <link href="https://blog.manchan.ml/post/123/">
+        </link>
+        <updated>2020-07-08T16:46:18.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[地理空间数据库：空间网络查询(pgRouting)]]></title>
         <id>https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-liu/</id>
@@ -94,12 +101,5 @@ pgRouting实现对路网、河流网、铁路网等典型空间网络数据及�
         <link href="https://blog.manchan.ml/post/zai-gridea-fa-bu-de-wang-zhan-zhong-shi-yong-jsdelivr/">
         </link>
         <updated>2020-05-14T06:13:52.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Git 指定不上传的文件夹]]></title>
-        <id>https://blog.manchan.ml/post/git-zhi-ding-bu-shang-chuan-de-wen-jian-jia/</id>
-        <link href="https://blog.manchan.ml/post/git-zhi-ding-bu-shang-chuan-de-wen-jian-jia/">
-        </link>
-        <updated>2020-05-14T06:08:28.000Z</updated>
     </entry>
 </feed>
