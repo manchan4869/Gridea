@@ -2,11 +2,11 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Valine评论系统 | Manchan&#39;s Blog</title>
+<title>22322 | Manchan&#39;s Blog</title>
 <link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1594231326910">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://blog.manchan.ml/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Valine评论系统 | Manchan&#39;s Blog - Atom Feed" href="https://blog.manchan.ml/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="22322 | Manchan&#39;s Blog - Atom Feed" href="https://blog.manchan.ml/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
@@ -21,10 +21,9 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-    <meta name="description" content="Gridea提供了两个评论系统，Gitalk和disqus。Gitalk需要使用Github账号登录，对于没有github账号的人来说不太方便，disqus目前在国内不可用。找了好久，发现了valine这个评论系统。
-
-在Gridea中加入..." />
-    <meta name="keywords" content="Gridea" />
+    <meta name="description" content="155
+" />
+    <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.1/styles/github.min.css">
 	<link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
@@ -90,23 +89,19 @@ var _hmt = _hmt || [];
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Valine评论系统
+              22322
             </h2>
             <div class="post-info">
               <span>
-                2020-05-11
+                2020-07-09
               </span>
               <span>
-                5 min read
+                1 min read
               </span>
-              
-                <a href="https://blog.manchan.ml/tag/ASYA-Tmiw/" class="post-tag">
-                  # Gridea
-                </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200523120302.png" alt="">
+              <img class="post-feature-image" src="https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/22322.jpeg" alt="">
 			  
             
             <div class="post-content-wrapper">
@@ -115,300 +110,13 @@ var _hmt = _hmt || [];
 
 
 
-			   <p>Gridea提供了两个评论系统，<a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md">Gitalk</a>和<a href="https://github.com/SukkaW/DisqusJS">disqus</a>。Gitalk需要使用Github账号登录，对于没有github账号的人来说不太方便，disqus目前在国内不可用。找了好久，发现了<a href="https://valine.js.org//">valine</a>这个评论系统。</p>
-<!-- more -->
-<h1 id="在gridea中加入valine">在Gridea中加入Valine</h1>
-<h2 id="valine介绍">Valine介绍</h2>
-<p>Valine - 一款快速、简洁且高效的无后端评论系统。</p>
-<p>官网地址：https://valine.js.org/</p>
-<h2 id="leancloud注册及配置">leancloud注册及配置</h2>
-<p>leancloud注册及配置见<a href="https://valine.js.org/quickstart.html">快速开始文档</a></p>
-<h2 id="修改主题模板">修改主题模板</h2>
-<p>在Gridea theme模板的<strong>head.ejs</strong>中引入</p>
-<pre><code class="language-html">    &lt;script src='//unpkg.com/valine/dist/Valine.min.js'&gt;&lt;/script&gt;
-</code></pre>
-<p>在<strong>post.ejs</strong>文章详情页模板中文章末尾的位置添加下面的代码</p>
-<pre><code class="language-html">&lt;div id=&quot;vcomments&quot;&gt;&lt;/div&gt;
-    &lt;script&gt;
-        new Valine({
-            el: '#vcomments',
-            appId: '&lt;API_ID&gt;',
-            appKey: '&lt;API_Key&gt;'
-        })
-    &lt;/script&gt;
-</code></pre>
-<p>appid和和appkey替换成leancloud中的应用key即可。修改完成后点击保存，然后同步，就可以了。记得在Gridea客户端中把配置中的评论关掉。</p>
-<p>打开文章详情页，显示评论框就成功了。</p>
-<figure data-type="image" tabindex="1"><img src="https://cdn.nlark.com/yuque/0/2019/png/302953/1563170592469-assets/web-upload/9209fe50-a1b7-47e2-bc51-5cbb67b0931d.png" alt="img" loading="lazy"></figure>
-<h1 id="valine的配置">Valine的配置</h1>
-<h2 id="el">el</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>null</code></li>
-<li>必要性:<code>true</code></li>
-</ul>
-<p>Valine 的初始化挂载器。可以是一个<code>CSS 选择器</code>，也可以是一个实际的<code>HTML元素</code>。</p>
-<h2 id="appid">appId</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>null</code></li>
-<li>必要性:<code>true</code></li>
-</ul>
-<p>从<code>LeanCloud</code>的应用中得到的<code>appId</code>.</p>
-<blockquote>
-<p><a href="https://valine.js.org/quickstart.html">获取appId 和 appKey</a>。</p>
-</blockquote>
-<h2 id="appkey">appKey</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>null</code></li>
-<li>必要性:<code>true</code></li>
-</ul>
-<p>从<code>LeanCloud</code>的应用中得到的<code>appKey</code>.</p>
-<blockquote>
-<p><a href="https://valine.js.org/quickstart.html">获取appId 和 appKey</a>。</p>
-</blockquote>
-<h2 id="region"><s>region</s></h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>cn</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>存储节点：在<code>Valine</code>中初始化时默认遵循<code>Leancloud SDK</code>的节点规则(<code>默认中国大陆节点</code>)。</p>
-<blockquote>
-<p>Leancloud js-sdk 从 <code>v3.8.0</code>版本开始删除了<code>region</code>选项:<br>
-<a href="https://github.com/leancloud/javascript-sdk/releases/tag/v3.8.0">leancloud/javascript-sdk/releases/tag/v3.8.0</a></p>
-</blockquote>
-<p>可选值:</p>
-<ul>
-<li><code>cn</code> - 中国大陆节点</li>
-<li><code>us</code> - 海外节点</li>
-</ul>
-<h2 id="placeholder">placeholder</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>Just go go</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>评论框<code>占位提示符</code>。</p>
-<h2 id="notify"><s>notify</s></h2>
-<ul>
-<li>类型:<code>Boolean</code></li>
-<li>默认值:<code>false</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<blockquote>
-<p><code>v1.4.0+</code> 已废弃</p>
-</blockquote>
-<h2 id="verify"><s>verify</s></h2>
-<ul>
-<li>类型:<code>Boolean</code></li>
-<li>默认值:<code>false</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>验证码服务。</p>
-<blockquote>
-<p><code>v1.4.0+</code> 已废弃</p>
-</blockquote>
-<h2 id="path">path</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>window.location.pathname</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>当前<code>文章页</code>路径，用于区分不同的<code>文章页</code>，以保证正确读取该<code>文章页</code>下的评论列表。<br>
-可选值：</p>
-<ul>
-<li><code>window.location.pathname</code> (默认值，推荐)</li>
-<li><code>window.location.href</code></li>
-<li><code>自定义</code></li>
-</ul>
-<blockquote>
-<ul>
-<li>I. 请保证每个<code>文章页</code>路径的唯一性，否则可能会出现不同<code>文章页</code>下加载相同评论列表的情况。</li>
-<li>II. 如果值为<code>window.location.href</code>，可能会出现随便加<code>不同参数</code>进入该页面，而被判断成新页面的情况。</li>
-</ul>
-</blockquote>
-<h2 id="avatar">avatar</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>mm</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p><code>Gravatar</code> 头像展示方式。</p>
-<p>可选值：</p>
-<ul>
-<li><code>''</code>(空字符串)</li>
-<li><code>mp</code></li>
-<li><code>identicon</code></li>
-<li><code>monsterid</code></li>
-<li><code>wavatar</code></li>
-<li><code>retro</code></li>
-<li><code>robohash</code></li>
-<li><code>hide</code></li>
-</ul>
-<p>更多信息，请查看<a href="https://valine.js.org/avatar.html">头像配置</a>。</p>
-<h2 id="meta">meta</h2>
-<ul>
-<li>类型:<code>Array</code></li>
-<li>默认值:<code>['nick','mail','link']</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>评论者相关属性。</p>
-<h2 id="pagesize">pageSize</h2>
-<ul>
-<li>类型:<code>Number</code></li>
-<li>默认值:<code>10</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>评论列表分页，每页条数。</p>
-<h2 id="lang">lang</h2>
-<ul>
-<li>类型:<code>String</code></li>
-<li>默认值:<code>zh-CN</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p>多语言支持。</p>
-<p>可选值：</p>
-<ul>
-<li><code>zh-CN</code></li>
-<li><code>zh-TW</code></li>
-<li><code>en</code></li>
-<li><code>ja</code></li>
-</ul>
-<p>如需<code>自定义语言</code>，请参考<a href="https://valine.js.org/i18n.html">i18n</a>。</p>
-<h2 id="visitor">visitor</h2>
-<ul>
-<li>类型:<code>Boolean</code></li>
-<li>默认值:<code>false</code></li>
-<li>必要性:<code>false</code></li>
-</ul>
-<p><a href="https://valine.js.org/visitor.html">文章访问量统计</a>。</p>
-<h2 id="highlight">highlight</h2>
-<ul>
-<li>类型：<code>Boolean</code></li>
-<li>默认值: <code>true</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p><code>代码高亮</code>，默认开启，若不需要，请手动关闭</p>
-<h2 id="avatarforce">avatarForce</h2>
-<ul>
-<li>类型: <code>Boolean</code></li>
-<li>默认值: <code>false</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p>每次访问<code>强制</code>拉取最新的<code>评论列表头像</code></p>
-<blockquote>
-<p>不推荐设置为<code>true</code>，目前的<code>评论列表头像</code>会自动带上<code>Valine</code>的版本号</p>
-</blockquote>
-<h2 id="recordip">recordIP</h2>
-<ul>
-<li>类型: <code>Boolean</code></li>
-<li>默认值: <code>false</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p>是否记录评论者IP</p>
-<blockquote>
-<pre><code>v1.3.5+
-</code></pre>
-</blockquote>
-<h2 id="serverurls">serverURLs</h2>
-<ul>
-<li>类型: <code>String</code></li>
-<li>默认值: <code>http[s]://[tab/us].avoscloud.com</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<blockquote>
-<p>⚠️ 该配置适用于国内<code>自定义域名</code>用户, <code>海外版本</code>会自动检测(无需手动填写) <code>v1.3.10+</code></p>
-</blockquote>
-<h2 id="emojicdn">emojiCDN</h2>
-<ul>
-<li>类型: <code>String</code></li>
-<li>默认值: ``</li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p>设置<code>表情包CDN</code>，参考<a href="https://valine.js.org/emoji.html">自定义表情</a></p>
-<blockquote>
-<pre><code>v1.4.5+
-</code></pre>
-</blockquote>
-<h2 id="emojimaps">emojiMaps</h2>
-<ul>
-<li>类型: <code>Object</code></li>
-<li>默认值: <code>null</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p>设置<code>表情包映射</code>，参考<a href="https://valine.js.org/emoji.html">自定义表情</a></p>
-<blockquote>
-<pre><code>v1.4.5+
-</code></pre>
-</blockquote>
-<h2 id="enableqq">enableQQ</h2>
-<ul>
-<li>类型: <code>Boolean</code></li>
-<li>默认值: <code>false</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p>是否启用<code>昵称框</code>自动获取<code>QQ昵称</code>和<code>QQ头像</code>, 默认关闭，需<code>博/网站主</code>主动启用</p>
-<blockquote>
-<pre><code>v1.4.6+
-</code></pre>
-</blockquote>
-<h2 id="requiredfields">requiredFields</h2>
-<ul>
-<li>类型: <code>Array</code></li>
-<li>默认值: <code>[]</code></li>
-<li>必要性: <code>false</code></li>
-</ul>
-<p>设置<code>必填项</code>，默认<code>匿名</code>，可选值：</p>
-<ul>
-<li><code>['nick']</code></li>
-<li><code>['nick','mail']</code></li>
-</ul>
-<blockquote>
-<pre><code>v1.4.6+
-</code></pre>
-</blockquote>
+			   <p>155<img src="https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/1594231319719.jpeg" alt="" loading="lazy"></p>
 
 			
 				
               </div>
               <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li><a href="#%E5%9C%A8gridea%E4%B8%AD%E5%8A%A0%E5%85%A5valine">在Gridea中加入Valine</a>
-<ul>
-<li><a href="#valine%E4%BB%8B%E7%BB%8D">Valine介绍</a></li>
-<li><a href="#leancloud%E6%B3%A8%E5%86%8C%E5%8F%8A%E9%85%8D%E7%BD%AE">leancloud注册及配置</a></li>
-<li><a href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98%E6%A8%A1%E6%9D%BF">修改主题模板</a></li>
-</ul>
-</li>
-<li><a href="#valine%E7%9A%84%E9%85%8D%E7%BD%AE">Valine的配置</a>
-<ul>
-<li><a href="#el">el</a></li>
-<li><a href="#appid">appId</a></li>
-<li><a href="#appkey">appKey</a></li>
-<li><a href="#region"><s>region</s></a></li>
-<li><a href="#placeholder">placeholder</a></li>
-<li><a href="#notify"><s>notify</s></a></li>
-<li><a href="#verify"><s>verify</s></a></li>
-<li><a href="#path">path</a></li>
-<li><a href="#avatar">avatar</a></li>
-<li><a href="#meta">meta</a></li>
-<li><a href="#pagesize">pageSize</a></li>
-<li><a href="#lang">lang</a></li>
-<li><a href="#visitor">visitor</a></li>
-<li><a href="#highlight">highlight</a></li>
-<li><a href="#avatarforce">avatarForce</a></li>
-<li><a href="#recordip">recordIP</a></li>
-<li><a href="#serverurls">serverURLs</a></li>
-<li><a href="#emojicdn">emojiCDN</a></li>
-<li><a href="#emojimaps">emojiMaps</a></li>
-<li><a href="#enableqq">enableQQ</a></li>
-<li><a href="#requiredfields">requiredFields</a></li>
-</ul>
-</li>
-</ul>
-
+                
               </div>
             </div>
           </article>
@@ -417,9 +125,9 @@ var _hmt = _hmt || [];
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://blog.manchan.ml/post/markdown-ce-shi-wen-zhang/">
+            <a href="https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-liu/">
               <h3 class="post-title">
-                Markdown 测试文章
+                地理空间数据库：空间网络查询(pgRouting)
               </h3>
             </a>
           </div>

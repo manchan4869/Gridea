@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>地理空间数据库：空间网络查询(WITH RECURSIVE) | Manchan&#39;s Blog</title>
-<link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1594226801104">
+<link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1594231326910">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://blog.manchan.ml/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="地理空间数据库：空间网络查询(WITH RECURSIVE) | Manchan&#39;s Blog - Atom Feed" href="https://blog.manchan.ml/atom.xml">
@@ -23,19 +23,23 @@ var _hmt = _hmt || [];
 
     <meta name="description" content="利用 PostgreSQL/PostGIS扩展模块对空间网络数据（如河流网、铁路网、道路网等）连通关系进行管理，包括网络数据的存储、遍历、查询等。
 
+
 要求：
 （1）理解空间网络数据在空间数据库中的实现方法，包括存储机制、连通关系管理等；
-（..." />
+..." />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.11.1/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.1/styles/github.min.css">
+	<link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+	
+	
   </head>
   <body>
     <div class="main">
       <div class="main-content">
         <div class="site-header">
   <a href="https://blog.manchan.ml">
-  <img class="avatar" src="https://blog.manchan.ml/images/avatar.png?v=1594226801104" alt="">
+  <img class="avatar" src="https://blog.manchan.ml/images/avatar.png?v=1594231326910" alt="">
   </a>
   <h1 class="site-title">
     Manchan&#39;s Blog
@@ -112,6 +116,7 @@ var _hmt = _hmt || [];
 
 			   <p>利用 PostgreSQL/PostGIS扩展模块对空间网络数据（如河流网、铁路网、道路网等）<strong>连通关系</strong>进行管理，包括网络数据的存储、遍历、查询等。</p>
 <!-- more -->
+<script src="https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/pgsql.min.js"></script>
 <h1 id="要求">要求：</h1>
 <p>（1）理解空间网络数据在空间数据库中的实现方法，包括存储机制、连通关系管理等；</p>
 <p>（2）掌握 PostgresSQL 递归操作实现网络图的遍历或查询；</p>
@@ -208,7 +213,7 @@ var _hmt = _hmt || [];
 <figure data-type="image" tabindex="27"><img src="https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/c1330ddd30df481ee07690fed0e51a41.png" alt="" loading="lazy"></figure>
 <p>（2）找出从陆路就能抵达美国的所有国家。</p>
 <figure data-type="image" tabindex="28"><img src="https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/6abfc4852b83ba72493b062d45f6214e.png" alt="" loading="lazy"></figure>
-<pre><code class="language-sql">-- 创建关系表
+<pre><code class="language-pgsql">-- 创建关系表
 CREATE TABLE Falls_Into
 	(
 		Source char(20),

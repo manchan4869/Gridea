@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.manchan.ml</id>
     <title>Manchan&apos;s Blog</title>
-    <updated>2020-07-08T16:50:22.188Z</updated>
+    <updated>2020-07-08T18:02:11.401Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.manchan.ml"/>
     <link rel="self" href="https://blog.manchan.ml/atom.xml"/>
@@ -11,11 +11,11 @@
     <icon>https://blog.manchan.ml/favicon.ico</icon>
     <rights>All rights reserved 2020, Manchan&apos;s Blog</rights>
     <entry>
-        <title type="html"><![CDATA[123]]></title>
-        <id>https://blog.manchan.ml/post/123/</id>
-        <link href="https://blog.manchan.ml/post/123/">
+        <title type="html"><![CDATA[22322]]></title>
+        <id>https://blog.manchan.ml/post/22322/</id>
+        <link href="https://blog.manchan.ml/post/22322/">
         </link>
-        <updated>2020-07-08T16:46:18.000Z</updated>
+        <updated>2020-07-08T18:01:50.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[地理空间数据库：空间网络查询(pgRouting)]]></title>

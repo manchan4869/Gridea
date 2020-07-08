@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>地理空间数据库：空间索引的创建与查询 | Manchan&#39;s Blog</title>
-<link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1594226801104">
+<link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1594231326910">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://blog.manchan.ml/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="地理空间数据库：空间索引的创建与查询 | Manchan&#39;s Blog - Atom Feed" href="https://blog.manchan.ml/atom.xml">
@@ -23,20 +23,24 @@ var _hmt = _hmt || [];
 
     <meta name="description" content="利用PostgreSQL/PostGIS扩展模块对空间数据索引管理，提升空间查询效率。
 
+
 要求：
 （1）理解空间索引的概念；
 （2）掌握PostGIS：B-Tree、GiST、SP-GiST三类典型索引算法；
-（3）能够对各类空间数据创建索..." />
+（3）能够对各类空间数据创建..." />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.11.1/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.1/styles/github.min.css">
+	<link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+	
+	
   </head>
   <body>
     <div class="main">
       <div class="main-content">
         <div class="site-header">
   <a href="https://blog.manchan.ml">
-  <img class="avatar" src="https://blog.manchan.ml/images/avatar.png?v=1594226801104" alt="">
+  <img class="avatar" src="https://blog.manchan.ml/images/avatar.png?v=1594231326910" alt="">
   </a>
   <h1 class="site-title">
     Manchan&#39;s Blog
@@ -113,6 +117,7 @@ var _hmt = _hmt || [];
 
 			   <p>利用PostgreSQL/PostGIS扩展模块对空间数据索引管理，提升空间查询效率。</p>
 <!-- more -->
+<script src="https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/pgsql.min.js"></script>
 <p>要求：</p>
 <p>（1）理解空间索引的概念；</p>
 <p>（2）掌握PostGIS：B-Tree、GiST、SP-GiST三类典型索引算法；</p>
@@ -229,7 +234,7 @@ GiST）的简称。SP-GiST支持划分搜索树，它们可用于开发许多各
 <p>②SP-GiST索引</p>
 <figure data-type="image" tabindex="53"><img src="https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/7aad16d0cec78d0380026f242e650925.png" alt="" loading="lazy"></figure>
 <figure data-type="image" tabindex="54"><img src="https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/e74dc72b8ff8b149f8be2a778d5c46b1.png" alt="" loading="lazy"></figure>
-<pre><code class="language-SQL">CREATE INDEX northamerica_geom_idx
+<pre><code class="language-pgSQL">CREATE INDEX northamerica_geom_idx
 ON northamerica USING GIST(geom);
 VACUUM ANALYZE northamerica(geom);
 CREATE INDEX northamerica_cities_geom_idx

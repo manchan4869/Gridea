@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>地理空间数据库：空间数据约束 | Manchan&#39;s Blog</title>
-<link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1594226801104">
+<link rel="shortcut icon" href="https://blog.manchan.ml/favicon.ico?v=1594231326910">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://blog.manchan.ml/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="地理空间数据库：空间数据约束 | Manchan&#39;s Blog - Atom Feed" href="https://blog.manchan.ml/atom.xml">
@@ -23,20 +23,24 @@ var _hmt = _hmt || [];
 
     <meta name="description" content="利用 PostgreSQL/PostGIS 扩展模块对空间数据进行管理，通过触发器、函数等实现空间数据之间的空间关系约
 
+
 要求
 （1）掌握关系数据库常规触发器及函数的编
 （2）理解空间 ER 中几何对象之间关
-（3）掌握用 PostGIS ..." />
+（3）掌握用 PostGIS..." />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.11.1/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.1/styles/github.min.css">
+	<link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+	
+	
   </head>
   <body>
     <div class="main">
       <div class="main-content">
         <div class="site-header">
   <a href="https://blog.manchan.ml">
-  <img class="avatar" src="https://blog.manchan.ml/images/avatar.png?v=1594226801104" alt="">
+  <img class="avatar" src="https://blog.manchan.ml/images/avatar.png?v=1594231326910" alt="">
   </a>
   <h1 class="site-title">
     Manchan&#39;s Blog
@@ -113,6 +117,7 @@ var _hmt = _hmt || [];
 
 			   <p>利用 PostgreSQL/PostGIS 扩展模块对空间数据进行管理，通过触发器、函数等实现空间数据之间的空间关系约</p>
 <!-- more -->
+<script src="https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/pgsql.min.js"></script>
 <h1 id="要求">要求</h1>
 <p>（1）掌握关系数据库常规触发器及函数的编<br>
 （2）理解空间 ER 中几何对象之间关<br>
@@ -197,7 +202,7 @@ audit_log<br>
 <p>验证合法插入</p>
 <figure data-type="image" tabindex="31"><img src="https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/f2c32408c9c23b723610c77e4b109585.png" alt="" loading="lazy"></figure>
 <figure data-type="image" tabindex="32"><img src="https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/ae30b3a1159055027c21a9ec9013d001.png" alt="" loading="lazy"></figure>
-<pre><code class="language-SQL">--一个简单的提示触发器--
+<pre><code class="language-pgSQL">--一个简单的提示触发器--
 CREATE OR REPLACE FUNCTION notify_trigger()
 RETURNS TRIGGER AS $$
 BEGIN
