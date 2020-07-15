@@ -599,18 +599,9 @@ td {
   line-height: 1.5;
 }
 .post-detail .post .post-content blockquote {
-  color: #9a9a9a;
-  position: relative;
-  padding: 0.4em 0 0 2.2em;
-  font-size: 0.96em;
-}
-.post-detail .post .post-content blockquote:before {
-  position: absolute;
-  top: -4px;
-  left: 0;
-  content: "\201c";
-  font: 700 62px/1 serif;
-  color: rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #dfe2e5;
+  padding: 0 15px;
+  color: #777777;
 }
 .post-detail .post .post-content table {
   border-collapse: collapse;
