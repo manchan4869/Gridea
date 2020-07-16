@@ -1487,6 +1487,19 @@ a:focus {
 a:active {
   outline: none;
 }
+.aspect-ratio {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 65%;
+}
+.aspect-ratio iframe {
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  left: 0;
+  top: 0;
+}
 /*--- 头部 ---*/
 header {
   text-align: center;
