@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.manchan.ml</id>
     <title>Manchan&apos;s Blog</title>
-    <updated>2020-07-16T02:39:39.124Z</updated>
+    <updated>2020-07-16T06:11:11.434Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.manchan.ml"/>
     <link rel="self" href="https://blog.manchan.ml/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://blog.manchan.ml/images/avatar.png</logo>
     <icon>https://blog.manchan.ml/favicon.ico</icon>
     <rights>All rights reserved 2020, Manchan&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[ceshi]]></title>
+        <id>https://blog.manchan.ml/post/ceshi/</id>
+        <link href="https://blog.manchan.ml/post/ceshi/">
+        </link>
+        <updated>2020-07-16T06:10:05.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Arcgis Engine 10.1+Visual Studio 2010安装教程]]></title>
         <id>https://blog.manchan.ml/post/arcgis-engine-visual-studio/</id>
@@ -94,12 +101,5 @@ pgRouting实现对路网、河流网、铁路网等典型空间网络数据及�
         <link href="https://blog.manchan.ml/post/gis-shu-ju-xia-zai-zi-yuan-da-quan/">
         </link>
         <updated>2020-05-22T07:30:36.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[在 Gridea 发布的网站中使用 Jsdelivr]]></title>
-        <id>https://blog.manchan.ml/post/zai-gridea-fa-bu-de-wang-zhan-zhong-shi-yong-jsdelivr/</id>
-        <link href="https://blog.manchan.ml/post/zai-gridea-fa-bu-de-wang-zhan-zhong-shi-yong-jsdelivr/">
-        </link>
-        <updated>2020-05-14T06:13:52.000Z</updated>
     </entry>
 </feed>
