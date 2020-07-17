@@ -344,6 +344,11 @@ pre code {
     width: 1200px;
   }
 }
+@media (min-width: 1200px) {
+  .music {
+    width: 1320px;
+  }
+}
 .row {
   margin-right: -15px;
   margin-left: -15px;
@@ -2088,6 +2093,10 @@ ul.links li:hover .bg {
   font-size: 22px;
   color: #f70606;
   margin: 50px 0 50px 0;
+}
+.music {
+  margin-right: auto;
+  margin-left: auto;
 }
 .site-footer {
   color: #fff;
