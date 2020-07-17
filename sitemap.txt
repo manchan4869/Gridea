@@ -6,6 +6,7 @@ http://blog.manchan.ml/tags/
 http://blog.manchan.ml/post/about/
 https://blog.manchan.ml/page/2/
 https://blog.manchan.ml/page/3/
+https://blog.manchan.ml/post/arcgis-engine-visual-studio/
 https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-er/
 https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-liu/
 https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-san/
@@ -30,10 +31,13 @@ https://blog.manchan.ml/post/yao-gan-shi-yan-si/
 https://blog.manchan.ml/post/yao-gan-shi-yan-wu/
 https://blog.manchan.ml/post/yao-gan-shi-yan-yi/
 https://blog.manchan.ml/post/zai-gridea-fa-bu-de-wang-zhan-zhong-shi-yong-jsdelivr/
+https://blog.manchan.ml/tag/arcgis-engine/
 https://blog.manchan.ml/tag/ASYA-Tmiw/
 https://blog.manchan.ml/tag/envi/
 https://blog.manchan.ml/tag/erdas/
 https://blog.manchan.ml/tag/gis/
 https://blog.manchan.ml/tag/git/
 https://blog.manchan.ml/tag/markdown/
+https://blog.manchan.ml/tag/postgresql/
+https://blog.manchan.ml/tag/visual-studio/
 https://blog.manchan.ml/tag/yao-gan/
