@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
- <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <meta charset="utf-8">
+<title>Gridea | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
+<meta name="description" content="Manchan's Blog是まん酱的个人博客，主要是记事与随笔，内容更偏向于GIS技术学习与分享">
+<meta name="keywords" content="manchan,blog,GIS,遥感,postgresql,arcgis,qgis,rs,mapgis,markdown,c#,postgis,pgsql,sql,Arcgis Engine,Visual Studio,ENVI,ERDAS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
 <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
 <meta HTTP-EQUIV="expires" CONTENT="0"> 
-<title>Gridea | Manchan&#39;s Blog</title>	
+
 
 <link rel="stylesheet" href="https://blog.manchan.ml/styles/main.css">
 <script type="text/javascript">
@@ -16,11 +21,19 @@ function getCSS()
         datetoday.setTime(timenow);
         thehour = datetoday.getHours();
 
+        if (thehour<7:00)
+
             display = "https://blog.manchan.ml/media/css/night.css";
 
+       else if (thehour>23:00)
+
             display = "https://blog.manchan.ml/media/css/night.css";   
-      
+
+        else if (thehour>7:00)
+           
             display = "https://blog.manchan.ml/media/css/day.css";
+
+        else if (thehour<23:00)
 
             display = "https://blog.manchan.ml/media/css/day.css";
       
