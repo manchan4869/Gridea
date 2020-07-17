@@ -69,7 +69,7 @@ article a:hover,
 #archives #archives-tags a.itags:hover {
 	background: #f0f0f0
 }
-.hentry h1 a::before {
+.hentry h2 a::before {
     background-color: #337ab7;
 
   } 

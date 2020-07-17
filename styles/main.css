@@ -1712,7 +1712,7 @@ article .entry-title > a,
 .slide-content .entry-title > a {
   color: #fff;
 }
-.hentry h1 a::before {
+.hentry h2 a::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -1726,7 +1726,7 @@ article .entry-title > a,
   transition-timing-function: ease-in-out;
   transition-delay: 0s;
 }
-.hentry h1 a:hover::before {
+.hentry h2 a:hover::before {
   opacity: 1;
   visibility: visible;
   -webkit-transform: scaleX(1);
