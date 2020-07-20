@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.manchan.ml</id>
     <title>Manchan&apos;s Blog</title>
-    <updated>2020-07-20T03:54:58.870Z</updated>
+    <updated>2020-07-20T05:39:09.672Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.manchan.ml"/>
     <link rel="self" href="https://blog.manchan.ml/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://blog.manchan.ml/images/avatar.png</logo>
     <icon>https://blog.manchan.ml/favicon.ico</icon>
     <rights>All rights reserved 2020, Manchan&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[行政区划内水系等要素的处理——以武汉市为例]]></title>
+        <id>https://blog.manchan.ml/post/xing-zheng-qu-hua-nei-shui-xi-deng-yao-su-de-chu-li/</id>
+        <link href="https://blog.manchan.ml/post/xing-zheng-qu-hua-nei-shui-xi-deng-yao-su-de-chu-li/">
+        </link>
+        <updated>2020-07-20T05:33:54.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[行政边界矢量数据的获取——以武汉市为例]]></title>
         <id>https://blog.manchan.ml/post/xing-zheng-bian-jie-shi-liang-shu-ju-de-huo-qu/</id>
@@ -94,12 +101,5 @@ pgRouting实现对路网、河流网、铁路网等典型空间网络数据及�
         <link href="https://blog.manchan.ml/post/yao-gan-shi-yan-wu/">
         </link>
         <updated>2020-06-21T12:34:07.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[GIS数据下载资源大全]]></title>
-        <id>https://blog.manchan.ml/post/gis-shu-ju-xia-zai-zi-yuan-da-quan/</id>
-        <link href="https://blog.manchan.ml/post/gis-shu-ju-xia-zai-zi-yuan-da-quan/">
-        </link>
-        <updated>2020-05-22T07:30:36.000Z</updated>
     </entry>
 </feed>
