@@ -1,6 +1,5 @@
 http://blog.manchan.ml/
 https://blog.manchan.ml
-https://blog.manchan.ml/tag
 http://blog.manchan.ml/archives/
 http://blog.manchan.ml/tags/
 http://blog.manchan.ml/post/about/
