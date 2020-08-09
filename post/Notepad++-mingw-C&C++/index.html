@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
  <meta charset="utf-8">
-<title>行政区划内水系等要素的处理——以武汉市为例 | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
+<title>Notepad++ 配置MinGW编译C/C++ | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
 <meta name="description" content="Manchan's Blog是まん酱的个人博客，主要是记事与随笔，内容更偏向于GIS技术学习与分享">
 <meta name="keywords" content="manchan,blog,GIS,遥感,postgresql,arcgis,qgis,rs,mapgis,markdown,c#,postgis,pgsql,sql,Arcgis Engine,Visual Studio,ENVI,ERDAS">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -71,7 +71,7 @@ var _hmt = _hmt || [];
 			
 		<header id="header" class="site-header" 
 		
-		style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/xing-zheng-bian-jie-shi-liang-shu-ju-de-huo-qu.png)"
+		style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/Notepad++-mingw-C&C++.png)"
 		
 		
 		>
@@ -166,10 +166,10 @@ var _hmt = _hmt || [];
 	
 	                      
 		<div class="entry-content">
-			<h1 class="wow swing entry-title">行政区划内水系等要素的处理——以武汉市为例</h1>
+			<h1 class="wow swing entry-title">Notepad++ 配置MinGW编译C/C++</h1>
 <div class="entry-meta">
 <div class="wow bounce">
-	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-07-20 13:33:54" itemprop="datePublished" pubdate="">2020-07-20</time></i>
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-08-09 01:47:51" itemprop="datePublished" pubdate="">2020-08-09</time></i>
 	          </div>
 			
 </span>
@@ -177,29 +177,64 @@ var _hmt = _hmt || [];
 		</div>
                   
 			<div class="wow slideInLeft entry-summary song">
-				<h2 id="前言">前言</h2>
-<p><a href="https://blog.manchan.ml/post/xing-zheng-bian-jie-shi-liang-shu-ju-de-huo-qu/">上一篇</a>中讲到用QGIS实现行政边界矢量数据的获取，这一篇接着讲其它要素如何处理。</p>
-<h2 id="数据预处理">数据预处理</h2>
-<p>参考<a href="https://blog.manchan.ml/post/xing-zheng-bian-jie-shi-liang-shu-ju-de-huo-qu/">上一篇</a>中的获取与处理，先将武汉市的行政边界处理出来。</p>
-<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720132124.png" alt="image-20200720132124136" loading="lazy"></figure>
-<p>以水系（面）为例，导入HYDA图层</p>
-<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720132339.png" alt="image-20200720132339577" loading="lazy"></figure>
-<h2 id="将图幅分割后的数据合并">将图幅分割后的数据合并</h2>
-<p>矢量通用→合并矢量图层</p>
-<p>得到合并输出文件</p>
-<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720132735.png" alt="image-20200720132735155" loading="lazy"></figure>
-<h2 id="消除中间的分割线">消除中间的分割线</h2>
-<p>矢量几何图形→融合(dissolve)</p>
-<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720133025.png" alt="image-20200720133025674" loading="lazy"></figure>
-<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720133040.png" alt="image-20200720133040346" loading="lazy"></figure>
-<h2 id="根据武汉市地图提取出武汉市水系">根据武汉市地图提取出武汉市水系</h2>
-<p>矢量叠加分析→裁剪</p>
-<p>以融合后的图层作为输入图层，将武汉市地图作为叠加图层，进行裁剪。</p>
-<figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720133154.png" alt="image-20200720133154711" loading="lazy"></figure>
-<figure data-type="image" tabindex="7"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720133317.png" alt="image-20200720133317650" loading="lazy"></figure>
-<h2 id="结尾">结尾</h2>
-<p>若融合报错 提示&quot;Feature (2067) has invalid geometry. Please fix the geometry or change the Processing setting to the &quot;Ignore invalid input features&quot; option.&quot;点开 设置→选项→空间运算→通用→要素过滤器无效→不过滤→OK，然后重新融合。<br>
-<img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720115431.png" alt="image-20200720115431700" loading="lazy"></p>
+				<h2 id="一-安装notepad">一、安装Notepad++</h2>
+<p>自行百度，这里不再赘述。</p>
+<h2 id="二-安装mingw">二、安装MinGW</h2>
+<h3 id="1mingw安装器">1.MinGW安装器</h3>
+<p><a href="https://osdn.net/projects/mingw/releases/">https://osdn.net/projects/mingw/releases/</a></p>
+<p>下载后打开安装，勾选需要的包，然后在Installation中点Apply Changes</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200809160312.png" alt="image-20200809160304414" loading="lazy"></figure>
+<h3 id="2mingw-w64离线包">2.MinGW-W64离线包</h3>
+<p>打开<a href="https://sourceforge.net/projects/mingw-w64/files/">https://sourceforge.net/projects/mingw-w64/files/</a>，下载<a href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/seh/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z">x86_64-win32-seh</a> 后解压到合适位置即可</p>
+<h2 id="三-配置系统变量">三、配置系统变量</h2>
+<blockquote>
+<p>无论是使用安装器安装还是使用离线包，都必须配置系统变量之后才能使用</p>
+</blockquote>
+<p>在“此电脑”右键-属性，打开高级系统设置-环境变量，在系统变量下找到Path,点进去进行编辑，将MinGW文件夹中的bin文件夹路径添加进去</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200809160947.png" alt="image-20200809160947906" loading="lazy"></figure>
+<h2 id="四-配置notepad">四、配置notepad++</h2>
+<p>1.点击运行-运行，或按F5，输入<code>cmd /k gcc -o &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &quot;$(FULL_CURRENT_PATH)&quot; &amp;&amp; CLS &amp;&amp; &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &amp; PAUSE &amp; EXIT</code>点击保存并定义为合适的名称</p>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200809161553.png" alt="image-20200809161552963" loading="lazy"></figure>
+<p>2.写一段完整的C语言程序</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+int main()
+{	
+	printf(&quot;hello world\n&quot;);
+	return 0;	
+}
+</code></pre>
+<p>3.点运行，选择刚保存的命令</p>
+<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200809162049.png" alt="image-20200809162049539" loading="lazy"></figure>
+<p>运行成功！<br>
+4.如果是C++，则在运行内输入<code>cmd /k g++ -o &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &quot;$(FULL_CURRENT_PATH)&quot; &amp;&amp; CLS &amp;&amp; &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &amp; PAUSE &amp; EXIT</code></p>
+<h2 id="五-补充">五、补充</h2>
+<ul>
+<li>编译：<br>
+<code>cmd /k gcc -Wall -o &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &quot;$(FULL_CURRENT_PATH)&quot; &amp; PAUSE &amp; EXIT</code></li>
+<li>运行：<br>
+<code>cmd /k &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &amp; PAUSE &amp; EXIT</code></li>
+</ul>
+<p><strong>关于脚本行</strong>：<code>cmd /k gcc -o &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &quot;$(FULL_CURRENT_PATH)&quot; &amp;&amp; CLS &amp;&amp; &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &amp; PAUSE &amp; EXIT</code></p>
+<ul>
+<li>
+<p><code>cmd /k</code>是弹出cmd窗口并执行后续指令。&amp;和&amp;&amp;表示连接作用，说明有多行指令合为一行。</p>
+</li>
+<li>
+<p><code>gcc -o “$(CURRENT_DIRECTORY)$(NAME_PART).exe” “$(FULL_CURRENT_PATH)”</code>编译生成.exe文件，输出源文件所在目录。注意这里需要有引号，目的是为了在目录及文件名存在空格的情况下也能够正常运行。</p>
+</li>
+<li>
+<p><code>&amp;&amp; CLS</code> 清屏。&amp;&amp;的意义在于，前面的语句出现错误，将不会执行该句。</p>
+</li>
+<li>
+<p><code>&amp;&amp; “$(CURRENT_DIRECTORY)$(NAME_PART).exe”</code>运行刚刚生成的.exe文件。如果先前的编译错误，将不会运行。</p>
+</li>
+<li>
+<p><code>&amp; PAUSE</code> 暂停，提示”按任意键继续“。这里无论前面有否错误，都将执行。因此我们看到的是编译错误，显示错误信息并暂停的窗口。</p>
+</li>
+<li>
+<p><code>&amp; EXIT</code> 退出。</p>
+</li>
+</ul>
 
 							</div>
 	<div class="wow bounceInDown vt-post-tags">
@@ -209,10 +244,8 @@ var _hmt = _hmt || [];
 		
 		<div class="nav-links3">
       
-		<div class="wow bounceInLeft nav-previous3"><a href="https://blog.manchan.ml/post/Notepad++-mingw-C&amp;C++/" rel="prev"> Notepad++ 配置MinGW编译C/C++</a></div>
 		 
-		 
-		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/xing-zheng-bian-jie-shi-liang-shu-ju-de-huo-qu/" rel="next"> 行政边界矢量数据的获取——以武汉市为例</a></div>
+		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/xing-zheng-qu-hua-nei-shui-xi-deng-yao-su-de-chu-li/" rel="next"> 行政区划内水系等要素的处理——以武汉市为例</a></div>
 		
 		</div>
 	</nav>
@@ -222,7 +255,7 @@ var _hmt = _hmt || [];
 	<div class="author-description"><div class="author-title"><div class="author-link" rel="author">Manchan</div></div>
 
 
-	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/xing-zheng-qu-hua-nei-shui-xi-deng-yao-su-de-chu-li/">https://blog.manchan.ml/post/xing-zheng-qu-hua-nei-shui-xi-deng-yao-su-de-chu-li/</a></p></div></div>
+	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/Notepad++-mingw-C&amp;C++/">https://blog.manchan.ml/post/Notepad++-mingw-C&amp;C++/</a></p></div></div>
 	
 		</div>
 		
