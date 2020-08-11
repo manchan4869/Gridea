@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
  <meta charset="utf-8">
-<title>Notepad++ 配置MinGW编译C/C++ | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
+<title>C# 101-微软官方C#教程 | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
 <meta name="description" content="Manchan's Blog是まん酱的个人博客，主要是记事与随笔，内容更偏向于GIS技术学习与分享">
 <meta name="keywords" content="manchan,blog,GIS,遥感,postgresql,arcgis,qgis,rs,mapgis,markdown,c#,postgis,pgsql,sql,Arcgis Engine,Visual Studio,ENVI,ERDAS">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -71,7 +71,7 @@ var _hmt = _hmt || [];
 			
 		<header id="header" class="site-header" 
 		
-		style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/Notepad++-mingw-C&C++.png)"
+		style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/c-101-wei-ruan-guan-fang-cjiao-cheng.jpg)"
 		
 		
 		>
@@ -166,10 +166,10 @@ var _hmt = _hmt || [];
 	
 	                      
 		<div class="entry-content">
-			<h1 class="wow swing entry-title">Notepad++ 配置MinGW编译C/C++</h1>
+			<h1 class="wow swing entry-title">C# 101-微软官方C#教程</h1>
 <div class="entry-meta">
 <div class="wow bounce">
-	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-08-09 01:47:51" itemprop="datePublished" pubdate="">2020-08-09</time></i>
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-08-11 15:49:16" itemprop="datePublished" pubdate="">2020-08-11</time></i>
 	          </div>
 			
 </span>
@@ -177,64 +177,52 @@ var _hmt = _hmt || [];
 		</div>
                   
 			<div class="wow slideInLeft entry-summary song">
-				<h2 id="一-安装notepad">一、安装Notepad++</h2>
-<p>自行百度，这里不再赘述。</p>
-<h2 id="二-安装mingw">二、安装MinGW</h2>
-<h3 id="1mingw安装器">1.MinGW安装器</h3>
-<p><a href="https://osdn.net/projects/mingw/releases/">https://osdn.net/projects/mingw/releases/</a></p>
-<p>下载后打开安装，勾选需要的包，然后在Installation中点Apply Changes</p>
-<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200809160312.png" alt="image-20200809160304414" loading="lazy"></figure>
-<h3 id="2mingw-w64离线包">2.MinGW-W64离线包</h3>
-<p>打开<a href="https://sourceforge.net/projects/mingw-w64/files/">https://sourceforge.net/projects/mingw-w64/files/</a>，下载<a href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/seh/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z">x86_64-win32-seh</a> 后解压到合适位置即可</p>
-<h2 id="三-配置系统变量">三、配置系统变量</h2>
-<blockquote>
-<p>无论是使用安装器安装还是使用离线包，都必须配置系统变量之后才能使用</p>
+				<blockquote>
+<p>🔗原始链接：<a href="https://channel9.msdn.com/Series/CSharp-101">C# 101 | Channel 9</a></p>
 </blockquote>
-<p>在“此电脑”右键-属性，打开高级系统设置-环境变量，在系统变量下找到Path,点进去进行编辑，将MinGW文件夹中的bin文件夹路径添加进去</p>
-<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200809160947.png" alt="image-20200809160947906" loading="lazy"></figure>
-<h2 id="四-配置notepad">四、配置notepad++</h2>
-<p>1.点击运行-运行，或按F5，输入<code>cmd /k gcc -o &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &quot;$(FULL_CURRENT_PATH)&quot; &amp;&amp; CLS &amp;&amp; &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &amp; PAUSE &amp; EXIT</code>点击保存并定义为合适的名称</p>
-<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200809161553.png" alt="image-20200809161552963" loading="lazy"></figure>
-<p>2.写一段完整的C语言程序</p>
-<pre><code class="language-c">#include&lt;stdio.h&gt;
-int main()
-{	
-	printf(&quot;hello world\n&quot;);
-	return 0;	
-}
-</code></pre>
-<p>3.点运行，选择刚保存的命令</p>
-<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200809162049.png" alt="image-20200809162049539" loading="lazy"></figure>
-<p>运行成功！<br>
-4.如果是C++，则在运行内输入<code>cmd /k g++ -o &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &quot;$(FULL_CURRENT_PATH)&quot; &amp;&amp; CLS &amp;&amp; &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &amp; PAUSE &amp; EXIT</code></p>
-<h2 id="五-补充">五、补充</h2>
-<ul>
-<li>编译：<br>
-<code>cmd /k gcc -Wall -o &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &quot;$(FULL_CURRENT_PATH)&quot; &amp; PAUSE &amp; EXIT</code></li>
-<li>运行：<br>
-<code>cmd /k &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &amp; PAUSE &amp; EXIT</code></li>
-</ul>
-<p><strong>关于脚本行</strong>：<code>cmd /k gcc -o &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &quot;$(FULL_CURRENT_PATH)&quot; &amp;&amp; CLS &amp;&amp; &quot;$(CURRENT_DIRECTORY)\$(NAME_PART).exe&quot; &amp; PAUSE &amp; EXIT</code></p>
-<ul>
-<li>
-<p><code>cmd /k</code>是弹出cmd窗口并执行后续指令。&amp;和&amp;&amp;表示连接作用，说明有多行指令合为一行。</p>
-</li>
-<li>
-<p><code>gcc -o “$(CURRENT_DIRECTORY)$(NAME_PART).exe” “$(FULL_CURRENT_PATH)”</code>编译生成.exe文件，输出源文件所在目录。注意这里需要有引号，目的是为了在目录及文件名存在空格的情况下也能够正常运行。</p>
-</li>
-<li>
-<p><code>&amp;&amp; CLS</code> 清屏。&amp;&amp;的意义在于，前面的语句出现错误，将不会执行该句。</p>
-</li>
-<li>
-<p><code>&amp;&amp; “$(CURRENT_DIRECTORY)$(NAME_PART).exe”</code>运行刚刚生成的.exe文件。如果先前的编译错误，将不会运行。</p>
-</li>
-<li>
-<p><code>&amp; PAUSE</code> 暂停，提示”按任意键继续“。这里无论前面有否错误，都将执行。因此我们看到的是编译错误，显示错误信息并暂停的窗口。</p>
-</li>
-<li>
-<p><code>&amp; EXIT</code> 退出。</p>
-</li>
-</ul>
+<h2 id="hello-world">Hello World</h2>
+<h3 id="c-what-is-c-1-of-19">C#: What is C#? [1 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/What-is-C/player" width="820" height="460" allowFullScreen frameBorder="0" title="What is C#? [1 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-hello-world-2-of-19">C#: Hello World [2 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Hello-World/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Hello World [2 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-the-basics-of-strings-3-of-19">C#: The Basics of Strings [3 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-The-Basics-of-Strings/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: The Basics of Strings [3 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-searching-strings-4-of-19">C#: Searching Strings [4 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Searching-Strings/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Searching Strings [4 of 19] - Microsoft Channel 9 Video"></iframe>
+<h2 id="c中的数字">C#中的数字</h2>
+<h3 id="c-numbers-and-integer-math-5-of-19">C#: Numbers and Integer Math [5 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Numbers-and-Integer-Math/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Numbers and Integer Math [5 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-numbers-and-integer-precision-6-of-19">C#: Numbers and Integer Precision [6 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Numbers-and-Integer-Precision/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Numbers and Integer Precision [6 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-numbers-and-decimals-7-of-19">C#: Numbers and Decimals [7 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Numbers-and-Decimals/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Numbers and Decimals [7 of 19] - Microsoft Channel 9 Video"></iframe>
+<h2 id="分支和循环">分支和循环</h2>
+<h3 id="c-branches-if-8-of-19">C#: Branches (if) [8 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Branches-if/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Branches (if) [8 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-hello-world-explained-9-of-19">C#: &quot;Hello World&quot; Explained [9 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Hello-World-Explained/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: "Hello World" Explained [9 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-what-are-loops-10-of-19">C#: What are Loops? [10 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-What-are-Loops/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: What are Loops? [10 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-combining-branches-and-loops-11-of-19">C#: Combining Branches and Loops [11 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Combining-Branches-and-Loops/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Combining Branches and Loops [11 of 19] - Microsoft Channel 9 Video"></iframe>
+<h2 id="列表集合">列表集合</h2>
+<h3 id="c-arrays-list-and-collections-12-of-19">C#: Arrays, List, and Collections [12 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Arrays-List-and-Collections/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Arrays, List, and Collections [12 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-sort-search-and-index-lists-13-of-19">C#: Sort, Search, and Index Lists [13 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Sort-Search-and-Index-Lists/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Sort, Search, and Index Lists [13 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-lists-of-other-types-14-of-19">C#: Lists of Other Types [14 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Lists-of-Other-Types/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Lists of Other Types [14 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-debugging-15-of-19">C#: Debugging [15 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Debugging/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Debugging [15 of 19] - Microsoft Channel 9 Video"></iframe>
+<h2 id="面向对象的编程">面向对象的编程</h2>
+<h3 id="c-object-oriented-programming-objects-and-classes-16-of-19">C#: Object Oriented Programming - Objects and Classes [16 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Object-Oriented-Programming-Objects-and-Classes/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Object Oriented Programming - Objects and Classes [16 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-object-oriented-programming-methods-and-members-17-of-19">C#: Object Oriented Programming - Methods and Members [17 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Object-Oriented-Programming-Methods-and-Members/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Object Oriented Programming - Methods and Members [17 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-object-oriented-programming-methods-and-exceptions-18-of-19">C#: Object Oriented Programming - Methods and Exceptions [18 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Object-Oriented-Programming-Methods-and-Exceptions/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Object Oriented Programming - Methods and Exceptions [18 of 19] - Microsoft Channel 9 Video"></iframe>
+<h3 id="c-object-oriented-programming-catching-exceptions-19-of-19">C#: Object Oriented Programming - Catching Exceptions [19 of 19]</h3>
+<iframe src="https://channel9.msdn.com/Series/CSharp-101/CSharp-Object-Oriented-Programming-Catching-Exceptions/player" width="820" height="460" allowFullScreen frameBorder="0" title="C#: Object Oriented Programming - Catching Exceptions [19 of 19] - Microsoft Channel 9 Video"></iframe>
 
 							</div>
 	<div class="wow bounceInDown vt-post-tags">
@@ -244,10 +232,8 @@ int main()
 		
 		<div class="nav-links3">
       
-		<div class="wow bounceInLeft nav-previous3"><a href="https://blog.manchan.ml/post/c-101-wei-ruan-guan-fang-cjiao-cheng/" rel="prev"> C# 101-微软官方C#教程</a></div>
 		 
-		 
-		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/xing-zheng-qu-hua-nei-shui-xi-deng-yao-su-de-chu-li/" rel="next"> 行政区划内水系等要素的处理——以武汉市为例</a></div>
+		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/Notepad++-mingw-C&amp;C++/" rel="next"> Notepad++ 配置MinGW编译C/C++</a></div>
 		
 		</div>
 	</nav>
@@ -257,7 +243,7 @@ int main()
 	<div class="author-description"><div class="author-title"><div class="author-link" rel="author">Manchan</div></div>
 
 
-	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/Notepad++-mingw-C&amp;C++/">https://blog.manchan.ml/post/Notepad++-mingw-C&amp;C++/</a></p></div></div>
+	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/c-101-wei-ruan-guan-fang-cjiao-cheng/">https://blog.manchan.ml/post/c-101-wei-ruan-guan-fang-cjiao-cheng/</a></p></div></div>
 	
 		</div>
 		
