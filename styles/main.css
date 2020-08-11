@@ -1410,6 +1410,10 @@ a.toc-link {
 .is-active-link::before {
   background-color: #54BC4B;
 }
+li {
+  display: block;
+  text-align: -webkit-match-parent;
+}
 body {
   font-family: "Lato", sans-serif;
   font-size: 13px;

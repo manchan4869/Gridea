@@ -13,7 +13,7 @@
 <meta HTTP-EQUIV="expires" CONTENT="0"> 
 
 
-<link rel="stylesheet" href="https://blog.manchan.ml/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/styles/main.css">
 <script type="text/javascript">
 function getCSS()
 {
@@ -22,13 +22,13 @@ function getCSS()
         datetoday.setTime(timenow);
         thehour = datetoday.getHours();
 
-            display = "https://blog.manchan.ml/media/css/night.css";
+            display = "https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/media/css/night.css";
 
-            display = "https://blog.manchan.ml/media/css/night.css";   
+            display = "https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/media/css/night.css";   
       
-            display = "https://blog.manchan.ml/media/css/day.css";
+            display = "https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/media/css/day.css";
 
-            display = "https://blog.manchan.ml/media/css/day.css";
+            display = "https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/media/css/day.css";
       
 
 var css = '<';
@@ -40,7 +40,7 @@ var css = '<';
 <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
 <link href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css" rel="stylesheet" />
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script type='text/javascript' src='https://blog.manchan.ml/media/scripts/script.js'></script>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/media/scripts/script.js'></script>
 <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.1/styles/github.min.css">
 <link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet">
@@ -177,27 +177,27 @@ var _hmt = _hmt || [];
 		</div>
                   
 			<div class="wow slideInLeft entry-summary song">
-				<h2 id="前言">前言</h2>
+				<h2 id="一-前言">一、前言</h2>
 <p><a href="https://blog.manchan.ml/post/xing-zheng-bian-jie-shi-liang-shu-ju-de-huo-qu/">上一篇</a>中讲到用QGIS实现行政边界矢量数据的获取，这一篇接着讲其它要素如何处理。</p>
-<h2 id="数据预处理">数据预处理</h2>
+<h2 id="二-数据预处理">二、数据预处理</h2>
 <p>参考<a href="https://blog.manchan.ml/post/xing-zheng-bian-jie-shi-liang-shu-ju-de-huo-qu/">上一篇</a>中的获取与处理，先将武汉市的行政边界处理出来。</p>
 <figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720132124.png" alt="image-20200720132124136" loading="lazy"></figure>
 <p>以水系（面）为例，导入HYDA图层</p>
 <figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720132339.png" alt="image-20200720132339577" loading="lazy"></figure>
-<h2 id="将图幅分割后的数据合并">将图幅分割后的数据合并</h2>
+<h2 id="三-将图幅分割后的数据合并">三、将图幅分割后的数据合并</h2>
 <p>矢量通用→合并矢量图层</p>
 <p>得到合并输出文件</p>
 <figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720132735.png" alt="image-20200720132735155" loading="lazy"></figure>
-<h2 id="消除中间的分割线">消除中间的分割线</h2>
+<h2 id="四-消除中间的分割线">四、消除中间的分割线</h2>
 <p>矢量几何图形→融合(dissolve)</p>
 <figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720133025.png" alt="image-20200720133025674" loading="lazy"></figure>
 <figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720133040.png" alt="image-20200720133040346" loading="lazy"></figure>
-<h2 id="根据武汉市地图提取出武汉市水系">根据武汉市地图提取出武汉市水系</h2>
+<h2 id="五-根据武汉市地图提取出武汉市水系">五、根据武汉市地图提取出武汉市水系</h2>
 <p>矢量叠加分析→裁剪</p>
 <p>以融合后的图层作为输入图层，将武汉市地图作为叠加图层，进行裁剪。</p>
 <figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720133154.png" alt="image-20200720133154711" loading="lazy"></figure>
 <figure data-type="image" tabindex="7"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720133317.png" alt="image-20200720133317650" loading="lazy"></figure>
-<h2 id="结尾">结尾</h2>
+<h2 id="六-结尾">六、结尾</h2>
 <p>若融合报错 提示&quot;Feature (2067) has invalid geometry. Please fix the geometry or change the Processing setting to the &quot;Ignore invalid input features&quot; option.&quot;点开 设置→选项→空间运算→通用→要素过滤器无效→不过滤→OK，然后重新融合。<br>
 <img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200720115431.png" alt="image-20200720115431700" loading="lazy"></p>
 
@@ -347,7 +347,7 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
 </div>
 
 <script src="https://cdn.bootcss.com/fitvids/1.2.0/jquery.fitvids.min.js"></script>
-<script type='text/javascript' src='https://blog.manchan.ml/media/scripts/marlin-scripts.js'></script>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/gh/manchan4869/Gridea@master/media/scripts/marlin-scripts.js'></script>
  <script src="https://cdn.jsdelivr.net/gh/Tokinx/lately@master/lately.min.js"></script>
   <script>jQuery(document).ready(function(){$.lately({'target':'.lately-a,.lately-b,.lately-c'})});</script>
   <style type="text/css">a.back_to_top {
