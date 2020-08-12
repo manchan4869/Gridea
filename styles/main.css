@@ -1472,7 +1472,7 @@ img {
   margin: 0 auto;
 }
 a {
-  color: #ffffff;
+  color: #337ab7;
   text-decoration: none;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -1541,6 +1541,7 @@ header {
 }
 .site-title a {
   text-decoration: none;
+  color: #ffffff;
 }
 .site-branding {
   margin: 0;
