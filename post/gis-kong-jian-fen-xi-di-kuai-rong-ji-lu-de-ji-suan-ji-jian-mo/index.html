@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
  <meta charset="utf-8">
-<title>遥感地学实验：面向对象的遥感影像分类 | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
+<title>GIS空间分析：地块容积率的计算及建模 | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
 <meta name="description" content="Manchan's Blog是まん酱的个人博客，主要是记事与随笔，内容更偏向于GIS技术学习与分享">
 <meta name="keywords" content="manchan,blog,GIS,遥感,postgresql,arcgis,qgis,rs,mapgis,markdown,c#,postgis,pgsql,sql,Arcgis Engine,Visual Studio,ENVI,ERDAS">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -71,7 +71,7 @@ var _hmt = _hmt || [];
 			
 		<header id="header" class="site-header" 
 		
-		style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201019172130.png)"
+		style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200523140738.png)"
 		
 		
 		>
@@ -166,10 +166,10 @@ var _hmt = _hmt || [];
 	
 	                      
 		<div class="entry-content">
-			<h1 class="wow swing entry-title">遥感地学实验：面向对象的遥感影像分类</h1>
+			<h1 class="wow swing entry-title">GIS空间分析：地块容积率的计算及建模</h1>
 <div class="entry-meta">
 <div class="wow bounce">
-	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-10-19 17:19:37" itemprop="datePublished" pubdate="">2020-10-19</time></i>
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-10-21 01:36:36" itemprop="datePublished" pubdate="">2020-10-21</time></i>
 	          </div>
 			
 </span>
@@ -177,108 +177,115 @@ var _hmt = _hmt || [];
 		</div>
                   
 			<div class="wow slideInLeft entry-summary song">
-				<h2 id="一-实验要求"><strong>一、实验要求</strong></h2>
-<p>面向对象分类技术是集合邻近像元为对象用来识别感兴趣的光谱要素，充分利用高分辨率的全色和多光谱数据的空间、纹理和光谱信息来分割和分类，以高精度的分类结果或者矢量输出。从高分辨率全色或者多光谱数据中提取信息，ENVI<br>
-FX可以提取各种特征地物，如车辆、建筑、道路、桥、河流、湖泊以及田地等。可以在操作过程中随时预览影像分割效果。</p>
-<h2 id="二-实验目标"><strong>二、实验目标</strong></h2>
-<p>（1）掌握面向对象的遥感影像分类原理。</p>
-<p>（2）掌握基于规则的面向对象信息提取方法。</p>
-<p>（3）理解分割尺度与分类精度的关系。</p>
-<h2 id="三-实验数据"><strong>三、实验数据</strong></h2>
-<p>qb_colorado.img（0.6m分辨率的QuickBird图像）</p>
-<h2 id="四-实验步骤"><strong>四、实验步骤</strong></h2>
-<h3 id="一发现对象"><strong>（一）发现对象</strong></h3>
-<p><strong>1.启动Rule Based FX工具</strong></p>
-<p>(1)在主界面中选择File(文件)-Open(打开),打开图像文件“qb_colorado.img”。</p>
-<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201019172624.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201019172655.png" alt="" loading="lazy"></figure>
-<p>(2)在Toolbox工具箱中，双击Feature Extraction/Rule Based Feature Extraction<br>
-Work-flow（面向对象/基于规则面向对象工作流程）工具，启动Feature Extraction -<br>
-Rule Based（面向对象特征提取–基于规则提取）流程化工具面板。</p>
-<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201019172706.png" alt="" loading="lazy"></figure>
-<p>(3)在Data Selection（选择数据）步骤中，有4个选项卡。</p>
-<p>(4)单击Input<br>
-Raster（输入栅格）选项卡，单击Browse（浏览）按钮，在弹出对话框中选择“qb_colorado.img”。</p>
-<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201019172632.png" alt="" loading="lazy"></figure>
-<p>(5)单击Custom Bands（自定义波段）选项卡，在“Band 1”右侧下拉列表中选择Band<br>
-3，在“Band 2”右侧下拉列表中选择Band 4，ENVI将生成“Normalized<br>
-Difference”（归一化指数）波段，可以用来进行分割和分类。</p>
-<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201019172634.png" alt="" loading="lazy"></figure>
-<p>(6) 设置完毕后，单击 Next按钮，进入下一步Object Creation（创建对象）步骤。</p>
-<p><strong>2.图像分割与合并</strong></p>
-<p>(1)单击Select Segment<br>
-Bands（选择分割波段）右侧的按钮圈，可以设置分割用到的波段，默认为输入图像的所有波段。</p>
-<figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/11c271102aa6f02c6fd145a62c058eef.png" alt="" loading="lazy"></figure>
-<p>(2)单击Select Merge<br>
-Bands右侧的按钮，可以设置合并用到的波段，默认为输入图像的所有波段。</p>
-<figure data-type="image" tabindex="7"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/f64937aafd9469a1e3e776b778d39b0e.png" alt="" loading="lazy"></figure>
-<p>(3)Segment Settings（分割设置）的Algorithm（算法）下方选择Edge（边缘），Scale<br>
-Level（分割尺度）滑动到40;Merge<br>
-Settings（合并设置）的Algorithm（算法）下方选择Full Lambda Schedule，Merge<br>
-Level滑动到90；</p>
-<p>(4)在Texture Kernal<br>
-Size（纹理核大小）文本框中，可以设置纹理核大小(单位为像元)。如果数据区域较大而纹理差异较小，可以把这个参数设置得大一点。默认是3，最大是19。</p>
-<p>(5)勾选Preview（预览）选项，在ENVI视窗中出现一个矩形的预览区。在鼠标为选择状态下，按住鼠标左键拖动预览区，按住预览区边缘拖动鼠标调整预览区大小。</p>
-<figure data-type="image" tabindex="8"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/acc9d8fc54b4fa0556e70d69c7bb0ff9.png" alt="" loading="lazy"></figure>
-<p>(6)单击Next（下一步）按钮，进入Rule -based<br>
-Classification（基于规则图像分类）步骤。</p>
-<h3 id="二基于规则特征提取"><strong>（二）基于规则特征提取</strong></h3>
-<p>(1)在Rule - based<br>
-Classification（基于规则图像分类）步骤中，单击“+”按钮可以添加类别。在右侧的Class<br>
-Properties表格中设置以下属性:</p>
-<p>·类名（Class Name):住宅。</p>
-<p>·类颜色(Class Color):默认红色即可。</p>
-<p>·类阈值（Class Threshold):默认值为0.5。根据类下面的规则和属性权重计算得到。</p>
-<figure data-type="image" tabindex="9"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/e38cfaa1c0e1fd6bfe073cb7d34e7288.png" alt="" loading="lazy"></figure>
-<p>(2)添加第一条属性描述:划分植被与非植被区。使用鼠标选中Spectral<br>
-Mean（灰度平均值），输入波段(Band):选择Normalized Difference。</p>
-<p>(3)下方的直方图中可以设置属性范围，在Invert按钮前后的文本框中可以手动输入最小和最大阈值，或使用鼠标拖拽直方图中的绿色和蓝色竖线实现阈值设置。单击Invert按钮可以反转阈值范围。单击右侧画按钮可以浮动显示直方图界面，这里设置最大值为0.3，按回车键确认。</p>
-<figure data-type="image" tabindex="10"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/43131f7ca97d06a7498afa3ffe7596a5.png" alt="" loading="lazy"></figure>
-<p>(4)添加第二条属性描述:剔除道路干扰。居住房屋和道路的最大区别在于房屋是近似矩形，可以设置Rectangular<br>
-fit（矩形度）属性。</p>
-<p>·在Rule上右键选择Add Attibute按钮，新建一个规则。</p>
-<p>·在右侧 Type（类型）中选择Spatial（空间）。</p>
-<p>·在Name（名称）中选择Rectangular fit(矩形度)。</p>
-<p>·设置值的范围是0.5~1，其他参数为默认值。</p>
-<figure data-type="image" tabindex="11"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/fdaaec769c5830db91d8ede76f4e0548.png" alt="" loading="lazy"></figure>
-<p>(5)同样的方法设置面积&gt;45，以及延伸性&lt;3。</p>
-<figure data-type="image" tabindex="12"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/362ce64962b7f051150316255d5fea78.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="13"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/4c9c1c708bbceb915869f5f65aee849c.png" alt="" loading="lazy"></figure>
-<p>(6)剔除水泥地干扰。水泥地反射率比较高，居住房屋反射率较低，所以可以使用光谱属性。类型选择“波谱”，名称选择“灰度平均值”，波段选择“GREEN”，数值设置“&lt;650”。</p>
-<figure data-type="image" tabindex="14"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/0242f25e03c5837b8de7f9ae912b4a47.png" alt="" loading="lazy"></figure>
-<p>(7)单击All<br>
-Classes选项，勾选Preview选项预览最终的Rule规则提取效果。规则设置好后，单击<br>
-Next按钮进人下一步。</p>
-<figure data-type="image" tabindex="15"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/b26f42d39ef3e1a61578932e46e1f0eb.png" alt="" loading="lazy"></figure>
-<h3 id="三输出结果"><strong>（三）输出结果</strong></h3>
-<p>在“输出矢量”、“输出栅格”、“附加输出”中选择好合适的路径，并填写好名称，分别进行输出最后的分类结果及规则。</p>
-<figure data-type="image" tabindex="16"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/5fdb9606c47c6c3c2760410428a9fea9.png" alt="" loading="lazy"></figure>
-<h2 id="五-实验结果"><strong>五、实验结果</strong></h2>
-<p>下图为输出栅格最终结果</p>
-<figure data-type="image" tabindex="17"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/193bab3ab79919dea0adbcd448b3b428.png" alt="" loading="lazy"></figure>
-<p>下图为输出矢量最终结果</p>
-<figure data-type="image" tabindex="18"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/b64de57942d60bb433f0b3ab32db2bd8.png" alt="" loading="lazy"></figure>
-<h2 id="六-总结与分析"><strong>六、总结与分析</strong></h2>
-<p>在本次实验中，我学会到这种不同于监督分类的新的分类方法。在以往的遥感影像处理中，影像的分辨率较低，使用监督分类就能很好得进行分类处理。而高空间分辨率影像引其能够清晰、准确地表达地物边界、形状、纹理、内部结构和空间关系等特征，在许多领域应用越来越广泛。随着分辨率的提高，基于传统的像元分类方法，不再能有效地提取出影像中地空间结构信息，分类精度不高。而此次实验使用的快鸟数据为亚米级影像数据，分辨率高达0.6m，传统的基于像元的分类已经不能满足需求，面向对象的分类技术就能很高效地被运用起来。</p>
-<p>面向对象的分类技术以分割对象作为解译单元，充分利用影像地多种信息，使得高分辨率影像的光谱特征更加明显，地物的内部结构、表面纹理和空间布局也更加清晰。而基于规则的面向对象提取，能够根据影像中地类的光谱、颜色、几何形状、纹理等特征，创建对应的规则，大大提高分类结果的精度。</p>
-<p>另外本次实验的软件从ENVI Classic转到ENVI，新的界面也给实验操作到来不同的体验。</p>
+				<h2 id="一-实验背景">一、实验背景</h2>
+<p>容积率是指总建筑面积与建筑用地面积的比值。计算公式：容积率=总建筑面积÷总用地面积（当建筑物层高超过8米，在计算容积率时该层建筑面积加倍计算)。</p>
+<p>容积率越低，居民的舒适度越高，反之则舒适度越低。高容积率的住宅项目意味着小区内房子建得多，而高密度的住宅必定会带来高密度的居住人口，最终导致小区中业主的生活舒适度下降。另外，高密度的居住人口还会对小区内的健身场所、儿童活动区域、娱乐中心以及楼宇内的电梯、消防通道形成比较大的压力。频繁的的使用会加剧这些设施的老化，所以在购买高密度小区时应该对此提出更高的要求。容积率可以更加准确地衡量地价水平。人们购买土地使用权的目的是为了对土地进行开发，建设房屋。</p>
+<h2 id="二-实验目的">二、实验目的</h2>
+<p>（1）理解容积率的概念</p>
+<p>（2）掌握在Arcgis中计算容积率的方法</p>
+<p>（3）掌握在Arcgis中建模的方法</p>
+<h2 id="三-实验数据">三、实验数据</h2>
+<p>湖师遥感图像（Google Earth）</p>
+<h2 id="四-实验步骤">四、实验步骤</h2>
+<h3 id="一正常步骤">（一）正常步骤</h3>
+<p>1.打开实验数据，加载湖师遥感影像，创建两个面要素，分别命名为“湖师房屋分布”和“湖师地块分布”。</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013341.png" alt="" loading="lazy"></figure>
+<p>2.在“湖师地块分布”中画出湖师的范围</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013359.png" alt="" loading="lazy"></figure>
+<p>3.在“湖师房屋分布”中画出湖师的房屋房顶，然后根据底部进行平移，作为湖师房屋的基地。</p>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013400.png" alt="" loading="lazy"></figure>
+<p>4.使用裁剪工具在“湖师地块分布”中裁出湖师的道路并删去道路，留下被道路分割的地块。</p>
+<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013401.png" alt="" loading="lazy"></figure>
+<p>5.打开“湖师房屋分布”的属性表，添加字段“高度”</p>
+<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013402.png" alt="" loading="lazy"></figure>
+<p>6.根据实地调查的结果在属性表中填写高度数值。</p>
+<figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013403.png" alt="" loading="lazy"></figure>
+<p>7.最终显示效果如下图所示。</p>
+<figure data-type="image" tabindex="7"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013404.png" alt="" loading="lazy"></figure>
+<p>8.对“湖师房屋分布”与“湖师地块分布”这两个图层分别进行投影，输出坐标系选择投影坐标系“WGS_1984_UTM_Zone_50N”。</p>
+<figure data-type="image" tabindex="8"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013405.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013406.png" alt="" loading="lazy"></figure>
+<p>9.在“湖师房屋分布_Project”中添加字段“基底面积”。</p>
+<figure data-type="image" tabindex="10"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013407.png" alt="" loading="lazy"></figure>
+<p>10.使用字段计算器计算基底面积。</p>
+<figure data-type="image" tabindex="11"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013408.png" alt="" loading="lazy"></figure>
+<p>11.计算结果如图所示。</p>
+<figure data-type="image" tabindex="12"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013409.png" alt="" loading="lazy"></figure>
+<ol>
+<li>在“湖师房屋分布_Project”中添加字段“建筑面积”。</li>
+</ol>
+<figure data-type="image" tabindex="13"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013410.png" alt="" loading="lazy"></figure>
+<p>13.使用字段计算器计算建筑面积。</p>
+<figure data-type="image" tabindex="14"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013411.png" alt="" loading="lazy"></figure>
+<p>14.计算结果如图所示。</p>
+<figure data-type="image" tabindex="15"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013412.png" alt="" loading="lazy"></figure>
+<p>15.使用相交工具将“湖师房屋分布_Project”与“湖师地块分布_Project”相交。</p>
+<figure data-type="image" tabindex="16"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013413.png" alt="" loading="lazy"></figure>
+<p>16.使用“汇总统计数据”来统计每个地块上的总建筑面积。统计类型为“SUM”,以地块ID为分组。</p>
+<figure data-type="image" tabindex="17"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013414.png" alt="" loading="lazy"></figure>
+<p>17.汇总表如下图所示。</p>
+<figure data-type="image" tabindex="18"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013415.png" alt="" loading="lazy"></figure>
+<p>18.使用“连接字段”工具，将“湖师地块分布_Project”与汇总表相连接起来，输入输出连接字段选择两个表中的地块ID,为了连接后表的简洁，连接字段只选择“SUM_建筑面积”。</p>
+<figure data-type="image" tabindex="19"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013416.png" alt="" loading="lazy"></figure>
+<p>19.连接后的表如下图所示。</p>
+<figure data-type="image" tabindex="20"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013417.png" alt="" loading="lazy"></figure>
+<p>20.在“湖师地块分布_Project”中添加字段“地块面积”。</p>
+<figure data-type="image" tabindex="21"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013418.png" alt="" loading="lazy"></figure>
+<p>21.使用字段计算器计算地块面积。</p>
+<figure data-type="image" tabindex="22"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013419.png" alt="" loading="lazy"></figure>
+<p>22.计算结果如下图。</p>
+<figure data-type="image" tabindex="23"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013420.png" alt="" loading="lazy"></figure>
+<p>23.继续添加字段“容积率”。</p>
+<figure data-type="image" tabindex="24"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013421.png" alt="" loading="lazy"></figure>
+<p>24.使用字段计算器计算容积率。</p>
+<figure data-type="image" tabindex="25"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013422.png" alt="" loading="lazy"></figure>
+<p>25.计算结果如下图。</p>
+<figure data-type="image" tabindex="26"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013423.png" alt="" loading="lazy"></figure>
+<h3 id="二建模">（二）建模</h3>
+<p>1.新建文件地理数据库，命名为“过程数据”。</p>
+<figure data-type="image" tabindex="27"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013424.png" alt="" loading="lazy"></figure>
+<p>2.新建工具箱，命名为“区域现状容积率计算”。</p>
+<figure data-type="image" tabindex="28"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013425.png" alt="" loading="lazy"></figure>
+<p>3.在工具箱中新建模型。</p>
+<figure data-type="image" tabindex="29"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013426.png" alt="" loading="lazy"></figure>
+<p>4.将实验二数据库中的两个面要素拖进模型。</p>
+<figure data-type="image" tabindex="30"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013427.png" alt="" loading="lazy"></figure>
+<p>5.在ArcToolbox中找到“投影”工具，将其拖入模型，并使用</p>
+<figure data-type="image" tabindex="31"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013428.png" alt="" loading="lazy"></figure>
+<p>进行连接。双击打开工具使用和“（一）正常步骤”中一样的参数，输出选择“过程数据.gdb”。</p>
+<figure data-type="image" tabindex="32"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013429.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="33"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013430.png" alt="" loading="lazy"></figure>
+<p>6.在ArcToolbox中找到“添加字段”、“计算字段”工具，并连接，双击打开工具使用和“（一）正常步骤”中一样的参数，输出选择“过程数据.gdb”。</p>
+<figure data-type="image" tabindex="34"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013431.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="35"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013432.png" alt="" loading="lazy"></figure>
+<p>7.在ArcToolbox中找到“相交”、“汇总统计数据”工具，并连接，“湖师地块分布_Project”作为输入表，“湖师地块分布_Project_Intersect_Sta”作为输出表，双击打开工具使用和“（一）正常步骤”中一样的参数，输出选择“过程数据.gdb”。</p>
+<figure data-type="image" tabindex="36"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013433.png" alt="" loading="lazy"></figure>
+<p>8.在ArcToolbox中找到“添加字段”、“计算字段”工具，并连接，双击打开工具使用和“（一）正常步骤”中一样的参数，输出选择“过程数据.gdb”。</p>
+<figure data-type="image" tabindex="37"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013434.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="38"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013435.png" alt="" loading="lazy"></figure>
+<ol start="9">
+<li>在ArcToolbox中找到“复制要素”工具，并连接，输出选择“实验二.gdb”。</li>
+</ol>
+<figure data-type="image" tabindex="39"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013436.png" alt="" loading="lazy"></figure>
+<p>10.运行模型，结果显示成功。</p>
+<figure data-type="image" tabindex="40"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013437.png" alt="" loading="lazy"></figure>
+<p>11.加载“实验二.gdb”中的结果数据，打开属性表，容积率如下图。</p>
+<figure data-type="image" tabindex="41"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201021013438.png" alt="" loading="lazy"></figure>
+<h2 id="五-实验总结">五、实验总结</h2>
+<p>通过本次实验我了解了容积率的概念，以及在规划中的实际运用。本次实验由小组分工合作完成，各司其职，大大提高了效率。线下的实地考察也使得我们从教室走出去，将学习运用在实际中去。本次实验的所运用的工具都在大一讲解过，同过计算容积率这一实际数据，将所学进行串联起来，我们也能重新复习Arcgis的操作与使用。这次实验特别用到建模这一方法，将过程做成模型，就可以不局限于本次实验的数据，类似的数据套用模型也能进行操作。</p>
 
 							</div>
 	<div class="wow bounceInDown vt-post-tags">
  
-				<a href="https://blog.manchan.ml/tag/yao-gan/" rel="tag">遥感</a>	
-				 
-				<a href="https://blog.manchan.ml/tag/envi/" rel="tag">ENVI</a>	
+				<a href="https://blog.manchan.ml/tag/gis/" rel="tag">GIS</a>	
 				 
 					</div>						
 <nav class="navigation3 post-navigation3" role="navigation">
 		
 		<div class="nav-links3">
       
-		<div class="wow bounceInLeft nav-previous3"><a href="https://blog.manchan.ml/post/gis-kong-jian-fen-xi-di-kuai-rong-ji-lu-de-ji-suan-ji-jian-mo/" rel="prev"> GIS空间分析：地块容积率的计算及建模</a></div>
 		 
-		 
-		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/mapgis-103-jiao-cheng/" rel="next"> MapGIS 10.3教程</a></div>
+		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/yao-gan-di-xue-shi-yan-mian-xiang-dui-xiang-de-yao-gan-ying-xiang-fen-lei/" rel="next"> 遥感地学实验：面向对象的遥感影像分类</a></div>
 		
 		</div>
 	</nav>
@@ -288,7 +295,7 @@ Next按钮进人下一步。</p>
 	<div class="author-description"><div class="author-title"><div class="author-link" rel="author">Manchan</div></div>
 
 
-	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/yao-gan-di-xue-shi-yan-mian-xiang-dui-xiang-de-yao-gan-ying-xiang-fen-lei/">https://blog.manchan.ml/post/yao-gan-di-xue-shi-yan-mian-xiang-dui-xiang-de-yao-gan-ying-xiang-fen-lei/</a></p></div></div>
+	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/gis-kong-jian-fen-xi-di-kuai-rong-ji-lu-de-ji-suan-ji-jian-mo/">https://blog.manchan.ml/post/gis-kong-jian-fen-xi-di-kuai-rong-ji-lu-de-ji-suan-ji-jian-mo/</a></p></div></div>
 	
 		</div>
 		
