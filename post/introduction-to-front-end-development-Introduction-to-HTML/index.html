@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
  <meta charset="utf-8">
-<title>GIS空间分析：三维场景模拟 | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
+<title>前端开发入门教程-HTML简介 | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
 <meta name="description" content="Manchan's Blog是まん酱的个人博客，主要是记事与随笔，内容更偏向于GIS技术学习与分享">
 <meta name="keywords" content="manchan,blog,GIS,遥感,postgresql,arcgis,qgis,rs,mapgis,markdown,c#,postgis,pgsql,sql,Arcgis Engine,Visual Studio,ENVI,ERDAS">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -71,7 +71,7 @@ var _hmt = _hmt || [];
 			
 		<header id="header" class="site-header" 
 		
-		style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20200523140738.png)"
+		style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210104011739.jpg)"
 		
 		
 		>
@@ -166,10 +166,10 @@ var _hmt = _hmt || [];
 	
 	                      
 		<div class="entry-content">
-			<h1 class="wow swing entry-title">GIS空间分析：三维场景模拟</h1>
+			<h1 class="wow swing entry-title">前端开发入门教程-HTML简介</h1>
 <div class="entry-meta">
 <div class="wow bounce">
-	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-12-18 12:31:11" itemprop="datePublished" pubdate="">2020-12-18</time></i>
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2021-01-03 20:48:44" itemprop="datePublished" pubdate="">2021-01-03</time></i>
 	          </div>
 			
 </span>
@@ -177,98 +177,81 @@ var _hmt = _hmt || [];
 		</div>
                   
 			<div class="wow slideInLeft entry-summary song">
-				<h2 id="一-实验背景"><strong>一、实验背景</strong></h2>
-<p>随着GIS技术以及计算机软硬件技术的进一步发展，三维空间分析技术逐步走向成熟，已经成为GIS空间分析的重要内容。三维空间分析相比二维分析，更注重对第三维信息的分析。基于高程信息的三维分析主要包括三维几何参数计算、地形因子提取、通视性分析、地形剖面图绘制、地形三维可视化等。第三维信息也可以是如降雨量、温度、污染物浓度等信息，进一步扩展了三维分析的应用领域。</p>
-<h2 id="二-实验目的"><strong>二、实验目的</strong></h2>
-<p>利用ArcGIS三维分析模块进行创建地表面、创建二维半建筑和场景、创建真三维场景、地表面的可视化。</p>
-<h2 id="三-实验数据"><strong>三、实验数据</strong></h2>
-<p>【创建地表面】文件夹：</p>
-<p>dwg分要素文件、三维建模.mdb、地形.dwg、原始地表面转tin</p>
-<p>【创建二维半建筑和场景】文件夹：</p>
-<p>dwg分要素文件、三维建模.mdb、创建动画.sxd.xml、道路.shp、原始地表面</p>
-<p>【创建真三维场景】文件夹：</p>
-<p>虚拟现实.mdb、底图.tif</p>
-<p>【地表面的可视化】文件夹：</p>
-<p>三维建模.mdb、地形.dwg、用地规划图.tif、原始地表面</p>
-<h2 id="四-实验步骤"><strong>四、实验步骤</strong></h2>
-<h3 id="一创建地表面">（一）创建地表面</h3>
-<p>1.加载“等高线和高程点.dwg”图层</p>
-<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122934.png" alt="" loading="lazy"></figure>
-<p>2.将线要素进行“要素转点”</p>
-<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122935.png" alt="" loading="lazy"></figure>
-<p>3.等高线转点效果如下图</p>
-<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122936.png" alt="" loading="lazy"></figure>
-<p>4.将“等高线转点”与“高程点”进行合并</p>
-<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122937.png" alt="" loading="lazy"></figure>
-<p>5.在合并图层中，按属性选择出“Elevation”为0的点。</p>
-<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122938.png" alt="" loading="lazy"></figure>
-<p>6.使用字段计算器，将“高程”值复制到“Elevation”</p>
-<figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122939.png" alt="" loading="lazy"></figure>
-<p>7.创建TIN</p>
-<p>(1)方法一，使用克里金法将高程点进行插值，形成栅格，再进行“栅格转TIN”</p>
-<figure data-type="image" tabindex="7"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122940.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="8"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122941.png" alt="" loading="lazy"></figure>
-<p>(2)方法二：直接使用“创建TIN”工具，并按如下图所示修改参数。</p>
-<figure data-type="image" tabindex="9"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122942.png" alt="" loading="lazy"></figure>
-<p>8.创建的TIN如下图所示</p>
-<figure data-type="image" tabindex="10"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122943.png" alt="" loading="lazy"></figure>
-<h3 id="二地表面的可视化">（二）地表面的可视化</h3>
-<p>1.创建TIN在ArcScene显示如下图</p>
-<figure data-type="image" tabindex="11"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122944.png" alt="" loading="lazy"></figure>
-<p>2.调整显示可对地表进行符号化</p>
-<figure data-type="image" tabindex="12"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122945.png" alt="" loading="lazy"></figure>
-<h3 id="三创建二维半建筑和场景">（三）创建二维半建筑和场景</h3>
-<p>1.将遥感图、河流水塘、房屋以及原始地表面加载进ArcScene</p>
-<figure data-type="image" tabindex="13"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122946.png" alt="" loading="lazy"></figure>
-<ol start="2">
-<li>修改遥感图、河流水塘、房屋的基本高度，选择在自定义表面上浮动</li>
-</ol>
-<figure data-type="image" tabindex="14"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122947.png" alt="" loading="lazy"></figure>
-<p>3.修改后效果如下图所示</p>
-<figure data-type="image" tabindex="15"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122948.png" alt="" loading="lazy"></figure>
-<p>4.更改房屋图层的拉伸，输入如下图所示表达式</p>
-<figure data-type="image" tabindex="16"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122949.png" alt="" loading="lazy"></figure>
-<ol start="5">
-<li>二维半建筑和场景效果如下图所示</li>
-</ol>
-<figure data-type="image" tabindex="17"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122950.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="18"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122951.png" alt="" loading="lazy"></figure>
-<h3 id="四创建真三维场景">（四）创建真三维场景</h3>
-<p>1.将数据加载进图层</p>
-<figure data-type="image" tabindex="19"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122952.png" alt="" loading="lazy"></figure>
-<p>2.修改树图层的符号系统，按“类型”进行分类</p>
-<figure data-type="image" tabindex="20"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122953.png" alt="" loading="lazy"></figure>
-<p>3.添加样式引用，加载3D树和3D汽车</p>
-<figure data-type="image" tabindex="21"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122954.png" alt="" loading="lazy"></figure>
-<p>4.在引用样式中选择树的种类并修改大小</p>
-<figure data-type="image" tabindex="22"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122955.png" alt="" loading="lazy"></figure>
-<p>5.修改后所以种类的树</p>
-<figure data-type="image" tabindex="23"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122956.png" alt="" loading="lazy"></figure>
-<p>6.点击“高级”，添加旋转效果，旋转方式为随机</p>
-<figure data-type="image" tabindex="24"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122957.png" alt="" loading="lazy"></figure>
-<p>7.修改透明度最低阈值，使白边淡化</p>
-<figure data-type="image" tabindex="25"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122958.png" alt="" loading="lazy"></figure>
-<p>8.以同样的方式修改好汽车的样式</p>
-<figure data-type="image" tabindex="26"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122959.png" alt="" loading="lazy"></figure>
-<p>9.以“Angle”字段为汽车添加旋转，方式为地理</p>
-<figure data-type="image" tabindex="27"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218123000.png" alt="" loading="lazy"></figure>
-<p>10.最终效果如下图所示</p>
-<figure data-type="image" tabindex="28"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218123001.png" alt="" loading="lazy"></figure>
-<h2 id="五-实验总结"><strong>五、实验总结</strong></h2>
-<p>通过本次实验我了解了利用ArcGIS三维分析模块进行创建地表面、创建二维半建筑和场景、创建真三维场景、地表面的可视化。进一步练习了ArcScense的使用。</p>
+				<blockquote>
+<p>本文素材来源于黑马程序员<strong>pink老师</strong>的前端<a href="https://www.bilibili.com/video/BV14J4114768?p=2">教学视频</a>。在此基础上有部分改动。</p>
+</blockquote>
+<h2 id="1-网页">1. 网页</h2>
+<h3 id="11-什么是网页">1.1 什么是网页</h3>
+<p>1.<strong>网站</strong>是指在因特网上根据一定的规则，使用 HTML 等制作的用于展示特定内容相关的网页集合。</p>
+<p>2.<strong>网页</strong>是网站中的一“页”，通常是 HTML 格式的文件，它要通过浏览器来阅读。</p>
+<p>3.网页是构成网站的<strong>基本元素</strong>，它通常由图片、链接、文字、声音、视频等元素组成。通常我们看到的网页，常见以 <strong>.htm</strong> 或 <strong>.html</strong> 后缀结尾的文件，因此将其俗称为 <strong>HTML 文件</strong>。</p>
+<h3 id="12-什么是-html">1.2 什么是 HTML</h3>
+<blockquote>
+<p>HTML 是通向 WEB 技术世界的钥匙。</p>
+</blockquote>
+<p><strong>HTML</strong> 指的是<strong>超文本标记语言 (Hyper Text Markup Language)</strong> ，它是用来描述网页的一种语言。</p>
+<p>HTML 不是一种编程语言，而是一种<strong>标记语言</strong> (markup language)。</p>
+<p>标记语言是一套标记标签 (markup tag)。</p>
+<p><strong>所谓超文本，有 2 层含义：</strong></p>
+<p>1.它可以加入图片、声音、动画、多媒体等内容（超越了文本限制 ）。</p>
+<p>2.它还可以从一个文件跳转到另一个文件，与世界各地主机的文件连接（超级链接文本 ）。</p>
+<h3 id="13-网页的形成">1.3 网页的形成</h3>
+<p>网页是由网页元素组成的，这些元素是利用 html 标签描述出来，然后通过浏览器解析来显示给用户的。</p>
+<p>如下图所示，精美的必应官网背后是一行行 html 代码，通过浏览器渲染，才展示出来。</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210103202803.png" alt="image-20210103202755352" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210103203004.png" alt="image-20210103203004296" loading="lazy"></figure>
+<h3 id="14-网页的总结">1.4 网页的总结：</h3>
+<p>1.网页是图片、链接、文字、声音、视频等元素组成, 其实就是一个html文件(后缀名为html)</p>
+<p>2.网页生成制作:  有前端人员书写 HTML 文件, 然后浏览器打开,就能看到了网页.</p>
+<p>3.HTML: 超文本标记语言, 用来制作网页的一门语言. 有标签组成的. 比如 图片标签 链接标签 视频标签等…</p>
+<h2 id="2-常用浏览器">2. 常用浏览器</h2>
+<p>网页是通过浏览器来展示的, 关于浏览器我们要介绍以下两点:</p>
+<h3 id="21-常用的浏览器">2.1 常用的浏览器</h3>
+<p>浏览器是网页显示、运行的平台。常用的浏览器有<strong>Edge</strong>、 IE、火狐（Firefox）、<strong>谷歌（Chrome）</strong>、Safari和Opera等。</p>
+<p>新版edge搭载了与Chrome 谷歌浏览器同样的 <strong>Chromium 内核</strong>的 Edge 浏览器不仅拥有更好的性能、稳定性以及网页兼容性，对追求效率的人士而言，最重要的是它还能“原生支持”安装和使用 Chrome 插件扩展。对于国内Win10用户，新版Edge是真的香。</p>
+<h3 id="22-浏览器内核">2.2 浏览器内核</h3>
+<p>1.负责读取网页内容，整理讯息，计算网页的显示方式并显示页面<br>
+<img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210103204000.png" alt="" loading="lazy"></p>
+<p>2.目前国内一般浏览器都会采用 Webkit/Blink 内核，如 360、UC、QQ、搜狗等。</p>
+<h2 id="3-web-标准">3. Web 标准</h2>
+<p>Web 标准是由 W3C 组织和其他标准化组织制定的一系列标准的集合。W3C（万维网联盟）是国际最著名的标准化组织。</p>
+<h3 id="31-为什么需要web标准">3.1 为什么需要Web标准</h3>
+<p>浏览器不同，它们显示页面或者排版就有些许差异</p>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210103204809.png" alt="" loading="lazy"></figure>
+<p>遵循 Web 标准除了可以让不同的开发人员写出的页面更标准、更统一外，还有以下<strong>优点</strong>：</p>
+<p>1.让 Web 的发展前景更广阔。</p>
+<p>2.内容能被更广泛的设备访问。</p>
+<p>3.更容易被搜寻引擎搜索。</p>
+<p>4.降低网站流量费用。</p>
+<p>5.使网站更易于维护。</p>
+<p>6.提高页面浏览速度。</p>
+<h3 id="32-web-标准的构成">3.2 Web 标准的构成</h3>
+<p>主要包括<strong>结构（Structure）</strong> 、<strong>表现（Presentation）</strong> 和 <strong>行为（Behavior）</strong> 三个方面。</p>
+<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210103205329.png" alt="" loading="lazy"></figure>
+<p>Web 标准提出的最佳体验方案：结构、样式、行为相分离。</p>
+<p>简单理解： <strong>结构写到 HTML 文件中， 表现写到 CSS 文件中， 行为写到 JavaScript 文件</strong>中。</p>
+<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210103205431.png" alt="img" loading="lazy"></figure>
+<p>1.结构类似身体</p>
+<p>2.表现类似外观装饰</p>
+<p>3.行为类似行为动作</p>
+<p>4.相比较而言, 三者中<strong>结构最重要</strong></p>
 
 							</div>
 	<div class="wow bounceInDown vt-post-tags">
  
+				<a href="https://blog.manchan.ml/tag/qian-duan/" rel="tag">前端</a>	
+				 
+				<a href="https://blog.manchan.ml/tag/html/" rel="tag">HTML</a>	
+				 
 					</div>						
 <nav class="navigation3 post-navigation3" role="navigation">
 		
 		<div class="nav-links3">
       
-		<div class="wow bounceInLeft nav-previous3"><a href="https://blog.manchan.ml/post/introduction-to-front-end-development-Introduction-to-HTML/" rel="prev"> 前端开发入门教程-HTML简介</a></div>
+		<div class="wow bounceInLeft nav-previous3"><a href="https://blog.manchan.ml/post/introduction-to-front-end-development-HTML-Basics/" rel="prev"> 前端开发入门教程-HTML基础</a></div>
 		 
 		 
-		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/shi-yan-san-cheng-shi-sheng-huo-qu-de-yong-di-gua-yi-xing-ping-jie-ji-jian-mo/" rel="next"> GIS空间分析：城市生活区的用地适宜性评价及建模</a></div>
+		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/gis-kong-jian-fen-xi-san-wei-chang-jing-mo-ni/" rel="next"> GIS空间分析：三维场景模拟</a></div>
 		
 		</div>
 	</nav>
@@ -278,7 +261,7 @@ var _hmt = _hmt || [];
 	<div class="author-description"><div class="author-title"><div class="author-link" rel="author">Manchan</div></div>
 
 
-	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/gis-kong-jian-fen-xi-san-wei-chang-jing-mo-ni/">https://blog.manchan.ml/post/gis-kong-jian-fen-xi-san-wei-chang-jing-mo-ni/</a></p></div></div>
+	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/introduction-to-front-end-development-Introduction-to-HTML/">https://blog.manchan.ml/post/introduction-to-front-end-development-Introduction-to-HTML/</a></p></div></div>
 	
 		</div>
 		
