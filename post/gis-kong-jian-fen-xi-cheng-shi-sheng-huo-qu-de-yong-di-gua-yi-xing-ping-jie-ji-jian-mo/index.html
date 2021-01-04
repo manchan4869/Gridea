@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
  <meta charset="utf-8">
-<title>GIS空间分析：三维场景模拟 | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
+<title>GIS空间分析：城市生活区的用地适宜性评价及建模 | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
 <meta name="description" content="Manchan's Blog是まん酱的个人博客，主要是记事与随笔，内容更偏向于GIS技术学习与分享">
 <meta name="keywords" content="manchan,blog,GIS,遥感,postgresql,arcgis,qgis,rs,mapgis,markdown,c#,postgis,pgsql,sql,Arcgis Engine,Visual Studio,ENVI,ERDAS">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -166,10 +166,10 @@ var _hmt = _hmt || [];
 	
 	                      
 		<div class="entry-content">
-			<h1 class="wow swing entry-title">GIS空间分析：三维场景模拟</h1>
+			<h1 class="wow swing entry-title">GIS空间分析：城市生活区的用地适宜性评价及建模</h1>
 <div class="entry-meta">
 <div class="wow bounce">
-	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-12-18 12:31:11" itemprop="datePublished" pubdate="">2020-12-18</time></i>
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-12-04 18:51:51" itemprop="datePublished" pubdate="">2020-12-04</time></i>
 	          </div>
 			
 </span>
@@ -178,84 +178,427 @@ var _hmt = _hmt || [];
                   
 			<div class="wow slideInLeft entry-summary song">
 				<h2 id="一-实验背景"><strong>一、实验背景</strong></h2>
-<p>随着GIS技术以及计算机软硬件技术的进一步发展，三维空间分析技术逐步走向成熟，已经成为GIS空间分析的重要内容。三维空间分析相比二维分析，更注重对第三维信息的分析。基于高程信息的三维分析主要包括三维几何参数计算、地形因子提取、通视性分析、地形剖面图绘制、地形三维可视化等。第三维信息也可以是如降雨量、温度、污染物浓度等信息，进一步扩展了三维分析的应用领域。</p>
+<p>中国正处于快速城市化的历史阶段，特别在经济发达地区，扩大城市用地面积、调整空间布局是每次总规调整、修编的核心任务。按一般技术规程，先定城市性质、规模。做城市发展用地适宜性评价，再由专业人员提出多种布局方案，征求各方意见，选择或调整方案，再进入更具体的总规编制。在实际工作中，相同的城市性质、规模、用地评价，可能会有很多用地布局方案，而且相互之间的差异会很大。一方面，是由于硬性约束条件不严，专业人员依靠经验产生的布局方案可能多种多样，另一方面．现实中往往会有各种不同利益、各种不同价值观、其他外部条件会影响到用地布局方案。由此造成布局方案不断改变、调整。</p>
 <h2 id="二-实验目的"><strong>二、实验目的</strong></h2>
-<p>利用ArcGIS三维分析模块进行创建地表面、创建二维半建筑和场景、创建真三维场景、地表面的可视化。</p>
+<p>利用ArcGIS进行多因子的城市用地适宜性评价，并进行建模。</p>
 <h2 id="三-实验数据"><strong>三、实验数据</strong></h2>
-<p>【创建地表面】文件夹：</p>
-<p>dwg分要素文件、三维建模.mdb、地形.dwg、原始地表面转tin</p>
-<p>【创建二维半建筑和场景】文件夹：</p>
-<p>dwg分要素文件、三维建模.mdb、创建动画.sxd.xml、道路.shp、原始地表面</p>
-<p>【创建真三维场景】文件夹：</p>
-<p>虚拟现实.mdb、底图.tif</p>
-<p>【地表面的可视化】文件夹：</p>
-<p>三维建模.mdb、地形.dwg、用地规划图.tif、原始地表面</p>
+<p>本实验的研究区为某个山区的小城镇,数据包括了矢量数据库评价基础数据.mdb以及地形栅格数据（高程、坡度)。</p>
+<p>关于用地适宜性评价的研究很多、指标体系也不相同。本实验主要采用的是钮心毅、宋小冬（2007年）的研究，该研究将城市用地适宜性评价划分为两大类：生活区的用地适宜性评价和工业区的用地适宜性评价，包括了各自的交通、市政、绿地等。</p>
+<p>不同类型的用地其评价的准则也是不一样的，例如生活区的用地适宜性评价更加关注的是我们城市中心区的可达性、环境适宜性等，但是工业区用地适宜性评价更关注的是交通快捷性、土地成本、环境影响等。</p>
+<p>本实验主要是针对生活区用地进行的评价，因此选取了一下的因素进行用地适宜性评价：</p>
+<table>
+<thead>
+<tr>
+<th>评价因素</th>
+<th>评价因子</th>
+<th>权重</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>交通便捷性</td>
+<td></td>
+<td>0.28</td>
+</tr>
+<tr>
+<td>环境适宜性</td>
+<td>滨水环境</td>
+<td>0.09</td>
+</tr>
+<tr>
+<td></td>
+<td>远离工业污染</td>
+<td>0.06</td>
+</tr>
+<tr>
+<td></td>
+<td>森林环境</td>
+<td>0.08</td>
+</tr>
+<tr>
+<td>城市氛围</td>
+<td></td>
+<td>0.18</td>
+</tr>
+<tr>
+<td>地形适宜性</td>
+<td>地形高程</td>
+<td>0.155</td>
+</tr>
+<tr>
+<td></td>
+<td>地形坡度</td>
+<td>0.155</td>
+</tr>
+</tbody>
+</table>
 <h2 id="四-实验步骤"><strong>四、实验步骤</strong></h2>
-<h3 id="一创建地表面">（一）创建地表面</h3>
-<p>1.加载“等高线和高程点.dwg”图层</p>
-<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122934.png" alt="" loading="lazy"></figure>
-<p>2.将线要素进行“要素转点”</p>
-<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122935.png" alt="" loading="lazy"></figure>
-<p>3.等高线转点效果如下图</p>
-<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122936.png" alt="" loading="lazy"></figure>
-<p>4.将“等高线转点”与“高程点”进行合并</p>
-<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122937.png" alt="" loading="lazy"></figure>
-<p>5.在合并图层中，按属性选择出“Elevation”为0的点。</p>
-<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122938.png" alt="" loading="lazy"></figure>
-<p>6.使用字段计算器，将“高程”值复制到“Elevation”</p>
-<figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122939.png" alt="" loading="lazy"></figure>
-<p>7.创建TIN</p>
-<p>(1)方法一，使用克里金法将高程点进行插值，形成栅格，再进行“栅格转TIN”</p>
-<figure data-type="image" tabindex="7"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122940.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="8"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122941.png" alt="" loading="lazy"></figure>
-<p>(2)方法二：直接使用“创建TIN”工具，并按如下图所示修改参数。</p>
-<figure data-type="image" tabindex="9"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122942.png" alt="" loading="lazy"></figure>
-<p>8.创建的TIN如下图所示</p>
-<figure data-type="image" tabindex="10"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122943.png" alt="" loading="lazy"></figure>
-<h3 id="二地表面的可视化">（二）地表面的可视化</h3>
-<p>1.创建TIN在ArcScene显示如下图</p>
-<figure data-type="image" tabindex="11"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122944.png" alt="" loading="lazy"></figure>
-<p>2.调整显示可对地表进行符号化</p>
-<figure data-type="image" tabindex="12"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122945.png" alt="" loading="lazy"></figure>
-<h3 id="三创建二维半建筑和场景">（三）创建二维半建筑和场景</h3>
-<p>1.将遥感图、河流水塘、房屋以及原始地表面加载进ArcScene</p>
-<figure data-type="image" tabindex="13"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122946.png" alt="" loading="lazy"></figure>
-<ol start="2">
-<li>修改遥感图、河流水塘、房屋的基本高度，选择在自定义表面上浮动</li>
-</ol>
-<figure data-type="image" tabindex="14"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122947.png" alt="" loading="lazy"></figure>
-<p>3.修改后效果如下图所示</p>
-<figure data-type="image" tabindex="15"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122948.png" alt="" loading="lazy"></figure>
-<p>4.更改房屋图层的拉伸，输入如下图所示表达式</p>
-<figure data-type="image" tabindex="16"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122949.png" alt="" loading="lazy"></figure>
-<ol start="5">
-<li>二维半建筑和场景效果如下图所示</li>
-</ol>
-<figure data-type="image" tabindex="17"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122950.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="18"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122951.png" alt="" loading="lazy"></figure>
-<h3 id="四创建真三维场景">（四）创建真三维场景</h3>
-<p>1.将数据加载进图层</p>
-<figure data-type="image" tabindex="19"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122952.png" alt="" loading="lazy"></figure>
-<p>2.修改树图层的符号系统，按“类型”进行分类</p>
-<figure data-type="image" tabindex="20"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122953.png" alt="" loading="lazy"></figure>
-<p>3.添加样式引用，加载3D树和3D汽车</p>
-<figure data-type="image" tabindex="21"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122954.png" alt="" loading="lazy"></figure>
-<p>4.在引用样式中选择树的种类并修改大小</p>
-<figure data-type="image" tabindex="22"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122955.png" alt="" loading="lazy"></figure>
-<p>5.修改后所以种类的树</p>
-<figure data-type="image" tabindex="23"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122956.png" alt="" loading="lazy"></figure>
-<p>6.点击“高级”，添加旋转效果，旋转方式为随机</p>
-<figure data-type="image" tabindex="24"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122957.png" alt="" loading="lazy"></figure>
-<p>7.修改透明度最低阈值，使白边淡化</p>
-<figure data-type="image" tabindex="25"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122958.png" alt="" loading="lazy"></figure>
-<p>8.以同样的方式修改好汽车的样式</p>
-<figure data-type="image" tabindex="26"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218122959.png" alt="" loading="lazy"></figure>
-<p>9.以“Angle”字段为汽车添加旋转，方式为地理</p>
-<figure data-type="image" tabindex="27"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218123000.png" alt="" loading="lazy"></figure>
-<p>10.最终效果如下图所示</p>
-<figure data-type="image" tabindex="28"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201218123001.png" alt="" loading="lazy"></figure>
+<h3 id="一主要步骤"><strong>（一）主要步骤:</strong></h3>
+<p>1.首先，对各个单因素作适宜性评价，统一分级成1~5级，并转换成栅格数据;</p>
+<p>2.然后，进行栅格数据的加权叠加运算，每个栅格代表的地块将得到一个综合评价值;</p>
+<p>3.最后，对综合后的栅格数据重新分类定级，得到据居民生活区的用地适宜性综合评价值。</p>
+<h3 id="二单因素适宜性评价分级"><strong>（二）单因素适宜性评价分级</strong></h3>
+<h4 id="1交通便捷性评价"><strong>1.交通便捷性评价</strong></h4>
+<p>交通便捷性评价主要是根据距离省道、县道的远近加以确定，通便捷性评价的标准如表所示：</p>
+<table>
+<thead>
+<tr>
+<th>评价因子</th>
+<th>分类</th>
+<th>分级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>交通便捷性</td>
+<td>距离省道0~500米，或距离县道0~250米</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td>距离省道500~1000米，或距离县道250~500米</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td>距离省道1000~1500米，或距离县道500~1000米</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>距离省道1500~3000米，或距离县道1000~2000米</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>距离省道3000米以上，或距离县道2000米以上</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>（1）加载“道路”图层，【选择】→【按属性选择】。</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184903.png" alt="" loading="lazy"></figure>
+<p>（2）筛选出“省道”</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184904.png" alt="" loading="lazy"></figure>
+<p>（3）为筛选出的要素创建多环缓冲区，参数如下图。</p>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184905.png" alt="" loading="lazy"></figure>
+<p>（4）在“环境设置”中的“处理范围”选择“与图层 研究范围 相同”。</p>
+<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184906.png" alt="" loading="lazy"></figure>
+<p>（5）创建的缓冲区如下图。</p>
+<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184907.png" alt="" loading="lazy"></figure>
+<p>（6）筛选出“县道”。</p>
+<figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184908.png" alt="" loading="lazy"></figure>
+<p>（7）为筛选出的要素创建多环缓冲区，参数如下图。</p>
+<figure data-type="image" tabindex="7"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184909.png" alt="" loading="lazy"></figure>
+<p>（8）创建的缓冲区如下图。</p>
+<figure data-type="image" tabindex="8"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184910.png" alt="" loading="lazy"></figure>
+<p>（9）将两个缓冲区进行联合。</p>
+<figure data-type="image" tabindex="9"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184911.png" alt="" loading="lazy"></figure>
+<p>（10）得到的联合结果如下图。</p>
+<figure data-type="image" tabindex="10"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184912.png" alt="" loading="lazy"></figure>
+<p>（11）在联合图层中添加“评价值”短整型字段。</p>
+<figure data-type="image" tabindex="11"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184913.png" alt="" loading="lazy"></figure>
+<p>（12）打开“字段计算器”，填入代码，计算评价值。</p>
+<figure data-type="image" tabindex="12"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184914.png" alt="" loading="lazy"></figure>
+<p>（13）计算结果如下图。</p>
+<figure data-type="image" tabindex="13"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184915.png" alt="" loading="lazy"></figure>
+<p>（14）对联合图层进行面转栅格，值字段为“评价值”，像元大小设置为10，在“环境”中设置处理范围。</p>
+<figure data-type="image" tabindex="14"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184916.png" alt="" loading="lazy"></figure>
+<p>（15）面转栅格结果如下图。</p>
+<figure data-type="image" tabindex="15"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184917.png" alt="" loading="lazy"></figure>
+<h4 id="2环境适宜性评价"><strong>2.环境适宜性评价</strong></h4>
+<h5 id="21-滨水环境评价">2.1 滨水环境评价</h5>
+<table>
+<thead>
+<tr>
+<th>评价因子</th>
+<th>分类</th>
+<th>分级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>滨水环境</td>
+<td>距离河流0~250米，或距离溪流0~100米</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td>距离河流250~500米，或距离溪流100~200米</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td>距离河流500米以上，或距离溪流200米以上</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>（1）加载“河流”图层，为该图层创建多环缓冲区，参数如下图。</p>
+<figure data-type="image" tabindex="16"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184918.png" alt="" loading="lazy"></figure>
+<p>（2）运用联合将空洞填补起来，并重新赋值为1。</p>
+<figure data-type="image" tabindex="17"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184919.png" alt="" loading="lazy"></figure>
+<p>（3）加载“溪流”图层，为该图层创建多环缓冲区，参数如下图。</p>
+<figure data-type="image" tabindex="18"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184920.png" alt="" loading="lazy"></figure>
+<p>（4）将两个过程图层进行联合。</p>
+<figure data-type="image" tabindex="19"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184921.png" alt="" loading="lazy"></figure>
+<p>（5）在联合图层中添加“评价值”短整型字段，打开“字段计算器”，填入代码，计算评价值。</p>
+<figure data-type="image" tabindex="20"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184922.png" alt="" loading="lazy"></figure>
+<p>（6）计算结果如下图。</p>
+<figure data-type="image" tabindex="21"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184923.png" alt="" loading="lazy"></figure>
+<p>（7）对联合图层进行面转栅格，值字段为“评价值”，像元大小设置为10，在“环境”中设置处理范围。</p>
+<figure data-type="image" tabindex="22"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184924.png" alt="" loading="lazy"></figure>
+<p>（8）面转栅格结果如下图。</p>
+<figure data-type="image" tabindex="23"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184925.png" alt="" loading="lazy"></figure>
+<h5 id="22-远离工业污染评价">2.2 远离工业污染评价</h5>
+<table>
+<thead>
+<tr>
+<th>评价因子</th>
+<th>分类</th>
+<th>分级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>远离工业污染</td>
+<td>距离成片工业区1000米以上</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td>距离成片工业区 200~1000米</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>距离成片工业区 100~200米</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>距离成片工业区0~100米，或者工业区内部</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>（1）加载“工业”图层，为该图层创建多环缓冲区，参数如下图。</p>
+<figure data-type="image" tabindex="24"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184926.png" alt="" loading="lazy"></figure>
+<p>（2）在缓冲区图层中添加“评价值”短整型字段，打开“字段计算器”，填入代码，计算评价值。</p>
+<figure data-type="image" tabindex="25"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184927.png" alt="" loading="lazy"></figure>
+<p>（3）计算结果如下图。</p>
+<figure data-type="image" tabindex="26"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184928.png" alt="" loading="lazy"></figure>
+<p>（4）对缓冲区图层进行面转栅格，值字段为“评价值”，像元大小设置为10，在“环境”中设置处理范围。</p>
+<figure data-type="image" tabindex="27"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184929.png" alt="" loading="lazy"></figure>
+<p>（5）面转栅格结果如下图。</p>
+<figure data-type="image" tabindex="28"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184930.png" alt="" loading="lazy"></figure>
+<h5 id="23森林评价">2.3森林评价</h5>
+<table>
+<thead>
+<tr>
+<th>评价因子</th>
+<th>分类</th>
+<th>分级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>森林环境</td>
+<td>距离林区0~500米，或者林区内</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td>距离林区500~1000米</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td>距离林区1000米以上</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>（1）加载“林区”图层，为该图层创建多环缓冲区，参数如下图。</p>
+<figure data-type="image" tabindex="29"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184931.png" alt="" loading="lazy"></figure>
+<p>（2）在缓冲区图层中添加“评价值”短整型字段，打开“字段计算器”，填入代码，计算评价值。</p>
+<figure data-type="image" tabindex="30"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184932.png" alt="" loading="lazy"></figure>
+<p>（3）计算结果如下图。</p>
+<figure data-type="image" tabindex="31"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184933.png" alt="" loading="lazy"></figure>
+<p>（4）对缓冲区图层进行面转栅格，值字段为“评价值”，像元大小设置为10，在“环境”中设置处理范围。</p>
+<figure data-type="image" tabindex="32"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184934.png" alt="" loading="lazy"></figure>
+<p>（5）面转栅格结果如下图。</p>
+<figure data-type="image" tabindex="33"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184935.png" alt="" loading="lazy"></figure>
+<h4 id="3城市氛围评价"><strong>3.城市氛围评价</strong></h4>
+<table>
+<thead>
+<tr>
+<th>评价因子</th>
+<th>分类</th>
+<th>分级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>城市氛围</td>
+<td>距离镇建成区0~250米或者镇建成区范围内</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td>距离镇建成区250~500米，或村庄范围内</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td>距离镇建成区500~1000米,或距离村庄0~250米</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>距离镇建成区1000~2000米，或距离村庄250-500米</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>距离镇建成区2000-6000米，或距离村庄1500-6000米</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>（1）加载“居民地”图层，筛选出“类型”为“城镇”的要素。</p>
+<figure data-type="image" tabindex="34"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184936.png" alt="" loading="lazy"></figure>
+<p>（2）为筛选出的要素创建多环缓冲区，参数如下图。</p>
+<figure data-type="image" tabindex="35"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184937.png" alt="" loading="lazy"></figure>
+<p>（3）筛选出“类型”为“村庄”的要素。</p>
+<figure data-type="image" tabindex="36"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184938.png" alt="" loading="lazy"></figure>
+<p>（4）为筛选出的要素创建多环缓冲区，参数如下图。此时勾选仅外部面。</p>
+<figure data-type="image" tabindex="37"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184939.png" alt="" loading="lazy"></figure>
+<p>（5）利用复制粘贴将空洞补上。</p>
+<figure data-type="image" tabindex="38"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184940.png" alt="" loading="lazy"></figure>
+<p>（6）将粘贴的要素赋值为1。</p>
+<figure data-type="image" tabindex="39"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184941.png" alt="" loading="lazy"></figure>
+<p>（7）将两个缓冲区进行联合。</p>
+<figure data-type="image" tabindex="40"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184942.png" alt="" loading="lazy"></figure>
+<p>（8）在联合图层中添加“评价值”短整型字段，打开“字段计算器”，填入代码，计算评价值。</p>
+<figure data-type="image" tabindex="41"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184943.png" alt="" loading="lazy"></figure>
+<p>（9）计算结果如下图。</p>
+<figure data-type="image" tabindex="42"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184944.png" alt="" loading="lazy"></figure>
+<p>（10）对联合图层进行面转栅格，值字段为“评价值”，像元大小设置为10，在“环境”中设置处理范围。</p>
+<figure data-type="image" tabindex="43"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184945.png" alt="" loading="lazy"></figure>
+<p>（11）面转栅格结果如下图。</p>
+<figure data-type="image" tabindex="44"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184946.png" alt="" loading="lazy"></figure>
+<h4 id="4地形适宜性评价"><strong>4.地形适宜性评价</strong></h4>
+<h5 id="41-对地形高程的评价">4.1 对地形高程的评价</h5>
+<table>
+<thead>
+<tr>
+<th>评价因子</th>
+<th>分类</th>
+<th>分级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地形高程</td>
+<td>高程在200~220米</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td>高程在220~240米</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td>高程在240~260米</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>高程在260~300米</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>高程在300米以上</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h5 id="42-对地形坡度的评价">4.2 对地形坡度的评价</h5>
+<table>
+<thead>
+<tr>
+<th>评价因子</th>
+<th>分类</th>
+<th>分级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地形坡度</td>
+<td>坡度在0~7度</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td>坡度在7~15度</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td>坡度在15~30度</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>坡度在30~40度</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>坡度在40度以上</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>（1）对“高程”栅格进行重分类</p>
+<figure data-type="image" tabindex="45"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184947.png" alt="" loading="lazy"></figure>
+<p>（2）分类方法如下图。</p>
+<figure data-type="image" tabindex="46"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184948.png" alt="" loading="lazy"></figure>
+<p>（3）对新值进行取反。</p>
+<figure data-type="image" tabindex="47"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184949.png" alt="" loading="lazy"></figure>
+<p>（4）重分类结果如下图。</p>
+<figure data-type="image" tabindex="48"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184950.png" alt="" loading="lazy"></figure>
+<p>（5）利用“坡度”工具输入“高程”栅格计算坡度。</p>
+<figure data-type="image" tabindex="49"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184951.png" alt="" loading="lazy"></figure>
+<p>（6）对生成的“坡度”数据重分类。</p>
+<figure data-type="image" tabindex="50"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184952.png" alt="" loading="lazy"></figure>
+<p>（7）重分类参数如下图。</p>
+<figure data-type="image" tabindex="51"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184953.png" alt="" loading="lazy"></figure>
+<p>（8）对新值取反。</p>
+<figure data-type="image" tabindex="52"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184954.png" alt="" loading="lazy"></figure>
+<p>（9）重分类结果如下图。</p>
+<figure data-type="image" tabindex="53"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184955.png" alt="" loading="lazy"></figure>
+<h4 id="5综合评价"><strong>5.综合评价</strong></h4>
+<p>（1）加载所有分级评价图层</p>
+<figure data-type="image" tabindex="54"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184956.png" alt="" loading="lazy"></figure>
+<p>（2）利用“加权总和”工具加权计算所有分级评价图层。</p>
+<figure data-type="image" tabindex="55"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184957.png" alt="" loading="lazy"></figure>
+<p>（3）对“加权总和”结果进行“重分类”</p>
+<figure data-type="image" tabindex="56"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184958.png" alt="" loading="lazy"></figure>
+<p>（4）重分类结果如下图。</p>
+<figure data-type="image" tabindex="57"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204184959.png" alt="" loading="lazy"></figure>
+<h3 id="三结果制图"><strong>（三）结果制图</strong></h3>
+<figure data-type="image" tabindex="58"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204185000.jpg" alt="" loading="lazy"></figure>
+<h3 id="四建模"><strong>（四）建模</strong></h3>
+<p>（1）创建工具箱，并在工具箱中创建模型。</p>
+<figure data-type="image" tabindex="59"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204185001.png" alt="" loading="lazy"></figure>
+<p>（2）根据上文所述过程，完成建模如下图。</p>
+<figure data-type="image" tabindex="60"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20201204185002.png" alt="" loading="lazy"></figure>
 <h2 id="五-实验总结"><strong>五、实验总结</strong></h2>
-<p>通过本次实验我了解了利用ArcGIS三维分析模块进行创建地表面、创建二维半建筑和场景、创建真三维场景、地表面的可视化。进一步练习了ArcScense的使用。</p>
+<p>通过本次实验我了解了城市生活用地的适宜性评价的相关方法，进一步熟练了使用ArcGIS完成整套流程的操作和建模。本实验使用了VB代码对字段进行分类赋值，使我进一步了解ArcGIS中的编程技巧。</p>
 
 							</div>
 	<div class="wow bounceInDown vt-post-tags">
@@ -265,10 +608,10 @@ var _hmt = _hmt || [];
 		
 		<div class="nav-links3">
       
-		<div class="wow bounceInLeft nav-previous3"><a href="https://blog.manchan.ml/post/introduction-to-front-end-development-Introduction-to-HTML/" rel="prev"> 前端开发入门教程-HTML简介</a></div>
+		<div class="wow bounceInLeft nav-previous3"><a href="https://blog.manchan.ml/post/gis-kong-jian-fen-xi-san-wei-chang-jing-mo-ni/" rel="prev"> GIS空间分析：三维场景模拟</a></div>
 		 
 		 
-		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/gis-kong-jian-fen-xi-cheng-shi-sheng-huo-qu-de-yong-di-gua-yi-xing-ping-jie-ji-jian-mo/" rel="next"> GIS空间分析：城市生活区的用地适宜性评价及建模</a></div>
+		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/gis-kong-jian-fen-xi-di-kuai-rong-ji-lu-de-ji-suan-ji-jian-mo/" rel="next"> GIS空间分析：地块容积率的计算及建模</a></div>
 		
 		</div>
 	</nav>
@@ -278,7 +621,7 @@ var _hmt = _hmt || [];
 	<div class="author-description"><div class="author-title"><div class="author-link" rel="author">Manchan</div></div>
 
 
-	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/gis-kong-jian-fen-xi-san-wei-chang-jing-mo-ni/">https://blog.manchan.ml/post/gis-kong-jian-fen-xi-san-wei-chang-jing-mo-ni/</a></p></div></div>
+	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/gis-kong-jian-fen-xi-cheng-shi-sheng-huo-qu-de-yong-di-gua-yi-xing-ping-jie-ji-jian-mo/">https://blog.manchan.ml/post/gis-kong-jian-fen-xi-cheng-shi-sheng-huo-qu-de-yong-di-gua-yi-xing-ping-jie-ji-jian-mo/</a></p></div></div>
 	
 		</div>
 		
