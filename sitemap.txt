@@ -5,7 +5,9 @@ http://blog.manchan.ml/tags/
 http://blog.manchan.ml/post/about/
 https://blog.manchan.ml/page/2/
 https://blog.manchan.ml/page/3/
+https://blog.manchan.ml/page/4/
 https://blog.manchan.ml/post/arcgis-engine-visual-studio/
+https://blog.manchan.ml/post/c-101-wei-ruan-guan-fang-cjiao-cheng/
 https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-er/
 https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-liu/
 https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-san/
@@ -13,10 +15,15 @@ https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-si/
 https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-wu/
 https://blog.manchan.ml/post/di-li-kong-jian-shu-ju-ku-yi/
 https://blog.manchan.ml/post/erdas-92-an-zhuang-jiao-cheng/
+https://blog.manchan.ml/post/gis-kong-jian-fen-xi-cheng-shi-sheng-huo-qu-de-yong-di-gua-yi-xing-ping-jie-ji-jian-mo/
+https://blog.manchan.ml/post/gis-kong-jian-fen-xi-di-kuai-rong-ji-lu-de-ji-suan-ji-jian-mo/
+https://blog.manchan.ml/post/gis-kong-jian-fen-xi-san-wei-chang-jing-mo-ni/
 https://blog.manchan.ml/post/gis-shu-ju-xia-zai-zi-yuan-da-quan/
 https://blog.manchan.ml/post/git-zhi-ding-bu-shang-chuan-de-wen-jian-jia/
-https://blog.manchan.ml/post/hello-gridea/
-https://blog.manchan.ml/post/markdown-ce-shi-wen-zhang/
+https://blog.manchan.ml/post/introduction-to-front-end-development-HTML-Tags-P1/
+https://blog.manchan.ml/post/introduction-to-front-end-development-HTML-Tags-P2/
+https://blog.manchan.ml/post/introduction-to-front-end-development-Introduction-to-HTML/
+https://blog.manchan.ml/post/mapgis-103-jiao-cheng/
 https://blog.manchan.ml/post/markdown-ji-chu/
 https://blog.manchan.ml/post/markdown-yu-fa/
 https://blog.manchan.ml/post/markdown-yu-fa-orlatex-shu-xue-gong-shi/
@@ -26,6 +33,7 @@ https://blog.manchan.ml/post/shu-ju-de-chu-li-fang-fa-biao-zhun-hua/
 https://blog.manchan.ml/post/valine-ping-lun-xi-tong/
 https://blog.manchan.ml/post/xing-zheng-bian-jie-shi-liang-shu-ju-de-huo-qu/
 https://blog.manchan.ml/post/xing-zheng-qu-hua-nei-shui-xi-deng-yao-su-de-chu-li/
+https://blog.manchan.ml/post/yao-gan-di-xue-shi-yan-mian-xiang-dui-xiang-de-yao-gan-ying-xiang-fen-lei/
 https://blog.manchan.ml/post/yao-gan-shi-yan-er/
 https://blog.manchan.ml/post/yao-gan-shi-yan-san/
 https://blog.manchan.ml/post/yao-gan-shi-yan-si/
@@ -38,7 +46,9 @@ https://blog.manchan.ml/tag/envi/
 https://blog.manchan.ml/tag/erdas/
 https://blog.manchan.ml/tag/gis/
 https://blog.manchan.ml/tag/git/
+https://blog.manchan.ml/tag/html/
 https://blog.manchan.ml/tag/markdown/
 https://blog.manchan.ml/tag/postgresql/
+https://blog.manchan.ml/tag/qian-duan/
 https://blog.manchan.ml/tag/visual-studio/
 https://blog.manchan.ml/tag/yao-gan/
