@@ -1,83 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://blog.manchan.ml</id>
+    <id>https://https://blog.manchan.ml</id>
     <title>Manchan&apos;s Blog</title>
-    <updated>2021-01-06T15:19:10.429Z</updated>
+    <updated>2021-01-08T14:14:02.092Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://blog.manchan.ml"/>
-    <link rel="self" href="https://blog.manchan.ml/atom.xml"/>
+    <link rel="alternate" href="https://https://blog.manchan.ml"/>
+    <link rel="self" href="https://https://blog.manchan.ml/atom.xml"/>
     <subtitle>&lt;b&gt;まん酱の记事与随笔&lt;/b&gt;</subtitle>
-    <logo>https://blog.manchan.ml/images/avatar.png</logo>
-    <icon>https://blog.manchan.ml/favicon.ico</icon>
+    <logo>https://https://blog.manchan.ml/images/avatar.png</logo>
+    <icon>https://https://blog.manchan.ml/favicon.ico</icon>
     <rights>All rights reserved 2021, Manchan&apos;s Blog</rights>
     <entry>
+        <title type="html"><![CDATA[前端开发入门教程-CSS（一）]]></title>
+        <id>https://https://blog.manchan.ml/post/introduction-to-front-end-development-CSS--P1/</id>
+        <link href="https://https://blog.manchan.ml/post/introduction-to-front-end-development-CSS--P1/">
+        </link>
+        <updated>2021-01-08T13:47:04.000Z</updated>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[前端开发入门教程-HTML标签（下）]]></title>
-        <id>https://blog.manchan.ml/post/introduction-to-front-end-development-HTML-Tags-P2/</id>
-        <link href="https://blog.manchan.ml/post/introduction-to-front-end-development-HTML-Tags-P2/">
+        <id>https://https://blog.manchan.ml/post/introduction-to-front-end-development-HTML-Tags-P2/</id>
+        <link href="https://https://blog.manchan.ml/post/introduction-to-front-end-development-HTML-Tags-P2/">
         </link>
         <updated>2021-01-06T08:02:16.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[前端开发入门教程-HTML标签（上）]]></title>
-        <id>https://blog.manchan.ml/post/introduction-to-front-end-development-HTML-Tags-P1/</id>
-        <link href="https://blog.manchan.ml/post/introduction-to-front-end-development-HTML-Tags-P1/">
+        <id>https://https://blog.manchan.ml/post/introduction-to-front-end-development-HTML-Tags-P1/</id>
+        <link href="https://https://blog.manchan.ml/post/introduction-to-front-end-development-HTML-Tags-P1/">
         </link>
         <updated>2021-01-03T16:12:56.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[前端开发入门教程-HTML简介]]></title>
-        <id>https://blog.manchan.ml/post/introduction-to-front-end-development-Introduction-to-HTML/</id>
-        <link href="https://blog.manchan.ml/post/introduction-to-front-end-development-Introduction-to-HTML/">
+        <id>https://https://blog.manchan.ml/post/introduction-to-front-end-development-Introduction-to-HTML/</id>
+        <link href="https://https://blog.manchan.ml/post/introduction-to-front-end-development-Introduction-to-HTML/">
         </link>
         <updated>2021-01-03T12:48:44.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[GIS空间分析：三维场景模拟]]></title>
-        <id>https://blog.manchan.ml/post/gis-kong-jian-fen-xi-san-wei-chang-jing-mo-ni/</id>
-        <link href="https://blog.manchan.ml/post/gis-kong-jian-fen-xi-san-wei-chang-jing-mo-ni/">
+        <id>https://https://blog.manchan.ml/post/gis-kong-jian-fen-xi-san-wei-chang-jing-mo-ni/</id>
+        <link href="https://https://blog.manchan.ml/post/gis-kong-jian-fen-xi-san-wei-chang-jing-mo-ni/">
         </link>
         <updated>2020-12-18T04:31:11.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[GIS空间分析：城市生活区的用地适宜性评价及建模]]></title>
-        <id>https://blog.manchan.ml/post/gis-kong-jian-fen-xi-cheng-shi-sheng-huo-qu-de-yong-di-gua-yi-xing-ping-jie-ji-jian-mo/</id>
-        <link href="https://blog.manchan.ml/post/gis-kong-jian-fen-xi-cheng-shi-sheng-huo-qu-de-yong-di-gua-yi-xing-ping-jie-ji-jian-mo/">
+        <id>https://https://blog.manchan.ml/post/gis-kong-jian-fen-xi-cheng-shi-sheng-huo-qu-de-yong-di-gua-yi-xing-ping-jie-ji-jian-mo/</id>
+        <link href="https://https://blog.manchan.ml/post/gis-kong-jian-fen-xi-cheng-shi-sheng-huo-qu-de-yong-di-gua-yi-xing-ping-jie-ji-jian-mo/">
         </link>
         <updated>2020-12-04T10:51:51.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[GIS空间分析：地块容积率的计算及建模]]></title>
-        <id>https://blog.manchan.ml/post/gis-kong-jian-fen-xi-di-kuai-rong-ji-lu-de-ji-suan-ji-jian-mo/</id>
-        <link href="https://blog.manchan.ml/post/gis-kong-jian-fen-xi-di-kuai-rong-ji-lu-de-ji-suan-ji-jian-mo/">
+        <id>https://https://blog.manchan.ml/post/gis-kong-jian-fen-xi-di-kuai-rong-ji-lu-de-ji-suan-ji-jian-mo/</id>
+        <link href="https://https://blog.manchan.ml/post/gis-kong-jian-fen-xi-di-kuai-rong-ji-lu-de-ji-suan-ji-jian-mo/">
         </link>
         <updated>2020-10-20T17:36:36.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[遥感地学实验：面向对象的遥感影像分类]]></title>
-        <id>https://blog.manchan.ml/post/yao-gan-di-xue-shi-yan-mian-xiang-dui-xiang-de-yao-gan-ying-xiang-fen-lei/</id>
-        <link href="https://blog.manchan.ml/post/yao-gan-di-xue-shi-yan-mian-xiang-dui-xiang-de-yao-gan-ying-xiang-fen-lei/">
+        <id>https://https://blog.manchan.ml/post/yao-gan-di-xue-shi-yan-mian-xiang-dui-xiang-de-yao-gan-ying-xiang-fen-lei/</id>
+        <link href="https://https://blog.manchan.ml/post/yao-gan-di-xue-shi-yan-mian-xiang-dui-xiang-de-yao-gan-ying-xiang-fen-lei/">
         </link>
         <updated>2020-10-19T09:19:37.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[MapGIS 10.3教程]]></title>
-        <id>https://blog.manchan.ml/post/mapgis-103-jiao-cheng/</id>
-        <link href="https://blog.manchan.ml/post/mapgis-103-jiao-cheng/">
+        <id>https://https://blog.manchan.ml/post/mapgis-103-jiao-cheng/</id>
+        <link href="https://https://blog.manchan.ml/post/mapgis-103-jiao-cheng/">
         </link>
         <updated>2020-08-12T12:37:37.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[C# 101-微软官方C#教程]]></title>
-        <id>https://blog.manchan.ml/post/c-101-wei-ruan-guan-fang-cjiao-cheng/</id>
-        <link href="https://blog.manchan.ml/post/c-101-wei-ruan-guan-fang-cjiao-cheng/">
+        <id>https://https://blog.manchan.ml/post/c-101-wei-ruan-guan-fang-cjiao-cheng/</id>
+        <link href="https://https://blog.manchan.ml/post/c-101-wei-ruan-guan-fang-cjiao-cheng/">
         </link>
         <updated>2020-08-11T07:49:16.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Notepad++ 配置MinGW编译C/C++]]></title>
-        <id>https://blog.manchan.ml/post/Notepad++-mingw-C&amp;C++/</id>
-        <link href="https://blog.manchan.ml/post/Notepad++-mingw-C&amp;C++/">
-        </link>
-        <updated>2020-08-08T17:47:51.000Z</updated>
     </entry>
 </feed>
