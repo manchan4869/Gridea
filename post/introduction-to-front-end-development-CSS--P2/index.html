@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
  <meta charset="utf-8">
-<title>前端开发入门教程-CSS（一） | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
+<title>前端开发入门教程-CSS（二） | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
 <meta name="description" content="Manchan's Blog是まん酱的个人博客，主要是记事与随笔，内容更偏向于GIS技术学习与分享">
 <meta name="keywords" content="manchan,blog,GIS,遥感,postgresql,arcgis,qgis,rs,mapgis,markdown,c#,postgis,pgsql,sql,Arcgis Engine,Visual Studio,ENVI,ERDAS">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -166,10 +166,10 @@ var _hmt = _hmt || [];
 	
 	                      
 		<div class="entry-content">
-			<h1 class="wow swing entry-title">前端开发入门教程-CSS（一）</h1>
+			<h1 class="wow swing entry-title">前端开发入门教程-CSS（二）</h1>
 <div class="entry-meta">
 <div class="wow bounce">
-	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2021-01-08 21:47:04" itemprop="datePublished" pubdate="">2021-01-08</time></i>
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2021-01-12 21:37:42" itemprop="datePublished" pubdate="">2021-01-12</time></i>
 	          </div>
 			
 </span>
@@ -177,143 +177,145 @@ var _hmt = _hmt || [];
 		</div>
                   
 			<div class="wow slideInLeft entry-summary song">
-				<blockquote>
-<p>本文素材来源于黑马程序员<strong>pink老师</strong>的前端<a href="https://www.bilibili.com/video/BV14J4114768?p=61">教学视频</a>。在此基础上有部分改动。</p>
-</blockquote>
-<h2 id="1-css-简介">1. CSS 简介</h2>
-<h3 id="11-html-的局限性">1.1 HTML 的局限性</h3>
-<p>说起 HTML，这其实是个非常单纯的家伙，他只关注内容的语义。比如<code>&lt;h1&gt;</code> 表明这是一个大标题，<code>&lt;p&gt;</code> 表明这是一个段落，<code>&lt;img&gt;</code> 表明这儿有一个图片，<code>&lt;a&gt;</code>表示此处有链接。</p>
-<p>很早的时候，世界上的网站虽然很多，但是他们都有一个共同的特点：<strong>丑</strong>。</p>
-<p>虽然 HTML 可以做简单的样式，但是带来的是无尽的臃肿和繁琐……</p>
-<h3 id="12-css-网页的美容师">1.2 CSS-网页的美容师</h3>
-<p><strong>CSS</strong> 是<strong>层叠样式表 ( Cascading Style Sheets )</strong> 的简称。有时我们也会称之为 CSS 样式表或级联样式表。CSS 是也是一种<strong>标记语言</strong>。<br>
-CSS 主要用于设置 HTML 页面中的文本内容（字体、大小、对齐方式等）、图片的外形（宽高、边框样式、边距等）以及版面的布局和外观显示样式。<br>
-CSS 让我们的网页更加丰富多彩，布局更加灵活自如。简单理解：<strong>CSS 可以美化 HTML , 让 HTML 更漂亮， 让页面布局更简单。</strong></p>
-<p>CSS 最大价值: 由 HTML 专注去做结构呈现，样式交给 CSS，即 <strong>结构 ( HTML ) 与样式( CSS ) 相分离</strong>。</p>
-<h3 id="13-css-语法规范">1.3 CSS 语法规范</h3>
-<p>使用 HTML 时，需要遵从一定的规范，CSS 也是如此。要想熟练地使用 CSS 对网页进行修饰，首先需要了解CSS 样式规则。</p>
-<p>CSS 规则由两个主要的部分构成：选择器以及一条或多条声明。</p>
-<pre><code class="language-css">selector {declaration1; declaration2; ... declarationN }
+				<h2 id="1-emmet语法">1. Emmet语法</h2>
+<h3 id="11-快速生成html结构语法">1.1 快速生成HTML结构语法</h3>
+<p>1.生成标签 直接输入标签名 按tab键即可 比如 div 然后tab 键， 就可以生成<code>&lt;div&gt;&lt;/div&gt;</code><br>
+2.如果想要生成多个相同标签 加上 * 就可以了 比如 div*3 就可以快速生成3个div<br>
+3.如果有父子级关系的标签，可以用 &gt; 比如 ul &gt; li就可以了<br>
+4.如果有兄弟关系的标签，用 + 就可以了 比如 div+p<br>
+5.如果生成带有类名或者id名字的， 直接写 .demo 或者 #two tab 键就可以了<br>
+6.如果生成的div 类名是有顺序的， 可以用 自增符号 $<br>
+7.如果想要在生成的标签内部写内容可以用 { } 表示</p>
+<h3 id="12-快速生成css样式语法">1.2 快速生成CSS样式语法</h3>
+<p>CSS 基本采取简写形式即可。<br>
+1.比如 w200 按tab 可以 生成 width: 200px;<br>
+2.比如 lh26px 按tab 可以生成 line-height: 26px;</p>
+<h2 id="2-css-的复合选择器">2. CSS 的复合选择器</h2>
+<h3 id="21-什么是复合选择器">2.1 什么是复合选择器</h3>
+<p>在 CSS 中，可以根据选择器的类型把选择器分为<strong>基础选择器</strong> 和 <strong>复合选择器</strong>，复合选择器是建立在基础选择器之上，对基本选择器进行组合形成的。<br>
+复合选择器可以更准确、更高效的选择目标元素（标签）<br>
+复合选择器是由两个或多个基础选择器，通过不同的方式组合而成的<br>
+常用的复合选择器包括：后代选择器、子选择器、并集选择器、伪类选择器等等</p>
+<h3 id="22-后代选择器">2.2 后代选择器</h3>
+<p>后代选择器又称为包含选择器，可以选择父元素里面子元素。其写法就是把外层标签写在前面，内层标签写在后面，中间用空格分隔。当标签发生嵌套时，内层标签就成为外层标签的后代。</p>
+<p><strong>语法：</strong></p>
+<pre><code class="language-css">元素1 元素2 { 样式声明 }
 </code></pre>
-<p>选择器是用于指定 CSS 样式的 HTML 标签，花括号内是对该对象设置的具体样式。属性和属性值以“键值对”的形式出现</p>
-<pre><code class="language-css">selector {property: value}
+<p>元素1 和 元素2 中间用空格隔开;元素1 是父级，元素2 是子级，最终选择的是元素2;元素2 可以是儿子，也可以是孙子等，只要是元素1 的后代即可;元素1 和 元素2 可以是任意基础选择器</p>
+<h3 id="23-子选择器">2.3 子选择器</h3>
+<p>子元素选择器（子选择器）只能选择作为某元素的最近一级子元素。简单理解就是选亲儿子元素.</p>
+<p><strong>语法：</strong></p>
+<pre><code class="language-css">元素1 &gt; 元素2 { 样式声明 }
 </code></pre>
-<p>属性是对指定的对象设置的样式属性，例如字体大小、文本颜色等</p>
-<pre><code class="language-css">h1 {color:red; font-size:14px;}
+<p>元素1 和 元素2 中间用 大于号 隔开;元素1 是父级，元素2 是子级，最终选择的是元素2;元素2 必须是亲儿子，其孙子、重孙之类都不归他管. 你也可以叫他 亲儿子选择器</p>
+<h3 id="24-并集选择器">2.4 并集选择器</h3>
+<p>并集选择器可以选择多组标签, 同时为他们定义相同的样式。通常用于集体声明.<br>
+并集选择器是各选择器通过英文逗号（,）连接而成，任何形式的选择器都可以作为并集选择器的一部分。</p>
+<p><strong>语法：</strong></p>
+<pre><code class="language-css">元素1,元素2 { 样式声明 }
 </code></pre>
-<p>属性和属性值之间用英文“:”分开,多个“键值对”之间用英文“;”进行区分</p>
-<figure data-type="image" tabindex="1"><img src="https://www.w3school.com.cn/i/ct_css_selector.gif" alt="CSS 语法" loading="lazy"></figure>
-<p>**提示：**请使用花括号来包围声明。</p>
-<h3 id="14-css-代码风格">1.4 CSS 代码风格</h3>
-<p>CSS建议使用展开格式，更直观。推荐样式选择器，属性名，属性值关键字<strong>全部使用小写字母</strong>，特殊情况除外。属性值前面，冒号后面，保留一个空格。选择器（标签）和花括号中间保留空格。</p>
-<pre><code class="language-css">body {
-  color: #000;
-  background: #fff;
-  margin: 0;
-  padding: 0;
-  font-family: Georgia, Palatino, serif;
-  }
+<p>元素1 和 元素2 中间用逗号隔开;逗号可以理解为和的意思;并集选择器通常用于集体声明;</p>
+<h3 id="25-伪类选择器">2.5 伪类选择器</h3>
+<p>伪类选择器用于向某些选择器添加特殊的效果，比如给链接添加特殊效果，或选择第1个，第n个元素。<br>
+伪类选择器书写最大的特点是用冒号（:）表示，比如 :hover 、 :first-child 。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">:active</td>
+<td style="text-align:left">向被激活的元素添加样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">:focus</td>
+<td style="text-align:left">向拥有键盘输入焦点的元素添加样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">:hover</td>
+<td style="text-align:left">当鼠标悬浮在元素上方时，向元素添加样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">:link</td>
+<td style="text-align:left">向未被访问的链接添加样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">:visited</td>
+<td style="text-align:left">向已被访问的链接添加样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">:first-child</td>
+<td style="text-align:left">向元素的第一个子元素添加样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">:lang</td>
+<td style="text-align:left">向带有指定 lang 属性的元素添加样式。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="26-链接伪类选择器">2.6 链接伪类选择器</h3>
+<pre><code class="language-css">a:link {color: #FF0000}		/* 未访问的链接 */
+a:visited {color: #00FF00}	/* 已访问的链接 */
+a:hover {color: #FF00FF}	/* 鼠标移动到链接上 */
+a:active {color: #0000FF}	/* 选定的链接 */
 </code></pre>
-<h2 id="2-css-基础选择器">2. CSS 基础选择器</h2>
-<h3 id="21-css-选择器的作用">2.1 CSS 选择器的作用</h3>
-<p>选择器(选择符)就是根据不同需求把不同的标签选出来这就是选择器的作用。 简单来说，就是选择标签用的。</p>
-<h3 id="22-选择器分类">2.2 选择器分类</h3>
-<p>选择器分为<strong>基础选择器</strong>和<strong>复合选择器</strong>两个大类。</p>
-<p>基础选择器是由单个选择器组成的，包括：标签选择器、类选择器、id 选择器和通配符选择器。</p>
-<h3 id="23-标签选择器">2.3 标签选择器</h3>
-<p>标签选择器（元素选择器）是指用 HTML 标签名称作为选择器，按标签名称分类，为页面中某一类标签指定统一的 CSS 样式。</p>
-<p><strong>语法</strong></p>
-<pre><code class="language-css">标签名{
-	属性1: 属性值1;
-	属性2: 属性值2;
-	属性3: 属性值3;
-	...
+<p>为了确保生效，请按照 <strong>LVHA</strong> 的循顺序声明 :link－:visited－:hover－:active。</p>
+<h3 id="27-focus-伪类选择器">2.7 :focus 伪类选择器</h3>
+<p>:focus 伪类选择器用于选取获得焦点的表单元素。<br>
+焦点就是光标，一般情况<code>&lt;input&gt;</code>类表单元素才能获取，因此这个选择器也主要针对于表单元素来说。</p>
+<pre><code class="language-css">input:focus {
+background-color:yellow;
 }
 </code></pre>
-<p><strong>作用</strong></p>
-<p>标签选择器可以把某一类标签全部选择出来，比如所有的 <code>&lt;div&gt;</code> 标签和所有的 <code>&lt;span&gt;</code>标签。</p>
-<p><strong>优点</strong></p>
-<p>能快速为页面中同类型的标签统一设置样式。</p>
-<p><strong>缺点</strong></p>
-<p>不能设计差异化样式，只能选择全部的当前标签。</p>
-<h3 id="24-类选择器">2.4 类选择器</h3>
-<p>如果想要差异化选择不同的标签，单独选一个或者某几个标签，可以使用类选择器.</p>
-<p><strong>语法</strong></p>
-<pre><code class="language-css">.类名 {
-	属性1: 属性值1;
-	...
-}
+<h2 id="3-css-的元素显示模式">3. CSS 的元素显示模式</h2>
+<h3 id="31-什么是元素显示模式">3.1 什么是元素显示模式</h3>
+<p>HTML 元素一般分为块元素和行内元素两种类型。</p>
+<p>元素显示模式就是元素（标签）以什么方式进行显示，比如<code>&lt;div&gt;</code>自己占一行，比如一行可以放多个<code>&lt;span&gt;</code>。</p>
+<h3 id="32-块元素">3.2 块元素</h3>
+<p>常见的块元素有<code>&lt;h1&gt;~&lt;h6&gt;、&lt;p&gt;、&lt;div&gt;、&lt;ul&gt;、&lt;ol&gt;、&lt;li&gt;</code>等，其中 <code>&lt;div&gt;</code> 标签是最典型的块元素。</p>
+<p>块级元素的特点：<br>
+①比较霸道，自己独占一行。<br>
+②高度，宽度、外边距以及内边距都可以控制。<br>
+③宽度默认是容器（父级宽度）的100%。<br>
+④是一个容器及盒子，里面可以放行内或者块级元素。<br>
+<strong>注意：</strong><br>
+文字类的元素内不能使用块级元素<br>
+<code>&lt;p&gt;</code> 标签主要用于存放文字，因此 <code>&lt;p&gt;</code> 里面不能放块级元素，特别是不能放<code>&lt;div&gt;</code><br>
+同理， <code>&lt;h1&gt;~&lt;h6&gt;</code>等都是文字类块级标签，里面也不能放其他块级元素</p>
+<h3 id="33-行内元素">3.3 行内元素</h3>
+<p>常见的行内元素有 <code>&lt;a&gt;、&lt;strong&gt;、&lt;b&gt;、&lt;em&gt;、&lt;i&gt;、&lt;del&gt;、&lt;s&gt;、&lt;ins&gt;、&lt;u&gt;、&lt;span&gt;</code>等，其中<code>&lt;span&gt;</code> 标签是最典型的行内元素。有的地方也将行内元素称为<strong>内联元素</strong>。</p>
+<p>行内元素的特点：<br>
+①相邻行内元素在一行上，一行可以显示多个。<br>
+②高、宽直接设置是无效的。<br>
+③默认宽度就是它本身内容的宽度。<br>
+④行内元素只能容纳文本或其他行内元素。</p>
+<p><strong>注意：</strong><br>
+链接里面不能再放链接;<br>
+特殊情况链接<code>&lt;a&gt;</code>里面可以放块级元素，但是给<code>&lt;a&gt;</code> 转换一下块级模式最安全。</p>
+<h3 id="33-行内块元素">3.3 行内块元素</h3>
+<p>在行内元素中有几个特殊的标签 —— <code>&lt;img /&gt;、&lt;input /&gt;、&lt;td&gt;</code>，它们同时具有块元素和行内元素的特点。有些资料称它们为<strong>行内块元素</strong>。</p>
+<p>行内块元素的特点：<br>
+①和相邻行内元素（行内块）在一行上，但是他们之间会有空白缝隙。一行可以显示多个（行内元素特点）。<br>
+②默认宽度就是它本身内容的宽度（行内元素特点）。<br>
+③高度，行高、外边距以及内边距都可以控制（块级元素特点）。</p>
+<h3 id="34-元素显示模式转换">3.4 元素显示模式转换</h3>
+<p>转换为块元素：display:block;<br>
+转换为行内元素：display:inline;<br>
+转换为行内块：display: inline-block;</p>
+<h2 id="4-css-的背景">4. CSS 的背景</h2>
+<h3 id="41-背景颜色">4.1 背景颜色</h3>
+<p><strong>background-color</strong> 属性定义了元素的背景颜色。</p>
+<pre><code class="language-css">background-color:颜色值;
 </code></pre>
-<p>结构需要用class属性来调用 class 类的意思</p>
-<pre><code class="language-html">&lt;div class=‘red’&gt; 变红色 &lt;/div&gt;
+<p>一般情况下元素背景颜色默认值是 transparent（透明）</p>
+<pre><code class="language-css">background-color:transparent;
 </code></pre>
-<p>如果想要差异化选择不同的标签，单独选一个或者某几个标签，可以使用类选择器。<br>
-类选择器在 HTML 中以 <strong>class 属性</strong>表示，在 CSS 中，类选择器以一个点“.”号显示。</p>
-<p><strong>注意</strong></p>
-<p>①类选择器使用“.”（英文点号）进行标识，后面紧跟类名（自定义，我们自己命名的）。<br>
-②可以理解为给这个标签起了一个名字，来表示。<br>
-③长名称或词组可以使用中横线来为选择器命名。<br>
-④不要使用纯数字、中文等命名，尽量使用英文字母来表示。<br>
-⑤命名要有意义，尽量使别人一眼就知道这个类名的目的。<br>
-⑥命名规范：Web 前端开发规范手册</p>
-<p><strong>记忆口诀：<strong>样式</strong>点</strong>定义，结构<strong>类</strong>调用。一个或多个，开发最常用。</p>
-<p><strong>多类名使用方式</strong></p>
-<pre><code class="language-html">&lt;div class=&quot;red font20&quot;&gt;亚瑟&lt;/div&gt;
-</code></pre>
-<p>(1)在标签class 属性中写 多个类名<br>
-(2)多个类名中间必须用空格分开<br>
-(3)这个标签就可以分别具有这些类名的样式</p>
-<h3 id="25-id-选择器">2.5 id 选择器</h3>
-<p>id 选择器可以为标有特定 id 的 HTML 元素指定特定的样式。<br>
-HTML 元素以 id 属性来设置 id 选择器，CSS 中 id 选择器以“#&quot; 来定义。</p>
-<p><strong>语法</strong></p>
-<pre><code class="language-css">#id名 {
-	属性1: 属性值1;
-	...
-}
-</code></pre>
-<p>**注意：**id 属性只能在每个 HTML 文档中出现一次。口诀: 样式#定义,结构id调用, 只能调用一次, 别人切勿使用.</p>
-<p><strong>id 选择器和类选择器的区别</strong><br>
-① 类选择器（class）好比人的名字，一个人可以有多个名字，同时一个名字也可以被多个人使用。<br>
-② id 选择器好比人的身份证号码，全中国是唯一的，不得重复。<br>
-③ id 选择器和类选择器最大的不同在于使用次数上。<br>
-④ 类选择器在修改样式中用的最多，id 选择器一般用于页面唯一性的元素上，经常和 JavaScript 搭配使用。</p>
-<h3 id="26-通配符选择器">2.6 通配符选择器</h3>
-<p>在 CSS 中，通配符选择器使用“*”定义，它表示选取页面中所有元素（标签）。</p>
-<pre><code class="language-css">* {
-	属性1: 属性值1;
-	...
-}
-</code></pre>
-<h3 id="27-基础选择器总结">2.7 基础选择器总结</h3>
-<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210108153916.png" alt="img" loading="lazy"></figure>
-<h2 id="3-css-字体属性">3. CSS 字体属性</h2>
-<h3 id="31-字体系列">3.1 字体系列</h3>
-<p>CSS 使用 <strong>font-family</strong> 属性定义文本的字体系列。</p>
-<pre><code class="language-css">p { font-family:&quot;微软雅黑&quot;;}
-div {font-family: Arial,&quot;Microsoft Yahei&quot;, &quot;微软雅黑&quot;;}
-</code></pre>
-<p>font-family 可以把多个字体名称作为一个“回退”系统来保存。如果浏览器不支持第一个字体，则会尝试下一个。也就是说，font-family 属性的值是用于某个元素的字体族名称或/及类族名称的一个优先表。浏览器会使用它可识别的第一个值。</p>
-<blockquote>
-<p>指定的系列名称：具体字体的名称，比如：&quot;times&quot;、&quot;courier&quot;、&quot;arial&quot;。</p>
-<p>通常字体系列名称：比如：&quot;serif&quot;、&quot;sans-serif&quot;、&quot;cursive&quot;、&quot;fantasy&quot;、&quot;monospace&quot;(分别表示“衬线字体族”、“无衬线字体族”、“手写字体族”、“梦幻字体族”、“等宽字体族”)</p>
-<p>serif常用有：Times New Roman,Georgia,宋体(\5b8b\4f53)；</p>
-<p>sans-serif常用有：Arial,Tahoma,Verdana,微软雅黑(\5FAE\8F6F\96C5\9ED1)</p>
-</blockquote>
-<h3 id="32-字体大小">3.2 字体大小</h3>
-<p>CSS 使用 <strong>font-size</strong> 属性定义字体大小。</p>
-<pre><code class="language-css">p {
-	font-size: 20px;
-}
-</code></pre>
-<p>px（像素）大小是我们网页的最常用的单位,谷歌浏览器默认的文字大小为16px。<br>
-不同浏览器可能默认显示的字号大小不一致，我们尽量给一个明确值大小，不要默认大小。<br>
-可以给 body 指定整个页面文字的大小。</p>
-<h3 id="33-字体粗细">3.3 字体粗细</h3>
-<p>CSS 使用 <strong>font-weight</strong> 属性设置文本字体的粗细。</p>
-<pre><code class="language-css">p {
-	font-weight: bold;
-}
+<h3 id="42-背景图片">4.2 背景图片</h3>
+<p><strong>background-image</strong> 属性描述了元素的背景图像。实际开发常见于 logo 或者一些装饰性的小图片或者是超大的背景图片, 优点是非常便于控制位置. (精灵图也是一种运用场景)</p>
+<pre><code class="language-css">background-image : none | url (url)
 </code></pre>
 <p><strong>可能的值：</strong></p>
 <table>
@@ -325,30 +327,20 @@ div {font-family: Arial,&quot;Microsoft Yahei&quot;, &quot;微软雅黑&quot;;}
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">normal</td>
-<td style="text-align:left">默认值。定义标准的字符。</td>
+<td style="text-align:left">url('<em>URL</em>')</td>
+<td style="text-align:left">指向图像的路径。</td>
 </tr>
 <tr>
-<td style="text-align:left">bold</td>
-<td style="text-align:left">定义粗体字符。</td>
-</tr>
-<tr>
-<td style="text-align:left">bolder</td>
-<td style="text-align:left">定义更粗的字符。</td>
-</tr>
-<tr>
-<td style="text-align:left">lighter</td>
-<td style="text-align:left">定义更细的字符。</td>
-</tr>
-<tr>
-<td style="text-align:left">100<br/>200<br/>300<br/>400<br/>500<br/>600<br/>700<br/>800<br/>900</td>
-<td style="text-align:left">定义由粗到细的字符。400 等同于 normal，而 700 等同于 bold。</td>
+<td style="text-align:left">none</td>
+<td style="text-align:left">默认值。不显示背景图像。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="34-文字样式">3.4 文字样式</h3>
-<p>CSS 使用 <strong>font-style</strong> 属性设置文本的风格。</p>
-<p><strong>可能的值:</strong></p>
+<h3 id="43-背景平铺">4.3 背景平铺</h3>
+<p>如果需要在 HTML 页面上对背景图像进行平铺，可以使用 <strong>background-repeat</strong> 属性。</p>
+<pre><code class="language-css">background-repeat: repeat | no-repeat | repeat-x | repeat-y
+</code></pre>
+<p><strong>可能的值：</strong></p>
 <table>
 <thead>
 <tr>
@@ -358,104 +350,30 @@ div {font-family: Arial,&quot;Microsoft Yahei&quot;, &quot;微软雅黑&quot;;}
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">normal</td>
-<td style="text-align:left">默认值。浏览器显示一个标准的字体样式。</td>
+<td style="text-align:left">repeat</td>
+<td style="text-align:left">默认。背景图像将在垂直方向和水平方向重复。</td>
 </tr>
 <tr>
-<td style="text-align:left">italic</td>
-<td style="text-align:left">浏览器会显示一个斜体的字体样式。</td>
+<td style="text-align:left">repeat-x</td>
+<td style="text-align:left">背景图像将在水平方向重复。</td>
 </tr>
 <tr>
-<td style="text-align:left">oblique</td>
-<td style="text-align:left">浏览器会显示一个倾斜的字体样式。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="35-字体复合属性">3.5 字体复合属性</h3>
-<p>font 简写属性在一个声明中设置所有字体属性。</p>
-<p><strong>语法顺序：</strong></p>
-<pre><code class="language-css">body {
-	font: font-style font-weight font-size/line-height font-family;
-}
-</code></pre>
-<p>使用 font 属性时，必须按上面语法格式中的顺序书写，<strong>不能更换顺序</strong>，并且各个属性间以<strong>空格隔开</strong>。<br>
-不需要设置的属性可以省略（取默认值），但必须保留 <strong>font-size</strong> 和 <strong>font-family</strong> 属性，否则 font 属性将不起作用。</p>
-<h3 id="36-字体属性总结">3.6 字体属性总结</h3>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>表示</th>
-<th>注意点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>font</td>
-<td>字体连写</td>
-<td>1.字体连写是有顺序的不能随意换位置⒉其中字号和字体必须同时出现</td>
+<td style="text-align:left">repeat-y</td>
+<td style="text-align:left">背景图像将在垂直方向重复。</td>
 </tr>
 <tr>
-<td>font-style</td>
-<td>字体样式</td>
-<td>记住倾斜是italic不倾斜是normal工作中我们最常用normal</td>
-</tr>
-<tr>
-<td>font-weight</td>
-<td>字体粗细</td>
-<td>记住加粗是700或者bold不加粗是normal或者400记住数字不要跟单位</td>
-</tr>
-<tr>
-<td>font-size</td>
-<td>字号</td>
-<td>我们通常用的单位是px像素，一定要跟上单位</td>
-</tr>
-<tr>
-<td>font-family</td>
-<td>字体</td>
-<td>实际工作中按照团队约定来写字体</td>
-</tr>
-</tbody>
-</table>
-<h2 id="4-css-文本属性">4. CSS 文本属性</h2>
-<h3 id="41-文本颜色">4.1 文本颜色</h3>
-<p><strong>color</strong> 属性规定文本的颜色</p>
-<pre><code class="language-css">div {
-	color: red;
-}
-</code></pre>
-<p><strong>可能的值:</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><em>color_name</em></td>
-<td style="text-align:left">规定颜色值为颜色名称的颜色（比如 red）。</td>
-</tr>
-<tr>
-<td style="text-align:left"><em>hex_number</em></td>
-<td style="text-align:left">规定颜色值为十六进制值的颜色（比如 #ff0000）。</td>
-</tr>
-<tr>
-<td style="text-align:left"><em>rgb_number</em></td>
-<td style="text-align:left">规定颜色值为 rgb 代码的颜色（比如 rgb(255,0,0)）。</td>
+<td style="text-align:left">no-repeat</td>
+<td style="text-align:left">背景图像将仅显示一次。</td>
 </tr>
 <tr>
 <td style="text-align:left">inherit</td>
-<td style="text-align:left">规定应该从父元素继承颜色。</td>
+<td style="text-align:left">规定应该从父元素继承 background-repeat 属性的设置。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="42-对齐文本">4.2 对齐文本</h3>
-<p><strong>text-align</strong> 属性规定元素中的文本的水平对齐方式。</p>
-<pre><code class="language-css">div {
-text-align: center;
-}
+<h3 id="44-背景图片位置">4.4 背景图片位置</h3>
+<p>利用 <strong>background-position</strong> 属性可以改变图片在背景中的位置。</p>
+<pre><code class="language-css">background-position: x y;
 </code></pre>
 <p><strong>可能的值:</strong></p>
 <table>
@@ -467,25 +385,22 @@ text-align: center;
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">left</td>
-<td style="text-align:left">把文本排列到左边。默认值：由浏览器决定。</td>
+<td style="text-align:left">top left<br/>top center<br/>top right<br/>center left<br/>center center center right<br/>bottom left<br/>bottom center<br/>bottom right</td>
+<td style="text-align:left">如果您仅规定了一个关键词，那么第二个值将是&quot;center&quot;。默认值：0% 0%。</td>
 </tr>
 <tr>
-<td style="text-align:left">right</td>
-<td style="text-align:left">把文本排列到右边。</td>
+<td style="text-align:left">x% y%</td>
+<td style="text-align:left">第一个值是水平位置，第二个值是垂直位置。左上角是 0% 0%。右下角是 100% 100%。如果您仅规定了一个值，另一个值将是 50%。</td>
 </tr>
 <tr>
-<td style="text-align:left">center</td>
-<td style="text-align:left">把文本排列到中间。</td>
-</tr>
-<tr>
-<td style="text-align:left">justify</td>
-<td style="text-align:left">实现两端对齐文本效果</td>
+<td style="text-align:left">xpos ypos</td>
+<td style="text-align:left">第一个值是水平位置，第二个值是垂直位置。左上角是 0 0。单位是像素 (0px 0px) 或任何其他的 CSS 单位。如果您仅规定了一个值，另一个值将是50%。您可以混合使用 % 和 position 值。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="43-装饰文本">4.3 装饰文本</h3>
-<p><strong>text-decoration</strong> 属性规定添加到文本的修饰。可以给文本添加下划线、删除线、上划线等。</p>
+<h3 id="45-背景图像固定">4.5 背景图像固定</h3>
+<p><strong>background-attachment</strong> 属性设置背景图像是否固定或者随着页面的其余部分滚动。</p>
+<p>background-attachment 后期可以制作视差滚动的效果。</p>
 <p><strong>可能的值:</strong></p>
 <table>
 <thead>
@@ -496,172 +411,27 @@ text-align: center;
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">none</td>
-<td style="text-align:left">默认。定义标准的文本。</td>
+<td style="text-align:left">scroll</td>
+<td style="text-align:left">默认值。背景图像会随着页面其余部分的滚动而移动。</td>
 </tr>
 <tr>
-<td style="text-align:left">underline</td>
-<td style="text-align:left">定义文本下的一条线。</td>
-</tr>
-<tr>
-<td style="text-align:left">overline</td>
-<td style="text-align:left">定义文本上的一条线。</td>
-</tr>
-<tr>
-<td style="text-align:left">line-through</td>
-<td style="text-align:left">定义穿过文本下的一条线。</td>
+<td style="text-align:left">fixed</td>
+<td style="text-align:left">当页面的其余部分滚动时，背景图像不会移动。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="44-文本缩进">4.4 文本缩进</h3>
-<p><strong>text-indent</strong> 属性用来指定文本的第一行的缩进，通常是将段落的首行缩进。</p>
-<blockquote>
-<p>允许使用负值。如果使用负值，那么首行会被缩进到左边。</p>
-</blockquote>
-<p><strong>可能的值:</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><em>length</em></td>
-<td style="text-align:left">定义固定的缩进。默认值：0。</td>
-</tr>
-<tr>
-<td style="text-align:left"><em>%</em></td>
-<td style="text-align:left">定义基于父元素宽度的百分比的缩进。</td>
-</tr>
-</tbody>
-</table>
-<pre><code class="language-css">div {
-	text-indent: 10px;
-}
-p {
-	text-indent: 2em;
-}
+<h3 id="46-背景复合写法">4.6 背景复合写法</h3>
+<p>为了简化背景属性的代码，我们可以将这些属性合并简写在同一个属性 background 中。从而节约代码量.<br>
+当使用简写属性时，没有特定的书写顺序,一般习惯约定顺序为：<br>
+background: 背景颜色 背景图片地址 背景平铺 背景图像滚动 背景图片位置;</p>
+<pre><code class="language-css">background: transparent url(image.jpg) repeat-y fixed top ;
 </code></pre>
-<blockquote>
-<p>em 是一个相对单位，就是当前元素（font-size) 1 个文字的大小, 如果当前元素没有设置大小，则会按照父元素的 1 个文字大小。</p>
-</blockquote>
-<h3 id="45-行间距">4.5 行间距</h3>
-<p><strong>line-height</strong> 属性用于设置行间的距离（行高）。可以控制文字行与行之间的距离.</p>
-<pre><code class="language-css">p {
-line-height: 26px;
-}
+<h3 id="47-背景色半透明">4.7 背景色半透明</h3>
+<p>CSS3 为我们提供了背景颜色半透明的效果。</p>
+<pre><code class="language-css">background: rgba(0, 0, 0, 0.3);
 </code></pre>
-<p><strong>可能的值:</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">normal</td>
-<td style="text-align:left">默认。设置合理的行间距。</td>
-</tr>
-<tr>
-<td style="text-align:left"><em>number</em></td>
-<td style="text-align:left">设置数字，此数字会与当前的字体尺寸相乘来设置行间距。</td>
-</tr>
-<tr>
-<td style="text-align:left"><em>length</em></td>
-<td style="text-align:left">设置固定的行间距。</td>
-</tr>
-<tr>
-<td style="text-align:left"><em>%</em></td>
-<td style="text-align:left">基于当前字体尺寸的百分比行间距。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="46-文本属性总结">4.6 文本属性总结</h3>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>表示</th>
-<th>注意点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>color</td>
-<td>文本颜色</td>
-<td>我们通常用十六进制比如而且是简写形式#fff</td>
-</tr>
-<tr>
-<td>text-align</td>
-<td>文本对齐</td>
-<td>可以设定文字水平的对齐方式</td>
-</tr>
-<tr>
-<td>text-indent</td>
-<td>文本缩进</td>
-<td>通常我们用于段落首行缩进2个字的距离text-indent: 2em;</td>
-</tr>
-<tr>
-<td>text-decoration</td>
-<td>文本修饰</td>
-<td>记住添加下划线underline 取消下划线none</td>
-</tr>
-<tr>
-<td>line-height</td>
-<td>行高</td>
-<td>控制行与行之间的距离</td>
-</tr>
-</tbody>
-</table>
-<h2 id="5-css-的引入方式">5. CSS 的引入方式</h2>
-<h3 id="51-css-的三种样式表">5.1 CSS 的三种样式表</h3>
-<p>1.行内样式表（行内式）<br>
-2.内部样式表（嵌入式）<br>
-3.外部样式表（链接式）</p>
-<h3 id="52-内部样式表">5.2 内部样式表</h3>
-<p>内部样式表（内嵌样式表）是写到html页面内部. 是将所有的 CSS 代码抽取出来，单独放到一个<code>&lt;style&gt;</code> 标签中。</p>
-<pre><code class="language-css">&lt;style&gt;
-	div {
-	color: red;
-	font-size: 12px;
-	}
-&lt;/style&gt;
-</code></pre>
-<p><code>&lt;style&gt;</code> 标签理论上可以放在 HTML 文档的任何地方，但一般会放在文档的<code>&lt;head&gt;</code>标签中<br>
-通过此种方式，可以方便控制当前整个页面中的元素样式设置<br>
-代码结构清晰，但是并没有实现结构与样式完全分离<br>
-使用内部样式表设定 CSS，通常也被称为嵌入式引入，这种方式是我们<strong>练习</strong>时常用的方式</p>
-<h3 id="53-行内样式表">5.3 行内样式表</h3>
-<p>行内样式表（内联样式表）是在元素标签内部的 style 属性中设定 CSS 样式。适合于修改简单样式.</p>
-<pre><code class="language-css">&lt;div style=&quot;color: red; font-size: 12px;&quot;&gt;青春不常在，抓紧谈恋爱&lt;/div&gt;
-</code></pre>
-<p>由于书写繁琐，并且没有体现出结构与样式相分离的思想，所以<strong>不推荐</strong>大量使用.</p>
-<h3 id="54-外部样式表">5.4 外部样式表</h3>
-<p>实际开发都是外部样式表. 适合于样式比较多的情况. 核心是:样式单独写到CSS 文件中，之后把CSS文件引入到 HTML 页面中使用.</p>
-<p>引入外部样式表分为两步：</p>
-<p>1.新建一个后缀名为 .css 的样式文件，把所有 CSS 代码都放入此文件中。</p>
-<p>2.在 HTML 页面中，使用<code>&lt;link&gt;</code> 标签引入这个文件。</p>
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;css文件路径&quot;&gt;
-</code></pre>
-<p>使用外部样式表设定 CSS，通常也被称为外链式或链接式引入，这种方式是开发中<strong>常用</strong>的方式</p>
-<h3 id="55-css-引入方式总结">5.5 CSS 引入方式总结</h3>
-<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210108213840.png" alt="img" loading="lazy"></figure>
-<h2 id="6-chrome-调试工具">6. Chrome 调试工具</h2>
-<p>Chrome 浏览器提供了一个非常好用的调试工具，可以用来调试我们的 HTML 结构和 CSS 样式。</p>
-<h3 id="61-打开调试工具">6.1 打开调试工具</h3>
-<p>打开 Chrome 浏览器，按下 F12 键或者右击页面空白处→检查。</p>
-<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210108214509.png" alt="image-20210108214508351" loading="lazy"></figure>
-<h3 id="62-使用调试工具">6.2 使用调试工具</h3>
-<p>① Ctrl+滚轮 可以放大开发者工具代码大小。<br>
-② 左边是 HTML 元素结构，右边是 CSS 样式。<br>
-③ 右边 CSS 样式可以改动数值（左右箭头或者直接输入）和查看颜色。<br>
-④ Ctrl + 0 复原浏览器大小。<br>
-⑤ 如果点击元素，发现右侧没有样式引入，极有可能是类名或者样式引入错误。<br>
-⑥ 如果有样式，但是样式前面有黄色叹号提示，则是样式属性书写错误。</p>
+<p>最后一个参数是 alpha 透明度，取值范围在 0~1之间; 我们习惯把 0.3 的 0 省略掉，写为 background: rgba(0, 0, 0, .3);</p>
+<p>注意：背景半透明是指盒子背景半透明，盒子里面的内容不受影响;CSS3 新增属性，是 IE9+ 版本浏览器才支持的;但是现在实际开发,我们不太关注兼容性写法了,可以放心使用。</p>
 
 							</div>
 	<div class="wow bounceInDown vt-post-tags">
@@ -671,10 +441,8 @@ line-height: 26px;
 		
 		<div class="nav-links3">
       
-		<div class="wow bounceInLeft nav-previous3"><a href="https://blog.manchan.ml/post/introduction-to-front-end-development-CSS--P2/" rel="prev"> 前端开发入门教程-CSS（二）</a></div>
 		 
-		 
-		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/introduction-to-front-end-development-HTML-Tags-P2/" rel="next"> 前端开发入门教程-HTML标签（下）</a></div>
+		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/introduction-to-front-end-development-CSS--P1/" rel="next"> 前端开发入门教程-CSS（一）</a></div>
 		
 		</div>
 	</nav>
@@ -684,7 +452,7 @@ line-height: 26px;
 	<div class="author-description"><div class="author-title"><div class="author-link" rel="author">Manchan</div></div>
 
 
-	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/introduction-to-front-end-development-CSS--P1/">https://blog.manchan.ml/post/introduction-to-front-end-development-CSS--P1/</a></p></div></div>
+	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/introduction-to-front-end-development-CSS--P2/">https://blog.manchan.ml/post/introduction-to-front-end-development-CSS--P2/</a></p></div></div>
 	
 		</div>
 		
