@@ -309,6 +309,7 @@ kbd,
 pre,
 samp {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  margin: 0px 0px 10px 0px;
 }
 pre code {
   padding: 0;
@@ -1410,9 +1411,8 @@ a.toc-link {
 .is-active-link::before {
   background-color: #54BC4B;
 }
-li {
-  display: block;
-  text-align: -webkit-match-parent;
+.toc-list {
+  list-style: none;
 }
 body {
   font-family: "Lato", sans-serif;
@@ -1460,9 +1460,6 @@ h5:before {
   color: #337ab7;
   font-size: 1.2em;
   line-height: 1.2em;
-}
-p {
-  margin: 0 0 20px 0;
 }
 img {
   display: block;
@@ -1695,9 +1692,13 @@ table {
 .song tt {
   color: #888888;
   font-size: 0.96em;
-  padding: 1px 2px;
+  padding: 5px 2px;
   font-family: Menlo,Monaco,Consolas,Courier New,monospace;
   word-wrap: break-word;
+}
+.song ul,
+ol {
+  list-style-position: inside;
 }
 #content article {
   margin: 50px 0 0 0;
