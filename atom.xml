@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.manchan.ml</id>
     <title>Manchan&apos;s Blog</title>
-    <updated>2021-01-13T13:35:54.572Z</updated>
+    <updated>2021-01-15T10:00:41.379Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.manchan.ml"/>
     <link rel="self" href="https://blog.manchan.ml/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://blog.manchan.ml/images/avatar.png</logo>
     <icon>https://blog.manchan.ml/favicon.ico</icon>
     <rights>All rights reserved 2021, Manchan&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[前端开发入门教程-CSS（四）]]></title>
+        <id>https://blog.manchan.ml/post/introduction-to-front-end-development-CSS--P4/</id>
+        <link href="https://blog.manchan.ml/post/introduction-to-front-end-development-CSS--P4/">
+        </link>
+        <updated>2021-01-15T09:58:13.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[前端开发入门教程-CSS（三）]]></title>
         <id>https://blog.manchan.ml/post/introduction-to-front-end-development-CSS--P3/</id>
@@ -72,12 +79,5 @@
         <link href="https://blog.manchan.ml/post/gis-kong-jian-fen-xi-di-kuai-rong-ji-lu-de-ji-suan-ji-jian-mo/">
         </link>
         <updated>2020-10-20T17:36:36.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[遥感地学实验：面向对象的遥感影像分类]]></title>
-        <id>https://blog.manchan.ml/post/yao-gan-di-xue-shi-yan-mian-xiang-dui-xiang-de-yao-gan-ying-xiang-fen-lei/</id>
-        <link href="https://blog.manchan.ml/post/yao-gan-di-xue-shi-yan-mian-xiang-dui-xiang-de-yao-gan-ying-xiang-fen-lei/">
-        </link>
-        <updated>2020-10-19T09:19:37.000Z</updated>
     </entry>
 </feed>
