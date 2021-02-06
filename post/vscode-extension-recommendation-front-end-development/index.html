@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
  <meta charset="utf-8">
-<title>前端开发入门教程-CSS3的2D3D转换与动画 | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
+<title>VSCode扩展推荐（前端开发） | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
 <meta name="description" content="Manchan's Blog是まん酱的个人博客，主要是记事与随笔，内容更偏向于GIS技术学习与分享">
 <meta name="keywords" content="manchan,blog,GIS,遥感,postgresql,arcgis,qgis,rs,mapgis,markdown,c#,postgis,pgsql,sql,Arcgis Engine,Visual Studio,ENVI,ERDAS">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -71,7 +71,7 @@ var _hmt = _hmt || [];
 			
 		<header id="header" class="site-header" 
 		
-		style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210104011739.jpg)"
+		style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206000104.png)"
 		
 		
 		>
@@ -166,10 +166,10 @@ var _hmt = _hmt || [];
 	
 	                      
 		<div class="entry-content">
-			<h1 class="wow swing entry-title">前端开发入门教程-CSS3的2D3D转换与动画</h1>
+			<h1 class="wow swing entry-title">VSCode扩展推荐（前端开发）</h1>
 <div class="entry-meta">
 <div class="wow bounce">
-	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2021-01-24 23:31:54" itemprop="datePublished" pubdate="">2021-01-24</time></i>
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2021-02-05 23:46:40" itemprop="datePublished" pubdate="">2021-02-05</time></i>
 	          </div>
 			
 </span>
@@ -177,383 +177,41 @@ var _hmt = _hmt || [];
 		</div>
                   
 			<div class="wow slideInLeft entry-summary song">
-				<blockquote>
-<p>本文素材来源于黑马程序员<strong>pink老师</strong>的前端<a href="https://www.bilibili.com/video/BV14J4114768?p=356">教学视频</a>。在此基础上有部分改动。</p>
-</blockquote>
-<h2 id="1-2d转换">1. 2D转换</h2>
-<h3 id="11-translate-方法">1.1 translate() 方法</h3>
-<p>通过 translate() 方法，元素从其当前位置移动，根据给定的 left（x 坐标） 和 top（y 坐标） 位置参数。</p>
-<p>使用 translate() 方法元素保留原来的位置，不脱标。</p>
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>translate(<em>x</em>,<em>y</em>)</td>
-<td>定义 2D 转换，沿着 X 和 Y 轴移动元素。</td>
-</tr>
-<tr>
-<td>translateX(<em>n</em>)</td>
-<td>定义 2D 转换，沿着 X 轴移动元素。</td>
-</tr>
-<tr>
-<td>translateY(<em>n</em>)</td>
-<td>定义 2D 转换，沿着 Y 轴移动元素。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="12-rotate-方法">1.2 rotate() 方法</h3>
-<p>通过 rotate() 方法，元素顺时针旋转给定的角度。允许负值，元素将逆时针旋转。</p>
-<p>单位为deg，degree[dɪˈɡriː] 的缩写。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">函数</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">rotate(<em>angle</em>)</td>
-<td style="text-align:left">定义 2D 旋转，在参数中规定角度。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="13-scale-方法">1.3 scale() 方法</h3>
-<p>通过 scale() 方法，元素的尺寸会增加或减少，根据给定的宽度（X 轴）和高度（Y 轴）参数。</p>
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>scale(<em>x</em>,<em>y</em>)</td>
-<td>定义 2D 缩放转换，改变元素的宽度和高度。</td>
-</tr>
-<tr>
-<td>scaleX(<em>n</em>)</td>
-<td>定义 2D 缩放转换，改变元素的宽度。</td>
-</tr>
-<tr>
-<td>scaleY(<em>n</em>)</td>
-<td>定义 2D 缩放转换，改变元素的高度。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="14-设置转换中心点">1.4 设置转换中心点</h3>
-<p>transform-origin 属性允许您改变被转换元素的位置。</p>
-<p>2D 转换元素能够改变元素 x 和 y 轴。3D 转换元素还能改变其 Z 轴。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">x-axis</td>
-<td style="text-align:left">定义视图被置于 X 轴的何处。可能的值：left / center / right / <em>length</em> / <em>%</em></td>
-</tr>
-<tr>
-<td style="text-align:left">y-axis</td>
-<td style="text-align:left">定义视图被置于 Y 轴的何处。可能的值：top / center / bottom / <em>length</em> / <em>%</em></td>
-</tr>
-</tbody>
-</table>
-<h2 id="2-动画">2. 动画</h2>
-<p>通过 CSS3，我们能够创建动画，这可以在许多网页中取代动画图片、Flash 动画以及 JavaScript。</p>
-<h3 id="21-keyframes-规则">2.1 @keyframes 规则</h3>
-<p>@keyframes 规则用于创建动画。在 @keyframes 中规定某项 CSS 样式，就能创建由当前样式逐渐改为新样式的动画效果。</p>
-<p>创建动画的原理是，将一套 CSS 样式逐渐变化为另一套样式。</p>
-<p>在动画过程中，您能够多次改变这套 CSS 样式。</p>
-<p>以百分比来规定改变发生的时间，或者通过关键词 &quot;from&quot; 和 &quot;to&quot;，等价于 0% 和 100%。</p>
-<p><strong>语法</strong></p>
-<pre><code>@keyframes animationname {keyframes-selector {css-styles;}}
-</code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><em>animation name</em></td>
-<td style="text-align:left">必需。定义动画的名称。</td>
-</tr>
-<tr>
-<td style="text-align:left"><em>keyframes-selector</em></td>
-<td style="text-align:left">必需。动画时长的百分比。合法的值：0-100 / % / from（与 0% 相同）/ to（与 100% 相同）</td>
-</tr>
-<tr>
-<td style="text-align:left"><em>css-styles</em></td>
-<td style="text-align:left">必需。一个或多个合法的 CSS 样式属性。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="22-css3-动画属性">2.2 CSS3 动画属性</h3>
-<p>下面的表格列出了 @keyframes 规则和所有动画属性：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">属性</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">@keyframes</td>
-<td style="text-align:left">规定动画。</td>
-</tr>
-<tr>
-<td style="text-align:left">animation</td>
-<td style="text-align:left">所有动画属性的简写属性，除了 animation-play-state 属性。</td>
-</tr>
-<tr>
-<td style="text-align:left">animation-name</td>
-<td style="text-align:left">规定 @keyframes 动画的名称。</td>
-</tr>
-<tr>
-<td style="text-align:left">animation-duration</td>
-<td style="text-align:left">规定动画完成一个周期所花费的秒或毫秒。默认是 0。</td>
-</tr>
-<tr>
-<td style="text-align:left">animation-timing-function</td>
-<td style="text-align:left">规定动画的速度曲线。默认是 &quot;ease&quot;。</td>
-</tr>
-<tr>
-<td style="text-align:left">animation-delay</td>
-<td style="text-align:left">规定动画何时开始。默认是 0。</td>
-</tr>
-<tr>
-<td style="text-align:left">animation-iteration-count</td>
-<td style="text-align:left">规定动画被播放的次数。默认是 1。</td>
-</tr>
-<tr>
-<td style="text-align:left">animation-direction</td>
-<td style="text-align:left">规定动画是否在下一周期逆向地播放。默认是 &quot;normal&quot;。</td>
-</tr>
-<tr>
-<td style="text-align:left">animation-play-state</td>
-<td style="text-align:left">规定动画是否正在运行或暂停。默认是 &quot;running&quot;。</td>
-</tr>
-<tr>
-<td style="text-align:left">animation-fill-mode</td>
-<td style="text-align:left">规定对象动画时间之外的状态。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="23-animation-timing-function">2.3 animation-timing-function</h3>
-<p><strong>定义和用法</strong></p>
-<p>animation-timing-function 规定动画的速度曲线。</p>
-<p>速度曲线定义动画从一套 CSS 样式变为另一套所用的时间。</p>
-<p>速度曲线用于使变化更为平滑。</p>
-<p><strong>语法</strong></p>
-<pre><code>animation-timing-function: value;
-</code></pre>
-<p>animation-timing-function 使用名为三次贝塞尔（Cubic Bezier）函数的数学函数，来生成速度曲线。您能够在该函数中使用自己的值，也可以预定义的值：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">linear</td>
-<td style="text-align:left">动画从头到尾的速度是相同的。</td>
-</tr>
-<tr>
-<td style="text-align:left">ease</td>
-<td style="text-align:left">默认。动画以低速开始，然后加快，在结束前变慢。</td>
-</tr>
-<tr>
-<td style="text-align:left">ease-in</td>
-<td style="text-align:left">动画以低速开始。</td>
-</tr>
-<tr>
-<td style="text-align:left">ease-out</td>
-<td style="text-align:left">动画以低速结束。</td>
-</tr>
-<tr>
-<td style="text-align:left">ease-in-out</td>
-<td style="text-align:left">动画以低速开始和结束。</td>
-</tr>
-<tr>
-<td style="text-align:left">cubic-bezier(<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>)</td>
-<td style="text-align:left">在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="24-animation-delay-属性">2.4 animation-delay 属性</h3>
-<p><strong>定义和用法</strong></p>
-<p>animation-delay 属性定义动画何时开始。</p>
-<p>animation-delay 值以秒或毫秒计。</p>
-<h3 id="25-animation-iteration-count-属性">2.5 animation-iteration-count 属性</h3>
-<p><strong>定义和用法</strong></p>
-<p>animation-iteration-count 属性定义动画的播放次数。</p>
-<p><strong>语法</strong></p>
-<pre><code>animation-iteration-count: n|infinite;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><em>n</em></td>
-<td style="text-align:left">定义动画播放次数的数值。</td>
-</tr>
-<tr>
-<td style="text-align:left">infinite</td>
-<td style="text-align:left">规定动画应该无限次播放。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="26-animation-direction-属性">2.6 animation-direction 属性</h3>
-<p><strong>定义和用法</strong></p>
-<p>animation-direction 属性定义是否应该轮流反向播放动画。</p>
-<p>如果 animation-direction 值是 &quot;alternate&quot;，则动画会在奇数次数（1、3、5 等等）正常播放，而在偶数次数（2、4、6 等等）向后播放。</p>
-<p><strong>语法</strong></p>
-<pre><code>animation-direction: normal|alternate;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">normal</td>
-<td style="text-align:left">默认值。动画应该正常播放。</td>
-</tr>
-<tr>
-<td style="text-align:left">alternate</td>
-<td style="text-align:left">动画应该轮流反向播放。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="27-animation-fill-mode-属性">2.7 animation-fill-mode 属性</h3>
-<p><strong>定义和用法</strong></p>
-<p>animation-fill-mode 属性规定动画在播放之前或之后，其动画效果是否可见。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">none</td>
-<td style="text-align:left">不改变默认行为。</td>
-</tr>
-<tr>
-<td style="text-align:left">forwards</td>
-<td style="text-align:left">当动画完成后，保持最后一个属性值（在最后一个关键帧中定义）。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="28-animation-play-state-属性">2.8 animation-play-state 属性</h3>
-<p><strong>定义和用法</strong></p>
-<p>animation-play-state 属性规定动画正在运行还是暂停。</p>
-<p>此属性可在:hover伪类中使用，也可在js中使用，来暂停动画。</p>
-<p><strong>语法</strong></p>
-<pre><code>animation-play-state: paused|running;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">paused</td>
-<td style="text-align:left">规定动画已暂停。</td>
-</tr>
-<tr>
-<td style="text-align:left">running</td>
-<td style="text-align:left">规定动画正在播放。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="3-3d转换">3. 3D转换</h2>
-<h3 id="31-rotatex-方法">3.1 rotateX() 方法</h3>
-<p>通过 rotateX() 方法，元素围绕其 X 轴以给定的度数进行旋转。</p>
-<h3 id="32-rotatey-旋转">3.2 rotateY() 旋转</h3>
-<p>通过 rotateY() 方法，元素围绕其 Y 轴以给定的度数进行旋转。</p>
-<h3 id="33-perspective-属性">3.3 perspective 属性</h3>
-<p><strong>定义和用法</strong></p>
-<p>perspective 属性定义 3D 元素距视图的距离，以像素计。该属性允许您改变 3D 元素查看 3D 元素的视图。</p>
-<p>当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。</p>
-<p><strong>语法</strong></p>
-<pre><code>perspective: number|none;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><em>number</em></td>
-<td style="text-align:left">元素距离视图的距离，以像素计。</td>
-</tr>
-<tr>
-<td style="text-align:left">none</td>
-<td style="text-align:left">默认值。与 0 相同。不设置透视。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="34-transform-style-属性">3.4 transform-style 属性</h3>
-<p><strong>定义和用法</strong></p>
-<p>transform-style 属性规定如何在 3D 空间中呈现被嵌套的元素。</p>
-<p><strong>语法</strong></p>
-<pre><code>transform-style: flat|preserve-3d;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">flat</td>
-<td style="text-align:left">子元素将不保留其 3D 位置。</td>
-</tr>
-<tr>
-<td style="text-align:left">preserve-3d</td>
-<td style="text-align:left">子元素将保留其 3D 位置。</td>
-</tr>
-</tbody>
-</table>
+				<h2 id="前言">前言</h2>
+<p>对于VS Code，随着软件的更新，越来越多原本需要扩展才能实现的功能，现如今都被添加进软件，所以使用插件前务必更新至最新版本。可点击“帮助”-“检查更新”获取最新版本，或在官网<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>获取最新安装包。</p>
+<h2 id="扩展推荐">扩展推荐</h2>
+<h3 id="1auto-rename-tag">1.Auto Rename Tag</h3>
+<p>该扩展修改HTML标签时，自动修改匹配的标签。</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206003438.gif" alt="" loading="lazy"></figure>
+<h3 id="2css-formatter">2.CSS Formatter</h3>
+<p>写CSS时可以对CSS进行格式化</p>
+<h3 id="3live-server">3.Live Server</h3>
+<p>启动具有静态和动态页面的实时重新加载功能的开发本地服务器。</p>
+<p>①扩展安装完成后打开一个html文档，右键即可找到&quot;Open with Live Server&quot;，或在状态栏右下角点击&quot;Go Live&quot;启动。</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206010248.png" alt="image-20210206010248337" loading="lazy"></figure>
+<p>②将VS Code与浏览器像这样并排，便可实时显示html内容。当VS Code保存 ( Ctrl+s ) 一次右侧页面便会更新。</p>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206010755.png" alt="image-20210206010755277" loading="lazy"></figure>
+<p>③在设置中可以设置自动保存的方式，根据个人喜好可实现浏览器的自动刷新方式。如使用&quot;afterDelay&quot;方式，即可在设置的时间后自动保存，即可实现浏览器实时刷新。</p>
+<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206011105.png" alt="image-20210206011105012" loading="lazy"></figure>
+<p>④此扩展默认创建的本地服务器链接为http://127.0.0.1:5500/，127.0.0.1是回送地址，指本地机，一般用来测试使用，5500是端口。localhost是一个域名，指向127.0.0.1。如果当前电脑处于局域网内（与其它设备用同一个wifi），则本机在局域网内还有一个IP地址，打开已连接wifi的属性，在最下面找到&quot;IPv4地址&quot;，将右侧地址复制，将127.0.0.1改为复制的IP地址，页面依然成功显示。即表明可以使用局域网内的IP地址访问这个本地服务器。</p>
+<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206012210.png" alt="image-20210206012210076" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206012358.png" alt="image-20210206012358818" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206012525.png" alt="image-20210206012525884" loading="lazy"></figure>
+<p>⑤将修改后的地址复制粘贴到同一局域网内的其它设备上，如手机，平板，即可同步访问此网站。VS Code中编辑的内容在其它设备中也能同时浏览，对于多屏开发、手机端开发提供了一个很好的方式。</p>
+<h3 id="4驼峰翻译助手">4.驼峰翻译助手</h3>
+<p>纠结怎么取变量? 中文一键翻译转换成常用大小驼峰等格式，快捷键<code>Alt+shift+t</code></p>
+<figure data-type="image" tabindex="8"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206131501.gif" alt="" loading="lazy"></figure>
+<h3 id="5image-preview">5.Image preview</h3>
+<p>在空白处和悬停时显示图像预览。若不想在侧边空白处预览图像只需要悬停预览，在设置中取消勾选即可。</p>
+<figure data-type="image" tabindex="9"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206131831.png" alt="image-20210206131830961" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206132719.png" alt="image-20210206132719648" loading="lazy"></figure>
+<h3 id="6vscode-icons">6.vscode-icons</h3>
+<p>一个非常受欢迎的文件图标主题，对于文件类型的区分上比原生主题更加明显。</p>
+<figure data-type="image" tabindex="11"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206133315.gif" alt="" loading="lazy"></figure>
 
 							</div>
 	<div class="wow bounceInDown vt-post-tags">
  
-				<a href="https://blog.manchan.ml/tag/css/" rel="tag">CSS</a>	
-				 
 				<a href="https://blog.manchan.ml/tag/qian-duan/" rel="tag">前端</a>	
 				 
 					</div>						
@@ -561,10 +219,8 @@ var _hmt = _hmt || [];
 		
 		<div class="nav-links3">
       
-		<div class="wow bounceInLeft nav-previous3"><a href="https://blog.manchan.ml/post/vscode-extension-recommendation-front-end-development/" rel="prev"> VSCode扩展推荐（前端开发）</a></div>
 		 
-		 
-		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/introduction-to-front-end-development-Improvement-of-HTML5&amp;CSS3/" rel="next"> 前端开发入门教程-HTML5 和 CSS3 提高</a></div>
+		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/introduction-to-front-end-development-2D3D-transform&amp;animation/" rel="next"> 前端开发入门教程-CSS3的2D3D转换与动画</a></div>
 		
 		</div>
 	</nav>
@@ -574,7 +230,7 @@ var _hmt = _hmt || [];
 	<div class="author-description"><div class="author-title"><div class="author-link" rel="author">Manchan</div></div>
 
 
-	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/introduction-to-front-end-development-2D3D-transform&amp;animation/">https://blog.manchan.ml/post/introduction-to-front-end-development-2D3D-transform&amp;animation/</a></p></div></div>
+	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/vscode-extension-recommendation-front-end-development/">https://blog.manchan.ml/post/vscode-extension-recommendation-front-end-development/</a></p></div></div>
 	
 		</div>
 		
