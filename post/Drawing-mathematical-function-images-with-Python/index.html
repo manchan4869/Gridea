@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
  <meta charset="utf-8">
-<title>VSCode扩展推荐（前端开发） | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
+<title>用Python绘制数学函数图像 | Manchan&#39;s Blog | まん酱の记事与随笔 </title>	
 <meta name="description" content="Manchan's Blog是まん酱的个人博客，主要是记事与随笔，内容更偏向于GIS技术学习与分享">
 <meta name="keywords" content="manchan,blog,GIS,遥感,postgresql,arcgis,qgis,rs,mapgis,markdown,c#,postgis,pgsql,sql,Arcgis Engine,Visual Studio,ENVI,ERDAS">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -71,7 +71,7 @@ var _hmt = _hmt || [];
 			
 		<header id="header" class="site-header" 
 		
-		style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206000104.png)"
+		style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210526155726.jpg)"
 		
 		
 		>
@@ -166,10 +166,10 @@ var _hmt = _hmt || [];
 	
 	                      
 		<div class="entry-content">
-			<h1 class="wow swing entry-title">VSCode扩展推荐（前端开发）</h1>
+			<h1 class="wow swing entry-title">用Python绘制数学函数图像</h1>
 <div class="entry-meta">
 <div class="wow bounce">
-	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2021-02-05 23:46:40" itemprop="datePublished" pubdate="">2021-02-05</time></i>
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2021-05-26 15:50:13" itemprop="datePublished" pubdate="">2021-05-26</time></i>
 	          </div>
 			
 </span>
@@ -178,51 +178,236 @@ var _hmt = _hmt || [];
                   
 			<div class="wow slideInLeft entry-summary song">
 				<h2 id="前言">前言</h2>
-<p>对于VS Code，随着软件的更新，越来越多原本需要扩展才能实现的功能，现如今都被添加进软件，所以使用插件前务必更新至最新版本。可点击“帮助”-“检查更新”获取最新版本，或在官网<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>获取最新安装包。</p>
-<h2 id="扩展推荐">扩展推荐</h2>
-<h3 id="1auto-rename-tag">1.Auto Rename Tag</h3>
-<p>该扩展修改HTML标签时，自动修改匹配的标签。</p>
-<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206003438.gif" alt="" loading="lazy"></figure>
-<h3 id="2css-formatter">2.CSS Formatter</h3>
-<p>写CSS时可以对CSS进行格式化</p>
-<h3 id="3live-server">3.Live Server</h3>
-<p>启动具有静态和动态页面的实时重新加载功能的开发本地服务器。</p>
-<p>①扩展安装完成后打开一个html文档，右键即可找到&quot;Open with Live Server&quot;，或在状态栏右下角点击&quot;Go Live&quot;启动。</p>
-<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206010248.png" alt="image-20210206010248337" loading="lazy"></figure>
-<p>②将VS Code与浏览器像这样并排，便可实时显示html内容。当VS Code保存 ( Ctrl+s ) 一次右侧页面便会更新。</p>
-<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206010755.png" alt="image-20210206010755277" loading="lazy"></figure>
-<p>③在设置中可以设置自动保存的方式，根据个人喜好可实现浏览器的自动刷新方式。如使用&quot;afterDelay&quot;方式，即可在设置的时间后自动保存，即可实现浏览器实时刷新。</p>
-<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206011105.png" alt="image-20210206011105012" loading="lazy"></figure>
-<p>④此扩展默认创建的本地服务器链接为http://127.0.0.1:5500/，127.0.0.1是回送地址，指本地机，一般用来测试使用，5500是端口。localhost是一个域名，指向127.0.0.1。如果当前电脑处于局域网内（与其它设备用同一个wifi），则本机在局域网内还有一个IP地址，打开已连接wifi的属性，在最下面找到&quot;IPv4地址&quot;，将右侧地址复制，将127.0.0.1改为复制的IP地址，页面依然成功显示。即表明可以使用局域网内的IP地址访问这个本地服务器。</p>
-<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206012210.png" alt="image-20210206012210076" loading="lazy"></figure>
-<figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206012358.png" alt="image-20210206012358818" loading="lazy"></figure>
-<figure data-type="image" tabindex="7"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206012525.png" alt="image-20210206012525884" loading="lazy"></figure>
-<p>⑤将修改后的地址复制粘贴到同一局域网内的其它设备上，如手机，平板，即可同步访问此网站。VS Code中编辑的内容在其它设备中也能同时浏览，对于多屏开发、手机端开发提供了一个很好的方式。</p>
-<h3 id="4驼峰翻译助手">4.驼峰翻译助手</h3>
-<p>纠结怎么取变量? 中文一键翻译转换成常用大小驼峰等格式，快捷键<code>Alt+shift+t</code></p>
-<figure data-type="image" tabindex="8"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206131501.gif" alt="" loading="lazy"></figure>
-<h3 id="5image-preview">5.Image preview</h3>
-<p>在空白处和悬停时显示图像预览。若不想在侧边空白处预览图像只需要悬停预览，在设置中取消勾选即可。</p>
-<figure data-type="image" tabindex="9"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206131831.png" alt="image-20210206131830961" loading="lazy"></figure>
-<figure data-type="image" tabindex="10"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206132719.png" alt="image-20210206132719648" loading="lazy"></figure>
-<h3 id="6vscode-icons">6.vscode-icons</h3>
-<p>一个非常受欢迎的文件图标主题，对于文件类型的区分上比原生主题更加明显。</p>
-<figure data-type="image" tabindex="11"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210206133315.gif" alt="" loading="lazy"></figure>
+<p>最近开始学习数学了，有一些题目的函数图像非常有特点，有一些函数图像手绘比较麻烦，那么有没有什么办法做出又标准又好看的数学函数图像呢？</p>
+<p>答案是有很多的，有很多不错的软件都能画出函数图像，但是，我想到了Python的数据可视化。Python在近些年非常火热，在数据分析以及深度学习等方面得到广泛地运用，其丰富的库使其功能愈加强大。</p>
+<p>这里我们使用Python的NumPy库以及Matplotlib库进行绘图。</p>
+<h2 id="numpy与matplotlib">NumPy与Matplotlib</h2>
+<p>NumPy(Numerical Python) 是 Python 语言的一个扩展程序库，支持大量的维度数组与矩阵运算，此外也针对数组运算提供大量的数学函数库。</p>
+<p>Matplotlib 是 Python 的绘图库。 它可与 NumPy 一起使用，提供了一种有效的 MatLab 开源替代方案。</p>
+<h2 id="函数绘图">函数绘图</h2>
+<h3 id="所需库函数语法">所需库函数语法</h3>
+<h4 id="import-语句">import 语句</h4>
+<p>想使用 Python 源文件，只需在另一个源文件里执行 import 语句，语法如下：</p>
+<pre><code class="language-python">import module1[, module2[,... moduleN]
+</code></pre>
+<h4 id="from-import-语句">from … import 语句</h4>
+<p>Python 的 from 语句让你从模块中导入一个指定的部分到当前命名空间中，语法如下：</p>
+<pre><code class="language-python">from modname import name1[, name2[, ... nameN]]
+</code></pre>
+<h4 id="numpyarange">numpy.arange</h4>
+<p>numpy 包中的使用 arange 函数创建数值范围并返回 ndarray 对象，函数格式如下：</p>
+<pre><code class="language-python">numpy.arange(start, stop, step, dtype)
+</code></pre>
+<p>根据 start 与 stop 指定的范围以及 step 设定的步长，生成一个 ndarray。</p>
+<p>参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>start</code></td>
+<td style="text-align:left">起始值，默认为<code>0</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>stop</code></td>
+<td style="text-align:left">终止值（不包含）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>step</code></td>
+<td style="text-align:left">步长，默认为<code>1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>dtype</code></td>
+<td style="text-align:left">返回<code>ndarray</code>的数据类型，如果没有提供，则会使用输入数据的类型。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="numpylinspace">numpy.linspace</h4>
+<p>numpy.linspace 函数用于创建一个一维数组，数组是一个等差数列构成的，格式如下：</p>
+<pre><code class="language-python">np.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
+</code></pre>
+<p>参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>start</code></td>
+<td style="text-align:left">序列的起始值</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>stop</code></td>
+<td style="text-align:left">序列的终止值，如果<code>endpoint</code>为<code>true</code>，该值包含于数列中</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>num</code></td>
+<td style="text-align:left">要生成的等步长的样本数量，默认为<code>50</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>endpoint</code></td>
+<td style="text-align:left">该值为 <code>true</code> 时，数列中包含<code>stop</code>值，反之不包含，默认是True。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>retstep</code></td>
+<td style="text-align:left">如果为 True 时，生成的数组中会显示间距，反之不显示。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>dtype</code></td>
+<td style="text-align:left"><code>ndarray</code> 的数据类型</td>
+</tr>
+</tbody>
+</table>
+<h3 id="导入所需模块">导入所需模块</h3>
+<pre><code class="language-python">import numpy as np
+from matplotlib import pyplot as plt
+plt.rcParams['font.sans-serif'] = ['SimHei'] #用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False #用来正常显示负号
+</code></pre>
+<h3 id="一元一次函数">一元一次函数</h3>
+<pre><code class="language-python"># 一元一次函数图像
+x = np.arange(-10, 10, 0.1)#生成等差数组
+y = 2 * x
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title(&quot;一元一次函数&quot;)
+plt.plot(x, y)
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210526152205.jpg" alt="" loading="lazy"></figure>
+<h3 id="一元二次函数">一元二次函数</h3>
+<pre><code class="language-python"># 一元二次函数图像
+x = np.arange(-10, 10, 0.1)
+y = x * x
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title(&quot;一元二次函数&quot;)
+plt.plot(x, y)
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210526153811.jpg" alt="" loading="lazy"></figure>
+<h3 id="指数函数">指数函数</h3>
+<pre><code class="language-python"># 指数函数
+x = np.arange(-10, 10, 0.1)
+y = np.power(2, x)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title(&quot;指数函数&quot;)
+plt.plot(x, y)
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210526153904.jpg" alt="" loading="lazy"></figure>
+<h3 id="正弦函数">正弦函数</h3>
+<pre><code class="language-python">x = np.arange(-3 * np.pi, 3 * np.pi, 0.1)
+y = np.sin(x)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title(&quot;正弦函数&quot;)
+plt.plot(x, y)
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210526153916.jpg" alt="" loading="lazy"></figure>
+<h3 id="余弦函数">余弦函数</h3>
+<pre><code class="language-python">x = np.arange(-3 * np.pi, 3 * np.pi, 0.1)
+y = np.cos(x)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title(&quot;余弦函数&quot;)
+plt.plot(x, y)
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210526153928.jpg" alt="" loading="lazy"></figure>
+<h2 id="高级玩法">高级玩法</h2>
+<pre><code class="language-python">from pylab import *
+import numpy
+figure(figsize=(12,8), dpi=72)
+
+# 创建一个新的 1 * 1 的子图，接下来的图样绘制在其中的第 1 块（也是唯一的一块）
+subplot(1,1,1)
+
+X = np.linspace(-np.pi*2, np.pi*2, 2048,endpoint=True)
+C,S = np.cos(X), np.sin(X)
+
+# 绘制余弦曲线，使用蓝色的、连续的、宽度为 1 （像素）的线条
+plot(X, C,linewidth=1.5, linestyle=&quot;-&quot;,label=&quot;正弦&quot;)
+
+# 绘制正弦曲线，使用绿色的、连续的、宽度为 1 （像素）的线条
+plot(X, S,linewidth=1.5, linestyle=&quot;-&quot;,label=&quot;余弦&quot;)
+legend(loc='upper left')
+# 设置横轴的上下限
+xlim(-4.5,4.5)
+
+# 设置横轴记号
+xticks([-np.pi, -np.pi/2, 0, np.pi/2, np.pi],
+       [r'$-\pi$', r'$-\pi/2$', r'$0$', r'$+\pi/2$', r'$+\pi$'])
+
+yticks([-1, 0, +1],
+       [r'$-1$', r'$0$', r'$+1$'])
+
+# 设置纵轴的上下限
+ylim(-1.5,1.5)
+
+# 设置纵轴记号
+yticks(np.linspace(-1,1,5,endpoint=True))
+ax = gca()
+ax.spines['right'].set_color('none')
+ax.spines['top'].set_color('none')
+ax.xaxis.set_ticks_position('bottom')
+ax.spines['bottom'].set_position(('data',0))
+ax.yaxis.set_ticks_position('left')
+ax.spines['left'].set_position(('data',0))
+
+# savefig(&quot;sincosin.png&quot;,dpi=72) #以72dpi保存图像
+
+# 在屏幕上显示
+show()
+</code></pre>
+<figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210526154642.jpg" alt="" loading="lazy"></figure>
+<pre><code class="language-python">fig = plt.figure(figsize=(12,8), dpi=72)
+x = np.arange(-10, 10, 0.01)
+arsinh = np.log(x+np.sqrt(x**2+1))
+sinh=0.5*(e**x-e**(-x))
+cosh=0.5*(e**x+e**(-x))
+
+plt.plot(x, sinh,label=&quot;双曲正弦&quot;)
+plt.plot(x, arsinh,label=&quot;反双曲正弦&quot;)
+plt.plot(x, cosh,label=&quot;双曲余弦&quot;)
+
+plt.legend(loc='upper left')
+
+ylim(-10,10)
+
+ax = gca()
+ax.spines['right'].set_color('none')
+ax.spines['top'].set_color('none')
+ax.xaxis.set_ticks_position('bottom')
+ax.spines['bottom'].set_position(('data',0))
+ax.yaxis.set_ticks_position('left')
+ax.spines['left'].set_position(('data',0))
+
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="7"><img src="https://cdn.jsdelivr.net/gh/manchan4869/PicGo/img/20210526154902.jpg" alt="" loading="lazy"></figure>
 
 							</div>
 	<div class="wow bounceInDown vt-post-tags">
  
-				<a href="https://blog.manchan.ml/tag/qian-duan/" rel="tag">前端</a>	
+				<a href="https://blog.manchan.ml/tag/python/" rel="tag">Python</a>	
 				 
 					</div>						
 <nav class="navigation3 post-navigation3" role="navigation">
 		
 		<div class="nav-links3">
       
-		<div class="wow bounceInLeft nav-previous3"><a href="https://blog.manchan.ml/post/Drawing-mathematical-function-images-with-Python/" rel="prev"> 用Python绘制数学函数图像</a></div>
 		 
-		 
-		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/introduction-to-front-end-development-2D3D-transform&amp;animation/" rel="next"> 前端开发入门教程-CSS3的2D3D转换与动画</a></div>
+		<div class="wow bounceInRight nav-next3"><a href="https://blog.manchan.ml/post/vscode-extension-recommendation-front-end-development/" rel="next"> VSCode扩展推荐（前端开发）</a></div>
 		
 		</div>
 	</nav>
@@ -232,7 +417,7 @@ var _hmt = _hmt || [];
 	<div class="author-description"><div class="author-title"><div class="author-link" rel="author">Manchan</div></div>
 
 
-	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/vscode-extension-recommendation-front-end-development/">https://blog.manchan.ml/post/vscode-extension-recommendation-front-end-development/</a></p></div></div>
+	<p class="author-bio">GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>) 协议<br>本文永久链接是：<a href="https://blog.manchan.ml/post/Drawing-mathematical-function-images-with-Python/">https://blog.manchan.ml/post/Drawing-mathematical-function-images-with-Python/</a></p></div></div>
 	
 		</div>
 		
