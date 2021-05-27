@@ -52,13 +52,25 @@ var css = '<';
 window.onload=getCSS();
 </script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?8f120d9fed3fd2ee8687f27f6e7ae7f6";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
+        var hosts = window.location.host;
+        if (hosts == "blog.manchan.ml") {
+                var _hmt = _hmt || [];
+                (function () {
+                        var hm = document.createElement("script");
+                        hm.src = "https://hm.baidu.com/hm.js?8f120d9fed3fd2ee8687f27f6e7ae7f6";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                })();
+        } else {
+                var _hmt = _hmt || [];
+                (function () {
+                        var hm = document.createElement("script");
+                        hm.src = "https://hm.baidu.com/hm.js?4546e037575b94355f48671241e8193c";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                })();
+        }
+
 </script>
 
 
