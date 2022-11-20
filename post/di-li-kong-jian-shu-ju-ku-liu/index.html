@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地理空间数据库：空间网络查询(pgRouting) | Manchan&#39;s Blog | まん酱の记事与随笔 </title>
+    <meta name="description" content="Manchan's Blog是まん酱的个人博客，主要是记事与随笔，内容更偏向于GIS技术学习与分享">
+    <meta name="keywords" content="manchan,blog,GIS,遥感,postgresql,arcgis,qgis,rs,mapgis,markdown,c#,postgis,pgsql,sql,Arcgis Engine,Visual Studio,ENVI,ERDAS,Web,前端,WebGIS">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://blog.manchan.top/styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+    <link href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css" rel="stylesheet" />
+    <link href="https://cdn.staticfile.org/animate.css/3.7.2/animate.min.css" rel="stylesheet" />
+    <link href="https://cdn.staticfile.org/highlight.js/11.4.0/styles/github.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/KaTeX/0.15.2/katex.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/wow/1.1.2/wow.min.js"></script>
+    <script src="https://cdn.staticfile.org/highlight.js/11.4.0/highlight.min.js"></script>
+    <script type='text/javascript' src='https://blog.manchan.top/media/scripts/script.min.js'></script>
+    <link rel="stylesheet" href="https://blog.manchan.top/media/css/day.min.css">
+    
+</head>
+
+<body class="post-template-default single single-post postid-70 single-format-standard">
+    <div id="wrapper">
+        <header id="header" class="site-header" 
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/di-li-kong-jian-shu-ju-ku-san.jpg
+        )" 
+                >
+                    <div class="site-branding">
+                        <h1 class="site-title"><a href="https://blog.manchan.top" rel="home">
+                                Manchan&#39;s Blog
+                            </a></h1>
+                        <h2 class="site-description">
+                            <b>まん酱の记事与随笔</b>
+                        </h2>
+                    </div>
+                    <nav id="nav-wrapper">
+                        <div class="container">
+                            <div class="nav-toggle">
+                                <div class="bars">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <ul id="" class="dove">
+                                
+                                    <li><a href="/">
+                                            首页
+                                        </a></li>
+                                    
+                                    <li><a href="/archives">
+                                            归档
+                                        </a></li>
+                                    
+                                    <li><a href="/tags">
+                                            标签
+                                        </a></li>
+                                    
+                                    <li><a href="/post/about">
+                                            关于
+                                        </a></li>
+                                    
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="jingge">
+                        
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                    </div>
+</header>
+            <div id="content" class="container">
+                <div class="row">
+                    <div class="col-md-8 site-main">
+                        <article id="post-70"
+                            class="post-70 post type-post status-publish format-standard hentry category-5 tag-10 tag-9 tag-11">
+                            <div class="entry-content">
+                                <h1 class="wow swing entry-title">
+                                    地理空间数据库：空间网络查询(pgRouting)
+                                </h1>
+                                <div class="entry-meta">
+                                    <div class="wow bounce">
+                                        <i class="iconfont icon-rili"> <time class="lately-a"
+                                                datetime="2020-07-07 00:21:51" itemprop="datePublished" pubdate="">
+                                                2020-07-07
+                                            </time></i>
+                                    </div>
+                                    </span>
+                                </div>
+                                <div class="wow slideInLeft entry-summary song">
+                                    <p>利用 PostgreSQL/PostGIS 扩展模块对空间网络数据<strong>连通关系</strong>进行管理，能够利用<br>
+pgRouting实现对路网、河流网、铁路网等典型空间网络数据及几何拓扑数据的常见功能分析。</p>
+<!-- more -->
+<script src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/pgsql+postgis.min.js"></script>
+<h1 id="要求">要求</h1>
+<ol>
+<li>能够利用 pgRouting<br>
+实现对路网、河流网、铁路网等典型空间网络数据进行拓扑分析；</li>
+<li>能够解决拓扑关系创建过程中的拓扑“gap”、“Insections”等问题；</li>
+<li>掌握 pgRouting<br>
+最短路径分析用法，能够自定义函数实现任意两点或多点之间的路径查询；</li>
+<li>能够根据掌握 pgRouting 解决生活中实际常见路径分析问题。</li>
+</ol>
+<h1 id="任务-1简单道路网分析及路径查询无向"><strong>任务 1：简单道路网分析及路径查询（无向）</strong></h1>
+<p>有如下道路网，涵盖 A、B、C、D、E 等 5 个线路；</p>
+<figure data-type="image" tabindex="1"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/5ec1c6401093070780f0fa7fb3a09b3f.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/11465673250dafa90fc57bd5536f7ab7.jpg" alt="" loading="lazy"></figure>
+<p>其关系表、几何坐标及参考系如下所示：</p>
+<figure data-type="image" tabindex="3"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/416765148b345b383c2025228e9ec680.jpg" alt="" loading="lazy"></figure>
+<p><strong>1、创建上述道路网拓扑关系，不允许有 gap 和intersection 等异常。</strong></p>
+<p><strong>Answer：</strong></p>
+<p>创建一个新的数据库，并加载postgis和pgRouting扩展；</p>
+<figure data-type="image" tabindex="4"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/b08dd0f280ea688bf1cf3fccd1cee84d.png" alt="" loading="lazy"></figure>
+<p>创建Roadtest_Network表，并导入路网数据，并更新长度；</p>
+<figure data-type="image" tabindex="5"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/a3ac6c8c68cb46ff1f4c05d1e32351f4.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/0959ad4427e3deb8452c6e11ec735d30.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/5e83fb4a748ed3534b43cae8050f1ce8.png" alt="" loading="lazy"></figure>
+<p><strong>Step1：创建的 Roadtest_Network 表：属性有：id（PK）、name、<br>
+source、target、geom、len（作为无向图路段通过的耗时成本）等，并插入相关信息；【该表用以存储网络关系】。表内容信息如下：</strong></p>
+<figure data-type="image" tabindex="8"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/136c61449a3e90b43063b1a839ce45df.png" alt="" loading="lazy"></figure>
+<p><strong>Step2：在 Roadtest_Network 表创建拓扑关系：</strong></p>
+<p><strong>输出日志：创建了 5 条边拓扑，生成一个节点表*_vertices_pgr</strong></p>
+<figure data-type="image" tabindex="9"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/aa68e394e58beef415022a6c80d039a1.png" alt="" loading="lazy"></figure>
+<p>Roadtest_Network 表中 source 和 target 已被<strong>节点</strong>填充；</p>
+<figure data-type="image" tabindex="10"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/25f2df56e89b37b308cc2104bbce76a7.png" alt="" loading="lazy"></figure>
+<p>同时，节点表存储所有拓扑节点，但属性 cnt（当前节点被使用的次数）等为空；</p>
+<figure data-type="image" tabindex="11"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/ea02b8f22127be810efc213ab7e92498.png" alt="" loading="lazy"></figure>
+<p>采用拓扑分析函数分析“边”和“节点”表，更新相关属性信息，<br>
+同时分析已创建拓扑关系有没有异常信息：</p>
+<figure data-type="image" tabindex="12"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/b6d55b2d7e0ea2385d946c4bbe6eb295.png" alt="" loading="lazy"></figure>
+<p>检查成功，但该拓扑关系存在一个“相交”问题：</p>
+<figure data-type="image" tabindex="13"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/41682f6d1842d6bddf600896d0a5c8a1.png" alt="" loading="lazy"></figure>
+<p>同时“节点”表 cnt（<strong>当前节点被使用的次数</strong>）属性已更新：</p>
+<figure data-type="image" tabindex="14"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/fc688a3b7e6bf8c3e4d2e98ea207e283.png" alt="" loading="lazy"></figure>
+<p>QGIS 中查看“节点”表：</p>
+<figure data-type="image" tabindex="15"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/51dd010a9ff363c8c85e8656bef62190.png" alt="" loading="lazy"></figure>
+<p>**Step3：**用节点重构函数 pgr_nodeNetwork 重构节点表，避免存在“相交”问题：</p>
+<figure data-type="image" tabindex="16"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/830fc78e871ab2f6c2e03971951c6ff6.png" alt="" loading="lazy"></figure>
+<p>可以看出：重构后将 2（B）和 4（D）两条线段分别分割成 2 条线。</p>
+<figure data-type="image" tabindex="17"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/a636da01fb37294ac9015bacce47c1a2.png" alt="" loading="lazy"></figure>
+<p>Step4：基于 Roadtest_network_noded 表重建拓扑关系：</p>
+<figure data-type="image" tabindex="18"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/58233e102310b7a1dfdfb34a02b74f61.png" alt="" loading="lazy"></figure>
+<p>节点表：</p>
+<figure data-type="image" tabindex="19"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/18b1d0fa9f989326f54fe24cfc6bceec.png" alt="" loading="lazy"></figure>
+<p>检查拓扑关系：</p>
+<figure data-type="image" tabindex="20"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/9518991568c803ec9fb74094c9083db7.png" alt="" loading="lazy"></figure>
+<p>QGIS 查看重构拓扑之后的图示意：</p>
+<figure data-type="image" tabindex="21"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/e0788f80f3c7dbda7f2e27c817a2d1dd.png" alt="" loading="lazy"></figure>
+<p><strong>2、新增加路<br>
+F，从(0,5)到(10,20)，重新拓扑分析，后将“边”与“节点”关系重新排列，按 ID<br>
+顺序排放，方便最短路径查询，重排后如下：</strong></p>
+<figure data-type="image" tabindex="22"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/4c8b35b8f6fe443cce7153d6bdc72890.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="23"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/68af98d5f0271c150edcf36d8d7a1797.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="24"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/d1c86d287d0d2efb61053ff9770cd97e.png" alt="" loading="lazy"></figure>
+<p><strong>根据上述拓扑关系，完成以下查询：</strong></p>
+<p>（1）查询节点 5 至 3 的最短路径；</p>
+<figure data-type="image" tabindex="25"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/535257a67cd0b3a860fd9a9200b00631.png" alt="" loading="lazy"></figure>
+<p>（2）查询(12,6)到(10,20)的最短距离，查询(12,6)到(18,4)的最短距离；</p>
+<p>创建自定义函数</p>
+<figure data-type="image" tabindex="26"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/cc152536b675999a2bb08fe00f41f19f.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="27"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/aa39177ab897dd41ac568de4363d95df.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="28"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/886c2717c3f1c196b3c10f6e3f6d036b.png" alt="" loading="lazy"></figure>
+<ol>
+<li>查询(12,6)到(10,20)的最短距离</li>
+</ol>
+<figure data-type="image" tabindex="29"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/aa4bf19df86764f3b99a5240845ca0ac.png" alt="" loading="lazy"></figure>
+<ol>
+<li>查询(12,6)到(18,4)的最短距离；</li>
+</ol>
+<figure data-type="image" tabindex="30"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/ac66b572e88317938d3506d7321d7ec7.png" alt="" loading="lazy"></figure>
+<p>在QGIS中展示结果</p>
+<figure data-type="image" tabindex="31"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/621529113409f670c22302d984ebd2a7.png" alt="" loading="lazy"></figure>
+<h1 id="任务-2深圳市道路网最短路径查询双向"><strong>任务 2：深圳市道路网最短路径查询（双向）</strong></h1>
+<h2 id="1-实验数据准备"><strong>1、实验数据准备</strong></h2>
+<p>首先要下载 OpenStreetMap 中国地区数据，下载地址：Geofabrik Download Server</p>
+<figure data-type="image" tabindex="32"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/ed8e46236a9e011909be95e9b6243524.jpg" alt="" loading="lazy"></figure>
+<p>方式一：下载 shapefile 格式数据，然后裁剪出深圳范围的路网数据；</p>
+<p>方式二：下载 OSM 格式数据，通过osm2pgsql-1.2.1-x64 工具将OSM<br>
+数据导入PostgresSQL；</p>
+<p>**注：**由于 OSM 数据是WGS84 坐标系（EPSG:4326）的，所以还需将其转换为 Web<br>
+墨卡托坐标系（EPSG:3857)。另外还需要使用ArcGIS<br>
+中的&quot;要素转线&quot;这个工具将折线数据在相交点处打断：</p>
+<figure data-type="image" tabindex="33"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/fd599668c8b327f047bdcb59300430ea.png" alt="" loading="lazy"></figure>
+<p>深圳市道路网数据如下所示：</p>
+<figure data-type="image" tabindex="34"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/06ae3b92254166a31d6fac27eb031d26.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="35"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/fefccbc325ff15d39faba84fed6bc8f8.jpg" alt="" loading="lazy"></figure>
+<h2 id="2-将数据导入数据库"><strong>2、将数据导入数据库</strong></h2>
+<p><strong>2.1创建数据库</strong></p>
+<p>做任务1时已经创建并已加载两个扩展</p>
+<p><strong>2.2使用 PostGIS 的数据导入工具导入数据</strong></p>
+<figure data-type="image" tabindex="36"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/bfb6ef105694a78d5ba60d605b1553cc.png" alt="" loading="lazy"></figure>
+<h2 id="3-设置路径成本并建立路网拓扑"><strong>3、设置路径成本并建立路网拓扑</strong></h2>
+<p><strong>3.1设置路径成本</strong></p>
+<p>首先为shenzhen_roads 表添加四个字段：</p>
+<ul>
+<li>
+<p>source —— 用于保存路径起始顶点的id</p>
+</li>
+<li>
+<p>target —— 用于保存路径终止顶点的id</p>
+</li>
+<li>
+<p>cost —— 用于保存路径正向的成本（或者代价）</p>
+</li>
+<li>
+<p>reverse_cost —— 用于保存路径反向的成本（或者代价）</p>
+</li>
+</ul>
+<p>SQL 语句：</p>
+<p><strong>ALTER TABLE</strong> shenzhen_roads</p>
+<p><strong>ADD COLUMN source</strong> INTEGER,</p>
+<p><strong>ADD COLUMN</strong> target INTEGER,</p>
+<p><strong>ADD COLUMN</strong> cost DOUBLE <strong>PRECISION</strong>,</p>
+<p><strong>ADD COLUMN</strong> reverse_cost DOUBLE <strong>PRECISION</strong>;</p>
+<figure data-type="image" tabindex="37"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/9aadfe1414834559bccd0625f0072b1d.png" alt="" loading="lazy"></figure>
+<p>OSM 数据包含一个 oneway 列，它的值可能是以下三个值之一：</p>
+<ul>
+<li>
+<p>'F' —— 表示该路径是单向的，且路径方向是正向的。</p>
+</li>
+<li>
+<p>'T' —— 表示该路径是单向的，且路径方向是反向的。</p>
+</li>
+<li>
+<p>'B' —— 表示该路径是双向的。</p>
+</li>
+</ul>
+<p>现在就根据路径的方向来计算各个路径的成本。</p>
+<p>将路径的长度作为成本，如果路径是正向的，则 cost 值为路径的长度，reverse_cost<br>
+值为-1；如果路径是反向的，则 reverse_cost 值为路径的长度，cost<br>
+值为-1；如果路径是双向的，则 cost 和reverse_cost 的值都为路径的长度。</p>
+<p>①正向路径的成本：</p>
+<p><strong>UPDATE</strong> shenzhen_roads</p>
+<p><strong>SET</strong> cost <strong>=</strong> ST_Length(geom),</p>
+<p>reverse_cost **= -**1</p>
+<p><strong>WHERE</strong> oneway <strong>=</strong> 'F';</p>
+<p>②反向路径的成本：</p>
+<p><strong>UPDATE shenzhen_roads</strong></p>
+<p><strong>SET cost = -1,</strong></p>
+<p><strong>reverse_cost = ST_Length(geom)</strong></p>
+<p><strong>WHERE oneway = 'T';</strong></p>
+<p>③双向路径的成本：</p>
+<p><strong>UPDATE shenzhen_roads</strong></p>
+<p><strong>SET cost = ST_Length(geom),</strong></p>
+<p><strong>reverse_cost = ST_Length(geom)</strong></p>
+<p><strong>WHERE oneway = 'B';</strong></p>
+<figure data-type="image" tabindex="38"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/c1ec787557b38e8b31e876292e9e5945.png" alt="" loading="lazy"></figure>
+<p><strong>3.2创建路网拓扑</strong></p>
+<p>**Key1:**创建路网拓扑需要调用 pgr_createTopology 函数：</p>
+<p><strong>SELECT</strong> pgr_createTopology(</p>
+<p>'shenzhen_roads',</p>
+<p>0.001,</p>
+<p>'geom',</p>
+<p>'gid',</p>
+<p>'source',</p>
+<p>'target'</p>
+<p>);</p>
+<p>上面的六个参数分别表示：</p>
+<ul>
+<li>
+<p>路网表</p>
+</li>
+<li>
+<p>路径之间的容差，<strong>两条路径的距离大于这个容差值，就表示它们不相交（拓扑不捕获节点）</strong>。</p>
+</li>
+<li>
+<p>包含几何图形信息的列</p>
+</li>
+<li>
+<p>路网表的主码列</p>
+</li>
+<li>
+<p>保存路径起始顶点的 id 的列</p>
+</li>
+<li>
+<p>保存路径终止顶点的 id 的列</p>
+</li>
+</ul>
+<p>拓扑路径创建完成后，下图日志表明“深圳道路”网拓扑边 111185 条 ， 同 时 数 据 库<br>
+中 会 自 动 多 出 一 张 “ <strong>拓 扑 节 点</strong> ”<br>
+表shenzhen_roads_vertices_pgr，存储该拓扑边关系的所有“<strong>节点</strong>”：</p>
+<figure data-type="image" tabindex="39"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/2570065ca7752a1911914b4a724a2521.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="40"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/045fa08e501fd118d07ce9776df81eba.png" alt="" loading="lazy"></figure>
+<p>同时所有拓扑路径边的起始、终止顶点数据信息更新在了shenzhen_roads 表中：</p>
+<figure data-type="image" tabindex="41"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/62ba4e36cf1fe4475a4b02c48a68cd61.png" alt="" loading="lazy"></figure>
+<p><strong>Key2:拓扑检查</strong>：通过拓扑检查函数检查该拓扑关系是否存在异常问题，如下图所示，该拓扑关系并“gap”、“Intersections”等异常，无需节点重构。</p>
+<figure data-type="image" tabindex="42"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/03564d97ea3e52bea0576280c0942141.png" alt="" loading="lazy"></figure>
+<p>同时节点表cnt（当前）</p>
+<figure data-type="image" tabindex="43"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/30358878f53efa6cc39d3a653c4e7a18.png" alt="" loading="lazy"></figure>
+<p>与路网一起可视化显示：</p>
+<figure data-type="image" tabindex="44"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/916edf7b712da586c1df8e17dfff08c0.png" alt="" loading="lazy"></figure>
+<h2 id="4-最短路径查询"><strong>4、最短路径查询</strong></h2>
+<p>清华大学深圳研究院（ID：59005）</p>
+<p>中科院深圳先进技术研究院（ID：59193）</p>
+<p>塘朗山郊野公园西北（ID：57059）</p>
+<p>塘朗山郊野公园东（ID：16177）</p>
+<figure data-type="image" tabindex="45"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/7f372a41bc2bd6661a0ef1f00a092523.png" alt="" loading="lazy"></figure>
+<p><strong>注：上述四个地方的拓扑 ID 不同电脑可能不同，需要针对自己创建的拓扑进行查看。</strong></p>
+<p><strong>在确定 ID 时，一定满足最短路径分析函数的 source 和 target 要求，否则无结果。</strong></p>
+<h3 id="41-基于行人的无向路径查询考虑不同代价方式"><strong>4.1 基于行人的无向路径查询，考虑不同代价方式。</strong></h3>
+<p><strong>Ex1：单条行人路线（一到一）</strong></p>
+<p>从清华步行至中科院的最短距离，并用 QGIS<br>
+展示最短路径。从行人的角度看，图是无向的，即行人在所有路段上都可以沿道路的两个方向移动。行人的步行的代价按路线长度来衡量的（前面我们已经计算过路径的距离cost<br>
+和 reverse_cost）。</p>
+<p><strong>SELECT * FROM</strong> pgr_dijkstra(</p>
+<p>'SELECT gid AS id,</p>
+<p>source, target,</p>
+<p>cost, reverse_cost</p>
+<p>FROM shenzhen_roads',</p>
+<p>59005, 59193,</p>
+<p>directed :<strong>= FALSE</strong></p>
+<p>);</p>
+<figure data-type="image" tabindex="46"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/0607602742078cf5f217b8a450dd2a83.png" alt="" loading="lazy"></figure>
+<p>可视化：</p>
+<figure data-type="image" tabindex="47"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/96d0413e396321c46a2fef003525ae15.png" alt="" loading="lazy"></figure>
+<p>QGIS 查看结果如下：</p>
+<figure data-type="image" tabindex="48"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/23dec3b25da25e15f564695452afa6a3.png" alt="" loading="lazy"></figure>
+<p><strong>Ex2: 多个行人前往同一个目的地（多到一）</strong></p>
+<p>一个人从清华步行至中科院，另一个人从塘朗山郊野公园东步行至中科院，两人出发地不同，目的地一致。</p>
+<p><strong>SELECT * FROM</strong> pgr_dijkstra(</p>
+<p>'SELECT gid AS id,</p>
+<p>source, target,</p>
+<p>cost, reverse_cost</p>
+<p>FROM shenzhen_roads',</p>
+<p>ARRAY[59005, 16177], 59193,</p>
+<p>directed :<strong>= FALSE</strong></p>
+<p>);</p>
+<figure data-type="image" tabindex="49"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/4dcc173f1730242a812f3407575c0ff7.png" alt="" loading="lazy"></figure>
+<p>可视化：</p>
+<figure data-type="image" tabindex="50"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/73f91e13d774e190a5cbf25fd8a1ec7d.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="51"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/d17a9542a3e2abb2b32632a46462104b.png" alt="" loading="lazy"></figure>
+<p><strong>Ex3: 许多行人从同一地点离开（一到多）</strong></p>
+<p>两人分别从塘朗山郊野公园东离开，一个去清华，一个去中科院。使用行人的步行时间作为成本（以最短时间为佳），行人的步行速度为speed<br>
+= 1.3 m/s，所以步行时间time = distance / speed。</p>
+<p><strong>SELECT * FROM</strong> pgr_dijkstra(</p>
+<p>'SELECT gid AS id,source, target,</p>
+<p>cost/1.3 AS cost, reverse_cost/1.3 AS reverse_cost</p>
+<p>FROM shenzhen_roads',</p>
+<p>12089, ARRAY[10564, 13019],</p>
+<p>directed :<strong>= FALSE</strong></p>
+<p>);</p>
+<figure data-type="image" tabindex="52"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/5cc5f5043af6d16b7db294a3a19be309.png" alt="" loading="lazy"></figure>
+<p>可视化：</p>
+<figure data-type="image" tabindex="53"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/e8b4e3c24fd684e8aa4c8f356ba187b6.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="54"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/c4db4918a921701120a0f3a993386c00.png" alt="" loading="lazy"></figure>
+<p><strong>Ex4: 多个行人到不同的目的地（多到多）</strong></p>
+<p>两个同学，一个从清华出发去塘朗山郊野公园西和中科院，一个从中科院出发去清华和塘朗山郊野公园东。使用<strong>行人的步行时间作为权重</strong>（最短时间），不过单位是分钟。行人的步行速度为<br>
+speed = 1.3 m/s，所以步行时间t = distance / speed / 60mintues。</p>
+<p><strong>SELECT * FROM</strong> pgr_dijkstra(</p>
+<p>'SELECT gid AS id,</p>
+<p>source, target,</p>
+<p>cost/1.3/60 AS cost, reverse_cost/1.3/60 AS reverse_cost</p>
+<p>FROM shenzhen_roads',</p>
+<p>ARRAY[59005, 59193], ARRAY[57059, 16177],</p>
+<p>directed :<strong>= FALSE</strong></p>
+<p>);</p>
+<figure data-type="image" tabindex="55"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/585d0a02439fe0ae63d73a6c2811853d.png" alt="" loading="lazy"></figure>
+<p>可视化：</p>
+<figure data-type="image" tabindex="56"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/8bbc1db96ac57773a25c9ac9fd715343.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="57"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/52162024602d854e0a40b639f38e11ad.png" alt="" loading="lazy"></figure>
+<h3 id="42-基于车辆的有向路径查询考虑不同优先级方式"><strong>4.2 基于车辆的有向路径查询，考虑不同优先级方式。</strong></h3>
+<p>【<strong>预备知识</strong>】车辆路径规划一般与行人路径规划不同：</p>
+<p>①车辆道路是有方向的</p>
+<p>②成本（代价）可以是：距离、时间、花销、二氧化碳排放量、车辆耗损等</p>
+<p>③在<strong>双向道路</strong>上必须同时考虑cost 和reverse_cost 属性</p>
+<p>成本应该和 cost 属性相同或和 reverse_cost 属性相同、同一条道路的cost 和<br>
+reverse_cost 可以是不同的这是因为有些道路是单向的。</p>
+<p><strong>单向道路的特征是：</strong></p>
+<p><strong>(source, target)路段中，cost &gt;= 0 且 reverse_cost &lt; 0 (target,<br>
+source)路段中，cost &lt; 0 且 reverse_cost &gt;= 0</strong></p>
+<p><strong>所以，用 cost 属性或 reverse_cost 属性的负值表示对应方向是无效的。</strong></p>
+<p>对于双向道路，cost &gt;= 0 和reverse_cost &gt;=<br>
+0，它们的值可能不同。例如，在一条倾斜的道路中，下山肯定比上山容易（或者更快）。成本可以是长度、时间、坡度、路面、道路类型等，也可以是多个参数的组合。</p>
+<p>比如：深圳道路网中（source，target）单向路有 46168 条，（target，<br>
+source）单向路有 335 条，双向路有 64682 条：</p>
+<figure data-type="image" tabindex="58"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/83b77c87071f422405d87a2377b2c93d.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="59"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/55e7c030656fd10f448906cf9b8b4bc0.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="60"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/2e98fa4acea1da194bb8245d9151fcd8.jpg" alt="" loading="lazy"></figure>
+<p><strong>增加一个目的地：深圳北站（ID：19255）</strong></p>
+<figure data-type="image" tabindex="61"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/8b22da39cf020af26943970973af8725.png" alt="" loading="lazy"></figure>
+<p><strong>（1）无优先级的路径规划</strong></p>
+<p><strong>Ex1：行车路径（出发），从清华去深圳北站。</strong></p>
+<p>使用cost和reverse_cost列，它们的单位为米。</p>
+<p><strong>SELECT * FROM</strong> pgr_dijkstra(</p>
+<p>'SELECT gid AS id,</p>
+<p>source, target,</p>
+<p>cost, reverse_cost</p>
+<p>FROM shenzhen_roads</p>
+<p>',</p>
+<p>59005, 19255,</p>
+<p>directed :<strong>= true</strong></p>
+<p>);</p>
+<figure data-type="image" tabindex="62"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/ac8389b821560841764c5c43ee363950.png" alt="" loading="lazy"></figure>
+<p>可视化：</p>
+<figure data-type="image" tabindex="63"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/1aab3611db4ed9982e8fbd0cb8d2a750.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="64"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/1d16d93722d7f480464ca9e4214e2c7e.png" alt="" loading="lazy"></figure>
+<p><strong>Ex2：行车路径（返回），从深圳北站回清华。</strong></p>
+<p><strong>SELECT * FROM</strong> pgr_dijkstra(</p>
+<p>'SELECT gid AS id,</p>
+<p>source, target,</p>
+<p>cost, reverse_cost</p>
+<p>FROM shenzhen_roads</p>
+<p>',</p>
+<p>19255, 59005,</p>
+<p>directed :<strong>= true</strong></p>
+<p>);</p>
+<figure data-type="image" tabindex="65"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/2bd265d408046420d45a54e9d6fcba00.png" alt="" loading="lazy"></figure>
+<p>可视化</p>
+<figure data-type="image" tabindex="66"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/62e727cfcb55800e79bfc1ff936e33cf.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="67"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/e7a225b6fc32ff8b1511d69206bef5c8.png" alt="" loading="lazy"></figure>
+<p><strong>（2）具备优先级的道路路径规划问题</strong></p>
+<p>在处理数据时，了解所使用的数据类型可以顾及更多因素，从而得到更理想的结果。例如，如果我们知道某条路径是行人路径（pedestrian），就应该让车辆尽量避免或禁止在该路径上行驶。</p>
+<p>因此，我们为道路表增加一列属性，去标记不同道路行走的优先级。</p>
+<p>现在添加一个penalty 列用于保存每条路径的优先级信息（penalty<br>
+值越小，优先级越高）：</p>
+<p><strong>ALTER TABLE</strong> shenzhen_roads <strong>ADD COLUMN</strong> penalty DOUBLE <strong>PRECISION</strong>;</p>
+<p>初始值都为 1.0，表明所有道路具备同等优先级别。</p>
+<p><strong>UPDATE</strong> shenzhen_roads <strong>SET</strong> penalty <strong>=</strong> 1.0;</p>
+<p><strong>Ex3：基于无优先级路径查询乘车从清华至深圳北站（将 cost * penalty<br>
+作为正向路径成本）。</strong></p>
+<p><strong>SELECT * FROM</strong> pgr_dijkstra(</p>
+<p>'SELECT gid AS id,</p>
+<p>source, target,</p>
+<p>cost * penalty AS cost,</p>
+<p>reverse_cost</p>
+<p>FROM shenzhen_roads</p>
+<p>',</p>
+<p>59005, 19255,</p>
+<p>directed :<strong>= true</strong></p>
+<p>);</p>
+<p>查询的结果路径和 Ex1 的结果路径一致：</p>
+<figure data-type="image" tabindex="68"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/1d16d93722d7f480464ca9e4214e2c7e.png" alt="" loading="lazy"></figure>
+<p><strong>Ex4：<strong>具有</strong>优先级路径</strong>查询乘车从清华至深圳北站。</p>
+<p>因为业务场景是查找车辆的行驶路径，所以可以让路径的优先级符合以下规则：</p>
+<ul>
+<li>
+<p>禁止在pedestrian、footway、steps、cycleway、track这些路径上行驶。</p>
+</li>
+<li>
+<p>不鼓励在rsidential路径上行驶。</p>
+</li>
+<li>
+<p>鼓励在primary、primary_link路径上行驶。</p>
+</li>
+</ul>
+<p>修改路径的优先级具体如下：</p>
+<p><strong>UPDATE</strong> shenzhen_roads <strong>SET</strong> penalty **= -**1.0</p>
+<p><strong>WHERE</strong> fclass <strong>IN</strong> ('steps','footway','pedestrian', 'cycleway', 'track',<br>
+'track_grade2');</p>
+<p><strong>UPDATE</strong> shenzhen_roads <strong>SET</strong> penalty <strong>=</strong> 5.0</p>
+<p><strong>WHERE</strong> fclass <strong>IN</strong> ('residential');</p>
+<p><strong>UPDATE</strong> shenzhen_roads <strong>SET</strong> penalty <strong>=</strong> 0.8</p>
+<p><strong>WHERE</strong> fclass <strong>IN</strong> ('tertiary', 'tertiary_link', 'motorway',<br>
+'motorway_link', 'living_street');</p>
+<p><strong>UPDATE</strong> shenzhen_roads <strong>SET</strong> penalty <strong>=</strong> 0.5</p>
+<p><strong>WHERE</strong> fclass <strong>IN</strong> ('secondary', 'secondary_link');</p>
+<p><strong>UPDATE</strong> shenzhen_roads <strong>SET</strong> penalty <strong>=</strong> 0.3</p>
+<p><strong>WHERE</strong> fclass <strong>IN</strong> ('primary', 'primary_link', 'trunk', 'trunk_link');</p>
+<figure data-type="image" tabindex="69"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/b9d881e06c28059e790fa35efb75c19b.png" alt="" loading="lazy"></figure>
+<p>重新查询路径：</p>
+<figure data-type="image" tabindex="70"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/2aa62c5df1a9780e84c58543726222d0.png" alt="" loading="lazy"></figure>
+<p>可视化：</p>
+<figure data-type="image" tabindex="71"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/059639d79424784174018cd182ee101e.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="72"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/7d68573cea73fa255324c66e9e07ff0e.png" alt="" loading="lazy"></figure>
+<h3 id="43习题">**4.3习题</h3>
+<p>某同学在塘朗山郊野公园，通过手机定位给你发送了一个位置信息（12688302.5,2580759.8@EPSG:3857），你当前在清华宿舍休息，如果你通过导航去找你同学（步行或自驾均可），请给出最优路径（考虑距离最短或耗时最短）。**</p>
+<p>查询清华所在坐标</p>
+<figure data-type="image" tabindex="73"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/2e7692c9cfb872a90e395833d5469163.png" alt="" loading="lazy"></figure>
+<p>自定义函数</p>
+<figure data-type="image" tabindex="74"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/736abc3f3cca312d6996955ac5465f9a.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="75"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/aa39177ab897dd41ac568de4363d95df.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="76"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/aa5d643d28f4e15630af68100285a77e.png" alt="" loading="lazy"></figure>
+<p>查询距离最短路径</p>
+<figure data-type="image" tabindex="77"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/59bc6f5c3ef2d1d0ba0d1f535bf31157.png" alt="" loading="lazy"></figure>
+<p>在QGIS中查看</p>
+<figure data-type="image" tabindex="78"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/00b786508ed7d3d5af9a558961067156.png" alt="" loading="lazy"></figure>
+<p>查询耗时最短路径</p>
+<figure data-type="image" tabindex="79"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/8fa9d98f14d882def9211a409cbc050b.png" alt="" loading="lazy"></figure>
+<p>在QGIS中查看</p>
+<figure data-type="image" tabindex="80"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/60b660b486f097307ec36a309b87485d.png" alt="" loading="lazy"></figure>
+<p>查询考虑道路优先级路径</p>
+<figure data-type="image" tabindex="81"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/04928ef8bd3aec7a9ce787ac251f2c42.png" alt="" loading="lazy"></figure>
+<p>在QGIS中查看</p>
+<figure data-type="image" tabindex="82"><img src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea@master/post-images/0d22f36f263413a97e488b186efbf301.png" alt="" loading="lazy"></figure>
+<h2 id="sql代码">SQL代码</h2>
+<pre><code class="language-pgsql">--加载扩展
+CREATE EXTENSION postgis;
+CREATE EXTENSION pgrouting;
+
+--创建表
+CREATE TABLE Roadtest_Network (
+	id serial PRIMARY KEY,
+	name text,
+	source integer,
+	target integer,
+	geom geometry(LineString, 4326),
+	len double precision
+	);
+
+--插入数据	
+INSERT INTO Roadtest_Network(id,name,geom)
+VALUES
+(1,'A',ST_GeomFromText('LineString(00 20, 10 20)',4326)),
+(2,'B',ST_GeomFromText('LineString(10 20, 10 02)',4326)),
+(3,'C',ST_GeomFromText('LineString(10 02, 20 02)',4326)),
+(4,'D',ST_GeomFromText('LineString(00 05, 20 05)',4326)),
+(5,'E',ST_GeomFromText('LineString(20 4.9999, 20 2.0001)',4326));
+Update roadtest_network
+Set len = ST_Length(geom);
+
+--创建拓扑
+SELECT pgr_createTopology('roadtest_network',0.00001,'geom','id','source','target','true');
+
+--拓扑分析
+SELECT pgr_analyzeGraph('roadtest_network',0.00001,'geom','id','source','target','true');
+
+--节点重构
+SELECT pgr_nodeNetwork('roadtest_network',0.00001,'id','geom','noded')
+
+--基于重构的节点创建拓扑
+SELECT pgr_createTopology('roadtest_network_noded',0.00001,'geom','id','source','target','true');
+
+--进行新的拓扑分析
+SELECT pgr_analyzeGraph('roadtest_network_noded',0.00001,'geom','id','source','target','true');
+
+--更新表
+DELETE FROM roadtest_network;
+INSERT INTO roadtest_network(source,target,geom)
+VALUES
+(SELECT source,target,geom
+FROM roadtest_network_noded);
+
+--插入路F
+INSERT INTO Roadtest_Network(id,name,geom)
+VALUES
+(8,'F',ST_GeomFromText('LineString(00 05, 10 20)',4326));
+Update roadtest_network
+Set len = ST_Length(geom);
+SELECT pgr_createTopology('roadtest_network',0.00001,'geom','id','source','target','true');
+
+--查询5-3最短路径
+SELECT *
+FROM pgr_dijkstra('SELECT id,source,target,len as cost FROM Roadtest_network',5,3,false);
+
+--自定义函数
+DECLARE
+	v_startLine geometry;--离起点最近的线
+	v_endLine geometry;--离终点最近的线
+	
+	v_startLine1 geometry;--出发点与拓扑起始节点的连线
+	v_endLine1 geometry;--结束点与拓扑结束节点的连线
+	
+	v_startTarget integer;--距离起点最近线的终点
+	v_endSource integer;--距离终点最近线的起点
+	v_startPoint geometry;--在v_startLine上距离起点最近的点
+	v_endPoint geometry;--在v_endLin上距离起点最近的点
+	
+	startPoint geometry;--出发点
+	endPoint geometry;--结束点
+	
+	v_res geometry;--最短路径分析结果
+	v_perStart float;--v_startPoint在v_res上的百分比
+	v_perEnd float;--v_endPoint在v_res上的百分比
+	v_shPath geometry;--最终结果
+BEGIN
+	--查询离起点最近的线
+	EXECUTE 'SELECT geom,target
+	FROM '||route||'
+	WHERE ST_DWithin(geom,ST_GeometryFromText(''point('||startx||' '||starty||')'',4326),20)
+	ORDER BY ST_Distance(geom,ST_GeometryFromText(''point('||startx||' '||starty||')'',4326)) limit 1'
+	INTO v_startLine,v_startTarget;
+	
+	--查询离终点最近的线
+	EXECUTE 'SELECT geom,source
+	FROM '||route||'
+	WHERE ST_DWithin(geom,ST_GeometryFromText(''point('||endx||' '||endy||')'',4326),20)
+	ORDER BY ST_Distance(geom,ST_GeometryFromText(''point('||endx||' '||endy||')'',4326)) limit 1'
+	INTO v_endLine,v_endSource;
+	
+	--如果没有找到最近的线，就返回NULL
+	IF (v_startLine IS NULL) OR (v_endLine IS NULL) THEN
+		RETURN NULL;
+		END IF;
+	
+	--查找最近点
+	SELECT ST_ClosestPoint(v_startLine,ST_GeometryFromText('point('||startx||' '||starty||')',4326))
+	INTO v_startPoint;
+	SELECT ST_ClosestPoint(v_endLine,ST_GeometryFromText('point('||endx||' '||endy||')',4326))
+	INTO v_endPoint;
+	
+	--最短路径
+	EXECUTE 'SELECT ST_Linemerge(ST_Union(b.geom))'||
+	'FROM pgr_dijkstra(
+	''SELECT id,source,target,'||costfile||' as cost FROM '||route||''','||v_startTarget||',array['||v_endSource||'],false
+	) a,
+	'||route||' b
+	WHERE a.edge=b.id;'
+	INTO v_res;
+	
+	--如果找不到最短路径，就返回NULL
+	IF(v_res IS NULL) THEN
+		RETURN NULL;
+		END IF;
+	
+	--将v_res,v_startLine,v_endLine进行拼接
+	SELECT ST_Linemerge(ST_Union(array[v_res,v_startLine,v_endLine])) INTO v_res;
+	SELECT ST_LineLocatePoint(v_res,v_startPoint) INTO v_perStart;
+	SELECT ST_LineLocatePoint(v_res,v_endPoint) INTO v_perEnd;
+	
+	--截取v_res
+	SELECT ST_SetSRID(ST_MakePoint(startx,starty),4326) INTO startPoint;
+	SELECT ST_SetSRID(ST_MakePoint(endx,endy),4326) INTO endPoint;
+	
+	IF V_perStart &lt; V_perEnd THEN
+	SELECT ST_LineSubString(v_res,v_perStart,v_perEnd) INTO v_shPath;
+	SELECT ST_MakeLine(ST_StartPoint(v_shPath),startpoint) INTO v_startLine1;
+	SELECT ST_MakeLine(ST_EndPoint(v_shPath),endpoint) INTO v_endLine1;
+	ELSE      
+	SELECT ST_LineSubString(v_res,V_perEnd,v_perStart) INTO v_shPath; 
+	SELECT ST_MakeLine(ST_EndPoint(v_shPath),startpoint) INTO v_startLine1;
+	SELECT ST_MakeLine(ST_StartPoint(v_shPath),endpoint) INTO v_endLine1;
+	END IF;
+	
+	SELECT ST_Union(array[v_shPath,v_startLine1,v_endLine1]) INTO v_shPath;
+	
+	RETURN v_shPath;
+	
+END;
+
+--查询最短路线
+CREATE TABLE shortpath(
+	ID serial PRIMARY KEY,
+	geom geometry(MultiLineString, 4326) 
+	);
+INSERT INTO shortpath(geom) SELECT _my_shortpath(12,06,10,20,'roadtest_network','len');
+INSERT INTO shortpath(geom) SELECT _my_shortpath(12,06,18,04,'roadtest_network','len');
+
+
+--添加字段
+ALTER TABLE shenzhen_roads
+ADD COLUMN source INTEGER,
+ADD COLUMN target INTEGER,
+ADD COLUMN cost DOUBLE PRECISION,
+ADD COLUMN reverse_cost DOUBLE PRECISION;
+--①正向路径的成本：
+UPDATE shenzhen_roads
+SET cost = ST_Length(geom),
+reverse_cost = -1
+WHERE oneway = 'F';
+
+--②反向路径的成本：
+UPDATE shenzhen_roads
+SET cost = -1,
+reverse_cost = ST_Length(geom)
+WHERE oneway = 'T';
+
+--③双向路径的成本：
+UPDATE shenzhen_roads
+SET cost = ST_Length(geom),
+reverse_cost = ST_Length(geom)
+WHERE oneway = 'B';
+
+--创建拓扑
+SELECT pgr_createTopology(
+	'shenzhen_roads', 
+	0.001,
+	'geom',
+	'gid',
+	'source',
+	'target'
+); 
+--拓扑查错
+SELECT pgr_analyzeGraph('shenzhen_roads',0.001,'geom','gid','source','target');
+
+--4.1.1
+SELECT *
+FROM
+	pgr_dijkstra('SELECT gid AS id,source, target,cost, reverse_cost
+	FROM shenzhen_roads',59005, 59193,FALSE);
+
+CREATE TABLE Shortestpath(
+	ID serial PRIMARY KEY,
+	start_vid bigint,
+	end_vid bigint,
+	geom geometry(LineString,3857) 
+	);
+INSERT INTO Shortestpath(geom)
+SELECT ST_Linemerge(ST_Union(b.geom))
+FROM pgr_dijkstra('SELECT gid AS id,source, target,cost, reverse_cost 
+					FROM shenzhen_roads',59005, 59193,FALSE) a,shenzhen_roads b
+WHERE a.edge=b.gid;
+
+--4.1.2
+SELECT *
+FROM
+	pgr_dijkstra( 'SELECT gid AS id,source,target,cost,reverse_cost
+	FROM shenzhen_roads', ARRAY[59005, 16177], 59193,FALSE);
+	
+INSERT INTO Shortestpath(geom,start_vid)
+SELECT ST_Linemerge(ST_Union(b.geom)),start_vid 
+FROM pgr_dijkstra( 'SELECT gid AS id,source,target,cost,reverse_cost
+	FROM shenzhen_roads', ARRAY[59005, 16177], 59193,FALSE) a,shenzhen_roads b
+WHERE a.edge=b.gid
+GROUP BY start_vid;
+
+--4.1.3
+SELECT * 
+FROM 
+	pgr_dijkstra('SELECT gid AS id,source, target,cost/1.3 AS cost, reverse_cost/1.3 AS reverse_cost
+	FROM shenzhen_roads',16177, ARRAY[59005,59193],FALSE);
+
+INSERT INTO Shortestpath(geom,end_vid)
+SELECT ST_Linemerge(ST_Union(b.geom)),end_vid
+FROM 
+	pgr_dijkstra('SELECT gid AS id,source, target,cost/1.3 AS cost, reverse_cost/1.3 AS reverse_cost
+	FROM shenzhen_roads',16177, ARRAY[59005,59193],FALSE) a,shenzhen_roads b
+WHERE a.edge=b.gid
+GROUP BY end_vid; 
+
+--4.1.4
+SELECT * 
+FROM 
+	pgr_dijkstra('SELECT gid AS id,source, target,cost/1.3/60 AS cost, reverse_cost/1.3/60 AS reverse_cost
+	FROM shenzhen_roads',ARRAY[59005, 59193], ARRAY[57059, 16177],FALSE);
+	
+INSERT INTO Shortestpath(geom,start_vid,end_vid)
+SELECT ST_Linemerge(ST_Union(b.geom)),start_vid,end_vid
+FROM 
+	pgr_dijkstra('SELECT gid AS id,source, target,cost/1.3/60 AS cost, reverse_cost/1.3/60 AS reverse_cost
+	FROM shenzhen_roads',ARRAY[59005, 59193], ARRAY[57059, 16177],FALSE) a,shenzhen_roads b
+WHERE a.edge=b.gid
+GROUP BY start_vid,end_vid; 
+
+--4.2.1
+SELECT * 
+FROM 
+	pgr_dijkstra('SELECT gid AS id,source, target,cost, reverse_cost
+	FROM shenzhen_roads',59005, 19255,true);
+
+INSERT INTO Shortestpath(geom)
+SELECT ST_Linemerge(ST_Union(b.geom))
+FROM pgr_dijkstra('SELECT gid AS id,source, target,cost, reverse_cost 
+		FROM shenzhen_roads',59005,19255,true) a,shenzhen_roads b
+WHERE a.edge=b.gid;
+
+--4.2.2
+SELECT * 
+FROM 
+	pgr_dijkstra('SELECT gid AS id,source, target,cost, reverse_cost
+	FROM shenzhen_roads',19255, 59005,true);
+
+INSERT INTO Shortestpath(geom)
+SELECT ST_Linemerge(ST_Union(b.geom))
+FROM pgr_dijkstra('SELECT gid AS id,source, target,cost, reverse_cost 
+		FROM shenzhen_roads',19255,59005,true) a,shenzhen_roads b
+WHERE a.edge=b.gid;
+
+--4.2.3
+SELECT * 
+FROM 
+	pgr_dijkstra('SELECT gid AS id,source, target,cost * penalty AS cost, reverse_cost
+	FROM shenzhen_roads',59005,19255,true);
+	
+--4.2.4
+UPDATE shenzhen_roads SET penalty = -1.0
+WHERE fclass IN ('steps','footway','pedestrian', 'cycleway', 'track', 'track_grade2');
+
+UPDATE shenzhen_roads SET penalty = 5.0
+WHERE fclass IN ('residential');
+
+UPDATE shenzhen_roads SET penalty = 0.8
+WHERE fclass IN ('tertiary', 'tertiary_link', 'motorway', 'motorway_link', 'living_street');
+UPDATE shenzhen_roads SET penalty = 0.5
+WHERE fclass IN ('secondary', 'secondary_link');
+
+UPDATE shenzhen_roads SET penalty = 0.3
+WHERE fclass IN ('primary', 'primary_link', 'trunk', 'trunk_link');
+
+SELECT * 
+FROM 
+	pgr_dijkstra('SELECT gid AS id,source, target,cost * penalty AS cost, reverse_cost
+	FROM shenzhen_roads',59005,19255,true);
+INSERT INTO Shortestpath(geom)
+SELECT ST_Linemerge(ST_Union(b.geom))
+FROM pgr_dijkstra('SELECT gid AS id,source, target,cost * penalty AS cost, reverse_cost
+	FROM shenzhen_roads',59005,19255,true) a,shenzhen_roads b
+WHERE a.edge=b.gid;
+
+--
+
+DECLARE
+	v_startLine geometry;--离起点最近的线
+	v_endLine geometry;--离终点最近的线
+	
+	v_startLine1 geometry;--出发点与拓扑起始节点的连线
+	v_endLine1 geometry;--结束点与拓扑结束节点的连线
+	
+	v_startTarget integer;--距离起点最近线的终点
+	v_endSource integer;--距离终点最近线的起点
+	v_startPoint geometry;--在v_startLine上距离起点最近的点
+	v_endPoint geometry;--在v_endLin上距离起点最近的点
+	
+	startPoint geometry;--出发点
+	endPoint geometry;--结束点
+	
+	v_res geometry;--最短路径分析结果
+	v_perStart float;--v_startPoint在v_res上的百分比
+	v_perEnd float;--v_endPoint在v_res上的百分比
+	v_shPath geometry;--最终结果
+BEGIN
+	--查询离起点最近的线
+	EXECUTE 'SELECT geom,target
+	FROM '||route||'
+	WHERE ST_DWithin(geom,ST_GeometryFromText(''point('||startx||' '||starty||')'',3857),1000)
+	ORDER BY ST_Distance(geom,ST_GeometryFromText(''point('||startx||' '||starty||')'',3857)) limit 1'
+	INTO v_startLine,v_startTarget;
+	
+	--查询离终点最近的线
+	EXECUTE 'SELECT geom,source
+	FROM '||route||'
+	WHERE ST_DWithin(geom,ST_GeometryFromText(''point('||endx||' '||endy||')'',3857),1000)
+	ORDER BY ST_Distance(geom,ST_GeometryFromText(''point('||endx||' '||endy||')'',3857)) limit 1'
+	INTO v_endLine,v_endSource;
+	
+	--如果没有找到最近的线，就返回NULL
+	IF (v_startLine IS NULL) OR (v_endLine IS NULL) THEN
+		RETURN NULL;
+		END IF;
+	
+	--查找最近点
+	SELECT ST_ClosestPoint(v_startLine,ST_GeometryFromText('point('||startx||' '||starty||')',3857))
+	INTO v_startPoint;
+	SELECT ST_ClosestPoint(v_endLine,ST_GeometryFromText('point('||endx||' '||endy||')',3857))
+	INTO v_endPoint;
+	
+	--最短路径
+	EXECUTE 'SELECT ST_Linemerge(ST_Union(b.geom))'||
+	'FROM pgr_dijkstra(
+	''SELECT gid AS id,source,target,'||costfile||' as cost FROM '||route||''','||v_startTarget||',array['||v_endSource||'],false
+	) a,
+	'||route||' b
+	WHERE a.edge=b.gid;'
+	INTO v_res;
+	
+	--如果找不到最短路径，就返回NULL
+	IF(v_res IS NULL) THEN
+		RETURN NULL;
+		END IF;
+	
+	--将v_res,v_startLine,v_endLine进行拼接
+	SELECT ST_Linemerge(ST_Union(array[v_res,v_startLine,v_endLine])) INTO v_res;
+	SELECT ST_LineLocatePoint(v_res,v_startPoint) INTO v_perStart;
+	SELECT ST_LineLocatePoint(v_res,v_endPoint) INTO v_perEnd;
+	
+	--截取v_res
+	SELECT ST_SetSRID(ST_MakePoint(startx,starty),3857) INTO startPoint;
+	SELECT ST_SetSRID(ST_MakePoint(endx,endy),3857) INTO endPoint;
+	
+	IF V_perStart &lt; V_perEnd THEN
+	SELECT ST_LineSubString(v_res,v_perStart,v_perEnd) INTO v_shPath;
+	SELECT ST_MakeLine(ST_StartPoint(v_shPath),startpoint) INTO v_startLine1;
+	SELECT ST_MakeLine(ST_EndPoint(v_shPath),endpoint) INTO v_endLine1;
+	ELSE      
+	SELECT ST_LineSubString(v_res,V_perEnd,v_perStart) INTO v_shPath; 
+	SELECT ST_MakeLine(ST_EndPoint(v_shPath),startpoint) INTO v_startLine1;
+	SELECT ST_MakeLine(ST_StartPoint(v_shPath),endpoint) INTO v_endLine1;
+	END IF;
+	
+	SELECT ST_Linemerge(ST_Union(array[v_shPath,v_startLine1,v_endLine1])) INTO v_shPath;
+	
+	RETURN v_shPath;
+	
+END;
+
+INSERT INTO shortestpath(geom) SELECT _my_shortpath_3857(12686393.2,2583340.6,12688302.5,2580759.8,'shenzhen_roads','cost');
+INSERT INTO shortestpath(geom) SELECT _my_shortpath_3857(12686393.2,2583340.6,12688302.5,2580759.8,'shenzhen_roads','cost/1.3'); 
+INSERT INTO shortestpath(geom) SELECT _my_shortpath_3857(12686393.2,2583340.6,12688302.5,2580759.8,'shenzhen_roads','cost* penalty');
+</code></pre>
+
+                                                                                    
+                                </div>
+                                <div class="wow bounceInDown vt-post-tags">
+                                    
+                                        <a href="https://blog.manchan.top/tag/postgresql/" rel="tag">
+                                            PostgreSQL
+                                        </a>
+                                        
+                                </div>
+                                <nav class="navigation3 post-navigation3" role="navigation">
+                                    <div class="nav-links3">
+                                        
+                                            <div class="wow bounceInLeft nav-previous3"><a
+                                                    href="https://blog.manchan.top/post/arcgis-engine-visual-studio/" rel="prev">
+                                                    Arcgis Engine 10.1+Visual Studio 2010安装教程
+                                                </a></div>
+                                            
+                                                
+                                                    <div class="wow bounceInRight nav-next3"><a
+                                                            href="https://blog.manchan.top/post/di-li-kong-jian-shu-ju-ku-wu/" rel="next">
+                                                            地理空间数据库：空间网络查询(WITH RECURSIVE)
+                                                        </a></div>
+                                                    
+                                    </div>
+                                </nav>
+                                <div class="wow rollIn author-info"
+                                    style="visibility: visible; animation-name: rollIn;">
+                                    <div class="author-avatar pull-left"><img
+                                            src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea/images/avatar.png">
+                                    </div>
+                                    
+                                        <div class="author-description">
+                                            <div class="author-title">
+                                                <div class="author-link" rel="author">
+                                                    Manchan
+                                                </div>
+                                            </div>
+                                            
+                                                
+                                                    <p class="author-bio">
+                                                        GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0
+                                                            国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/"
+                                                                target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>)
+                                                            协议<br>本文永久链接是：<a href="https://blog.manchan.top/post/di-li-kong-jian-shu-ju-ku-liu/">
+                                                                https://blog.manchan.top/post/di-li-kong-jian-shu-ju-ku-liu/
+                                                            </a>
+                                                    </p>
+                                        </div>
+                                </div>
+                                
+                            </div>
+                        </article>
+                        <div id="marlin_lite_about_widget-2" class="wow bounceInUp widget marlin_lite_about_widget"
+                            data-wow-delay="0.1s">
+                            
+                                                            <script src='https://blog.manchan.top/media/scripts/Valine.man.HCLonely.js'></script>
+
+<div class="comment"></div>
+<script>
+  new Valine({
+    el: '.comment',
+    lang: 'zh-cn',
+    visitor: true, // 阅读量统计
+    avatar: 'mp',   // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
+    recordIP: true, // 记录IP
+    requiredFields: ['nick', 'mail'], //必需项
+    master: ["29749f2d630d0de14b8e78cf02b5d048"],
+    emojiCDN: "https://gcore.jsdelivr.net/gh/HCLonely/valine-face@1.0.1/",
+    serverURLs: "https://leancloudapi.manchan.ml",
+    emojiMaps: { "tv_白眼": "bilibili_tv/baiyan.png", tv_doge: "bilibili_tv/doge.png", "tv_坏笑": "bilibili_tv/huaixiao.png", "tv_难过": "bilibili_tv/nanguo.png", "tv_生气": "bilibili_tv/shengqi.png", "tv_委屈": "bilibili_tv/weiqu.png", "tv_斜眼笑": "bilibili_tv/xieyanxiao.png", "tv_呆": "bilibili_tv/fadai.png", "tv_发怒": "bilibili_tv/fanu.png", "tv_惊吓": "bilibili_tv/jingxia.png", "tv_呕吐": "bilibili_tv/outu.png", "tv_思考": "bilibili_tv/sikao.png", "tv_微笑": "bilibili_tv/weixiao.png", "tv_疑问": "bilibili_tv/yiwen.png", "tv_大哭": "bilibili_tv/daku.png", "tv_鼓掌": "bilibili_tv/guzhang.png", "tv_抠鼻": "bilibili_tv/koubi.png", "tv_亲亲": "bilibili_tv/qinqin.png", "tv_调皮": "bilibili_tv/tiaopi.png", "tv_笑哭": "bilibili_tv/xiaoku.png", "tv_晕": "bilibili_tv/yun.png", "tv_点赞": "bilibili_tv/dianzan.png", "tv_害羞": "bilibili_tv/haixiu.png", "tv_睡着": "bilibili_tv/shuizhao.png", "tv_色": "bilibili_tv/se.png", "tv_吐血": "bilibili_tv/tuxue.png", "tv_无奈": "bilibili_tv/wunai.png", "tv_再见": "bilibili_tv/zaijian.png", "tv_流汗": "bilibili_tv/liuhan.png", "tv_偷笑": "bilibili_tv/touxiao.png", "tv_抓狂": "bilibili_tv/zhuakuang.png", "tv_黑人问号": "bilibili_tv/heirenwenhao.png", "tv_困": "bilibili_tv/kun2.png", "tv_打脸": "bilibili_tv/dalian.png", "tv_闭嘴": "bilibili_tv/bizui.png", "tv_鄙视": "bilibili_tv/bishi.png", "tv_腼腆": "bilibili_tv/miantian.png", "tv_馋": "bilibili_tv/chan.png", "tv_可爱": "bilibili_tv/keai.png", "tv_发财": "bilibili_tv/facai.png", "tv_生病": "bilibili_tv/shengbing.png", "tv_流鼻血": "bilibili_tv/liubixue.png", "tv_尴尬": "bilibili_tv/ganga.png", "tv_大佬": "bilibili_tv/dalao.png", "tv_流泪": "bilibili_tv/liulei.png", "tv_冷漠": "bilibili_tv/lengmo.png", "tv_皱眉": "bilibili_tv/zhoumei.png", "tv_鬼脸": "bilibili_tv/guilian.png", "tv_调侃": "bilibili_tv/tiaokan.png", "tv_目瞪口呆": "bilibili_tv/mudengkoudai.png", bili_2020: "bilibili_face/dc709fac0d361370bcf0d36d32adb97df7c95824.png", "bili_加油武汉": "bilibili_face/eb966aaa5b690d3f9308a9f936f5b5a72a7f956b.png", "bili_口罩": "bilibili_face/3ad2f66b151496d2a5fb0a8ea75f32265d778dd3.png", "bili_鸡腿": "bilibili_face/c7860392815d345fa69c4f00ef18d67dccfbd574.png", "bili_微笑": "bilibili_face/685612eadc33f6bc233776c6241813385844f182.png", "bili_笑": "bilibili_face/81edf17314cea3b48674312b4364df44d5c01f17.png", "bili_龇牙": "bilibili_face/b5a5898491944a4268360f2e7a84623149672eb6.png", bili_OK: "bilibili_face/4683fd9ffc925fa6423110979d7dcac5eda297f4.png", "bili_星星眼": "bilibili_face/63c9d1a31c0da745b61cdb35e0ecb28635675db2.png", "bili_哦呼": "bilibili_face/362bded07ea5434886271d23fa25f5d85d8af06c.png", "bili_嫌弃": "bilibili_face/de4c0783aaa60ec03de0a2b90858927bfad7154b.png", "bili_喜欢": "bilibili_face/8a10a4d73a89f665feff3d46ca56e83dc68f9eb8.png", "bili_酸了": "bilibili_face/92b1c8cbceea3ae0e8e32253ea414783e8ba7806.png", "bili_大哭": "bilibili_face/2caafee2e5db4db72104650d87810cc2c123fc86.png", "bili_害羞": "bilibili_face/9d2ec4e1fbd6cb1b4d12d2bbbdd124ccb83ddfda.png", "bili_无语": "bilibili_face/44667b7d9349957e903b1b62cb91fb9b13720f04.png", "bili_问号": "bilibili_face/b7840db4b1f9f4726b7cb23c0972720c1698d661.png", "bili_调皮": "bilibili_face/8290b7308325e3179d2154327c85640af1528617.png", "bili_喜极而泣": "bilibili_face/485a7e0c01c2d70707daae53bee4a9e2e31ef1ed.png", "bili_奸笑": "bilibili_face/bb84906573472f0a84cebad1e9000eb6164a6f5a.png", "bili_偷笑": "bilibili_face/6c49d226e76c42cd8002abc47b3112bc5a92f66a.png", "bili_大笑": "bilibili_face/ca94ad1c7e6dac895eb5b33b7836b634c614d1c0.png", "bili_阴险": "bilibili_face/ba8d5f8e7d136d59aab52c40fd3b8a43419eb03c.png", "bili_捂脸": "bilibili_face/6921bb43f0c634870b92f4a8ad41dada94a5296d.png", "bili_囧": "bilibili_face/12e41d357a9807cc80ef1e1ed258127fcc791424.png", "bili_呆": "bilibili_face/33ad6000d9f9f168a0976bc60937786f239e5d8c.png", "bili_抠鼻": "bilibili_face/cb89184c97e3f6d50acfd7961c313ce50360d70f.png", "bili_惊喜": "bilibili_face/0afecaf3a3499479af946f29749e1a6c285b6f65.png", "bili_惊讶": "bilibili_face/f8e9a59cad52ae1a19622805696a35f0a0d853f3.png", "bili_笑哭": "bilibili_face/c3043ba94babf824dea03ce500d0e73763bf4f40.png", "bili_妙啊": "bilibili_face/b4cb77159d58614a9b787b91b1cd22a81f383535.png", bili_doge: "bilibili_face/bba7c12aa51fed0199c241465560dfc2714c593e.png", "bili_滑稽": "bilibili_face/d15121545a99ac46774f1f4465b895fe2d1411c3.png", "bili_吃瓜": "bilibili_face/4191ce3c44c2b3df8fd97c33f85d3ab15f4f3c84.png", "bili_打call": "bilibili_face/431432c43da3ee5aab5b0e4f8931953e649e9975.png", "bili_点赞": "bilibili_face/1a67265993913f4c35d15a6028a30724e83e7d35.png", "bili_鼓掌": "bilibili_face/895d1fc616b4b6c830cf96012880818c0e1de00d.png", "bili_冷": "bilibili_face/cb0ebbd0668640f07ebfc0e03f7a18a8cd00b4ed.png", "bili_灵魂出窍": "bilibili_face/43d3db7d97343c01b47e22cfabeca84b4251f35a.png", "bili_尴尬": "bilibili_face/cb321684ed5ce6eacdc2699092ab8fe7679e4fda.png", "bili_傲娇": "bilibili_face/010540d0f61220a0db4922e4a679a1d8eca94f4e.png", "bili_疼": "bilibili_face/905fd9a99ec316e353b9bd4ecd49a5f0a301eabf.png", "bili_委屈": "bilibili_face/d2f26cbdd6c96960320af03f5514c5b524990840.png", "bili_吓": "bilibili_face/9c10c5ebc7bef27ec641b8a1877674e0c65fea5d.png", "bili_生病": "bilibili_face/0f25ce04ae1d7baf98650986454c634f6612cb76.png", "bili_吐": "bilibili_face/06946bfe71ac48a6078a0b662181bb5cad09decc.png", "bili_嘘声": "bilibili_face/e64af664d20716e090f10411496998095f62f844.png", "bili_捂眼": "bilibili_face/c5c6d6982e1e53e478daae554b239f2b227b172b.png", "bili_思考": "bilibili_face/cfa9b7e89e4bfe04bbcd34ccb1b0df37f4fa905c.png", "bili_再见": "bilibili_face/fc510306bae26c9aec7e287cdf201ded27b065b9.png", "bili_翻白眼": "bilibili_face/eba54707c7168925b18f6f8b1f48d532fe08c2b1.png", "bili_哈欠": "bilibili_face/888d877729cbec444ddbd1cf4c9af155a7a06086.png", "bili_奋斗": "bilibili_face/bb2060c15dba7d3fd731c35079d1617f1afe3376.png", "bili_墨镜": "bilibili_face/3a03aebfc06339d86a68c2d893303b46f4b85771.png", "bili_撇嘴": "bilibili_face/531863568e5668c5ac181d395508a0eeb1f0cda4.png", "bili_难过": "bilibili_face/a651db36701610aa70a781fa98c07c9789b11543.png", "bili_抓狂": "bilibili_face/4c87afff88c22439c45b79e9d2035d21d5622eba.png", "bili_生气": "bilibili_face/3195714219c4b582a4fb02033dd1519913d0246d.png", "bili_干杯": "bilibili_face/8da12d5f55a2c7e9778dcc05b40571979fe208e6.png", "bili_爱心": "bilibili_face/ed04066ea7124106d17ffcaf75600700e5442f5c.png", "bili_锦鲤": "bilibili_face/643d6c19c8164ffd89e3e9cdf093cf5d773d979c.png", "bili_胜利": "bilibili_face/b49fa9f4b1e7c3477918153b82c60b114d87347c.png", "bili_加油": "bilibili_face/c7aaeacb21e107292d3bb053e5abde4a4459ed30.png", "bili_保佑": "bilibili_face/fafe8d3de0dc139ebe995491d2dac458a865fb30.png", "bili_抱拳": "bilibili_face/89516218158dbea18ab78e8873060bf95d33bbbe.png", "bili_响指": "bilibili_face/1b5c53cf14336903e1d2ae3527ca380a1256a077.png", "bili_支持": "bilibili_face/3c210366a5585706c09d4c686a9d942b39feeb50.png", "bili_拥抱": "bilibili_face/41780a4254750cdaaccb20735730a36044e98ef3.png", "bili_怪我咯": "bilibili_face/07cc6077f7f7d75b8d2c722dd9d9828a9fb9e46d.png", "bili_跪了": "bilibili_face/f2b3aee7e521de7799d4e3aa379b01be032698ac.png", "bili_黑洞": "bilibili_face/e90ec4c799010f25391179118ccd9f66b3b279ba.png", "bili_老鼠": "bilibili_face/8e6fb491eb1bb0d5862e7ec8ccf9a3da12b6c155.png", "bili_福到了": "bilibili_face/5de5373d354c373cf1617b6b836f3a8d53c5a655.png", hot_AWSL: "bilibili_hot/AWSL.jpg", "hot_三连": "bilibili_hot/三连.jpg", "hot_不愧是你": "bilibili_hot/不愧是你.jpg", "hot_你币有了": "bilibili_hot/你币有了.jpg", "hot_你细品": "bilibili_hot/你细品.jpg", "hot_危": "bilibili_hot/危.jpg", "hot_可以": "bilibili_hot/可以.jpg", "hot_吹爆": "bilibili_hot/吹爆.jpg", "hot_咕咕": "bilibili_hot/咕咕.jpg", "hot_大师球": "bilibili_hot/大师球.jpg", "hot_奥利给": "bilibili_hot/奥利给.jpg", "hot_妙": "bilibili_hot/妙.jpg", "hot_完结撒花": "bilibili_hot/完结撒花.jpg", "hot_害": "bilibili_hot/害.jpg", "hot_张三": "bilibili_hot/张三.png", "hot_我全都要": "bilibili_hot/我全都要.jpg", "hot_我哭了": "bilibili_hot/我哭了.jpg", "hot_我太南了": "bilibili_hot/我太南了.jpg", "hot_我裂开了": "bilibili_hot/我裂开了.png", "hot_我酸了": "bilibili_hot/我酸了.jpg", "hot_打卡": "bilibili_hot/打卡.jpg", "hot_有内味了": "bilibili_hot/有内味了.jpg", "hot_有生之年": "bilibili_hot/有生之年.jpg", "hot_标准结局": "bilibili_hot/标准结局.png", "hot_爱了爱了": "bilibili_hot/爱了爱了.png", "hot_爷关更": "bilibili_hot/爷关更.jpg", "hot_狼火": "bilibili_hot/狼火.jpg", "hot_猛男必看": "bilibili_hot/猛男必看.jpg", "hot_真香": "bilibili_hot/真香.jpg", "hot_知识增加": "bilibili_hot/知识增加.png", "hot_知识盲区": "bilibili_hot/知识盲区.jpg", "hot_神仙UP": "bilibili_hot/神仙UP.jpg", "hot_秀": "bilibili_hot/秀.jpg", "hot_这次一定": "bilibili_hot/这次一定.jpg", "hot_递话筒": "bilibili_hot/递话筒.png", "hot_锤": "bilibili_hot/锤.jpg", "hot_镇站之宝": "bilibili_hot/镇站之宝.jpg", "hot_问号": "bilibili_hot/问号.png", "hot_高产": "bilibili_hot/高产.jpg", "biliTV_发愁": "bilibili_stv/小电视_发愁.png", "biliTV_吃惊": "bilibili_stv/小电视_吃惊.png", "biliTV_哭泣": "bilibili_stv/小电视_哭泣.png", "biliTV_嘟嘴": "bilibili_stv/小电视_嘟嘴.png", "biliTV_困惑": "bilibili_stv/小电视_困惑.png", "biliTV_太太喜欢": "bilibili_stv/小电视_太太喜欢.png", "biliTV_好怒啊": "bilibili_stv/小电视_好怒啊.png", "biliTV_害羞": "bilibili_stv/小电视_害羞.png", "biliTV_差评": "bilibili_stv/小电视_差评.png", "biliTV_思索": "bilibili_stv/小电视_思索.png", "biliTV_我好兴奋": "bilibili_stv/小电视_我好兴奋.png", "biliTV_无语": "bilibili_stv/小电视_无语.png", "biliTV_汗": "bilibili_stv/小电视_汗.png", "biliTV_笑": "bilibili_stv/小电视_笑.png", "biliTV_赞": "bilibili_stv/小电视_赞.png", "2233娘_卖萌": "bilibili_2233/2233娘_卖萌.png", "2233娘_吃惊": "bilibili_2233/2233娘_吃惊.png", "2233娘_吐魂": "bilibili_2233/2233娘_吐魂.png", "2233娘_喝水": "bilibili_2233/2233娘_喝水.png", "2233娘_困惑": "bilibili_2233/2233娘_困惑.png", "2233娘_大哭": "bilibili_2233/2233娘_大哭.png", "2233娘_大笑": "bilibili_2233/2233娘_大笑.png", "2233娘_委屈": "bilibili_2233/2233娘_委屈.png", "2233娘_怒": "bilibili_2233/2233娘_怒.png", "2233娘_无言": "bilibili_2233/2233娘_无言.png", "2233娘_汗": "bilibili_2233/2233娘_汗.png", "2233娘_疑问": "bilibili_2233/2233娘_疑问.png", "2233娘_第一": "bilibili_2233/2233娘_第一.png", "2233娘_耶": "bilibili_2233/2233娘_耶.png", "2233娘_郁闷": "bilibili_2233/2233娘_郁闷.png" },
+    app_id: 'igrIcphbBEikHAPJe1DYzROX-MdYXbMMI',
+    app_key: 'duTdA8NNAXETy7oAFbFXO6Kg',
+    placeholder: '快来评论呀，7:00-23:59发的评论我会立刻收到通知^_^'
+  });
+</script>
+                        </div>
+                    </div>
+                    <div class="tocc col l3 hide-on-med-and-down">
+    <div class="toc-widget">
+        <div class="toc-title"></div>
+        <div id="toc-content">
+        </div>
+    </div>
+</div>
+<script src="https://cdn.staticfile.org/tocbot/4.18.2/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '.entry-summary',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('.entry-summary').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+                </div>
+            </div>
+            	<footer id="colophon" class="site-footer">
+		<div class="container">
+			<div class="copyright"><p>&copy; 2020-2022.Manchan All rights reserved.
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>.</p>
+<a href="https://beian.miit.gov.cn/">鄂ICP备2020015911-1号</a></div>
+		</div>
+	</footer>
+    </div>
+    <script src="https://cdn.staticfile.org/fitvids/1.2.0/jquery.fitvids.min.js"></script>
+<script src='https://blog.manchan.top/media/scripts/marlin-scripts.min.js'></script>
+<script src="https://blog.manchan.top/media/scripts/lately.min.js"></script>
+<script>
+  Lately({
+      'target' : '.lately-a,.lately-b,.lately-c'
+  })
+</script>
+<a id="back_to_top" href="#" class="back_to_top"><span><i class="iconfont icon-xiangshang"></i></span></a>
+        <script data-no-instant>
+            (function ($) {
+                $.extend({
+                    adamsOverload: function () {
+                        $('.navigation:eq(0)').remove();
+                        $("").attr("rel", "external");
+                        $("a[rel='external'],a[rel='external nofollow']").attr("target", "_blank");
+                        $("a.vi").attr("rel", "");
+                        $.viewImage({
+                            'target': 'img',
+                            'exclude': '.vsmile-icons img,.gallery img',
+                            'delay': 300
+                        });
+                        Lately({
+                            'target': '.commentmetadata a,.infos time,.post-list time'
+                        });
+
+                        $('ul.links li a').each(function () {
+                            if ($(this).parent().find('.bg').length == 0) {
+                                $(this).parent().append(
+                                    '<!---<div class="bg" style="background-image:url(https://c3.glgoo.top/s2/favicons?domain=' +
+                                    $(this).attr("href") + ')"></div>--->')
+                            }
+                        });
+                    }
+                });
+            })(jQuery);
+            jQuery.adamsOverload();
+        </script>
+</body>
+
+</html>

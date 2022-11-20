@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端开发入门教程-CSS（二） | Manchan&#39;s Blog | まん酱の记事与随笔 </title>
+    <meta name="description" content="Manchan's Blog是まん酱的个人博客，主要是记事与随笔，内容更偏向于GIS技术学习与分享">
+    <meta name="keywords" content="manchan,blog,GIS,遥感,postgresql,arcgis,qgis,rs,mapgis,markdown,c#,postgis,pgsql,sql,Arcgis Engine,Visual Studio,ENVI,ERDAS,Web,前端,WebGIS">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://blog.manchan.top/styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+    <link href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css" rel="stylesheet" />
+    <link href="https://cdn.staticfile.org/animate.css/3.7.2/animate.min.css" rel="stylesheet" />
+    <link href="https://cdn.staticfile.org/highlight.js/11.4.0/styles/github.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/KaTeX/0.15.2/katex.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/wow/1.1.2/wow.min.js"></script>
+    <script src="https://cdn.staticfile.org/highlight.js/11.4.0/highlight.min.js"></script>
+    <script type='text/javascript' src='https://blog.manchan.top/media/scripts/script.min.js'></script>
+    <link rel="stylesheet" href="https://blog.manchan.top/media/css/day.min.css">
+    
+</head>
+
+<body class="post-template-default single single-post postid-70 single-format-standard">
+    <div id="wrapper">
+        <header id="header" class="site-header" 
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210104011739.jpg
+        )" 
+                >
+                    <div class="site-branding">
+                        <h1 class="site-title"><a href="https://blog.manchan.top" rel="home">
+                                Manchan&#39;s Blog
+                            </a></h1>
+                        <h2 class="site-description">
+                            <b>まん酱の记事与随笔</b>
+                        </h2>
+                    </div>
+                    <nav id="nav-wrapper">
+                        <div class="container">
+                            <div class="nav-toggle">
+                                <div class="bars">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <ul id="" class="dove">
+                                
+                                    <li><a href="/">
+                                            首页
+                                        </a></li>
+                                    
+                                    <li><a href="/archives">
+                                            归档
+                                        </a></li>
+                                    
+                                    <li><a href="/tags">
+                                            标签
+                                        </a></li>
+                                    
+                                    <li><a href="/post/about">
+                                            关于
+                                        </a></li>
+                                    
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="jingge">
+                        
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                    </div>
+</header>
+            <div id="content" class="container">
+                <div class="row">
+                    <div class="col-md-8 site-main">
+                        <article id="post-70"
+                            class="post-70 post type-post status-publish format-standard hentry category-5 tag-10 tag-9 tag-11">
+                            <div class="entry-content">
+                                <h1 class="wow swing entry-title">
+                                    前端开发入门教程-CSS（二）
+                                </h1>
+                                <div class="entry-meta">
+                                    <div class="wow bounce">
+                                        <i class="iconfont icon-rili"> <time class="lately-a"
+                                                datetime="2021-01-12 21:37:42" itemprop="datePublished" pubdate="">
+                                                2021-01-12
+                                            </time></i>
+                                    </div>
+                                    </span>
+                                </div>
+                                <div class="wow slideInLeft entry-summary song">
+                                    <blockquote>
+<p>本文素材来源于黑马程序员<strong>pink老师</strong>的前端<a href="https://www.bilibili.com/video/BV14J4114768?p=93">教学视频</a>。在此基础上有部分改动。</p>
+</blockquote>
+<h2 id="1-emmet语法">1. Emmet语法</h2>
+<h3 id="11-快速生成html结构语法">1.1 快速生成HTML结构语法</h3>
+<p>1.生成标签 直接输入标签名 按tab键即可 比如 div 然后tab 键， 就可以生成<code> &lt;div&gt;&lt;/div&gt;</code><br>
+2.如果想要生成多个相同标签 加上 * 就可以了 比如 div*3 就可以快速生成3个div<br>
+3.如果有父子级关系的标签，可以用 &gt; 比如 ul &gt; li就可以了<br>
+4.如果有兄弟关系的标签，用 + 就可以了 比如 div+p<br>
+5.如果生成带有类名或者id名字的， 直接写 .demo 或者 #two tab 键就可以了<br>
+6.如果生成的div 类名是有顺序的， 可以用 自增符号 $<br>
+7.如果想要在生成的标签内部写内容可以用 { } 表示</p>
+<h3 id="12-快速生成css样式语法">1.2 快速生成CSS样式语法</h3>
+<p>CSS 基本采取简写形式即可。<br>
+1.比如 w200 按tab 可以 生成 width: 200px;<br>
+2.比如 lh26px 按tab 可以生成 line-height: 26px;</p>
+<h2 id="2-css-的复合选择器">2. CSS 的复合选择器</h2>
+<h3 id="21-什么是复合选择器">2.1 什么是复合选择器</h3>
+<p>在 CSS 中，可以根据选择器的类型把选择器分为<strong>基础选择器</strong> 和 <strong>复合选择器</strong>，复合选择器是建立在基础选择器之上，对基本选择器进行组合形成的。<br>
+复合选择器可以更准确、更高效的选择目标元素（标签）<br>
+复合选择器是由两个或多个基础选择器，通过不同的方式组合而成的<br>
+常用的复合选择器包括：后代选择器、子选择器、并集选择器、伪类选择器等等</p>
+<h3 id="22-后代选择器">2.2 后代选择器</h3>
+<p>后代选择器又称为包含选择器，可以选择父元素里面子元素。其写法就是把外层标签写在前面，内层标签写在后面，中间用空格分隔。当标签发生嵌套时，内层标签就成为外层标签的后代。</p>
+<p><strong>语法：</strong></p>
+<pre><code class="language-css">元素1 元素2 { 样式声明 }
+</code></pre>
+<p>元素1 和 元素2 中间用空格隔开;元素1 是父级，元素2 是子级，最终选择的是元素2;元素2 可以是儿子，也可以是孙子等，只要是元素1 的后代即可;元素1 和 元素2 可以是任意基础选择器</p>
+<h3 id="23-子选择器">2.3 子选择器</h3>
+<p>子元素选择器（子选择器）只能选择作为某元素的最近一级子元素。简单理解就是选亲儿子元素.</p>
+<p><strong>语法：</strong></p>
+<pre><code class="language-css">元素1 &gt; 元素2 { 样式声明 }
+</code></pre>
+<p>元素1 和 元素2 中间用 大于号 隔开;元素1 是父级，元素2 是子级，最终选择的是元素2;元素2 必须是亲儿子，其孙子、重孙之类都不归他管. 你也可以叫他 亲儿子选择器</p>
+<h3 id="24-并集选择器">2.4 并集选择器</h3>
+<p>并集选择器可以选择多组标签, 同时为他们定义相同的样式。通常用于集体声明.<br>
+并集选择器是各选择器通过英文逗号（,）连接而成，任何形式的选择器都可以作为并集选择器的一部分。</p>
+<p><strong>语法：</strong></p>
+<pre><code class="language-css">元素1,元素2 { 样式声明 }
+</code></pre>
+<p>元素1 和 元素2 中间用逗号隔开;逗号可以理解为和的意思;并集选择器通常用于集体声明;</p>
+<h3 id="25-伪类选择器">2.5 伪类选择器</h3>
+<p>伪类选择器用于向某些选择器添加特殊的效果，比如给链接添加特殊效果，或选择第1个，第n个元素。<br>
+伪类选择器书写最大的特点是用冒号（:）表示，比如 :hover 、 :first-child 。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">:active</td>
+<td style="text-align:left">向被激活的元素添加样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">:focus</td>
+<td style="text-align:left">向拥有键盘输入焦点的元素添加样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">:hover</td>
+<td style="text-align:left">当鼠标悬浮在元素上方时，向元素添加样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">:link</td>
+<td style="text-align:left">向未被访问的链接添加样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">:visited</td>
+<td style="text-align:left">向已被访问的链接添加样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">:first-child</td>
+<td style="text-align:left">向元素的第一个子元素添加样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">:lang</td>
+<td style="text-align:left">向带有指定 lang 属性的元素添加样式。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="26-链接伪类选择器">2.6 链接伪类选择器</h3>
+<pre><code class="language-css">a:link {color: #FF0000}		/* 未访问的链接 */
+a:visited {color: #00FF00}	/* 已访问的链接 */
+a:hover {color: #FF00FF}	/* 鼠标移动到链接上 */
+a:active {color: #0000FF}	/* 选定的链接 */
+</code></pre>
+<p>为了确保生效，请按照 <strong>LVHA</strong> 的循顺序声明 :link－:visited－:hover－:active。</p>
+<h3 id="27-focus-伪类选择器">2.7 :focus 伪类选择器</h3>
+<p>:focus 伪类选择器用于选取获得焦点的表单元素。<br>
+焦点就是光标，一般情况<code>&lt;input&gt;</code>类表单元素才能获取，因此这个选择器也主要针对于表单元素来说。</p>
+<pre><code class="language-css">input:focus {
+background-color:yellow;
+}
+</code></pre>
+<h2 id="3-css-的元素显示模式">3. CSS 的元素显示模式</h2>
+<h3 id="31-什么是元素显示模式">3.1 什么是元素显示模式</h3>
+<p>HTML 元素一般分为块元素和行内元素两种类型。</p>
+<p>元素显示模式就是元素（标签）以什么方式进行显示，比如<code>&lt;div&gt;</code>自己占一行，比如一行可以放多个<code>&lt;span&gt;</code>。</p>
+<h3 id="32-块元素">3.2 块元素</h3>
+<p>常见的块元素有<code>&lt;h1&gt;~&lt;h6&gt;、&lt;p&gt;、&lt;div&gt;、&lt;ul&gt;、&lt;ol&gt;、&lt;li&gt;</code>等，其中 <code>&lt;div&gt;</code> 标签是最典型的块元素。</p>
+<p>块级元素的特点：<br>
+①比较霸道，自己独占一行。<br>
+②高度，宽度、外边距以及内边距都可以控制。<br>
+③宽度默认是容器（父级宽度）的100%。<br>
+④是一个容器及盒子，里面可以放行内或者块级元素。<br>
+<strong>注意：</strong><br>
+文字类的元素内不能使用块级元素<br>
+<code>&lt;p&gt;</code> 标签主要用于存放文字，因此 <code>&lt;p&gt;</code> 里面不能放块级元素，特别是不能放<code>&lt;div&gt;</code><br>
+同理， <code>&lt;h1&gt;~&lt;h6&gt;</code>等都是文字类块级标签，里面也不能放其他块级元素</p>
+<h3 id="33-行内元素">3.3 行内元素</h3>
+<p>常见的行内元素有 <code>&lt;a&gt;、&lt;strong&gt;、&lt;b&gt;、&lt;em&gt;、&lt;i&gt;、&lt;del&gt;、&lt;s&gt;、&lt;ins&gt;、&lt;u&gt;、&lt;span&gt;</code>等，其中<code>&lt;span&gt;</code> 标签是最典型的行内元素。有的地方也将行内元素称为<strong>内联元素</strong>。</p>
+<p>行内元素的特点：<br>
+①相邻行内元素在一行上，一行可以显示多个。<br>
+②高、宽直接设置是无效的。<br>
+③默认宽度就是它本身内容的宽度。<br>
+④行内元素只能容纳文本或其他行内元素。</p>
+<p><strong>注意：</strong><br>
+链接里面不能再放链接;<br>
+特殊情况链接<code> &lt;a&gt;</code> 里面可以放块级元素，但是给 <code>&lt;a&gt;</code> 转换一下块级模式最安全。</p>
+<h3 id="33-行内块元素">3.3 行内块元素</h3>
+<p>在行内元素中有几个特殊的标签 —— <code>&lt;img /&gt;、&lt;input /&gt;、&lt;td&gt;</code>，它们同时具有块元素和行内元素的特点。有些资料称它们为<strong>行内块元素</strong>。</p>
+<p>行内块元素的特点：<br>
+①和相邻行内元素（行内块）在一行上，但是他们之间会有空白缝隙。一行可以显示多个（行内元素特点）。<br>
+②默认宽度就是它本身内容的宽度（行内元素特点）。<br>
+③高度，行高、外边距以及内边距都可以控制（块级元素特点）。</p>
+<h3 id="34-元素显示模式转换">3.4 元素显示模式转换</h3>
+<p>转换为块元素：display:block;<br>
+转换为行内元素：display:inline;<br>
+转换为行内块：display: inline-block;</p>
+<h2 id="4-css-的背景">4. CSS 的背景</h2>
+<h3 id="41-背景颜色">4.1 背景颜色</h3>
+<p><strong>background-color</strong> 属性定义了元素的背景颜色。</p>
+<pre><code class="language-css">background-color:颜色值;
+</code></pre>
+<p>一般情况下元素背景颜色默认值是 transparent（透明）</p>
+<pre><code class="language-css">background-color:transparent;
+</code></pre>
+<h3 id="42-背景图片">4.2 背景图片</h3>
+<p><strong>background-image</strong> 属性描述了元素的背景图像。实际开发常见于 logo 或者一些装饰性的小图片或者是超大的背景图片, 优点是非常便于控制位置. (精灵图也是一种运用场景)</p>
+<pre><code class="language-css">background-image : none | url (url)
+</code></pre>
+<p><strong>可能的值：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">url('<em>URL</em>')</td>
+<td style="text-align:left">指向图像的路径。</td>
+</tr>
+<tr>
+<td style="text-align:left">none</td>
+<td style="text-align:left">默认值。不显示背景图像。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-背景平铺">4.3 背景平铺</h3>
+<p>如果需要在 HTML 页面上对背景图像进行平铺，可以使用 <strong>background-repeat</strong> 属性。</p>
+<pre><code class="language-css">background-repeat: repeat | no-repeat | repeat-x | repeat-y
+</code></pre>
+<p><strong>可能的值：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">repeat</td>
+<td style="text-align:left">默认。背景图像将在垂直方向和水平方向重复。</td>
+</tr>
+<tr>
+<td style="text-align:left">repeat-x</td>
+<td style="text-align:left">背景图像将在水平方向重复。</td>
+</tr>
+<tr>
+<td style="text-align:left">repeat-y</td>
+<td style="text-align:left">背景图像将在垂直方向重复。</td>
+</tr>
+<tr>
+<td style="text-align:left">no-repeat</td>
+<td style="text-align:left">背景图像将仅显示一次。</td>
+</tr>
+<tr>
+<td style="text-align:left">inherit</td>
+<td style="text-align:left">规定应该从父元素继承 background-repeat 属性的设置。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="44-背景图片位置">4.4 背景图片位置</h3>
+<p>利用 <strong>background-position</strong> 属性可以改变图片在背景中的位置。</p>
+<pre><code class="language-css">background-position: x y;
+</code></pre>
+<p><strong>可能的值:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">top left<br/>top center<br/>top right<br/>center left<br/>center center center right<br/>bottom left<br/>bottom center<br/>bottom right</td>
+<td style="text-align:left">如果您仅规定了一个关键词，那么第二个值将是&quot;center&quot;。默认值：0% 0%。</td>
+</tr>
+<tr>
+<td style="text-align:left">x% y%</td>
+<td style="text-align:left">第一个值是水平位置，第二个值是垂直位置。左上角是 0% 0%。右下角是 100% 100%。如果您仅规定了一个值，另一个值将是 50%。</td>
+</tr>
+<tr>
+<td style="text-align:left">xpos ypos</td>
+<td style="text-align:left">第一个值是水平位置，第二个值是垂直位置。左上角是 0 0。单位是像素 (0px 0px) 或任何其他的 CSS 单位。如果您仅规定了一个值，另一个值将是50%。您可以混合使用 % 和 position 值。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="45-背景图像固定">4.5 背景图像固定</h3>
+<p><strong>background-attachment</strong> 属性设置背景图像是否固定或者随着页面的其余部分滚动。</p>
+<p>background-attachment 后期可以制作视差滚动的效果。</p>
+<p><strong>可能的值:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">scroll</td>
+<td style="text-align:left">默认值。背景图像会随着页面其余部分的滚动而移动。</td>
+</tr>
+<tr>
+<td style="text-align:left">fixed</td>
+<td style="text-align:left">当页面的其余部分滚动时，背景图像不会移动。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="46-背景复合写法">4.6 背景复合写法</h3>
+<p>为了简化背景属性的代码，我们可以将这些属性合并简写在同一个属性 background 中。从而节约代码量.<br>
+当使用简写属性时，没有特定的书写顺序,一般习惯约定顺序为：<br>
+background: 背景颜色 背景图片地址 背景平铺 背景图像滚动 背景图片位置;</p>
+<pre><code class="language-css">background: transparent url(image.jpg) repeat-y fixed top ;
+</code></pre>
+<h3 id="47-背景色半透明">4.7 背景色半透明</h3>
+<p>CSS3 为我们提供了背景颜色半透明的效果。</p>
+<pre><code class="language-css">background: rgba(0, 0, 0, 0.3);
+</code></pre>
+<p>最后一个参数是 alpha 透明度，取值范围在 0~1之间; 我们习惯把 0.3 的 0 省略掉，写为 background: rgba(0, 0, 0, .3);</p>
+<p>注意：背景半透明是指盒子背景半透明，盒子里面的内容不受影响;CSS3 新增属性，是 IE9+ 版本浏览器才支持的;但是现在实际开发,我们不太关注兼容性写法了,可以放心使用。</p>
+<h2 id="5-css的三大特性">5. CSS的三大特性</h2>
+<h3 id="51-层叠性">5.1 层叠性</h3>
+<p>相同选择器给设置相同的样式，此时一个样式就会覆盖（层叠）另一个冲突的样式。层叠性主要解决样式冲突的问题<br>
+层叠性原则：</p>
+<p>①样式冲突，遵循的原则是就近原则，哪个样式离结构近，就执行哪个样式<br>
+②样式不冲突，不会层叠</p>
+<h2 id="52-继承性">5.2 继承性</h2>
+<p>CSS中的继承: 子标签会继承父标签的某些样式，如文本颜色和字号。简单的理解就是：子承父业。</p>
+<p>①恰当地使用继承可以简化代码，降低 CSS 样式的复杂性<br>
+②子元素可以继承父元素的样式（text-，font-，line-这些元素开头的可以继承，以及color属性）</p>
+<p><strong>行高的继承性</strong></p>
+<pre><code class="language-css">body {
+	font:12px/1.5 Microsoft YaHei；
+}
+</code></pre>
+<p>行高可以跟单位也可以不跟单位；如果子元素没有设置行高，则会继承父元素的行高为 1.5； 此时子元素的行高是：当前子元素的文字大小 * 1.5；body 行高 1.5 这样写法最大的优势就是里面子元素可以根据自己文字大小自动调整行高。</p>
+<h3 id="53-优先级">5.3 优先级</h3>
+<p>当同一个元素指定多个选择器，就会有优先级的产生。<br>
+选择器相同，则执行层叠性；<br>
+选择器不同，则根据选择器权重执行。</p>
+<p><strong>选择器权重如下表所示。</strong></p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>选择器权重</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>继承 或者 *</td>
+<td>0,0,0,0</td>
+</tr>
+<tr>
+<td>元素选择器</td>
+<td>0,0,0,1</td>
+</tr>
+<tr>
+<td>类选择器，伪类选择器</td>
+<td>0,0,1,0</td>
+</tr>
+<tr>
+<td>ID选择器</td>
+<td>0,1,0,0</td>
+</tr>
+<tr>
+<td>行内样式style=&quot;&quot;</td>
+<td>1,0,0,0</td>
+</tr>
+<tr>
+<td>!important</td>
+<td>∞无穷大</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：</strong></p>
+<p>权重是有4组数字组成,但是不会有进位。</p>
+<p>可以理解为类选择器永远大于元素选择器, id选择器永远大于类选择器,以此类推..</p>
+<p>等级判断从左向右，如果某一位数值相同，则判断下一位数值。</p>
+<p>可以简单记忆法: 通配符和继承权重为0, 标签选择器为1,类(伪类)选择器为 10, id选择器 100, 行内样式表为 1000, !important 无穷大.</p>
+<p><strong>继承的权重是0</strong>， 如果该元素没有直接选中，不管父元素权重多高，子元素得到的权重都是 0。</p>
+<p>**权重叠加：**如果是复合选择器，则会有权重叠加，需要计算权重。</p>
+<h2 id="6-css的注释">6. CSS的注释</h2>
+<p>注释用于解释代码，它们会被浏览器忽略。CSS 中的注释以“ /* ”开头，以“ */ ”结尾。</p>
+<pre><code class="language-css">/* 需要注释的内容 */
+</code></pre>
+
+                                                                                    
+                                </div>
+                                <div class="wow bounceInDown vt-post-tags">
+                                    
+                                        <a href="https://blog.manchan.top/tag/css/" rel="tag">
+                                            CSS
+                                        </a>
+                                        
+                                        <a href="https://blog.manchan.top/tag/qian-duan/" rel="tag">
+                                            前端
+                                        </a>
+                                        
+                                </div>
+                                <nav class="navigation3 post-navigation3" role="navigation">
+                                    <div class="nav-links3">
+                                        
+                                            <div class="wow bounceInLeft nav-previous3"><a
+                                                    href="https://blog.manchan.top/post/introduction-to-front-end-development-CSS--P3/" rel="prev">
+                                                    前端开发入门教程-CSS（三）
+                                                </a></div>
+                                            
+                                                
+                                                    <div class="wow bounceInRight nav-next3"><a
+                                                            href="https://blog.manchan.top/post/introduction-to-front-end-development-CSS--P1/" rel="next">
+                                                            前端开发入门教程-CSS（一）
+                                                        </a></div>
+                                                    
+                                    </div>
+                                </nav>
+                                <div class="wow rollIn author-info"
+                                    style="visibility: visible; animation-name: rollIn;">
+                                    <div class="author-avatar pull-left"><img
+                                            src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea/images/avatar.png">
+                                    </div>
+                                    
+                                        <div class="author-description">
+                                            <div class="author-title">
+                                                <div class="author-link" rel="author">
+                                                    Manchan
+                                                </div>
+                                            </div>
+                                            
+                                                
+                                                    <p class="author-bio">
+                                                        GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0
+                                                            国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/"
+                                                                target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>)
+                                                            协议<br>本文永久链接是：<a href="https://blog.manchan.top/post/introduction-to-front-end-development-CSS--P2/">
+                                                                https://blog.manchan.top/post/introduction-to-front-end-development-CSS--P2/
+                                                            </a>
+                                                    </p>
+                                        </div>
+                                </div>
+                                
+                            </div>
+                        </article>
+                        <div id="marlin_lite_about_widget-2" class="wow bounceInUp widget marlin_lite_about_widget"
+                            data-wow-delay="0.1s">
+                            
+                                                            <script src='https://blog.manchan.top/media/scripts/Valine.man.HCLonely.js'></script>
+
+<div class="comment"></div>
+<script>
+  new Valine({
+    el: '.comment',
+    lang: 'zh-cn',
+    visitor: true, // 阅读量统计
+    avatar: 'mp',   // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
+    recordIP: true, // 记录IP
+    requiredFields: ['nick', 'mail'], //必需项
+    master: ["29749f2d630d0de14b8e78cf02b5d048"],
+    emojiCDN: "https://gcore.jsdelivr.net/gh/HCLonely/valine-face@1.0.1/",
+    serverURLs: "https://leancloudapi.manchan.ml",
+    emojiMaps: { "tv_白眼": "bilibili_tv/baiyan.png", tv_doge: "bilibili_tv/doge.png", "tv_坏笑": "bilibili_tv/huaixiao.png", "tv_难过": "bilibili_tv/nanguo.png", "tv_生气": "bilibili_tv/shengqi.png", "tv_委屈": "bilibili_tv/weiqu.png", "tv_斜眼笑": "bilibili_tv/xieyanxiao.png", "tv_呆": "bilibili_tv/fadai.png", "tv_发怒": "bilibili_tv/fanu.png", "tv_惊吓": "bilibili_tv/jingxia.png", "tv_呕吐": "bilibili_tv/outu.png", "tv_思考": "bilibili_tv/sikao.png", "tv_微笑": "bilibili_tv/weixiao.png", "tv_疑问": "bilibili_tv/yiwen.png", "tv_大哭": "bilibili_tv/daku.png", "tv_鼓掌": "bilibili_tv/guzhang.png", "tv_抠鼻": "bilibili_tv/koubi.png", "tv_亲亲": "bilibili_tv/qinqin.png", "tv_调皮": "bilibili_tv/tiaopi.png", "tv_笑哭": "bilibili_tv/xiaoku.png", "tv_晕": "bilibili_tv/yun.png", "tv_点赞": "bilibili_tv/dianzan.png", "tv_害羞": "bilibili_tv/haixiu.png", "tv_睡着": "bilibili_tv/shuizhao.png", "tv_色": "bilibili_tv/se.png", "tv_吐血": "bilibili_tv/tuxue.png", "tv_无奈": "bilibili_tv/wunai.png", "tv_再见": "bilibili_tv/zaijian.png", "tv_流汗": "bilibili_tv/liuhan.png", "tv_偷笑": "bilibili_tv/touxiao.png", "tv_抓狂": "bilibili_tv/zhuakuang.png", "tv_黑人问号": "bilibili_tv/heirenwenhao.png", "tv_困": "bilibili_tv/kun2.png", "tv_打脸": "bilibili_tv/dalian.png", "tv_闭嘴": "bilibili_tv/bizui.png", "tv_鄙视": "bilibili_tv/bishi.png", "tv_腼腆": "bilibili_tv/miantian.png", "tv_馋": "bilibili_tv/chan.png", "tv_可爱": "bilibili_tv/keai.png", "tv_发财": "bilibili_tv/facai.png", "tv_生病": "bilibili_tv/shengbing.png", "tv_流鼻血": "bilibili_tv/liubixue.png", "tv_尴尬": "bilibili_tv/ganga.png", "tv_大佬": "bilibili_tv/dalao.png", "tv_流泪": "bilibili_tv/liulei.png", "tv_冷漠": "bilibili_tv/lengmo.png", "tv_皱眉": "bilibili_tv/zhoumei.png", "tv_鬼脸": "bilibili_tv/guilian.png", "tv_调侃": "bilibili_tv/tiaokan.png", "tv_目瞪口呆": "bilibili_tv/mudengkoudai.png", bili_2020: "bilibili_face/dc709fac0d361370bcf0d36d32adb97df7c95824.png", "bili_加油武汉": "bilibili_face/eb966aaa5b690d3f9308a9f936f5b5a72a7f956b.png", "bili_口罩": "bilibili_face/3ad2f66b151496d2a5fb0a8ea75f32265d778dd3.png", "bili_鸡腿": "bilibili_face/c7860392815d345fa69c4f00ef18d67dccfbd574.png", "bili_微笑": "bilibili_face/685612eadc33f6bc233776c6241813385844f182.png", "bili_笑": "bilibili_face/81edf17314cea3b48674312b4364df44d5c01f17.png", "bili_龇牙": "bilibili_face/b5a5898491944a4268360f2e7a84623149672eb6.png", bili_OK: "bilibili_face/4683fd9ffc925fa6423110979d7dcac5eda297f4.png", "bili_星星眼": "bilibili_face/63c9d1a31c0da745b61cdb35e0ecb28635675db2.png", "bili_哦呼": "bilibili_face/362bded07ea5434886271d23fa25f5d85d8af06c.png", "bili_嫌弃": "bilibili_face/de4c0783aaa60ec03de0a2b90858927bfad7154b.png", "bili_喜欢": "bilibili_face/8a10a4d73a89f665feff3d46ca56e83dc68f9eb8.png", "bili_酸了": "bilibili_face/92b1c8cbceea3ae0e8e32253ea414783e8ba7806.png", "bili_大哭": "bilibili_face/2caafee2e5db4db72104650d87810cc2c123fc86.png", "bili_害羞": "bilibili_face/9d2ec4e1fbd6cb1b4d12d2bbbdd124ccb83ddfda.png", "bili_无语": "bilibili_face/44667b7d9349957e903b1b62cb91fb9b13720f04.png", "bili_问号": "bilibili_face/b7840db4b1f9f4726b7cb23c0972720c1698d661.png", "bili_调皮": "bilibili_face/8290b7308325e3179d2154327c85640af1528617.png", "bili_喜极而泣": "bilibili_face/485a7e0c01c2d70707daae53bee4a9e2e31ef1ed.png", "bili_奸笑": "bilibili_face/bb84906573472f0a84cebad1e9000eb6164a6f5a.png", "bili_偷笑": "bilibili_face/6c49d226e76c42cd8002abc47b3112bc5a92f66a.png", "bili_大笑": "bilibili_face/ca94ad1c7e6dac895eb5b33b7836b634c614d1c0.png", "bili_阴险": "bilibili_face/ba8d5f8e7d136d59aab52c40fd3b8a43419eb03c.png", "bili_捂脸": "bilibili_face/6921bb43f0c634870b92f4a8ad41dada94a5296d.png", "bili_囧": "bilibili_face/12e41d357a9807cc80ef1e1ed258127fcc791424.png", "bili_呆": "bilibili_face/33ad6000d9f9f168a0976bc60937786f239e5d8c.png", "bili_抠鼻": "bilibili_face/cb89184c97e3f6d50acfd7961c313ce50360d70f.png", "bili_惊喜": "bilibili_face/0afecaf3a3499479af946f29749e1a6c285b6f65.png", "bili_惊讶": "bilibili_face/f8e9a59cad52ae1a19622805696a35f0a0d853f3.png", "bili_笑哭": "bilibili_face/c3043ba94babf824dea03ce500d0e73763bf4f40.png", "bili_妙啊": "bilibili_face/b4cb77159d58614a9b787b91b1cd22a81f383535.png", bili_doge: "bilibili_face/bba7c12aa51fed0199c241465560dfc2714c593e.png", "bili_滑稽": "bilibili_face/d15121545a99ac46774f1f4465b895fe2d1411c3.png", "bili_吃瓜": "bilibili_face/4191ce3c44c2b3df8fd97c33f85d3ab15f4f3c84.png", "bili_打call": "bilibili_face/431432c43da3ee5aab5b0e4f8931953e649e9975.png", "bili_点赞": "bilibili_face/1a67265993913f4c35d15a6028a30724e83e7d35.png", "bili_鼓掌": "bilibili_face/895d1fc616b4b6c830cf96012880818c0e1de00d.png", "bili_冷": "bilibili_face/cb0ebbd0668640f07ebfc0e03f7a18a8cd00b4ed.png", "bili_灵魂出窍": "bilibili_face/43d3db7d97343c01b47e22cfabeca84b4251f35a.png", "bili_尴尬": "bilibili_face/cb321684ed5ce6eacdc2699092ab8fe7679e4fda.png", "bili_傲娇": "bilibili_face/010540d0f61220a0db4922e4a679a1d8eca94f4e.png", "bili_疼": "bilibili_face/905fd9a99ec316e353b9bd4ecd49a5f0a301eabf.png", "bili_委屈": "bilibili_face/d2f26cbdd6c96960320af03f5514c5b524990840.png", "bili_吓": "bilibili_face/9c10c5ebc7bef27ec641b8a1877674e0c65fea5d.png", "bili_生病": "bilibili_face/0f25ce04ae1d7baf98650986454c634f6612cb76.png", "bili_吐": "bilibili_face/06946bfe71ac48a6078a0b662181bb5cad09decc.png", "bili_嘘声": "bilibili_face/e64af664d20716e090f10411496998095f62f844.png", "bili_捂眼": "bilibili_face/c5c6d6982e1e53e478daae554b239f2b227b172b.png", "bili_思考": "bilibili_face/cfa9b7e89e4bfe04bbcd34ccb1b0df37f4fa905c.png", "bili_再见": "bilibili_face/fc510306bae26c9aec7e287cdf201ded27b065b9.png", "bili_翻白眼": "bilibili_face/eba54707c7168925b18f6f8b1f48d532fe08c2b1.png", "bili_哈欠": "bilibili_face/888d877729cbec444ddbd1cf4c9af155a7a06086.png", "bili_奋斗": "bilibili_face/bb2060c15dba7d3fd731c35079d1617f1afe3376.png", "bili_墨镜": "bilibili_face/3a03aebfc06339d86a68c2d893303b46f4b85771.png", "bili_撇嘴": "bilibili_face/531863568e5668c5ac181d395508a0eeb1f0cda4.png", "bili_难过": "bilibili_face/a651db36701610aa70a781fa98c07c9789b11543.png", "bili_抓狂": "bilibili_face/4c87afff88c22439c45b79e9d2035d21d5622eba.png", "bili_生气": "bilibili_face/3195714219c4b582a4fb02033dd1519913d0246d.png", "bili_干杯": "bilibili_face/8da12d5f55a2c7e9778dcc05b40571979fe208e6.png", "bili_爱心": "bilibili_face/ed04066ea7124106d17ffcaf75600700e5442f5c.png", "bili_锦鲤": "bilibili_face/643d6c19c8164ffd89e3e9cdf093cf5d773d979c.png", "bili_胜利": "bilibili_face/b49fa9f4b1e7c3477918153b82c60b114d87347c.png", "bili_加油": "bilibili_face/c7aaeacb21e107292d3bb053e5abde4a4459ed30.png", "bili_保佑": "bilibili_face/fafe8d3de0dc139ebe995491d2dac458a865fb30.png", "bili_抱拳": "bilibili_face/89516218158dbea18ab78e8873060bf95d33bbbe.png", "bili_响指": "bilibili_face/1b5c53cf14336903e1d2ae3527ca380a1256a077.png", "bili_支持": "bilibili_face/3c210366a5585706c09d4c686a9d942b39feeb50.png", "bili_拥抱": "bilibili_face/41780a4254750cdaaccb20735730a36044e98ef3.png", "bili_怪我咯": "bilibili_face/07cc6077f7f7d75b8d2c722dd9d9828a9fb9e46d.png", "bili_跪了": "bilibili_face/f2b3aee7e521de7799d4e3aa379b01be032698ac.png", "bili_黑洞": "bilibili_face/e90ec4c799010f25391179118ccd9f66b3b279ba.png", "bili_老鼠": "bilibili_face/8e6fb491eb1bb0d5862e7ec8ccf9a3da12b6c155.png", "bili_福到了": "bilibili_face/5de5373d354c373cf1617b6b836f3a8d53c5a655.png", hot_AWSL: "bilibili_hot/AWSL.jpg", "hot_三连": "bilibili_hot/三连.jpg", "hot_不愧是你": "bilibili_hot/不愧是你.jpg", "hot_你币有了": "bilibili_hot/你币有了.jpg", "hot_你细品": "bilibili_hot/你细品.jpg", "hot_危": "bilibili_hot/危.jpg", "hot_可以": "bilibili_hot/可以.jpg", "hot_吹爆": "bilibili_hot/吹爆.jpg", "hot_咕咕": "bilibili_hot/咕咕.jpg", "hot_大师球": "bilibili_hot/大师球.jpg", "hot_奥利给": "bilibili_hot/奥利给.jpg", "hot_妙": "bilibili_hot/妙.jpg", "hot_完结撒花": "bilibili_hot/完结撒花.jpg", "hot_害": "bilibili_hot/害.jpg", "hot_张三": "bilibili_hot/张三.png", "hot_我全都要": "bilibili_hot/我全都要.jpg", "hot_我哭了": "bilibili_hot/我哭了.jpg", "hot_我太南了": "bilibili_hot/我太南了.jpg", "hot_我裂开了": "bilibili_hot/我裂开了.png", "hot_我酸了": "bilibili_hot/我酸了.jpg", "hot_打卡": "bilibili_hot/打卡.jpg", "hot_有内味了": "bilibili_hot/有内味了.jpg", "hot_有生之年": "bilibili_hot/有生之年.jpg", "hot_标准结局": "bilibili_hot/标准结局.png", "hot_爱了爱了": "bilibili_hot/爱了爱了.png", "hot_爷关更": "bilibili_hot/爷关更.jpg", "hot_狼火": "bilibili_hot/狼火.jpg", "hot_猛男必看": "bilibili_hot/猛男必看.jpg", "hot_真香": "bilibili_hot/真香.jpg", "hot_知识增加": "bilibili_hot/知识增加.png", "hot_知识盲区": "bilibili_hot/知识盲区.jpg", "hot_神仙UP": "bilibili_hot/神仙UP.jpg", "hot_秀": "bilibili_hot/秀.jpg", "hot_这次一定": "bilibili_hot/这次一定.jpg", "hot_递话筒": "bilibili_hot/递话筒.png", "hot_锤": "bilibili_hot/锤.jpg", "hot_镇站之宝": "bilibili_hot/镇站之宝.jpg", "hot_问号": "bilibili_hot/问号.png", "hot_高产": "bilibili_hot/高产.jpg", "biliTV_发愁": "bilibili_stv/小电视_发愁.png", "biliTV_吃惊": "bilibili_stv/小电视_吃惊.png", "biliTV_哭泣": "bilibili_stv/小电视_哭泣.png", "biliTV_嘟嘴": "bilibili_stv/小电视_嘟嘴.png", "biliTV_困惑": "bilibili_stv/小电视_困惑.png", "biliTV_太太喜欢": "bilibili_stv/小电视_太太喜欢.png", "biliTV_好怒啊": "bilibili_stv/小电视_好怒啊.png", "biliTV_害羞": "bilibili_stv/小电视_害羞.png", "biliTV_差评": "bilibili_stv/小电视_差评.png", "biliTV_思索": "bilibili_stv/小电视_思索.png", "biliTV_我好兴奋": "bilibili_stv/小电视_我好兴奋.png", "biliTV_无语": "bilibili_stv/小电视_无语.png", "biliTV_汗": "bilibili_stv/小电视_汗.png", "biliTV_笑": "bilibili_stv/小电视_笑.png", "biliTV_赞": "bilibili_stv/小电视_赞.png", "2233娘_卖萌": "bilibili_2233/2233娘_卖萌.png", "2233娘_吃惊": "bilibili_2233/2233娘_吃惊.png", "2233娘_吐魂": "bilibili_2233/2233娘_吐魂.png", "2233娘_喝水": "bilibili_2233/2233娘_喝水.png", "2233娘_困惑": "bilibili_2233/2233娘_困惑.png", "2233娘_大哭": "bilibili_2233/2233娘_大哭.png", "2233娘_大笑": "bilibili_2233/2233娘_大笑.png", "2233娘_委屈": "bilibili_2233/2233娘_委屈.png", "2233娘_怒": "bilibili_2233/2233娘_怒.png", "2233娘_无言": "bilibili_2233/2233娘_无言.png", "2233娘_汗": "bilibili_2233/2233娘_汗.png", "2233娘_疑问": "bilibili_2233/2233娘_疑问.png", "2233娘_第一": "bilibili_2233/2233娘_第一.png", "2233娘_耶": "bilibili_2233/2233娘_耶.png", "2233娘_郁闷": "bilibili_2233/2233娘_郁闷.png" },
+    app_id: 'igrIcphbBEikHAPJe1DYzROX-MdYXbMMI',
+    app_key: 'duTdA8NNAXETy7oAFbFXO6Kg',
+    placeholder: '快来评论呀，7:00-23:59发的评论我会立刻收到通知^_^'
+  });
+</script>
+                        </div>
+                    </div>
+                    <div class="tocc col l3 hide-on-med-and-down">
+    <div class="toc-widget">
+        <div class="toc-title"></div>
+        <div id="toc-content">
+        </div>
+    </div>
+</div>
+<script src="https://cdn.staticfile.org/tocbot/4.18.2/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '.entry-summary',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('.entry-summary').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+                </div>
+            </div>
+            	<footer id="colophon" class="site-footer">
+		<div class="container">
+			<div class="copyright"><p>&copy; 2020-2022.Manchan All rights reserved.
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>.</p>
+<a href="https://beian.miit.gov.cn/">鄂ICP备2020015911-1号</a></div>
+		</div>
+	</footer>
+    </div>
+    <script src="https://cdn.staticfile.org/fitvids/1.2.0/jquery.fitvids.min.js"></script>
+<script src='https://blog.manchan.top/media/scripts/marlin-scripts.min.js'></script>
+<script src="https://blog.manchan.top/media/scripts/lately.min.js"></script>
+<script>
+  Lately({
+      'target' : '.lately-a,.lately-b,.lately-c'
+  })
+</script>
+<a id="back_to_top" href="#" class="back_to_top"><span><i class="iconfont icon-xiangshang"></i></span></a>
+        <script data-no-instant>
+            (function ($) {
+                $.extend({
+                    adamsOverload: function () {
+                        $('.navigation:eq(0)').remove();
+                        $("").attr("rel", "external");
+                        $("a[rel='external'],a[rel='external nofollow']").attr("target", "_blank");
+                        $("a.vi").attr("rel", "");
+                        $.viewImage({
+                            'target': 'img',
+                            'exclude': '.vsmile-icons img,.gallery img',
+                            'delay': 300
+                        });
+                        Lately({
+                            'target': '.commentmetadata a,.infos time,.post-list time'
+                        });
+
+                        $('ul.links li a').each(function () {
+                            if ($(this).parent().find('.bg').length == 0) {
+                                $(this).parent().append(
+                                    '<!---<div class="bg" style="background-image:url(https://c3.glgoo.top/s2/favicons?domain=' +
+                                    $(this).attr("href") + ')"></div>--->')
+                            }
+                        });
+                    }
+                });
+            })(jQuery);
+            jQuery.adamsOverload();
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端开发入门教程-CSS（六） | Manchan&#39;s Blog | まん酱の记事与随笔 </title>
+    <meta name="description" content="Manchan's Blog是まん酱的个人博客，主要是记事与随笔，内容更偏向于GIS技术学习与分享">
+    <meta name="keywords" content="manchan,blog,GIS,遥感,postgresql,arcgis,qgis,rs,mapgis,markdown,c#,postgis,pgsql,sql,Arcgis Engine,Visual Studio,ENVI,ERDAS,Web,前端,WebGIS">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://blog.manchan.top/styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+    <link href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css" rel="stylesheet" />
+    <link href="https://cdn.staticfile.org/animate.css/3.7.2/animate.min.css" rel="stylesheet" />
+    <link href="https://cdn.staticfile.org/highlight.js/11.4.0/styles/github.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/KaTeX/0.15.2/katex.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/wow/1.1.2/wow.min.js"></script>
+    <script src="https://cdn.staticfile.org/highlight.js/11.4.0/highlight.min.js"></script>
+    <script type='text/javascript' src='https://blog.manchan.top/media/scripts/script.min.js'></script>
+    <link rel="stylesheet" href="https://blog.manchan.top/media/css/day.min.css">
+    
+</head>
+
+<body class="post-template-default single single-post postid-70 single-format-standard">
+    <div id="wrapper">
+        <header id="header" class="site-header" 
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210104011739.jpg
+        )" 
+                >
+                    <div class="site-branding">
+                        <h1 class="site-title"><a href="https://blog.manchan.top" rel="home">
+                                Manchan&#39;s Blog
+                            </a></h1>
+                        <h2 class="site-description">
+                            <b>まん酱の记事与随笔</b>
+                        </h2>
+                    </div>
+                    <nav id="nav-wrapper">
+                        <div class="container">
+                            <div class="nav-toggle">
+                                <div class="bars">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <ul id="" class="dove">
+                                
+                                    <li><a href="/">
+                                            首页
+                                        </a></li>
+                                    
+                                    <li><a href="/archives">
+                                            归档
+                                        </a></li>
+                                    
+                                    <li><a href="/tags">
+                                            标签
+                                        </a></li>
+                                    
+                                    <li><a href="/post/about">
+                                            关于
+                                        </a></li>
+                                    
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="jingge">
+                        
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                    </div>
+</header>
+            <div id="content" class="container">
+                <div class="row">
+                    <div class="col-md-8 site-main">
+                        <article id="post-70"
+                            class="post-70 post type-post status-publish format-standard hentry category-5 tag-10 tag-9 tag-11">
+                            <div class="entry-content">
+                                <h1 class="wow swing entry-title">
+                                    前端开发入门教程-CSS（六）
+                                </h1>
+                                <div class="entry-meta">
+                                    <div class="wow bounce">
+                                        <i class="iconfont icon-rili"> <time class="lately-a"
+                                                datetime="2021-01-18 17:42:12" itemprop="datePublished" pubdate="">
+                                                2021-01-18
+                                            </time></i>
+                                    </div>
+                                    </span>
+                                </div>
+                                <div class="wow slideInLeft entry-summary song">
+                                    <blockquote>
+<p>本文素材来源于黑马程序员<strong>pink老师</strong>的前端<a href="https://www.bilibili.com/video/BV14J4114768?p=221">教学视频</a>。在此基础上有部分改动。</p>
+</blockquote>
+<h2 id="1-定位position-介绍">1. 定位(position) 介绍</h2>
+<h3 id="11-为什么使用定位">1.1 为什么使用定位</h3>
+<blockquote>
+<p>我们先来看一个效果，同时思考一下<strong>用标准流或浮动能否实现类似的效果</strong>？</p>
+</blockquote>
+<p><strong>场景1</strong>： 某个元素可以自由的在一个盒子内移动位置，并且压住其他盒子.</p>
+<img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141618.gif" />
+<p><strong>场景2</strong>：当我们滚动窗口的时候，盒子是固定屏幕某个位置的。</p>
+<img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141619.png" />
+<blockquote>
+<p>结论**：要实现以上效果，**标准流 或 浮动都无法快速实现</p>
+</blockquote>
+<p>所以：</p>
+<p>1.浮动可以让多个块级盒子一行没有缝隙排列显示， 经常用于横向排列盒子。</p>
+<p>2.定位则是可以让盒子自由的在某个盒子内移动位置或者固定屏幕中某个位置，并且可以压住其他盒子。</p>
+<h3 id="12-定位组成">1.2 定位组成</h3>
+<p><strong>定位</strong>：将盒子<strong>定</strong>在某一个位置，所以<strong>定位也是在摆放盒子， 按照定位的方式移动盒子</strong></p>
+<p>定位也是用来布局的，它有两部分组成：</p>
+<blockquote>
+<p><strong>定位 = 定位模式 + 边偏移</strong></p>
+</blockquote>
+<p><strong>定位模式</strong> 用于指定一个元素在文档中的定位方式。<strong>边偏移</strong>则决定了该元素的最终位置。</p>
+<h4 id="121-边偏移方位名词">1.2.1 边偏移（方位名词）</h4>
+<p><strong>边偏移</strong> 就是定位的盒子移动到最终位置。有 top、bottom、left 和 right  4 个属性。</p>
+<table>
+<thead>
+<tr>
+<th>边偏移属性</th>
+<th style="text-align:left">示例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>top</code></td>
+<td style="text-align:left"><code>top: 80px</code></td>
+<td><strong>顶端</strong>偏移量，定义元素相对于其父元素<strong>上边线的距离</strong>。</td>
+</tr>
+<tr>
+<td><code>bottom</code></td>
+<td style="text-align:left"><code>bottom: 80px</code></td>
+<td><strong>底部</strong>偏移量，定义元素相对于其父元素<strong>下边线的距离</strong>。</td>
+</tr>
+<tr>
+<td><code>left</code></td>
+<td style="text-align:left"><code>left: 80px</code></td>
+<td><strong>左侧</strong>偏移量，定义元素相对于其父元素<strong>左边线的距离</strong>。</td>
+</tr>
+<tr>
+<td><code>right</code></td>
+<td style="text-align:left"><code>right: 80px</code></td>
+<td><strong>右侧</strong>偏移量，定义元素相对于其父元素<strong>右边线的距离</strong></td>
+</tr>
+</tbody>
+</table>
+<p>定位的盒子有了边偏移才有价值。 一般情况下，凡是有定位地方必定有边偏移。</p>
+<h4 id="122-定位模式-position">1.2.2 定位模式 (position)</h4>
+<p>在 CSS 中，通过 <code>position</code> 属性定义元素的<strong>定位模式</strong>，语法如下：</p>
+<pre><code class="language-css">选择器 { 
+    position: 属性值; 
+}
+</code></pre>
+<p>定位模式是有不同分类的，在不同情况下，我们用到不同的定位模式。</p>
+<p>定位模式决定元素的定位方式 ，它通过 CSS 的 position 属性来设置，其值可以分为四个：</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th style="text-align:center">语义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static</code></td>
+<td style="text-align:center"><strong>静态</strong>定位</td>
+</tr>
+<tr>
+<td><code>relative</code></td>
+<td style="text-align:center"><strong>相对</strong>定位</td>
+</tr>
+<tr>
+<td><code>absolute</code></td>
+<td style="text-align:center"><strong>绝对</strong>定位</td>
+</tr>
+<tr>
+<td><code>fixed</code></td>
+<td style="text-align:center"><strong>固定</strong>定位</td>
+</tr>
+</tbody>
+</table>
+ <img src='https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141620.png'>
+<h3 id="13-定位模式介绍">1.3 定位模式介绍</h3>
+<h4 id="131-静态定位static-了解">1.3.1  静态定位(static) - 了解</h4>
+<ul>
+<li>
+<p><strong>静态定位</strong>是元素的<strong>默认</strong>定位方式，<strong>无定位的意思</strong>。它相当于 border 里面的none，静态定位static，不要定位的时候用。</p>
+</li>
+<li>
+<p>语法：</p>
+<pre><code>选择器 { 
+    position: static; 
+}
+</code></pre>
+</li>
+<li>
+<p>静态定位 按照标准流特性摆放位置，它没有边偏移。</p>
+</li>
+<li>
+<p>静态定位在布局时我们几乎不用的</p>
+</li>
+</ul>
+<h4 id="132-相对定位relative-重要">1.3.2 相对定位(relative) - 重要</h4>
+<ul>
+<li><strong>相对定位</strong>是元素在移动位置的时候，是相对于它自己<strong>原来的位置</strong>来说的（自恋型）。</li>
+<li>语法：</li>
+</ul>
+<pre><code>选择器 { 
+	position: relative; 
+}
+</code></pre>
+<ul>
+<li>
+<p>相对定位的特点：（务必记住）</p>
+<ul>
+<li>
+<p>1.它是相对于自己原来的位置来移动的（移动位置的时候参照点是自己原来的位置）。</p>
+</li>
+<li>
+<p>2.<strong>原来</strong>在标准流的<strong>位置</strong>继续占有，后面的盒子仍然以标准流的方式对待它。</p>
+<p>因此，<strong>相对定位并没有脱标</strong>。它最典型的应用是给绝对定位当爹的。。。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>效果图：</p>
+</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141621.png" alt="相对定位案例" loading="lazy"></figure>
+<h4 id="133-绝对定位absolute-重要">1.3.3 绝对定位(absolute) - 重要</h4>
+<h5 id="1331-绝对定位的介绍">1.3.3.1 绝对定位的介绍</h5>
+<ul>
+<li>
+<p><strong>绝对定位</strong>是元素在移动位置的时候，是相对于它<strong>祖先元素</strong>来说的（拼爹型）。</p>
+</li>
+<li>
+<p>语法：</p>
+<pre><code> 选择器 { 
+ 	position: absolute; 
+ }
+</code></pre>
+</li>
+</ul>
+<ol>
+<li>
+<p><strong>完全脱标</strong> —— 完全不占位置；</p>
+</li>
+<li>
+<p><strong>父元素没有定位</strong>，则以<strong>浏览器</strong>为准定位（Document 文档）。</p>
+<img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141622.png" width="600" />
+</li>
+<li>
+<p><strong>父元素要有定位</strong></p>
+<ul>
+<li>元素将依据最近的已经定位（绝对、固定或相对定位）的父元素（祖先）进行定位。</li>
+</ul>
+</li>
+</ol>
+<img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141623.png" width="600" />
+<ul>
+<li>
+<p><strong>绝对定位的特点总结</strong>：（务必记住）</p>
+<p>1.如果<strong>没有祖先元素</strong>或者<strong>祖先元素没有定位</strong>，则以浏览器为基准定位（Document 文档）。</p>
+<p>2.如果祖先元素有定位（相对、绝对、固定定位），则以最近一级的有定位祖先元素为参考点移动位置。</p>
+<p>3.绝对定位<strong>不再占有原先的位置</strong>。所以绝对定位是脱离标准流的。（脱标）</p>
+</li>
+</ul>
+<h5 id="1332-定位口诀-子绝父相">1.3.3.2 定位口诀 —— 子绝父相</h5>
+<p>弄清楚这个口诀，就明白了绝对定位和相对定位的使用场景。</p>
+<p>这个**“子绝父相”<strong>太重要了，是我们学习定位的</strong>口诀**，是定位中最常用的一种方式这句话的意思是：<strong>子级是绝对定位的话，父级要用相对定位。</strong></p>
+<p>因为绝对定位的盒子是拼爹的，所以要和父级搭配一起来使用。</p>
+<p>①子级绝对定位，不会占有位置，可以放到父盒子里面的任何一个地方，不会影响其他的兄弟盒子。</p>
+<p>②父盒子需要加定位限制子盒子在父盒子内显示。</p>
+<p>③父盒子布局时，需要占有位置，因此父亲只能是相对定位。</p>
+<p>这就是子绝父相的由来，所以<strong>相对定位经常用来作为绝对定位的父级</strong>。</p>
+<p>总结： <strong>因为父级需要占有位置，因此是相对定位， 子盒子不需要占有位置，则是绝对定位</strong></p>
+<p>当然，子绝父相不是永远不变的，如果父元素不需要占有位置，<strong>子绝父绝</strong>也会遇到。</p>
+<p><strong>疑问</strong>：为什么在布局时，<strong>子级元素</strong>使用<strong>绝对定位</strong>时，<strong>父级元素</strong>就要用<strong>相对定位</strong>呢？</p>
+<p>观察下图，思考一下在布局时，<strong>左右两个方向的箭头图片</strong>以及<strong>父级盒子</strong>的定位方式。</p>
+<figure data-type="image" tabindex="2"><img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141624.png" alt="子绝父相截图" loading="lazy"></figure>
+<img src='https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141625.png'>
+<p><strong>分析</strong>：</p>
+<ol>
+<li><strong>方向箭头</strong>叠加在其他图片上方，应该使用<strong>绝对定位</strong>，因为<strong>绝对定位完全脱标</strong>，完全不占位置。</li>
+<li><strong>父级盒子</strong>应该使用<strong>相对定位</strong>，因为<strong>相对定位不脱标</strong>，后续盒子仍然以标准流的方式对待它。
+<ul>
+<li>如果父级盒子也使用<strong>绝对定位</strong>，会完全脱标，那么下方的<strong>广告盒子</strong>会上移，这显然不是我们想要的。</li>
+</ul>
+</li>
+</ol>
+<p><strong>结论</strong>：<strong>父级要占有位置，子级要任意摆放</strong>，这就是<strong>子绝父相</strong>的由来。</p>
+<h4 id="134-固定定位fixed-重要">1.3.4 固定定位(fixed) - 重要</h4>
+<ul>
+<li>
+<p><strong>固定定位</strong>是元素<strong>固定于浏览器可视区的位置</strong>。（认死理型）   主要使用场景： 可以在浏览器页面滚动时元素的位置不会改变。</p>
+</li>
+<li>
+<p>语法：</p>
+<pre><code> 选择器 { 
+ 	position: fixed; 
+ }
+</code></pre>
+</li>
+<li>
+<p>固定定位的特点：（务必记住）：</p>
+<p>1.以浏览器的可视窗口为参照点移动元素。</p>
+<ul>
+<li>跟父元素没有任何关系</li>
+<li>不随滚动条滚动。</li>
+</ul>
+<p>2.固定定位<strong>不在占有原先的位置</strong>。</p>
+</li>
+<li>
+<p>固定定位也是<strong>脱标</strong>的，其实<strong>固定定位也可以看做是一种特殊的绝对定位</strong>。（认死理型）</p>
+<ul>
+<li><strong>完全脱标</strong>—— 完全不占位置；</li>
+<li>只认<strong>浏览器的可视窗口</strong> —— <code>浏览器可视窗口 + 边偏移属性</code> 来设置元素的位置；
+<ul>
+<li>跟父元素没有任何关系；单独使用的</li>
+<li>不随滚动条滚动。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>固定定位举例：</p>
+</blockquote>
+<figure data-type="image" tabindex="3"><img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141626.png" alt="固定定位案例" loading="lazy"></figure>
+<p><strong>提示</strong>：IE 6 等低版本浏览器不支持固定定位。</p>
+<h4 id="135-粘性定位sticky-了解">1.3.5 粘性定位(sticky) - 了解</h4>
+<ul>
+<li>
+<p><strong>粘性定位</strong>可以被认为是相对定位和固定定位的混合。 Sticky  粘性的</p>
+</li>
+<li>
+<p>语法：</p>
+<pre><code> 选择器 { 
+     position: sticky; 
+     top: 10px; 
+ }
+
+</code></pre>
+</li>
+<li>
+<p>粘性定位的特点：</p>
+<p>1.以浏览器的可视窗口为参照点移动元素（固定定位特点）</p>
+<p>2.粘性定位占有原先的位置（相对定位特点）</p>
+<p>3.必须添加 top 、left、right、bottom <strong>其中一个</strong>才有效</p>
+<p>跟页面滚动搭配使用。 兼容性较差，IE 不支持。</p>
+</li>
+</ul>
+<h4 id="136-定位总结">1.3.6 定位总结</h4>
+<table>
+<thead>
+<tr>
+<th><strong>定位模式</strong></th>
+<th><strong>是否脱标</strong></th>
+<th><strong>移动位置</strong></th>
+<th><strong>是否常用</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>static   静态定位</td>
+<td>否</td>
+<td>不能使用边偏移</td>
+<td>很少</td>
+</tr>
+<tr>
+<td><strong>relative 相对定位</strong></td>
+<td><strong>否 (占有位置)</strong></td>
+<td><strong>相对于自身位置移动</strong></td>
+<td><strong>基本单独使用</strong></td>
+</tr>
+<tr>
+<td><strong>absolute绝对定位</strong></td>
+<td><strong>是（不占有位置）</strong></td>
+<td><strong>带有定位的父级</strong></td>
+<td><strong>要和定位父级元素搭配使用</strong></td>
+</tr>
+<tr>
+<td><strong>fixed 固定定位</strong></td>
+<td><strong>是（不占有位置）</strong></td>
+<td><strong>浏览器可视区</strong></td>
+<td><strong>单独使用，不需要父级</strong></td>
+</tr>
+<tr>
+<td>sticky 粘性定位</td>
+<td>否   (占有位置)</td>
+<td>浏览器可视区</td>
+<td>当前阶段少</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>一定记住 相对定位、固定定位、绝对定位 两个大的特点： 1. 是否占有位置（脱标否） 2. 以谁为基准点移动位置。</p>
+</li>
+<li>
+<p>学习定位重点学会子绝父相。</p>
+</li>
+<li>
+<p>注意：</p>
+</li>
+</ul>
+<ol>
+<li><strong>边偏移</strong>需要和<strong>定位模式</strong>联合使用，<strong>单独使用无效</strong>；</li>
+<li><code>top</code> 和 <code>bottom</code> 不要同时使用；</li>
+<li><code>left</code> 和 <code>right</code> 不要同时使用。</li>
+</ol>
+<h2 id="2-综合案例学成在线-hot-模块添加">2. 综合案例：学成在线-hot  模块添加</h2>
+<h3 id="21-案例截图"><strong>2.1 案例截图</strong>：</h3>
+<figure data-type="image" tabindex="4"><img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141627.png" alt="1571385860679" loading="lazy"></figure>
+<h3 id="22-案例分析">2.2 案例分析</h3>
+<ol>
+<li>一个大的 <code>li</code> 中包含 一个课程图片，课程介绍文字信息，还有hot的小图标；</li>
+<li>hot图片<strong>重叠</strong>在课程图片上面—— 脱标，不占位置，需要使用<strong>绝对定位</strong>；</li>
+<li>hot图片<strong>重叠</strong>在<strong>li的右上方 —— 需要</strong>使用边偏移确定准确位置。</li>
+</ol>
+<h3 id="23-案例小结">2.3 案例小结</h3>
+<ol>
+<li><strong>子绝父相</strong> —— <strong>子元素</strong>使用<strong>绝对定位</strong>，<strong>父元素</strong>使用<strong>相对定位</strong>；</li>
+<li><strong>与浮动的对比</strong>：
+<ul>
+<li><strong>绝对定位</strong>：脱标，<strong>利用边偏移指定准确位置</strong>；</li>
+<li><strong>浮动</strong>：脱标，不能指定准确位置，<strong>让多个块级元素在一行显示</strong>。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>课堂练习：模拟老师的随堂案例完成<strong>哈根达斯</strong>案例（5 分钟）。</p>
+</blockquote>
+<p>结构修改：</p>
+<pre><code class="language-html">&lt;!-- 修改.box-bd里面的li标签内容，添加一个hot图标 --&gt;
+
+&lt;li&gt;
+	 &lt;!-- 添加hot小图片 --&gt;
+    &lt;em&gt;
+        &lt;img src=&quot;images/hot.png&quot; alt=&quot;&quot;&gt;
+    &lt;/em&gt;
+    &lt;img src=&quot;images/pic.png&quot; alt=&quot;&quot;&gt;
+    &lt;h4&gt;
+        Think PHP 5.0 博客系统实战项目演练
+    &lt;/h4&gt;
+    &lt;div class=&quot;info&quot;&gt;
+        &lt;span&gt;高级&lt;/span&gt; • 1125人在学习
+    &lt;/div&gt;
+&lt;/li&gt;
+</code></pre>
+<p>样式修改：</p>
+<pre><code class="language-css">.box-bd ul li {
+    /* 子绝父相 */
+    /* 父元素相对定位 */
+    position: relative;
+    float: left;
+    width: 228px;
+    height: 270px;
+    background-color: #fff;
+    margin-right: 15px;
+    margin-bottom: 15px;
+   
+}
+.box-bd ul li &gt; img {
+    width: 100%;
+}
+.box-bd ul li h4 {
+    margin: 20px 20px 20px 25px;
+    font-size: 14px;
+    color: #050505;
+    font-weight: 400;
+}
+.box-bd ul li em {
+     /* 子元素绝对定位 */
+    position: absolute;
+    top: 4px;
+    right: -4px;
+}
+</code></pre>
+<h2 id="3-定位position的应用">3. 定位(position)的应用</h2>
+<h3 id="31-固定定位小技巧-固定在版心左侧位置">3.1  固定定位小技巧： 固定在版心左侧位置。</h3>
+<p>小算法：</p>
+<p>1.让固定定位的盒子 left: 50%.  走到浏览器可视区（也可以看做版心） 的一半位置。</p>
+<p>2.让固定定位的盒子 margin-left: 版心宽度的一半距离。  多走 版心宽度的一半位置</p>
+<p>就可以让固定定位的盒子<strong>贴着版心右侧对齐</strong>了。</p>
+<img src='https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141628.png' width='350'>
+<img src='https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141629.png' width='300'>
+<p>案例效果：</p>
+<figure data-type="image" tabindex="5"><img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141630.png" alt="1571389241926" loading="lazy"></figure>
+<pre><code class="language-html">&lt;style&gt;
+        .w {
+            width: 800px;
+            height: 1400px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+        .fixed {
+            position: fixed;
+            /* 1. 走浏览器宽度的一半 */
+            left: 50%;
+            /* 2. 利用margin 走版心盒子宽度的一半距离 */
+            margin-left: 405px;
+            width: 50px;
+            height: 150px;
+            background-color: skyblue;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;fixed&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;w&quot;&gt;版心盒子 800像素&lt;/div&gt;
+  
+&lt;/body&gt;
+</code></pre>
+<h3 id="32-堆叠顺序z-index">3.2 堆叠顺序（z-index）</h3>
+<ul>
+<li>
+<p>在使用<strong>定位</strong>布局时，可能会<strong>出现盒子重叠的情况</strong>。此时，可以使用 <strong>z-index</strong> 来控制盒子的前后次序 (z轴)</p>
+</li>
+<li>
+<p>语法：</p>
+<pre><code>选择器 { 
+	z-index: 1; 
+}
+</code></pre>
+</li>
+<li>
+<p><code>z-index</code> 的特性如下：</p>
+<ol>
+<li><strong>属性值</strong>：<strong>正整数</strong>、<strong>负整数</strong>或 <strong>0</strong>，默认值是 0，数值越大，盒子越靠上；</li>
+<li>如果<strong>属性值相同</strong>，则按照书写顺序，<strong>后来居上</strong>；</li>
+<li>数字后面<strong>不能加单位</strong>。</li>
+</ol>
+<p><strong>注意</strong>：<code>z-index</code> 只能应用于<strong>相对定位</strong>、<strong>绝对定位</strong>和<strong>固定定位</strong>的元素，其他<strong>标准流</strong>、<strong>浮动</strong>和<strong>静态定位</strong>无效。</p>
+</li>
+<li>
+<p>应用 <code>z-index</code> 层叠等级属性可以<strong>调整盒子的堆叠顺序</strong>。如下图所示：</p>
+</li>
+</ul>
+<figure data-type="image" tabindex="6"><img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141631.png" alt="zindex示意图" loading="lazy"></figure>
+<blockquote>
+<p>案例演示：堆叠顺序。</p>
+</blockquote>
+<h2 id="4-定位position的拓展">4. 定位(position)的拓展</h2>
+<h3 id="41-绝对定位的盒子居中">4.1 绝对定位的盒子居中</h3>
+<blockquote>
+<p><strong>注意</strong>：加了<strong>绝对定位/固定定位的盒子</strong>不能通过设置 <code>margin: auto</code> 设置<strong>水平居中</strong>。</p>
+<p>但是可以通过以下计算方法实现水平和垂直居中，可以按照下图的方法：</p>
+</blockquote>
+<figure data-type="image" tabindex="7"><img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141632.png" alt="绝对定位水平居中" loading="lazy"></figure>
+<ol>
+<li><code>left: 50%;</code>：让<strong>盒子的左侧</strong>移动到<strong>父级元素的水平中心位置</strong>；</li>
+<li><code>margin-left: -100px;</code>：让盒子<strong>向左</strong>移动<strong>自身宽度的一半</strong>。</li>
+</ol>
+<p><strong>盒子居中定位示意图</strong></p>
+<figure data-type="image" tabindex="8"><img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141633.png" alt="绝对定位居中示意图" loading="lazy"></figure>
+<h3 id="42-定位特殊特性">4.2 定位特殊特性</h3>
+<p>绝对定位和固定定位也和浮动类似。</p>
+<p>1.行内元素添加绝对或者固定定位，可以直接设置高度和宽度。</p>
+<p>2.块级元素添加绝对或者固定定位，如果不给宽度或者高度，默认大小是内容的大小。</p>
+<p>前面我们讲过， display 是 显示模式， 可以改变显示模式有以下方式:</p>
+<ul>
+<li>可以用inline-block  转换为行内块</li>
+<li>可以用浮动 float 默认转换为行内块（类似，并不完全一样，因为浮动是脱标的）</li>
+<li>绝对定位和固定定位也和浮动类似， 默认转换的特性 转换为行内块。</li>
+</ul>
+<p>所以说， 一个行内的盒子，如果加了<strong>浮动</strong>、<strong>固定定位</strong>和<strong>绝对定位</strong>，不用转换，就可以给这个盒子直接设置宽度和高度等。</p>
+<h3 id="43-脱标的盒子不会触发外边距塌陷">4.3 脱标的盒子不会触发外边距塌陷</h3>
+<p>浮动元素、**绝对定位(固定定位）**元素的都不会触发外边距合并的问题。 （我们以前是用padding border overflow解决的）</p>
+<p>也就是说，我们给盒子改为了浮动或者定位，就不会有垂直<strong>外边距合并的问题</strong>了。</p>
+<h3 id="44-绝对定位固定定位会完全压住盒子">4.4 绝对定位（固定定位）会完全压住盒子</h3>
+<p>浮动元素不同，只会压住它下面标准流的盒子，但是不会压住下面标准流盒子里面的文字（图片）</p>
+<p>但是绝对定位（固定定位） 会压住下面标准流所有的内容。</p>
+<p>浮动之所以不会压住文字，因为浮动产生的目的最初是为了做文字环绕效果的。 文字会围绕浮动元素</p>
+<img src='https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141634.png'>
+<h2 id="5-综合案例-淘宝轮播图重点">5. 综合案例 - 淘宝轮播图(重点)</h2>
+<h3 id="51-效果图">5.1 效果图</h3>
+<img src='https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141635.png' width='600'>
+<h3 id="52-布局分析">5.2 布局分析</h3>
+<figure data-type="image" tabindex="9"><img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141636.png" alt="1571397019689" loading="lazy"></figure>
+<h3 id="53-步骤">5.3 步骤</h3>
+<ol>
+<li>
+<p>大盒子我们类名为：  tb-promo      淘宝广告</p>
+</li>
+<li>
+<p>里面先放一张图片。</p>
+</li>
+<li>
+<p>左右两个按钮 用链接就好了。   左箭头 prev    右箭头  next</p>
+<p>​	左按钮样式（border-radius：左上，右上，右下，左下），</p>
+<p>​	右按钮定位，提取左右按钮共同的样式代码（并集选择器）</p>
+</li>
+<li>
+<p>底侧小圆点ul 继续做。 类名为 promo-nav</p>
+<p>​	中间长方形椭圆 ul的定位（水平居中，离底部15px）</p>
+<p>​	长方形需要五个小圆点，ul无序列表，li浮动，椭圆中小圆点的样式</p>
+</li>
+</ol>
+<h3 id="54-知识点圆角矩形设置4个角">5.4 知识点：圆角矩形设置4个角</h3>
+<p>圆角矩形可以为4个角分别设置圆度， 但是是有顺序的</p>
+<pre><code>border-top-left-radius:20px;
+border-top-right-radius:20px;
+border-bottom-right-radius:20px;
+border-bottom-left-radius:20px;
+</code></pre>
+<ul>
+<li>
+<p>如果4个角，数值相同</p>
+<pre><code class="language-css">border-radius: 15px;
+</code></pre>
+</li>
+<li>
+<p>里面数值不同，我们也可以按照简写的形式，具体格式如下:</p>
+</li>
+</ul>
+<pre><code class="language-css">border-radius: 左上角 右上角  右下角  左下角;
+</code></pre>
+<p>还是遵循的顺时针。</p>
+<h3 id="55-代码参考">5.5 代码参考</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;淘宝轮播图做法&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+
+        .tb-promo {
+            position: relative;
+            width: 520px;
+            height: 280px;
+            background-color: pink;
+            margin: 100px auto;
+        }
+
+        .tb-promo img {
+            width: 520px;
+            height: 280px;
+        }
+
+        /* 并集选择器可以集体声明相同的样式 */
+        .prev,
+        .next {
+            position: absolute;
+            /* 绝对定位的盒子垂直居中 */
+            top: 50%;
+            margin-top: -15px;
+            /* 加了绝对定位的盒子可以直接设置高度和宽度 */
+            width: 20px;
+            height: 30px;
+            background: rgba(0, 0, 0, .3);
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .prev {
+            left: 0;
+            /* border-radius: 15px; */
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .next {
+            /* 如果一个盒子既有left属性也有right属性，则默认会执行 left属性 同理  top  bottom  会执行 top */
+            right: 0;
+            /* border-radius: 15px; */
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+        .promo-nav {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            margin-left: -35px;
+            width: 70px;
+            height: 13px;
+            /* background-color: pink; */
+            background: rgba(255,255,255, .3);
+            border-radius: 7px;
+        }
+        .promo-nav li {
+            float: left;
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin: 3px;
+        }
+        /* 不要忘记选择器权重的问题 */
+       .promo-nav .selected {
+            background-color: #ff5000;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;tb-promo&quot;&gt;
+        &lt;img src=&quot;images/tb.jpg&quot; alt=&quot;&quot;&gt;
+        &lt;!-- 左侧按钮箭头 --&gt;
+        &lt;a href=&quot;#&quot; class=&quot;prev&quot;&gt; &amp;lt; &lt;/a&gt;
+        &lt;!-- 右侧按钮箭头 --&gt;
+        &lt;a href=&quot;#&quot; class=&quot;next&quot;&gt; &amp;gt; &lt;/a&gt;
+        &lt;!-- 小圆点 --&gt;
+        &lt;ul class=&quot;promo-nav&quot;&gt;
+            &lt;li class=&quot;selected&quot;&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<h2 id="6-网页布局总结">6. 网页布局总结</h2>
+<p>通过盒子模型，清楚知道大部分html标签是一个盒子。</p>
+<p>通过CSS浮动、定位 可以让每个盒子排列成为网页。</p>
+<p>一个完整的网页，是标准流、浮动、定位一起完成布局的，每个都有自己的专门用法。</p>
+<h3 id="61-标准流">6.1 标准流</h3>
+<p>可以让盒子上下排列或者左右排列，<strong>垂直的块级盒子显示就用标准流布局</strong>。</p>
+<h3 id="62-浮动">6.2 浮动</h3>
+<p>可以让多个块级元素一行显示或者左右对齐盒子，<strong>多个块级盒子水平显示就用浮动布局</strong></p>
+<h3 id="63-定位">6.3 定位</h3>
+<p>定位最大的特点是有层叠的概念，就是可以让多个盒子前后叠压来显示。<strong>如果元素自由在某个盒子内移动就用定位布局。</strong></p>
+<h2 id="7-元素的显示与隐藏">7. 元素的显示与隐藏</h2>
+<ul>
+<li>
+<p>目的（本质）</p>
+<p>​	让一个元素在页面中消失或者显示出来</p>
+</li>
+<li>
+<p>场景</p>
+<p>​	类似网站广告，当我们点击关闭就不见了，但是我们重新刷新页面，会重新出现！</p>
+</li>
+</ul>
+<h3 id="71-display-显示重点">7.1 display 显示（重点）</h3>
+<ul>
+<li>
+<p>display 设置或检索对象是否及如何显示。</p>
+<pre><code>display: none 隐藏对象
+
+display：block 除了转换为块级元素之外，同时还有显示元素的意思。
+</code></pre>
+</li>
+<li>
+<p>特点： display 隐藏元素后，<strong>不再占</strong>有原来的位置。</p>
+</li>
+<li>
+<p>后面应用及其广泛，搭配 JS 可以做很多的网页特效。实际开发场景：</p>
+<blockquote>
+<p>配合后面js做特效，比如下拉菜单，原先没有，鼠标经过，显示下拉菜单， 应用极为广泛</p>
+</blockquote>
+</li>
+</ul>
+<img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141637.png">
+<h3 id="72-visibility-可见性-了解">7.2 visibility 可见性 （了解）</h3>
+<ul>
+<li>
+<p>visibility 属性用于指定一个元素应可见还是隐藏。</p>
+<pre><code>visibility：visible ; 　元素可视
+
+visibility：hidden; 　  元素隐藏
+</code></pre>
+</li>
+<li>
+<p>特点：<strong>visibility 隐藏元素后，继续占有原来的位置</strong>。（停职留薪）</p>
+</li>
+<li>
+<p>如果隐藏元素想要原来位置， 就用 visibility：hidden</p>
+</li>
+<li>
+<p>如果隐藏元素不想要原来位置， 就用 display：none  (用处更多 重点）</p>
+</li>
+</ul>
+<img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141638.png">
+<h3 id="73-overflow-溢出重点">7.3 overflow 溢出（重点）</h3>
+<ul>
+<li>overflow 属性指定了如果内容溢出一个元素的框（超过其指定高度及宽度） 时，会发生什么。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>visible</strong></td>
+<td>不剪切内容也不添加滚动条</td>
+</tr>
+<tr>
+<td><strong>hidden</strong></td>
+<td>不显示超过对象尺寸的内容，超出的部分隐藏掉</td>
+</tr>
+<tr>
+<td><strong>scroll</strong></td>
+<td>不管超出内容否，总是显示滚动条</td>
+</tr>
+<tr>
+<td><strong>auto</strong></td>
+<td>超出自动显示滚动条，不超出不显示滚动条</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>一般情况下，我们都不想让溢出的内容显示出来，因为溢出的部分会影响布局。</li>
+<li>但是如果有定位的盒子， 请慎用overflow:hidden  因为它会隐藏多余的部分。</li>
+</ul>
+<img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141639.png">
+<ul>
+<li>实际开发场景：</li>
+</ul>
+<ol>
+<li>清除浮动</li>
+<li>隐藏超出内容，隐藏掉,  不允许内容超过父盒子。</li>
+</ol>
+<h3 id="74-显示与隐藏总结">7.4 显示与隐藏总结</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>区别</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>display 显示     （重点）</strong></td>
+<td>隐藏对象，不保留位置</td>
+<td>配合后面js做特效，比如下拉菜单，原先没有，鼠标经过，显示下拉菜单， 应用极为广泛</td>
+</tr>
+<tr>
+<td><strong>visibility 可见性 （了解）</strong></td>
+<td>隐藏对象，保留位置</td>
+<td>使用较少</td>
+</tr>
+<tr>
+<td><strong>overflow 溢出（重点）</strong></td>
+<td>只是隐藏超出大小的部分</td>
+<td>1. 可以清除浮动  2. 保证盒子里面的内容不会超出该盒子范围</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-综合案例土豆网鼠标经过显示遮罩">8 综合案例：土豆网鼠标经过显示遮罩</h2>
+<h3 id="81-效果图">8.1 效果图</h3>
+<img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210118141640.png">
+<h3 id="82-案例目标">8.2 案例目标</h3>
+<p>1.练习元素的显示与隐藏</p>
+<p>2.练习元素的定位</p>
+<h3 id="83-核心原理">8.3 核心原理</h3>
+<p>原先半透明的黑色遮罩看不见， 鼠标经过 大盒子，就显示出来。</p>
+<p>遮罩的盒子不占有位置， 就需要用绝对定位 和 display  配合使用。</p>
+<h3 id="84-代码参考">8.4 代码参考</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;仿土豆网显示隐藏遮罩案例&lt;/title&gt;
+    &lt;style&gt;
+        .tudou {
+            position: relative;
+            width: 444px;
+            height: 320px;
+            background-color: pink;
+            margin: 30px auto;
+        }
+
+        .tudou img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .mask {
+            /* 隐藏遮罩层 */
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .4) url(images/arr.png) no-repeat center;
+        }
+
+        /* 当我们鼠标经过了 土豆这个盒子，就让里面遮罩层显示出来 */
+        .tudou:hover .mask {
+            /* 而是显示元素 */
+            display: block;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;tudou&quot;&gt;
+        &lt;div class=&quot;mask&quot;&gt;&lt;/div&gt;
+        &lt;img src=&quot;images/tudou.jpg&quot; alt=&quot;&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;tudou&quot;&gt;
+        &lt;div class=&quot;mask&quot;&gt;&lt;/div&gt;
+        &lt;img src=&quot;images/tudou.jpg&quot; alt=&quot;&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;tudou&quot;&gt;
+        &lt;div class=&quot;mask&quot;&gt;&lt;/div&gt;
+        &lt;img src=&quot;images/tudou.jpg&quot; alt=&quot;&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;tudou&quot;&gt;
+        &lt;div class=&quot;mask&quot;&gt;&lt;/div&gt;
+        &lt;img src=&quot;images/tudou.jpg&quot; alt=&quot;&quot;&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+
+                                                                                    
+                                </div>
+                                <div class="wow bounceInDown vt-post-tags">
+                                    
+                                        <a href="https://blog.manchan.top/tag/css/" rel="tag">
+                                            CSS
+                                        </a>
+                                        
+                                        <a href="https://blog.manchan.top/tag/qian-duan/" rel="tag">
+                                            前端
+                                        </a>
+                                        
+                                </div>
+                                <nav class="navigation3 post-navigation3" role="navigation">
+                                    <div class="nav-links3">
+                                        
+                                            <div class="wow bounceInLeft nav-previous3"><a
+                                                    href="https://blog.manchan.top/post/introduction-to-front-end-development-CSS--P7/" rel="prev">
+                                                    前端开发入门教程-CSS（七）
+                                                </a></div>
+                                            
+                                                
+                                                    <div class="wow bounceInRight nav-next3"><a
+                                                            href="https://blog.manchan.top/post/introduction-to-front-end-development-CSS--P5/" rel="next">
+                                                            前端开发入门教程-CSS（五）
+                                                        </a></div>
+                                                    
+                                    </div>
+                                </nav>
+                                <div class="wow rollIn author-info"
+                                    style="visibility: visible; animation-name: rollIn;">
+                                    <div class="author-avatar pull-left"><img
+                                            src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea/images/avatar.png">
+                                    </div>
+                                    
+                                        <div class="author-description">
+                                            <div class="author-title">
+                                                <div class="author-link" rel="author">
+                                                    Manchan
+                                                </div>
+                                            </div>
+                                            
+                                                
+                                                    <p class="author-bio">
+                                                        GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0
+                                                            国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/"
+                                                                target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>)
+                                                            协议<br>本文永久链接是：<a href="https://blog.manchan.top/post/introduction-to-front-end-development-CSS--P6/">
+                                                                https://blog.manchan.top/post/introduction-to-front-end-development-CSS--P6/
+                                                            </a>
+                                                    </p>
+                                        </div>
+                                </div>
+                                
+                            </div>
+                        </article>
+                        <div id="marlin_lite_about_widget-2" class="wow bounceInUp widget marlin_lite_about_widget"
+                            data-wow-delay="0.1s">
+                            
+                                                            <script src='https://blog.manchan.top/media/scripts/Valine.man.HCLonely.js'></script>
+
+<div class="comment"></div>
+<script>
+  new Valine({
+    el: '.comment',
+    lang: 'zh-cn',
+    visitor: true, // 阅读量统计
+    avatar: 'mp',   // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
+    recordIP: true, // 记录IP
+    requiredFields: ['nick', 'mail'], //必需项
+    master: ["29749f2d630d0de14b8e78cf02b5d048"],
+    emojiCDN: "https://gcore.jsdelivr.net/gh/HCLonely/valine-face@1.0.1/",
+    serverURLs: "https://leancloudapi.manchan.ml",
+    emojiMaps: { "tv_白眼": "bilibili_tv/baiyan.png", tv_doge: "bilibili_tv/doge.png", "tv_坏笑": "bilibili_tv/huaixiao.png", "tv_难过": "bilibili_tv/nanguo.png", "tv_生气": "bilibili_tv/shengqi.png", "tv_委屈": "bilibili_tv/weiqu.png", "tv_斜眼笑": "bilibili_tv/xieyanxiao.png", "tv_呆": "bilibili_tv/fadai.png", "tv_发怒": "bilibili_tv/fanu.png", "tv_惊吓": "bilibili_tv/jingxia.png", "tv_呕吐": "bilibili_tv/outu.png", "tv_思考": "bilibili_tv/sikao.png", "tv_微笑": "bilibili_tv/weixiao.png", "tv_疑问": "bilibili_tv/yiwen.png", "tv_大哭": "bilibili_tv/daku.png", "tv_鼓掌": "bilibili_tv/guzhang.png", "tv_抠鼻": "bilibili_tv/koubi.png", "tv_亲亲": "bilibili_tv/qinqin.png", "tv_调皮": "bilibili_tv/tiaopi.png", "tv_笑哭": "bilibili_tv/xiaoku.png", "tv_晕": "bilibili_tv/yun.png", "tv_点赞": "bilibili_tv/dianzan.png", "tv_害羞": "bilibili_tv/haixiu.png", "tv_睡着": "bilibili_tv/shuizhao.png", "tv_色": "bilibili_tv/se.png", "tv_吐血": "bilibili_tv/tuxue.png", "tv_无奈": "bilibili_tv/wunai.png", "tv_再见": "bilibili_tv/zaijian.png", "tv_流汗": "bilibili_tv/liuhan.png", "tv_偷笑": "bilibili_tv/touxiao.png", "tv_抓狂": "bilibili_tv/zhuakuang.png", "tv_黑人问号": "bilibili_tv/heirenwenhao.png", "tv_困": "bilibili_tv/kun2.png", "tv_打脸": "bilibili_tv/dalian.png", "tv_闭嘴": "bilibili_tv/bizui.png", "tv_鄙视": "bilibili_tv/bishi.png", "tv_腼腆": "bilibili_tv/miantian.png", "tv_馋": "bilibili_tv/chan.png", "tv_可爱": "bilibili_tv/keai.png", "tv_发财": "bilibili_tv/facai.png", "tv_生病": "bilibili_tv/shengbing.png", "tv_流鼻血": "bilibili_tv/liubixue.png", "tv_尴尬": "bilibili_tv/ganga.png", "tv_大佬": "bilibili_tv/dalao.png", "tv_流泪": "bilibili_tv/liulei.png", "tv_冷漠": "bilibili_tv/lengmo.png", "tv_皱眉": "bilibili_tv/zhoumei.png", "tv_鬼脸": "bilibili_tv/guilian.png", "tv_调侃": "bilibili_tv/tiaokan.png", "tv_目瞪口呆": "bilibili_tv/mudengkoudai.png", bili_2020: "bilibili_face/dc709fac0d361370bcf0d36d32adb97df7c95824.png", "bili_加油武汉": "bilibili_face/eb966aaa5b690d3f9308a9f936f5b5a72a7f956b.png", "bili_口罩": "bilibili_face/3ad2f66b151496d2a5fb0a8ea75f32265d778dd3.png", "bili_鸡腿": "bilibili_face/c7860392815d345fa69c4f00ef18d67dccfbd574.png", "bili_微笑": "bilibili_face/685612eadc33f6bc233776c6241813385844f182.png", "bili_笑": "bilibili_face/81edf17314cea3b48674312b4364df44d5c01f17.png", "bili_龇牙": "bilibili_face/b5a5898491944a4268360f2e7a84623149672eb6.png", bili_OK: "bilibili_face/4683fd9ffc925fa6423110979d7dcac5eda297f4.png", "bili_星星眼": "bilibili_face/63c9d1a31c0da745b61cdb35e0ecb28635675db2.png", "bili_哦呼": "bilibili_face/362bded07ea5434886271d23fa25f5d85d8af06c.png", "bili_嫌弃": "bilibili_face/de4c0783aaa60ec03de0a2b90858927bfad7154b.png", "bili_喜欢": "bilibili_face/8a10a4d73a89f665feff3d46ca56e83dc68f9eb8.png", "bili_酸了": "bilibili_face/92b1c8cbceea3ae0e8e32253ea414783e8ba7806.png", "bili_大哭": "bilibili_face/2caafee2e5db4db72104650d87810cc2c123fc86.png", "bili_害羞": "bilibili_face/9d2ec4e1fbd6cb1b4d12d2bbbdd124ccb83ddfda.png", "bili_无语": "bilibili_face/44667b7d9349957e903b1b62cb91fb9b13720f04.png", "bili_问号": "bilibili_face/b7840db4b1f9f4726b7cb23c0972720c1698d661.png", "bili_调皮": "bilibili_face/8290b7308325e3179d2154327c85640af1528617.png", "bili_喜极而泣": "bilibili_face/485a7e0c01c2d70707daae53bee4a9e2e31ef1ed.png", "bili_奸笑": "bilibili_face/bb84906573472f0a84cebad1e9000eb6164a6f5a.png", "bili_偷笑": "bilibili_face/6c49d226e76c42cd8002abc47b3112bc5a92f66a.png", "bili_大笑": "bilibili_face/ca94ad1c7e6dac895eb5b33b7836b634c614d1c0.png", "bili_阴险": "bilibili_face/ba8d5f8e7d136d59aab52c40fd3b8a43419eb03c.png", "bili_捂脸": "bilibili_face/6921bb43f0c634870b92f4a8ad41dada94a5296d.png", "bili_囧": "bilibili_face/12e41d357a9807cc80ef1e1ed258127fcc791424.png", "bili_呆": "bilibili_face/33ad6000d9f9f168a0976bc60937786f239e5d8c.png", "bili_抠鼻": "bilibili_face/cb89184c97e3f6d50acfd7961c313ce50360d70f.png", "bili_惊喜": "bilibili_face/0afecaf3a3499479af946f29749e1a6c285b6f65.png", "bili_惊讶": "bilibili_face/f8e9a59cad52ae1a19622805696a35f0a0d853f3.png", "bili_笑哭": "bilibili_face/c3043ba94babf824dea03ce500d0e73763bf4f40.png", "bili_妙啊": "bilibili_face/b4cb77159d58614a9b787b91b1cd22a81f383535.png", bili_doge: "bilibili_face/bba7c12aa51fed0199c241465560dfc2714c593e.png", "bili_滑稽": "bilibili_face/d15121545a99ac46774f1f4465b895fe2d1411c3.png", "bili_吃瓜": "bilibili_face/4191ce3c44c2b3df8fd97c33f85d3ab15f4f3c84.png", "bili_打call": "bilibili_face/431432c43da3ee5aab5b0e4f8931953e649e9975.png", "bili_点赞": "bilibili_face/1a67265993913f4c35d15a6028a30724e83e7d35.png", "bili_鼓掌": "bilibili_face/895d1fc616b4b6c830cf96012880818c0e1de00d.png", "bili_冷": "bilibili_face/cb0ebbd0668640f07ebfc0e03f7a18a8cd00b4ed.png", "bili_灵魂出窍": "bilibili_face/43d3db7d97343c01b47e22cfabeca84b4251f35a.png", "bili_尴尬": "bilibili_face/cb321684ed5ce6eacdc2699092ab8fe7679e4fda.png", "bili_傲娇": "bilibili_face/010540d0f61220a0db4922e4a679a1d8eca94f4e.png", "bili_疼": "bilibili_face/905fd9a99ec316e353b9bd4ecd49a5f0a301eabf.png", "bili_委屈": "bilibili_face/d2f26cbdd6c96960320af03f5514c5b524990840.png", "bili_吓": "bilibili_face/9c10c5ebc7bef27ec641b8a1877674e0c65fea5d.png", "bili_生病": "bilibili_face/0f25ce04ae1d7baf98650986454c634f6612cb76.png", "bili_吐": "bilibili_face/06946bfe71ac48a6078a0b662181bb5cad09decc.png", "bili_嘘声": "bilibili_face/e64af664d20716e090f10411496998095f62f844.png", "bili_捂眼": "bilibili_face/c5c6d6982e1e53e478daae554b239f2b227b172b.png", "bili_思考": "bilibili_face/cfa9b7e89e4bfe04bbcd34ccb1b0df37f4fa905c.png", "bili_再见": "bilibili_face/fc510306bae26c9aec7e287cdf201ded27b065b9.png", "bili_翻白眼": "bilibili_face/eba54707c7168925b18f6f8b1f48d532fe08c2b1.png", "bili_哈欠": "bilibili_face/888d877729cbec444ddbd1cf4c9af155a7a06086.png", "bili_奋斗": "bilibili_face/bb2060c15dba7d3fd731c35079d1617f1afe3376.png", "bili_墨镜": "bilibili_face/3a03aebfc06339d86a68c2d893303b46f4b85771.png", "bili_撇嘴": "bilibili_face/531863568e5668c5ac181d395508a0eeb1f0cda4.png", "bili_难过": "bilibili_face/a651db36701610aa70a781fa98c07c9789b11543.png", "bili_抓狂": "bilibili_face/4c87afff88c22439c45b79e9d2035d21d5622eba.png", "bili_生气": "bilibili_face/3195714219c4b582a4fb02033dd1519913d0246d.png", "bili_干杯": "bilibili_face/8da12d5f55a2c7e9778dcc05b40571979fe208e6.png", "bili_爱心": "bilibili_face/ed04066ea7124106d17ffcaf75600700e5442f5c.png", "bili_锦鲤": "bilibili_face/643d6c19c8164ffd89e3e9cdf093cf5d773d979c.png", "bili_胜利": "bilibili_face/b49fa9f4b1e7c3477918153b82c60b114d87347c.png", "bili_加油": "bilibili_face/c7aaeacb21e107292d3bb053e5abde4a4459ed30.png", "bili_保佑": "bilibili_face/fafe8d3de0dc139ebe995491d2dac458a865fb30.png", "bili_抱拳": "bilibili_face/89516218158dbea18ab78e8873060bf95d33bbbe.png", "bili_响指": "bilibili_face/1b5c53cf14336903e1d2ae3527ca380a1256a077.png", "bili_支持": "bilibili_face/3c210366a5585706c09d4c686a9d942b39feeb50.png", "bili_拥抱": "bilibili_face/41780a4254750cdaaccb20735730a36044e98ef3.png", "bili_怪我咯": "bilibili_face/07cc6077f7f7d75b8d2c722dd9d9828a9fb9e46d.png", "bili_跪了": "bilibili_face/f2b3aee7e521de7799d4e3aa379b01be032698ac.png", "bili_黑洞": "bilibili_face/e90ec4c799010f25391179118ccd9f66b3b279ba.png", "bili_老鼠": "bilibili_face/8e6fb491eb1bb0d5862e7ec8ccf9a3da12b6c155.png", "bili_福到了": "bilibili_face/5de5373d354c373cf1617b6b836f3a8d53c5a655.png", hot_AWSL: "bilibili_hot/AWSL.jpg", "hot_三连": "bilibili_hot/三连.jpg", "hot_不愧是你": "bilibili_hot/不愧是你.jpg", "hot_你币有了": "bilibili_hot/你币有了.jpg", "hot_你细品": "bilibili_hot/你细品.jpg", "hot_危": "bilibili_hot/危.jpg", "hot_可以": "bilibili_hot/可以.jpg", "hot_吹爆": "bilibili_hot/吹爆.jpg", "hot_咕咕": "bilibili_hot/咕咕.jpg", "hot_大师球": "bilibili_hot/大师球.jpg", "hot_奥利给": "bilibili_hot/奥利给.jpg", "hot_妙": "bilibili_hot/妙.jpg", "hot_完结撒花": "bilibili_hot/完结撒花.jpg", "hot_害": "bilibili_hot/害.jpg", "hot_张三": "bilibili_hot/张三.png", "hot_我全都要": "bilibili_hot/我全都要.jpg", "hot_我哭了": "bilibili_hot/我哭了.jpg", "hot_我太南了": "bilibili_hot/我太南了.jpg", "hot_我裂开了": "bilibili_hot/我裂开了.png", "hot_我酸了": "bilibili_hot/我酸了.jpg", "hot_打卡": "bilibili_hot/打卡.jpg", "hot_有内味了": "bilibili_hot/有内味了.jpg", "hot_有生之年": "bilibili_hot/有生之年.jpg", "hot_标准结局": "bilibili_hot/标准结局.png", "hot_爱了爱了": "bilibili_hot/爱了爱了.png", "hot_爷关更": "bilibili_hot/爷关更.jpg", "hot_狼火": "bilibili_hot/狼火.jpg", "hot_猛男必看": "bilibili_hot/猛男必看.jpg", "hot_真香": "bilibili_hot/真香.jpg", "hot_知识增加": "bilibili_hot/知识增加.png", "hot_知识盲区": "bilibili_hot/知识盲区.jpg", "hot_神仙UP": "bilibili_hot/神仙UP.jpg", "hot_秀": "bilibili_hot/秀.jpg", "hot_这次一定": "bilibili_hot/这次一定.jpg", "hot_递话筒": "bilibili_hot/递话筒.png", "hot_锤": "bilibili_hot/锤.jpg", "hot_镇站之宝": "bilibili_hot/镇站之宝.jpg", "hot_问号": "bilibili_hot/问号.png", "hot_高产": "bilibili_hot/高产.jpg", "biliTV_发愁": "bilibili_stv/小电视_发愁.png", "biliTV_吃惊": "bilibili_stv/小电视_吃惊.png", "biliTV_哭泣": "bilibili_stv/小电视_哭泣.png", "biliTV_嘟嘴": "bilibili_stv/小电视_嘟嘴.png", "biliTV_困惑": "bilibili_stv/小电视_困惑.png", "biliTV_太太喜欢": "bilibili_stv/小电视_太太喜欢.png", "biliTV_好怒啊": "bilibili_stv/小电视_好怒啊.png", "biliTV_害羞": "bilibili_stv/小电视_害羞.png", "biliTV_差评": "bilibili_stv/小电视_差评.png", "biliTV_思索": "bilibili_stv/小电视_思索.png", "biliTV_我好兴奋": "bilibili_stv/小电视_我好兴奋.png", "biliTV_无语": "bilibili_stv/小电视_无语.png", "biliTV_汗": "bilibili_stv/小电视_汗.png", "biliTV_笑": "bilibili_stv/小电视_笑.png", "biliTV_赞": "bilibili_stv/小电视_赞.png", "2233娘_卖萌": "bilibili_2233/2233娘_卖萌.png", "2233娘_吃惊": "bilibili_2233/2233娘_吃惊.png", "2233娘_吐魂": "bilibili_2233/2233娘_吐魂.png", "2233娘_喝水": "bilibili_2233/2233娘_喝水.png", "2233娘_困惑": "bilibili_2233/2233娘_困惑.png", "2233娘_大哭": "bilibili_2233/2233娘_大哭.png", "2233娘_大笑": "bilibili_2233/2233娘_大笑.png", "2233娘_委屈": "bilibili_2233/2233娘_委屈.png", "2233娘_怒": "bilibili_2233/2233娘_怒.png", "2233娘_无言": "bilibili_2233/2233娘_无言.png", "2233娘_汗": "bilibili_2233/2233娘_汗.png", "2233娘_疑问": "bilibili_2233/2233娘_疑问.png", "2233娘_第一": "bilibili_2233/2233娘_第一.png", "2233娘_耶": "bilibili_2233/2233娘_耶.png", "2233娘_郁闷": "bilibili_2233/2233娘_郁闷.png" },
+    app_id: 'igrIcphbBEikHAPJe1DYzROX-MdYXbMMI',
+    app_key: 'duTdA8NNAXETy7oAFbFXO6Kg',
+    placeholder: '快来评论呀，7:00-23:59发的评论我会立刻收到通知^_^'
+  });
+</script>
+                        </div>
+                    </div>
+                    <div class="tocc col l3 hide-on-med-and-down">
+    <div class="toc-widget">
+        <div class="toc-title"></div>
+        <div id="toc-content">
+        </div>
+    </div>
+</div>
+<script src="https://cdn.staticfile.org/tocbot/4.18.2/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '.entry-summary',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('.entry-summary').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+                </div>
+            </div>
+            	<footer id="colophon" class="site-footer">
+		<div class="container">
+			<div class="copyright"><p>&copy; 2020-2022.Manchan All rights reserved.
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>.</p>
+<a href="https://beian.miit.gov.cn/">鄂ICP备2020015911-1号</a></div>
+		</div>
+	</footer>
+    </div>
+    <script src="https://cdn.staticfile.org/fitvids/1.2.0/jquery.fitvids.min.js"></script>
+<script src='https://blog.manchan.top/media/scripts/marlin-scripts.min.js'></script>
+<script src="https://blog.manchan.top/media/scripts/lately.min.js"></script>
+<script>
+  Lately({
+      'target' : '.lately-a,.lately-b,.lately-c'
+  })
+</script>
+<a id="back_to_top" href="#" class="back_to_top"><span><i class="iconfont icon-xiangshang"></i></span></a>
+        <script data-no-instant>
+            (function ($) {
+                $.extend({
+                    adamsOverload: function () {
+                        $('.navigation:eq(0)').remove();
+                        $("").attr("rel", "external");
+                        $("a[rel='external'],a[rel='external nofollow']").attr("target", "_blank");
+                        $("a.vi").attr("rel", "");
+                        $.viewImage({
+                            'target': 'img',
+                            'exclude': '.vsmile-icons img,.gallery img',
+                            'delay': 300
+                        });
+                        Lately({
+                            'target': '.commentmetadata a,.infos time,.post-list time'
+                        });
+
+                        $('ul.links li a').each(function () {
+                            if ($(this).parent().find('.bg').length == 0) {
+                                $(this).parent().append(
+                                    '<!---<div class="bg" style="background-image:url(https://c3.glgoo.top/s2/favicons?domain=' +
+                                    $(this).attr("href") + ')"></div>--->')
+                            }
+                        });
+                    }
+                });
+            })(jQuery);
+            jQuery.adamsOverload();
+        </script>
+</body>
+
+</html>

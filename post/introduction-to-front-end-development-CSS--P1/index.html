@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端开发入门教程-CSS（一） | Manchan&#39;s Blog | まん酱の记事与随笔 </title>
+    <meta name="description" content="Manchan's Blog是まん酱的个人博客，主要是记事与随笔，内容更偏向于GIS技术学习与分享">
+    <meta name="keywords" content="manchan,blog,GIS,遥感,postgresql,arcgis,qgis,rs,mapgis,markdown,c#,postgis,pgsql,sql,Arcgis Engine,Visual Studio,ENVI,ERDAS,Web,前端,WebGIS">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://blog.manchan.top/styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+    <link href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css" rel="stylesheet" />
+    <link href="https://cdn.staticfile.org/animate.css/3.7.2/animate.min.css" rel="stylesheet" />
+    <link href="https://cdn.staticfile.org/highlight.js/11.4.0/styles/github.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/KaTeX/0.15.2/katex.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/wow/1.1.2/wow.min.js"></script>
+    <script src="https://cdn.staticfile.org/highlight.js/11.4.0/highlight.min.js"></script>
+    <script type='text/javascript' src='https://blog.manchan.top/media/scripts/script.min.js'></script>
+    <link rel="stylesheet" href="https://blog.manchan.top/media/css/day.min.css">
+    
+</head>
+
+<body class="post-template-default single single-post postid-70 single-format-standard">
+    <div id="wrapper">
+        <header id="header" class="site-header" 
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210104011739.jpg
+        )" 
+                >
+                    <div class="site-branding">
+                        <h1 class="site-title"><a href="https://blog.manchan.top" rel="home">
+                                Manchan&#39;s Blog
+                            </a></h1>
+                        <h2 class="site-description">
+                            <b>まん酱の记事与随笔</b>
+                        </h2>
+                    </div>
+                    <nav id="nav-wrapper">
+                        <div class="container">
+                            <div class="nav-toggle">
+                                <div class="bars">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <ul id="" class="dove">
+                                
+                                    <li><a href="/">
+                                            首页
+                                        </a></li>
+                                    
+                                    <li><a href="/archives">
+                                            归档
+                                        </a></li>
+                                    
+                                    <li><a href="/tags">
+                                            标签
+                                        </a></li>
+                                    
+                                    <li><a href="/post/about">
+                                            关于
+                                        </a></li>
+                                    
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="jingge">
+                        
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                    </div>
+</header>
+            <div id="content" class="container">
+                <div class="row">
+                    <div class="col-md-8 site-main">
+                        <article id="post-70"
+                            class="post-70 post type-post status-publish format-standard hentry category-5 tag-10 tag-9 tag-11">
+                            <div class="entry-content">
+                                <h1 class="wow swing entry-title">
+                                    前端开发入门教程-CSS（一）
+                                </h1>
+                                <div class="entry-meta">
+                                    <div class="wow bounce">
+                                        <i class="iconfont icon-rili"> <time class="lately-a"
+                                                datetime="2021-01-08 21:47:04" itemprop="datePublished" pubdate="">
+                                                2021-01-08
+                                            </time></i>
+                                    </div>
+                                    </span>
+                                </div>
+                                <div class="wow slideInLeft entry-summary song">
+                                    <blockquote>
+<p>本文素材来源于黑马程序员<strong>pink老师</strong>的前端<a href="https://www.bilibili.com/video/BV14J4114768?p=61">教学视频</a>。在此基础上有部分改动。</p>
+</blockquote>
+<h2 id="1-css-简介">1. CSS 简介</h2>
+<h3 id="11-html-的局限性">1.1 HTML 的局限性</h3>
+<p>说起 HTML，这其实是个非常单纯的家伙，他只关注内容的语义。比如<code>&lt;h1&gt;</code> 表明这是一个大标题，<code>&lt;p&gt;</code> 表明这是一个段落，<code>&lt;img&gt;</code> 表明这儿有一个图片，<code>&lt;a&gt; </code>表示此处有链接。</p>
+<p>很早的时候，世界上的网站虽然很多，但是他们都有一个共同的特点：<strong>丑</strong>。</p>
+<p>虽然 HTML 可以做简单的样式，但是带来的是无尽的臃肿和繁琐……</p>
+<h3 id="12-css-网页的美容师">1.2 CSS-网页的美容师</h3>
+<p><strong>CSS</strong> 是<strong>层叠样式表 ( Cascading Style Sheets )</strong> 的简称。有时我们也会称之为 CSS 样式表或级联样式表。CSS 是也是一种<strong>标记语言</strong>。<br>
+CSS 主要用于设置 HTML 页面中的文本内容（字体、大小、对齐方式等）、图片的外形（宽高、边框样式、边距等）以及版面的布局和外观显示样式。<br>
+CSS 让我们的网页更加丰富多彩，布局更加灵活自如。简单理解：<strong>CSS 可以美化 HTML , 让 HTML 更漂亮， 让页面布局更简单。</strong></p>
+<p>CSS 最大价值: 由 HTML 专注去做结构呈现，样式交给 CSS，即 <strong>结构 ( HTML ) 与样式( CSS ) 相分离</strong>。</p>
+<h3 id="13-css-语法规范">1.3 CSS 语法规范</h3>
+<p>使用 HTML 时，需要遵从一定的规范，CSS 也是如此。要想熟练地使用 CSS 对网页进行修饰，首先需要了解CSS 样式规则。</p>
+<p>CSS 规则由两个主要的部分构成：选择器以及一条或多条声明。</p>
+<pre><code class="language-css">selector {declaration1; declaration2; ... declarationN }
+</code></pre>
+<p>选择器是用于指定 CSS 样式的 HTML 标签，花括号内是对该对象设置的具体样式。属性和属性值以“键值对”的形式出现</p>
+<pre><code class="language-css">selector {property: value}
+</code></pre>
+<p>属性是对指定的对象设置的样式属性，例如字体大小、文本颜色等</p>
+<pre><code class="language-css">h1 {color:red; font-size:14px;}
+</code></pre>
+<p>属性和属性值之间用英文“:”分开,多个“键值对”之间用英文“;”进行区分</p>
+<figure data-type="image" tabindex="1"><img src="https://www.w3school.com.cn/i/ct_css_selector.gif" alt="CSS 语法" loading="lazy"></figure>
+<p>**提示：**请使用花括号来包围声明。</p>
+<h3 id="14-css-代码风格">1.4 CSS 代码风格</h3>
+<p>CSS建议使用展开格式，更直观。推荐样式选择器，属性名，属性值关键字<strong>全部使用小写字母</strong>，特殊情况除外。属性值前面，冒号后面，保留一个空格。选择器（标签）和花括号中间保留空格。</p>
+<pre><code class="language-css">body {
+  color: #000;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: Georgia, Palatino, serif;
+  }
+</code></pre>
+<h2 id="2-css-基础选择器">2. CSS 基础选择器</h2>
+<h3 id="21-css-选择器的作用">2.1 CSS 选择器的作用</h3>
+<p>选择器(选择符)就是根据不同需求把不同的标签选出来这就是选择器的作用。 简单来说，就是选择标签用的。</p>
+<h3 id="22-选择器分类">2.2 选择器分类</h3>
+<p>选择器分为<strong>基础选择器</strong>和<strong>复合选择器</strong>两个大类。</p>
+<p>基础选择器是由单个选择器组成的，包括：标签选择器、类选择器、id 选择器和通配符选择器。</p>
+<h3 id="23-标签选择器">2.3 标签选择器</h3>
+<p>标签选择器（元素选择器）是指用 HTML 标签名称作为选择器，按标签名称分类，为页面中某一类标签指定统一的 CSS 样式。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-css">标签名{
+	属性1: 属性值1;
+	属性2: 属性值2;
+	属性3: 属性值3;
+	...
+}
+</code></pre>
+<p><strong>作用</strong></p>
+<p>标签选择器可以把某一类标签全部选择出来，比如所有的 <code>&lt;div&gt;</code> 标签和所有的 <code>&lt;span&gt; </code>标签。</p>
+<p><strong>优点</strong></p>
+<p>能快速为页面中同类型的标签统一设置样式。</p>
+<p><strong>缺点</strong></p>
+<p>不能设计差异化样式，只能选择全部的当前标签。</p>
+<h3 id="24-类选择器">2.4 类选择器</h3>
+<p>如果想要差异化选择不同的标签，单独选一个或者某几个标签，可以使用类选择器.</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-css">.类名 {
+	属性1: 属性值1;
+	...
+}
+</code></pre>
+<p>结构需要用class属性来调用 class 类的意思</p>
+<pre><code class="language-html">&lt;div class=‘red’&gt; 变红色 &lt;/div&gt;
+</code></pre>
+<p>如果想要差异化选择不同的标签，单独选一个或者某几个标签，可以使用类选择器。<br>
+类选择器在 HTML 中以 <strong>class 属性</strong>表示，在 CSS 中，类选择器以一个点“.”号显示。</p>
+<p><strong>注意</strong></p>
+<p>①类选择器使用“.”（英文点号）进行标识，后面紧跟类名（自定义，我们自己命名的）。<br>
+②可以理解为给这个标签起了一个名字，来表示。<br>
+③长名称或词组可以使用中横线来为选择器命名。<br>
+④不要使用纯数字、中文等命名，尽量使用英文字母来表示。<br>
+⑤命名要有意义，尽量使别人一眼就知道这个类名的目的。<br>
+⑥命名规范：Web 前端开发规范手册</p>
+<p><strong>记忆口诀：<strong>样式</strong>点</strong>定义，结构<strong>类</strong>调用。一个或多个，开发最常用。</p>
+<p><strong>多类名使用方式</strong></p>
+<pre><code class="language-html">&lt;div class=&quot;red font20&quot;&gt;亚瑟&lt;/div&gt;
+</code></pre>
+<p>(1)在标签class 属性中写 多个类名<br>
+(2)多个类名中间必须用空格分开<br>
+(3)这个标签就可以分别具有这些类名的样式</p>
+<h3 id="25-id-选择器">2.5 id 选择器</h3>
+<p>id 选择器可以为标有特定 id 的 HTML 元素指定特定的样式。<br>
+HTML 元素以 id 属性来设置 id 选择器，CSS 中 id 选择器以“#&quot; 来定义。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-css">#id名 {
+	属性1: 属性值1;
+	...
+}
+</code></pre>
+<p>**注意：**id 属性只能在每个 HTML 文档中出现一次。口诀: 样式#定义,结构id调用, 只能调用一次, 别人切勿使用.</p>
+<p><strong>id 选择器和类选择器的区别</strong><br>
+① 类选择器（class）好比人的名字，一个人可以有多个名字，同时一个名字也可以被多个人使用。<br>
+② id 选择器好比人的身份证号码，全中国是唯一的，不得重复。<br>
+③ id 选择器和类选择器最大的不同在于使用次数上。<br>
+④ 类选择器在修改样式中用的最多，id 选择器一般用于页面唯一性的元素上，经常和 JavaScript 搭配使用。</p>
+<h3 id="26-通配符选择器">2.6 通配符选择器</h3>
+<p>在 CSS 中，通配符选择器使用“*”定义，它表示选取页面中所有元素（标签）。</p>
+<pre><code class="language-css">* {
+	属性1: 属性值1;
+	...
+}
+</code></pre>
+<h3 id="27-基础选择器总结">2.7 基础选择器总结</h3>
+<figure data-type="image" tabindex="2"><img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210108153916.png" alt="img" loading="lazy"></figure>
+<h2 id="3-css-字体属性">3. CSS 字体属性</h2>
+<h3 id="31-字体系列">3.1 字体系列</h3>
+<p>CSS 使用 <strong>font-family</strong> 属性定义文本的字体系列。</p>
+<pre><code class="language-css">p { font-family:&quot;微软雅黑&quot;;}
+div {font-family: Arial,&quot;Microsoft Yahei&quot;, &quot;微软雅黑&quot;;}
+</code></pre>
+<p>font-family 可以把多个字体名称作为一个“回退”系统来保存。如果浏览器不支持第一个字体，则会尝试下一个。也就是说，font-family 属性的值是用于某个元素的字体族名称或/及类族名称的一个优先表。浏览器会使用它可识别的第一个值。</p>
+<blockquote>
+<p>指定的系列名称：具体字体的名称，比如：&quot;times&quot;、&quot;courier&quot;、&quot;arial&quot;。</p>
+<p>通常字体系列名称：比如：&quot;serif&quot;、&quot;sans-serif&quot;、&quot;cursive&quot;、&quot;fantasy&quot;、&quot;monospace&quot;(分别表示“衬线字体族”、“无衬线字体族”、“手写字体族”、“梦幻字体族”、“等宽字体族”)</p>
+<p>serif常用有：Times New Roman,Georgia,宋体(\5b8b\4f53)；</p>
+<p>sans-serif常用有：Arial,Tahoma,Verdana,微软雅黑(\5FAE\8F6F\96C5\9ED1)</p>
+</blockquote>
+<h3 id="32-字体大小">3.2 字体大小</h3>
+<p>CSS 使用 <strong>font-size</strong> 属性定义字体大小。</p>
+<pre><code class="language-css">p {
+	font-size: 20px;
+}
+</code></pre>
+<p>px（像素）大小是我们网页的最常用的单位,谷歌浏览器默认的文字大小为16px。<br>
+不同浏览器可能默认显示的字号大小不一致，我们尽量给一个明确值大小，不要默认大小。<br>
+可以给 body 指定整个页面文字的大小。</p>
+<h3 id="33-字体粗细">3.3 字体粗细</h3>
+<p>CSS 使用 <strong>font-weight</strong> 属性设置文本字体的粗细。</p>
+<pre><code class="language-css">p {
+	font-weight: bold;
+}
+</code></pre>
+<p><strong>可能的值：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">normal</td>
+<td style="text-align:left">默认值。定义标准的字符。</td>
+</tr>
+<tr>
+<td style="text-align:left">bold</td>
+<td style="text-align:left">定义粗体字符。</td>
+</tr>
+<tr>
+<td style="text-align:left">bolder</td>
+<td style="text-align:left">定义更粗的字符。</td>
+</tr>
+<tr>
+<td style="text-align:left">lighter</td>
+<td style="text-align:left">定义更细的字符。</td>
+</tr>
+<tr>
+<td style="text-align:left">100<br/>200<br/>300<br/>400<br/>500<br/>600<br/>700<br/>800<br/>900</td>
+<td style="text-align:left">定义由粗到细的字符。400 等同于 normal，而 700 等同于 bold。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-文字样式">3.4 文字样式</h3>
+<p>CSS 使用 <strong>font-style</strong> 属性设置文本的风格。</p>
+<p><strong>可能的值:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">normal</td>
+<td style="text-align:left">默认值。浏览器显示一个标准的字体样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">italic</td>
+<td style="text-align:left">浏览器会显示一个斜体的字体样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">oblique</td>
+<td style="text-align:left">浏览器会显示一个倾斜的字体样式。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="35-字体复合属性">3.5 字体复合属性</h3>
+<p>font 简写属性在一个声明中设置所有字体属性。</p>
+<p><strong>语法顺序：</strong></p>
+<pre><code class="language-css">body {
+	font: font-style font-weight font-size/line-height font-family;
+}
+</code></pre>
+<p>使用 font 属性时，必须按上面语法格式中的顺序书写，<strong>不能更换顺序</strong>，并且各个属性间以<strong>空格隔开</strong>。<br>
+不需要设置的属性可以省略（取默认值），但必须保留 <strong>font-size</strong> 和 <strong>font-family</strong> 属性，否则 font 属性将不起作用。</p>
+<h3 id="36-字体属性总结">3.6 字体属性总结</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>表示</th>
+<th>注意点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>font</td>
+<td>字体连写</td>
+<td>1.字体连写是有顺序的不能随意换位置⒉其中字号和字体必须同时出现</td>
+</tr>
+<tr>
+<td>font-style</td>
+<td>字体样式</td>
+<td>记住倾斜是italic不倾斜是normal工作中我们最常用normal</td>
+</tr>
+<tr>
+<td>font-weight</td>
+<td>字体粗细</td>
+<td>记住加粗是700或者bold不加粗是normal或者400记住数字不要跟单位</td>
+</tr>
+<tr>
+<td>font-size</td>
+<td>字号</td>
+<td>我们通常用的单位是px像素，一定要跟上单位</td>
+</tr>
+<tr>
+<td>font-family</td>
+<td>字体</td>
+<td>实际工作中按照团队约定来写字体</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-css-文本属性">4. CSS 文本属性</h2>
+<h3 id="41-文本颜色">4.1 文本颜色</h3>
+<p><strong>color</strong> 属性规定文本的颜色</p>
+<pre><code class="language-css">div {
+	color: red;
+}
+</code></pre>
+<p><strong>可能的值:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><em>color_name</em></td>
+<td style="text-align:left">规定颜色值为颜色名称的颜色（比如 red）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>hex_number</em></td>
+<td style="text-align:left">规定颜色值为十六进制值的颜色（比如 #ff0000）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>rgb_number</em></td>
+<td style="text-align:left">规定颜色值为 rgb 代码的颜色（比如 rgb(255,0,0)）。</td>
+</tr>
+<tr>
+<td style="text-align:left">inherit</td>
+<td style="text-align:left">规定应该从父元素继承颜色。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-对齐文本">4.2 对齐文本</h3>
+<p><strong>text-align</strong> 属性规定元素中的文本的水平对齐方式。</p>
+<pre><code class="language-css">div {
+text-align: center;
+}
+</code></pre>
+<p><strong>可能的值:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">left</td>
+<td style="text-align:left">把文本排列到左边。默认值：由浏览器决定。</td>
+</tr>
+<tr>
+<td style="text-align:left">right</td>
+<td style="text-align:left">把文本排列到右边。</td>
+</tr>
+<tr>
+<td style="text-align:left">center</td>
+<td style="text-align:left">把文本排列到中间。</td>
+</tr>
+<tr>
+<td style="text-align:left">justify</td>
+<td style="text-align:left">实现两端对齐文本效果</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-装饰文本">4.3 装饰文本</h3>
+<p><strong>text-decoration</strong> 属性规定添加到文本的修饰。可以给文本添加下划线、删除线、上划线等。</p>
+<p><strong>可能的值:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">none</td>
+<td style="text-align:left">默认。定义标准的文本。</td>
+</tr>
+<tr>
+<td style="text-align:left">underline</td>
+<td style="text-align:left">定义文本下的一条线。</td>
+</tr>
+<tr>
+<td style="text-align:left">overline</td>
+<td style="text-align:left">定义文本上的一条线。</td>
+</tr>
+<tr>
+<td style="text-align:left">line-through</td>
+<td style="text-align:left">定义穿过文本下的一条线。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="44-文本缩进">4.4 文本缩进</h3>
+<p><strong>text-indent</strong> 属性用来指定文本的第一行的缩进，通常是将段落的首行缩进。</p>
+<blockquote>
+<p>允许使用负值。如果使用负值，那么首行会被缩进到左边。</p>
+</blockquote>
+<p><strong>可能的值:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><em>length</em></td>
+<td style="text-align:left">定义固定的缩进。默认值：0。</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>%</em></td>
+<td style="text-align:left">定义基于父元素宽度的百分比的缩进。</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-css">div {
+	text-indent: 10px;
+}
+p {
+	text-indent: 2em;
+}
+</code></pre>
+<blockquote>
+<p>em 是一个相对单位，就是当前元素（font-size) 1 个文字的大小, 如果当前元素没有设置大小，则会按照父元素的 1 个文字大小。</p>
+</blockquote>
+<h3 id="45-行间距">4.5 行间距</h3>
+<p><strong>line-height</strong> 属性用于设置行间的距离（行高）。可以控制文字行与行之间的距离.</p>
+<pre><code class="language-css">p {
+line-height: 26px;
+}
+</code></pre>
+<p><strong>可能的值:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">normal</td>
+<td style="text-align:left">默认。设置合理的行间距。</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>number</em></td>
+<td style="text-align:left">设置数字，此数字会与当前的字体尺寸相乘来设置行间距。</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>length</em></td>
+<td style="text-align:left">设置固定的行间距。</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>%</em></td>
+<td style="text-align:left">基于当前字体尺寸的百分比行间距。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="46-文本属性总结">4.6 文本属性总结</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>表示</th>
+<th>注意点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color</td>
+<td>文本颜色</td>
+<td>我们通常用十六进制比如而且是简写形式#fff</td>
+</tr>
+<tr>
+<td>text-align</td>
+<td>文本对齐</td>
+<td>可以设定文字水平的对齐方式</td>
+</tr>
+<tr>
+<td>text-indent</td>
+<td>文本缩进</td>
+<td>通常我们用于段落首行缩进2个字的距离text-indent: 2em;</td>
+</tr>
+<tr>
+<td>text-decoration</td>
+<td>文本修饰</td>
+<td>记住添加下划线underline 取消下划线none</td>
+</tr>
+<tr>
+<td>line-height</td>
+<td>行高</td>
+<td>控制行与行之间的距离</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-css-的引入方式">5. CSS 的引入方式</h2>
+<h3 id="51-css-的三种样式表">5.1 CSS 的三种样式表</h3>
+<p>1.行内样式表（行内式）<br>
+2.内部样式表（嵌入式）<br>
+3.外部样式表（链接式）</p>
+<h3 id="52-内部样式表">5.2 内部样式表</h3>
+<p>内部样式表（内嵌样式表）是写到html页面内部. 是将所有的 CSS 代码抽取出来，单独放到一个<code> &lt;style&gt;</code> 标签中。</p>
+<pre><code class="language-css">&lt;style&gt;
+	div {
+	color: red;
+	font-size: 12px;
+	}
+&lt;/style&gt;
+</code></pre>
+<p><code>&lt;style&gt;</code> 标签理论上可以放在 HTML 文档的任何地方，但一般会放在文档的<code>&lt;head&gt;</code>标签中<br>
+通过此种方式，可以方便控制当前整个页面中的元素样式设置<br>
+代码结构清晰，但是并没有实现结构与样式完全分离<br>
+使用内部样式表设定 CSS，通常也被称为嵌入式引入，这种方式是我们<strong>练习</strong>时常用的方式</p>
+<h3 id="53-行内样式表">5.3 行内样式表</h3>
+<p>行内样式表（内联样式表）是在元素标签内部的 style 属性中设定 CSS 样式。适合于修改简单样式.</p>
+<pre><code class="language-css">&lt;div style=&quot;color: red; font-size: 12px;&quot;&gt;青春不常在，抓紧谈恋爱&lt;/div&gt;
+</code></pre>
+<p>由于书写繁琐，并且没有体现出结构与样式相分离的思想，所以<strong>不推荐</strong>大量使用.</p>
+<h3 id="54-外部样式表">5.4 外部样式表</h3>
+<p>实际开发都是外部样式表. 适合于样式比较多的情况. 核心是:样式单独写到CSS 文件中，之后把CSS文件引入到 HTML 页面中使用.</p>
+<p>引入外部样式表分为两步：</p>
+<p>1.新建一个后缀名为 .css 的样式文件，把所有 CSS 代码都放入此文件中。</p>
+<p>2.在 HTML 页面中，使用<code>&lt;link&gt;</code> 标签引入这个文件。</p>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;css文件路径&quot;&gt;
+</code></pre>
+<p>使用外部样式表设定 CSS，通常也被称为外链式或链接式引入，这种方式是开发中<strong>常用</strong>的方式</p>
+<h3 id="55-css-引入方式总结">5.5 CSS 引入方式总结</h3>
+<figure data-type="image" tabindex="3"><img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210108213840.png" alt="img" loading="lazy"></figure>
+<h2 id="6-chrome-调试工具">6. Chrome 调试工具</h2>
+<p>Chrome 浏览器提供了一个非常好用的调试工具，可以用来调试我们的 HTML 结构和 CSS 样式。</p>
+<h3 id="61-打开调试工具">6.1 打开调试工具</h3>
+<p>打开 Chrome 浏览器，按下 F12 键或者右击页面空白处→检查。</p>
+<figure data-type="image" tabindex="4"><img src="https://gcore.jsdelivr.net/gh/manchan4869/PicGo/img/20210108214509.png" alt="image-20210108214508351" loading="lazy"></figure>
+<h3 id="62-使用调试工具">6.2 使用调试工具</h3>
+<p>① Ctrl+滚轮 可以放大开发者工具代码大小。<br>
+② 左边是 HTML 元素结构，右边是 CSS 样式。<br>
+③ 右边 CSS 样式可以改动数值（左右箭头或者直接输入）和查看颜色。<br>
+④ Ctrl + 0 复原浏览器大小。<br>
+⑤ 如果点击元素，发现右侧没有样式引入，极有可能是类名或者样式引入错误。<br>
+⑥ 如果有样式，但是样式前面有黄色叹号提示，则是样式属性书写错误。</p>
+
+                                                                                    
+                                </div>
+                                <div class="wow bounceInDown vt-post-tags">
+                                    
+                                        <a href="https://blog.manchan.top/tag/css/" rel="tag">
+                                            CSS
+                                        </a>
+                                        
+                                        <a href="https://blog.manchan.top/tag/qian-duan/" rel="tag">
+                                            前端
+                                        </a>
+                                        
+                                </div>
+                                <nav class="navigation3 post-navigation3" role="navigation">
+                                    <div class="nav-links3">
+                                        
+                                            <div class="wow bounceInLeft nav-previous3"><a
+                                                    href="https://blog.manchan.top/post/introduction-to-front-end-development-CSS--P2/" rel="prev">
+                                                    前端开发入门教程-CSS（二）
+                                                </a></div>
+                                            
+                                                
+                                                    <div class="wow bounceInRight nav-next3"><a
+                                                            href="https://blog.manchan.top/post/introduction-to-front-end-development-HTML-Tags-P2/" rel="next">
+                                                            前端开发入门教程-HTML标签（下）
+                                                        </a></div>
+                                                    
+                                    </div>
+                                </nav>
+                                <div class="wow rollIn author-info"
+                                    style="visibility: visible; animation-name: rollIn;">
+                                    <div class="author-avatar pull-left"><img
+                                            src="https://gcore.jsdelivr.net/gh/manchan4869/Gridea/images/avatar.png">
+                                    </div>
+                                    
+                                        <div class="author-description">
+                                            <div class="author-title">
+                                                <div class="author-link" rel="author">
+                                                    Manchan
+                                                </div>
+                                            </div>
+                                            
+                                                
+                                                    <p class="author-bio">
+                                                        GISer, a novice who is learning hard<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0
+                                                            国际 (<a href="http://creativecommons.org/licenses/by-sa/4.0/"
+                                                                target="_blank">&nbsp;CC 4.0 BY-SA&nbsp;</a>)
+                                                            协议<br>本文永久链接是：<a href="https://blog.manchan.top/post/introduction-to-front-end-development-CSS--P1/">
+                                                                https://blog.manchan.top/post/introduction-to-front-end-development-CSS--P1/
+                                                            </a>
+                                                    </p>
+                                        </div>
+                                </div>
+                                
+                            </div>
+                        </article>
+                        <div id="marlin_lite_about_widget-2" class="wow bounceInUp widget marlin_lite_about_widget"
+                            data-wow-delay="0.1s">
+                            
+                                                            <script src='https://blog.manchan.top/media/scripts/Valine.man.HCLonely.js'></script>
+
+<div class="comment"></div>
+<script>
+  new Valine({
+    el: '.comment',
+    lang: 'zh-cn',
+    visitor: true, // 阅读量统计
+    avatar: 'mp',   // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
+    recordIP: true, // 记录IP
+    requiredFields: ['nick', 'mail'], //必需项
+    master: ["29749f2d630d0de14b8e78cf02b5d048"],
+    emojiCDN: "https://gcore.jsdelivr.net/gh/HCLonely/valine-face@1.0.1/",
+    serverURLs: "https://leancloudapi.manchan.ml",
+    emojiMaps: { "tv_白眼": "bilibili_tv/baiyan.png", tv_doge: "bilibili_tv/doge.png", "tv_坏笑": "bilibili_tv/huaixiao.png", "tv_难过": "bilibili_tv/nanguo.png", "tv_生气": "bilibili_tv/shengqi.png", "tv_委屈": "bilibili_tv/weiqu.png", "tv_斜眼笑": "bilibili_tv/xieyanxiao.png", "tv_呆": "bilibili_tv/fadai.png", "tv_发怒": "bilibili_tv/fanu.png", "tv_惊吓": "bilibili_tv/jingxia.png", "tv_呕吐": "bilibili_tv/outu.png", "tv_思考": "bilibili_tv/sikao.png", "tv_微笑": "bilibili_tv/weixiao.png", "tv_疑问": "bilibili_tv/yiwen.png", "tv_大哭": "bilibili_tv/daku.png", "tv_鼓掌": "bilibili_tv/guzhang.png", "tv_抠鼻": "bilibili_tv/koubi.png", "tv_亲亲": "bilibili_tv/qinqin.png", "tv_调皮": "bilibili_tv/tiaopi.png", "tv_笑哭": "bilibili_tv/xiaoku.png", "tv_晕": "bilibili_tv/yun.png", "tv_点赞": "bilibili_tv/dianzan.png", "tv_害羞": "bilibili_tv/haixiu.png", "tv_睡着": "bilibili_tv/shuizhao.png", "tv_色": "bilibili_tv/se.png", "tv_吐血": "bilibili_tv/tuxue.png", "tv_无奈": "bilibili_tv/wunai.png", "tv_再见": "bilibili_tv/zaijian.png", "tv_流汗": "bilibili_tv/liuhan.png", "tv_偷笑": "bilibili_tv/touxiao.png", "tv_抓狂": "bilibili_tv/zhuakuang.png", "tv_黑人问号": "bilibili_tv/heirenwenhao.png", "tv_困": "bilibili_tv/kun2.png", "tv_打脸": "bilibili_tv/dalian.png", "tv_闭嘴": "bilibili_tv/bizui.png", "tv_鄙视": "bilibili_tv/bishi.png", "tv_腼腆": "bilibili_tv/miantian.png", "tv_馋": "bilibili_tv/chan.png", "tv_可爱": "bilibili_tv/keai.png", "tv_发财": "bilibili_tv/facai.png", "tv_生病": "bilibili_tv/shengbing.png", "tv_流鼻血": "bilibili_tv/liubixue.png", "tv_尴尬": "bilibili_tv/ganga.png", "tv_大佬": "bilibili_tv/dalao.png", "tv_流泪": "bilibili_tv/liulei.png", "tv_冷漠": "bilibili_tv/lengmo.png", "tv_皱眉": "bilibili_tv/zhoumei.png", "tv_鬼脸": "bilibili_tv/guilian.png", "tv_调侃": "bilibili_tv/tiaokan.png", "tv_目瞪口呆": "bilibili_tv/mudengkoudai.png", bili_2020: "bilibili_face/dc709fac0d361370bcf0d36d32adb97df7c95824.png", "bili_加油武汉": "bilibili_face/eb966aaa5b690d3f9308a9f936f5b5a72a7f956b.png", "bili_口罩": "bilibili_face/3ad2f66b151496d2a5fb0a8ea75f32265d778dd3.png", "bili_鸡腿": "bilibili_face/c7860392815d345fa69c4f00ef18d67dccfbd574.png", "bili_微笑": "bilibili_face/685612eadc33f6bc233776c6241813385844f182.png", "bili_笑": "bilibili_face/81edf17314cea3b48674312b4364df44d5c01f17.png", "bili_龇牙": "bilibili_face/b5a5898491944a4268360f2e7a84623149672eb6.png", bili_OK: "bilibili_face/4683fd9ffc925fa6423110979d7dcac5eda297f4.png", "bili_星星眼": "bilibili_face/63c9d1a31c0da745b61cdb35e0ecb28635675db2.png", "bili_哦呼": "bilibili_face/362bded07ea5434886271d23fa25f5d85d8af06c.png", "bili_嫌弃": "bilibili_face/de4c0783aaa60ec03de0a2b90858927bfad7154b.png", "bili_喜欢": "bilibili_face/8a10a4d73a89f665feff3d46ca56e83dc68f9eb8.png", "bili_酸了": "bilibili_face/92b1c8cbceea3ae0e8e32253ea414783e8ba7806.png", "bili_大哭": "bilibili_face/2caafee2e5db4db72104650d87810cc2c123fc86.png", "bili_害羞": "bilibili_face/9d2ec4e1fbd6cb1b4d12d2bbbdd124ccb83ddfda.png", "bili_无语": "bilibili_face/44667b7d9349957e903b1b62cb91fb9b13720f04.png", "bili_问号": "bilibili_face/b7840db4b1f9f4726b7cb23c0972720c1698d661.png", "bili_调皮": "bilibili_face/8290b7308325e3179d2154327c85640af1528617.png", "bili_喜极而泣": "bilibili_face/485a7e0c01c2d70707daae53bee4a9e2e31ef1ed.png", "bili_奸笑": "bilibili_face/bb84906573472f0a84cebad1e9000eb6164a6f5a.png", "bili_偷笑": "bilibili_face/6c49d226e76c42cd8002abc47b3112bc5a92f66a.png", "bili_大笑": "bilibili_face/ca94ad1c7e6dac895eb5b33b7836b634c614d1c0.png", "bili_阴险": "bilibili_face/ba8d5f8e7d136d59aab52c40fd3b8a43419eb03c.png", "bili_捂脸": "bilibili_face/6921bb43f0c634870b92f4a8ad41dada94a5296d.png", "bili_囧": "bilibili_face/12e41d357a9807cc80ef1e1ed258127fcc791424.png", "bili_呆": "bilibili_face/33ad6000d9f9f168a0976bc60937786f239e5d8c.png", "bili_抠鼻": "bilibili_face/cb89184c97e3f6d50acfd7961c313ce50360d70f.png", "bili_惊喜": "bilibili_face/0afecaf3a3499479af946f29749e1a6c285b6f65.png", "bili_惊讶": "bilibili_face/f8e9a59cad52ae1a19622805696a35f0a0d853f3.png", "bili_笑哭": "bilibili_face/c3043ba94babf824dea03ce500d0e73763bf4f40.png", "bili_妙啊": "bilibili_face/b4cb77159d58614a9b787b91b1cd22a81f383535.png", bili_doge: "bilibili_face/bba7c12aa51fed0199c241465560dfc2714c593e.png", "bili_滑稽": "bilibili_face/d15121545a99ac46774f1f4465b895fe2d1411c3.png", "bili_吃瓜": "bilibili_face/4191ce3c44c2b3df8fd97c33f85d3ab15f4f3c84.png", "bili_打call": "bilibili_face/431432c43da3ee5aab5b0e4f8931953e649e9975.png", "bili_点赞": "bilibili_face/1a67265993913f4c35d15a6028a30724e83e7d35.png", "bili_鼓掌": "bilibili_face/895d1fc616b4b6c830cf96012880818c0e1de00d.png", "bili_冷": "bilibili_face/cb0ebbd0668640f07ebfc0e03f7a18a8cd00b4ed.png", "bili_灵魂出窍": "bilibili_face/43d3db7d97343c01b47e22cfabeca84b4251f35a.png", "bili_尴尬": "bilibili_face/cb321684ed5ce6eacdc2699092ab8fe7679e4fda.png", "bili_傲娇": "bilibili_face/010540d0f61220a0db4922e4a679a1d8eca94f4e.png", "bili_疼": "bilibili_face/905fd9a99ec316e353b9bd4ecd49a5f0a301eabf.png", "bili_委屈": "bilibili_face/d2f26cbdd6c96960320af03f5514c5b524990840.png", "bili_吓": "bilibili_face/9c10c5ebc7bef27ec641b8a1877674e0c65fea5d.png", "bili_生病": "bilibili_face/0f25ce04ae1d7baf98650986454c634f6612cb76.png", "bili_吐": "bilibili_face/06946bfe71ac48a6078a0b662181bb5cad09decc.png", "bili_嘘声": "bilibili_face/e64af664d20716e090f10411496998095f62f844.png", "bili_捂眼": "bilibili_face/c5c6d6982e1e53e478daae554b239f2b227b172b.png", "bili_思考": "bilibili_face/cfa9b7e89e4bfe04bbcd34ccb1b0df37f4fa905c.png", "bili_再见": "bilibili_face/fc510306bae26c9aec7e287cdf201ded27b065b9.png", "bili_翻白眼": "bilibili_face/eba54707c7168925b18f6f8b1f48d532fe08c2b1.png", "bili_哈欠": "bilibili_face/888d877729cbec444ddbd1cf4c9af155a7a06086.png", "bili_奋斗": "bilibili_face/bb2060c15dba7d3fd731c35079d1617f1afe3376.png", "bili_墨镜": "bilibili_face/3a03aebfc06339d86a68c2d893303b46f4b85771.png", "bili_撇嘴": "bilibili_face/531863568e5668c5ac181d395508a0eeb1f0cda4.png", "bili_难过": "bilibili_face/a651db36701610aa70a781fa98c07c9789b11543.png", "bili_抓狂": "bilibili_face/4c87afff88c22439c45b79e9d2035d21d5622eba.png", "bili_生气": "bilibili_face/3195714219c4b582a4fb02033dd1519913d0246d.png", "bili_干杯": "bilibili_face/8da12d5f55a2c7e9778dcc05b40571979fe208e6.png", "bili_爱心": "bilibili_face/ed04066ea7124106d17ffcaf75600700e5442f5c.png", "bili_锦鲤": "bilibili_face/643d6c19c8164ffd89e3e9cdf093cf5d773d979c.png", "bili_胜利": "bilibili_face/b49fa9f4b1e7c3477918153b82c60b114d87347c.png", "bili_加油": "bilibili_face/c7aaeacb21e107292d3bb053e5abde4a4459ed30.png", "bili_保佑": "bilibili_face/fafe8d3de0dc139ebe995491d2dac458a865fb30.png", "bili_抱拳": "bilibili_face/89516218158dbea18ab78e8873060bf95d33bbbe.png", "bili_响指": "bilibili_face/1b5c53cf14336903e1d2ae3527ca380a1256a077.png", "bili_支持": "bilibili_face/3c210366a5585706c09d4c686a9d942b39feeb50.png", "bili_拥抱": "bilibili_face/41780a4254750cdaaccb20735730a36044e98ef3.png", "bili_怪我咯": "bilibili_face/07cc6077f7f7d75b8d2c722dd9d9828a9fb9e46d.png", "bili_跪了": "bilibili_face/f2b3aee7e521de7799d4e3aa379b01be032698ac.png", "bili_黑洞": "bilibili_face/e90ec4c799010f25391179118ccd9f66b3b279ba.png", "bili_老鼠": "bilibili_face/8e6fb491eb1bb0d5862e7ec8ccf9a3da12b6c155.png", "bili_福到了": "bilibili_face/5de5373d354c373cf1617b6b836f3a8d53c5a655.png", hot_AWSL: "bilibili_hot/AWSL.jpg", "hot_三连": "bilibili_hot/三连.jpg", "hot_不愧是你": "bilibili_hot/不愧是你.jpg", "hot_你币有了": "bilibili_hot/你币有了.jpg", "hot_你细品": "bilibili_hot/你细品.jpg", "hot_危": "bilibili_hot/危.jpg", "hot_可以": "bilibili_hot/可以.jpg", "hot_吹爆": "bilibili_hot/吹爆.jpg", "hot_咕咕": "bilibili_hot/咕咕.jpg", "hot_大师球": "bilibili_hot/大师球.jpg", "hot_奥利给": "bilibili_hot/奥利给.jpg", "hot_妙": "bilibili_hot/妙.jpg", "hot_完结撒花": "bilibili_hot/完结撒花.jpg", "hot_害": "bilibili_hot/害.jpg", "hot_张三": "bilibili_hot/张三.png", "hot_我全都要": "bilibili_hot/我全都要.jpg", "hot_我哭了": "bilibili_hot/我哭了.jpg", "hot_我太南了": "bilibili_hot/我太南了.jpg", "hot_我裂开了": "bilibili_hot/我裂开了.png", "hot_我酸了": "bilibili_hot/我酸了.jpg", "hot_打卡": "bilibili_hot/打卡.jpg", "hot_有内味了": "bilibili_hot/有内味了.jpg", "hot_有生之年": "bilibili_hot/有生之年.jpg", "hot_标准结局": "bilibili_hot/标准结局.png", "hot_爱了爱了": "bilibili_hot/爱了爱了.png", "hot_爷关更": "bilibili_hot/爷关更.jpg", "hot_狼火": "bilibili_hot/狼火.jpg", "hot_猛男必看": "bilibili_hot/猛男必看.jpg", "hot_真香": "bilibili_hot/真香.jpg", "hot_知识增加": "bilibili_hot/知识增加.png", "hot_知识盲区": "bilibili_hot/知识盲区.jpg", "hot_神仙UP": "bilibili_hot/神仙UP.jpg", "hot_秀": "bilibili_hot/秀.jpg", "hot_这次一定": "bilibili_hot/这次一定.jpg", "hot_递话筒": "bilibili_hot/递话筒.png", "hot_锤": "bilibili_hot/锤.jpg", "hot_镇站之宝": "bilibili_hot/镇站之宝.jpg", "hot_问号": "bilibili_hot/问号.png", "hot_高产": "bilibili_hot/高产.jpg", "biliTV_发愁": "bilibili_stv/小电视_发愁.png", "biliTV_吃惊": "bilibili_stv/小电视_吃惊.png", "biliTV_哭泣": "bilibili_stv/小电视_哭泣.png", "biliTV_嘟嘴": "bilibili_stv/小电视_嘟嘴.png", "biliTV_困惑": "bilibili_stv/小电视_困惑.png", "biliTV_太太喜欢": "bilibili_stv/小电视_太太喜欢.png", "biliTV_好怒啊": "bilibili_stv/小电视_好怒啊.png", "biliTV_害羞": "bilibili_stv/小电视_害羞.png", "biliTV_差评": "bilibili_stv/小电视_差评.png", "biliTV_思索": "bilibili_stv/小电视_思索.png", "biliTV_我好兴奋": "bilibili_stv/小电视_我好兴奋.png", "biliTV_无语": "bilibili_stv/小电视_无语.png", "biliTV_汗": "bilibili_stv/小电视_汗.png", "biliTV_笑": "bilibili_stv/小电视_笑.png", "biliTV_赞": "bilibili_stv/小电视_赞.png", "2233娘_卖萌": "bilibili_2233/2233娘_卖萌.png", "2233娘_吃惊": "bilibili_2233/2233娘_吃惊.png", "2233娘_吐魂": "bilibili_2233/2233娘_吐魂.png", "2233娘_喝水": "bilibili_2233/2233娘_喝水.png", "2233娘_困惑": "bilibili_2233/2233娘_困惑.png", "2233娘_大哭": "bilibili_2233/2233娘_大哭.png", "2233娘_大笑": "bilibili_2233/2233娘_大笑.png", "2233娘_委屈": "bilibili_2233/2233娘_委屈.png", "2233娘_怒": "bilibili_2233/2233娘_怒.png", "2233娘_无言": "bilibili_2233/2233娘_无言.png", "2233娘_汗": "bilibili_2233/2233娘_汗.png", "2233娘_疑问": "bilibili_2233/2233娘_疑问.png", "2233娘_第一": "bilibili_2233/2233娘_第一.png", "2233娘_耶": "bilibili_2233/2233娘_耶.png", "2233娘_郁闷": "bilibili_2233/2233娘_郁闷.png" },
+    app_id: 'igrIcphbBEikHAPJe1DYzROX-MdYXbMMI',
+    app_key: 'duTdA8NNAXETy7oAFbFXO6Kg',
+    placeholder: '快来评论呀，7:00-23:59发的评论我会立刻收到通知^_^'
+  });
+</script>
+                        </div>
+                    </div>
+                    <div class="tocc col l3 hide-on-med-and-down">
+    <div class="toc-widget">
+        <div class="toc-title"></div>
+        <div id="toc-content">
+        </div>
+    </div>
+</div>
+<script src="https://cdn.staticfile.org/tocbot/4.18.2/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '.entry-summary',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('.entry-summary').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+                </div>
+            </div>
+            	<footer id="colophon" class="site-footer">
+		<div class="container">
+			<div class="copyright"><p>&copy; 2020-2022.Manchan All rights reserved.
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>.</p>
+<a href="https://beian.miit.gov.cn/">鄂ICP备2020015911-1号</a></div>
+		</div>
+	</footer>
+    </div>
+    <script src="https://cdn.staticfile.org/fitvids/1.2.0/jquery.fitvids.min.js"></script>
+<script src='https://blog.manchan.top/media/scripts/marlin-scripts.min.js'></script>
+<script src="https://blog.manchan.top/media/scripts/lately.min.js"></script>
+<script>
+  Lately({
+      'target' : '.lately-a,.lately-b,.lately-c'
+  })
+</script>
+<a id="back_to_top" href="#" class="back_to_top"><span><i class="iconfont icon-xiangshang"></i></span></a>
+        <script data-no-instant>
+            (function ($) {
+                $.extend({
+                    adamsOverload: function () {
+                        $('.navigation:eq(0)').remove();
+                        $("").attr("rel", "external");
+                        $("a[rel='external'],a[rel='external nofollow']").attr("target", "_blank");
+                        $("a.vi").attr("rel", "");
+                        $.viewImage({
+                            'target': 'img',
+                            'exclude': '.vsmile-icons img,.gallery img',
+                            'delay': 300
+                        });
+                        Lately({
+                            'target': '.commentmetadata a,.infos time,.post-list time'
+                        });
+
+                        $('ul.links li a').each(function () {
+                            if ($(this).parent().find('.bg').length == 0) {
+                                $(this).parent().append(
+                                    '<!---<div class="bg" style="background-image:url(https://c3.glgoo.top/s2/favicons?domain=' +
+                                    $(this).attr("href") + ')"></div>--->')
+                            }
+                        });
+                    }
+                });
+            })(jQuery);
+            jQuery.adamsOverload();
+        </script>
+</body>
+
+</html>
